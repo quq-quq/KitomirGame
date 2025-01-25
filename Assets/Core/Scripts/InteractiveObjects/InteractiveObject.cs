@@ -1,0 +1,28 @@
+using System;
+using UnityEngine;
+
+public class InteractiveObject : MonoBehaviour {
+    
+    [SerializeField] private GameObject interactSign;
+    [SerializeField] private float interactAreaRadius;
+    
+    private bool _isPlayerInInteractArea = false;
+
+    private void Update() {
+        float distance = Vector3.Distance(transform.position, Player.Instance.transform.position);
+        if (_isPlayerInInteractArea == false && distance <= interactAreaRadius) {
+            _isPlayerInInteractArea = true;
+            interactSign.SetActive(true);
+            Player.Instance.SelectInteractiveObject(this);
+        }
+        else if (_isPlayerInInteractArea && distance > interactAreaRadius) {
+            _isPlayerInInteractArea = false;
+            interactSign.SetActive(false);
+            Player.Instance.DeselectInteractiveObject(this);
+        }
+    }
+
+    public virtual void Interact() {
+        Debug.Log("Interact");
+    }
+}
