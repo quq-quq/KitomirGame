@@ -15,10 +15,8 @@ MonoBehaviour:
   regularFail:
   - {fileID: 8300000, guid: f9a2e91efd4f40bb38841abdfd5c15d4, type: 3}
   - {fileID: 8300000, guid: 834db8d5a5175b1cfbcd1801d4c9d33d, type: 3}
-  hardFail:
-  - {fileID: 8300000, guid: 9f30b1657788ab458a588a543a16a361, type: 3}
-  success:
-  - {fileID: 8300000, guid: d9955ec52910d5ebfa9271ae1efded66, type: 3}
+  hardFail: {fileID: 8300000, guid: 9f30b1657788ab458a588a543a16a361, type: 3}
+  success: {fileID: 8300000, guid: d9955ec52910d5ebfa9271ae1efded66, type: 3}
   hardSuccess: []
   footsteps:
   - {fileID: 8300000, guid: 87a7d5075746d25418b5d94164f1a17a, type: 3}
@@ -27,7 +25,6 @@ MonoBehaviour:
   alarm: {fileID: 8300000, guid: 54347613d425b75e89fbf96762e3997a, type: 3}
   alarmOff: {fileID: 8300000, guid: 0cab744d35dcf2b478ee59ef62245299, type: 3}
   blanket: {fileID: 8300000, guid: 612b2c3881d9a9a9987bc41eb858e763, type: 3}
-  openDoor:
-  - {fileID: 8300000, guid: 0fb863002dc8c381292815524ec1859a, type: 3}
-  vehicleNoise:
-  - {fileID: 8300000, guid: 21300f2180e31b096942d8210abc8b11, type: 3}
+  commissarOpenDoor: {fileID: 8300000, guid: 0fb863002dc8c381292815524ec1859a, type: 3}
+  openDoor: {fileID: 8300000, guid: c392ab45105d673baa0692c49eddd33c, type: 3}
+  vehicleNoise: {fileID: 8300000, guid: 21300f2180e31b096942d8210abc8b11, type: 3}

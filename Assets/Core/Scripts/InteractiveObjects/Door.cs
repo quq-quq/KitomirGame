@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class Door : InteractiveObject {
     
-
     [SerializeField] private string sceneToLoad;
     [SerializeField] private float timeInDarknessDuration = 0f;
 
@@ -17,6 +16,6 @@ public class Door : InteractiveObject {
     }
 
     public override void Interact() {
-        FadeScreen.Instance.Fade(3, timeInDarknessDuration);
+        FadeScreen.Instance.Fade(1.5f, timeInDarknessDuration);
     }
 }
