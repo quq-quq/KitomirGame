@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5996c718-9b42-4e37-9821-ae2a4d845c13" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/DialogueSystem/DialogueTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/DialogueSystem/DialogueTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Player.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Sprites/Images/MenuImage.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Sprites/Images/MenuImage.png.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +31,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "TimohaUniversityCorridorScene",
+    "git-widget-placeholder": "TimohaPhysicsAuditoriumScene",
     "last_opened_file_path": "/home/goga/Unity/Projects/StudyProject",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -101,7 +99,7 @@
       <workItem from="1737794045687" duration="4000" />
       <workItem from="1737794380349" duration="6461000" />
       <workItem from="1737808776866" duration="2541000" />
-      <workItem from="1737828499002" duration="970000" />
+      <workItem from="1737822639022" duration="4000" />
     </task>
     <servers />
   </component>
