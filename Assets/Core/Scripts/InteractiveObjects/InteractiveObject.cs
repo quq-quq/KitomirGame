@@ -8,6 +8,10 @@ public class InteractiveObject : MonoBehaviour {
     
     private bool _isPlayerInInteractArea = false;
 
+    private void Start() {
+        interactSign.SetActive(false);
+    }
+    
     private void Update() {
         float distance = Vector3.Distance(transform.position, Player.Instance.transform.position);
         if (_isPlayerInInteractArea == false && distance <= interactAreaRadius) {

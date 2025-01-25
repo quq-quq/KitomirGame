@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+    
 public class Player : MonoBehaviour {
 
     [SerializeField] private float moveSpeed = 5f;
@@ -12,10 +12,12 @@ public class Player : MonoBehaviour {
 
     private void Awake() {
         Instance = this;
-        
-        GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
     }
 
+    private void Start() {
+        GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
+    }
+    
     private void GameInput_OnInteractAction(object sender, EventArgs e) {
         _selectedInteractiveObject?.Interact();
     }
