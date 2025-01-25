@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
     
+    public static Player Instance { get; private set; }
+    
     public event EventHandler<OnDoorOpenEventArgs> OnDoorOpened;
 
     public class OnDoorOpenEventArgs : EventArgs {
@@ -12,10 +14,9 @@ public class Player : MonoBehaviour {
 
     [SerializeField] private float moveSpeed = 5f;
 
-    public static Player Instance { get; private set; }
     
     private InteractiveObject _selectedInteractiveObject;
-    
+    private bool _isWalking;
 
     private void Awake() {
         Instance = this; 
@@ -44,8 +45,14 @@ public class Player : MonoBehaviour {
     private void HandleMovement() {
         Vector2 inputVector = GameInput.Instance.GetMovementVectorNormalized();
         Vector3 moveDirection = new Vector3(inputVector.x, inputVector.y, 0);
-        
-        transform.position += moveDirection * (moveSpeed * Time.deltaTime);
+
+        if (moveDirection != Vector3.zero) {
+            transform.position += moveDirection * (moveSpeed * Time.deltaTime);
+            _isWalking = true;
+        }
+        else {
+            _isWalking = false;
+        }
     }
 
     public void SelectInteractiveObject(InteractiveObject interactiveObject) {
@@ -58,5 +65,9 @@ public class Player : MonoBehaviour {
         if (_selectedInteractiveObject == interactiveObject) {
             _selectedInteractiveObject = null;
         }
+    }
+
+    public bool IsWalking() {
+        return _isWalking;
     }
 }
