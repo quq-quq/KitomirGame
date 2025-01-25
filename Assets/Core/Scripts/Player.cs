@@ -11,8 +11,10 @@ public class Player : MonoBehaviour {
     
 
     private void Awake() {
-        Instance = this;
-        
+        Instance = this; 
+    }
+
+    private void Start() {
         GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
     }
 
