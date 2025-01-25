@@ -45,30 +45,30 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out PlayerController player))
-        {
-            _signE.DOKill();
-            _signE.DOLocalMoveY(_currentDistance + _distanceUp, _durationForMove);
-            if (_canPressing)
-            {
-                _dialogueCanvas[_indexDialogueCanvas].StartDialogue();
-                _canPressing = false;
-            }
-        }
+    //private void OnTriggerStay2D(Collider2D collision)
+    //{
+    //    if (collision.TryGetComponent(out PlayerController player))
+    //    {
+    //        _signE.DOKill();
+    //        _signE.DOLocalMoveY(_currentDistance + _distanceUp, _durationForMove);
+    //        if (_canPressing)
+    //        {
+    //            _dialogueCanvas[_indexDialogueCanvas].StartDialogue();
+    //            _canPressing = false;
+    //        }
+    //    }
 
-    }
+    //}
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out PlayerController player))
-        {
-            _signE.DOKill();
-            _signE.DOLocalMoveY(_currentDistance, _durationForMove);
-            _canPressing = false;
-        }
-    }
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.TryGetComponent(out PlayerController player))
+    //    {
+    //        _signE.DOKill();
+    //        _signE.DOLocalMoveY(_currentDistance, _durationForMove);
+    //        _canPressing = false;
+    //    }
+    //}
 
     public void ChangeIndex()
     {
