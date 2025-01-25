@@ -4,11 +4,6 @@ using UnityEngine.Serialization;
 
 namespace Dialogue_system
 {
-    public enum DialogueSide
-    {
-        Left,
-        Right
-    }
     public enum WriteType
     {
         Simple,
@@ -28,7 +23,7 @@ namespace Dialogue_system
         [SerializeField] private Sprite _avatar;
         [SerializeField] private Sprite _background;
         [SerializeField] private TMP_FontAsset _font;
-        [SerializeField] private DialogueSide _side;
+        [SerializeField] private bool _isSpeedOverride;
         [SerializeField] private float _speedOverride;
         [SerializeField] private WriteType _writeType;
         [SerializeField] private Color _colorText = Color.white;
@@ -43,9 +38,16 @@ namespace Dialogue_system
             get => _writeType;
         }
 
+        public bool IsSpeedOverride
+        {
+            get => _isSpeedOverride;
+            set => _isSpeedOverride = value;
+        }
+
         public float SpeedOverride
         {
             get => _speedOverride;
+            set => _speedOverride = value;
         }
 
         public string MainText
@@ -71,11 +73,6 @@ namespace Dialogue_system
         public TMP_FontAsset Font
         {
             get => _font;
-        }
-
-        public DialogueSide Side
-        {
-            get => _side;
         }
     }
 }
