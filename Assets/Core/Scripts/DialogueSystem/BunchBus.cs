@@ -10,7 +10,7 @@ public class BunchBus : MonoBehaviour
 
     [SerializeField] private Bunch StartBunch;
 
-    private void Awake()
+    private void Start()
     {
         if(StartBunch != null)
         {

@@ -28,5 +28,7 @@ public class AnswersOfPlayerBunch : Bunch
         {
             _answerAndNextBunches.RemoveRange(4, _answerAndNextBunches.Count - 4);
         }
+
+
     }
 }

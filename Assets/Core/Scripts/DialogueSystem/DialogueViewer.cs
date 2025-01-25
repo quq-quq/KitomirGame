@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,9 +10,10 @@ namespace Dialogue_system
     public class DialogueViewer : MonoBehaviour
     {
         [Header("Dialogue Viewer Settings")]
+        [SerializeField] bool _isItADialog;
+        [SerializeField] DialogueBunch _startBunch;
         
         [SerializeField] private float _oneCharTime;
-        //[SerializeField] private bool _startDialogueOnStart;
 
         [Space]
         [Header("Links")]
@@ -20,6 +22,10 @@ namespace Dialogue_system
         [SerializeField] private Image _background;
         [SerializeField] private TMP_Text _mainText;
         [SerializeField] private TMP_Text _nameText;
+        [SerializeField] Button _buttonForAnswersOfPlayer;
+        [Space(20)]
+        [SerializeField] private List<DialogueViewer> _Answers;
+        [SerializeField] private List<DialogueViewer> _dialogueViewers;
 
         private int _currentIndexDialogue = 0;
         private bool _isWriting = false;
@@ -32,28 +38,33 @@ namespace Dialogue_system
         private void OnEnable()
         {
             BunchBus.StartOrContinueDialogue += StartDialogue;
+            _buttonForAnswersOfPlayer.onClick.AddListener(EndDialogue);
+
+            if (_startBunch != null)
+            {
+                _bunch = _startBunch;
+                StartDialogue(_bunch);
+            }
         }
 
         private void OnDisable()
         {
             BunchBus.StartOrContinueDialogue -= StartDialogue;
+            _buttonForAnswersOfPlayer.onClick.RemoveListener(EndDialogue);
         }
 
-        private void Start()
+        private void Awake()
         {
             _parent.SetActive(false);
             _mainText.text = string.Empty;
-            //if (_startDialogueOnStart)
-            //{
-            //    StartDialogue();
-            //}
         }
+
 
         private void Update()
         {
             if (!_isWriting) return;
 
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Return) && _isItADialog)
             {
                 if (_mainText.text == _currentWriter.EndText())
                 {
@@ -87,17 +98,38 @@ namespace Dialogue_system
             _isWriting = false;
             _parent.SetActive(false);
 
-            if(_bunch.NextBunch != null)
-            {
-                if (_bunch.NextBunch is DialogueBunch nextDialogueBunch)
-                {
-                    BunchBus.StartOrContinueDialogue?.Invoke(nextDialogueBunch);
-                }
 
-                if (_bunch.NextBunch is AnswersOfPlayerBunch answersOfPlayerBunch)
-                {
-                    BunchBus.StartOrContinueAnswersOfPlayer?.Invoke(answersOfPlayerBunch);
-                }
+
+            //if(_bunch.NextBunch != null)
+            //{
+            //    if (_bunch.NextBunch is DialogueBunch nextDialogueBunch)
+            //    {
+            //        BunchBus.StartOrContinueDialogue?.Invoke(nextDialogueBunch);
+            //    }
+
+            //    if (_bunch.NextBunch is AnswersOfPlayerBunch answersOfPlayerBunch)
+            //    {
+            //        BunchBus.StartOrContinueAnswersOfPlayer?.Invoke(answersOfPlayerBunch);
+            //    }
+            //}
+
+            if (_isItADialog)
+            {
+                _Answers[0].gameObject.SetActive(true);
+                _Answers[0].gameObject.SetActive(true);
+                _Answers[0].gameObject.SetActive(true);
+                _dialogueViewers[0].gameObject.SetActive(false);
+                _dialogueViewers.RemoveAt(0);
+            }
+            else
+            {
+                _dialogueViewers[0].gameObject.SetActive(true);
+                _Answers[0].gameObject.SetActive(false);
+                _Answers[0].gameObject.SetActive(false);
+                _Answers[0].gameObject.SetActive(false);
+                _Answers.RemoveAt(0);
+                _Answers.RemoveAt(0);
+                _Answers.RemoveAt(0);
             }
         }
 
