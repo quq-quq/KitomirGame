@@ -1,7 +1,14 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
+    
+    public event EventHandler<OnDoorOpenEventArgs> OnDoorOpened;
+
+    public class OnDoorOpenEventArgs : EventArgs {
+        public Transform senderTransform;
+    }
 
     [SerializeField] private float moveSpeed = 5f;
 
@@ -19,7 +26,15 @@ public class Player : MonoBehaviour {
     }
 
     private void GameInput_OnInteractAction(object sender, EventArgs e) {
-        _selectedInteractiveObject?.Interact();
+        if (_selectedInteractiveObject != null) {
+            _selectedInteractiveObject.Interact();
+            if (_selectedInteractiveObject is Door) {
+                OnDoorOpened?.Invoke(this, new OnDoorOpenEventArgs {
+                        senderTransform = _selectedInteractiveObject.transform
+                    }
+                );
+            }
+        }
     }
 
     private void Update() {
