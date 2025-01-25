@@ -4,13 +4,16 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 namespace Dialogue_system
 {
-    public class DialogueViewer : MonoBehaviour
+
+    public class AnswersOfPlayerViewer : MonoBehaviour
     {
-        [Header("Dialogue Viewer Settings")]
-        
+        [Header("Answers Of Player Viewer Settings")]
+
         [SerializeField] private float _oneCharTime;
+        [SerializeField] string _name;
         //[SerializeField] private bool _startDialogueOnStart;
 
         [Space]
@@ -20,74 +23,58 @@ namespace Dialogue_system
         [SerializeField] private Image _background;
         [SerializeField] private TMP_Text _mainText;
         [SerializeField] private TMP_Text _nameText;
+        [SerializeField] private Button _button;
+        [SerializeField] private TMP_FontAsset _font;
+        [SerializeField] private Color _colorOfText;
 
-        private int _currentIndexDialogue = 0;
         private bool _isWriting = false;
         private float _currentCharTime;
         private WriterDialogue _currentWriter;
-        private DialogueBunch _bunch;
-        private Dialogue CurrentDialogue => _bunch.Dialogues[_currentIndexDialogue];
-        private int CountOfDialogue => _bunch.Dialogues.Count;
+        private AnswersOfPlayerBunch _bunch;
+
+        private int _answersCount => _bunch.AnswerAndNextBunches.Count;
 
         private void OnEnable()
         {
-            BunchBus.StartOrContinueDialogue += StartDialogue;
+            BunchBus.StartOrContinueAnswersOfPlayer += StartDialogueAnswersOfPlayer;
+            _button.onClick.AddListener(EndDialogue);
         }
 
         private void OnDisable()
         {
-            BunchBus.StartOrContinueDialogue -= StartDialogue;
+            BunchBus.StartOrContinueAnswersOfPlayer -= StartDialogueAnswersOfPlayer;
+            _button.onClick.RemoveListener(EndDialogue);
         }
 
         private void Start()
         {
-            _parent.SetActive(false);
             _mainText.text = string.Empty;
+            _parent.SetActive(false);
             //if (_startDialogueOnStart)
             //{
             //    StartDialogue();
             //}
         }
 
-        private void Update()
+        public void StartDialogueAnswersOfPlayer(AnswersOfPlayerBunch answersOfPlayerBunch)
         {
-            if (!_isWriting) return;
-
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                if (_mainText.text == _currentWriter.EndText())
-                {
-                    NextDialogue();
-                }
-                else
-                {
-                    _mainText.text = _currentWriter.EndText();
-                    StopCoroutine(WriteTextCoroutine());
-                }
-            }
-        }
-
-        public void StartDialogue(DialogueBunch dialogueBunch)
-        {
-            _bunch = dialogueBunch;
+            _bunch = answersOfPlayerBunch;
             if (_parent.activeSelf)
                 return;
             _parent.SetActive(true);
             _currentCharTime = _oneCharTime;
-            _currentIndexDialogue = 0;
             _mainText.text = string.Empty;
-            ViewDialog(CurrentDialogue);
+            ViewDialog();
         }
 
         private void EndDialogue()
         {
             StopCoroutine(WriteTextCoroutine());
-            _currentIndexDialogue = 0;
             _mainText.text = string.Empty;
             _isWriting = false;
             _parent.SetActive(false);
 
-            if(_bunch.NextBunch != null)
+            if (_bunch.NextBunch != null)
             {
                 if (_bunch.NextBunch is DialogueBunch nextDialogueBunch)
                 {
@@ -101,38 +88,21 @@ namespace Dialogue_system
             }
         }
 
-        private void NextDialogue()
+        private void ViewDialog()
         {
-            StopCoroutine(WriteTextCoroutine());
-            if (_currentIndexDialogue + 1 == CountOfDialogue)
-            {
-                EndDialogue();
-            }
-            else
-            {
-                _currentIndexDialogue++;
-                _mainText.text = string.Empty;
-                ViewDialog(CurrentDialogue);
-            }
-        }
-
-        private void ViewDialog(Dialogue dialogue)
-        {
-            _currentWriter = WriterDialogueFabric.GetWriterOfType(dialogue.WriteType, dialogue.MainText);
-            _background.sprite = dialogue.Background;
-            if (dialogue.Avatar != null)
+            _currentWriter = WriterDialogueFabric.GetWriterOfType(WriteType.Simple, _bunch.AnswerAndNextBunches[_answersCount].answerText);
+            if (_avatar != null)
             {
                 _avatar.color = Color.white;
-                _avatar.sprite = dialogue.Avatar;
             }
             else
             {
                 _avatar.color = Color.clear;
             }
-            _mainText.font = dialogue.Font;
-            _mainText.color = dialogue.ColorText;
-            _nameText.text = dialogue.CharacterName;
-            _currentCharTime = dialogue.SpeedOverride > 0 ? dialogue.SpeedOverride : _oneCharTime;
+            _mainText.font = _font;
+            _mainText.color = _colorOfText;
+            _nameText.text = _name;
+            _currentCharTime = _oneCharTime;
             StartCoroutine(WriteTextCoroutine());
         }
 

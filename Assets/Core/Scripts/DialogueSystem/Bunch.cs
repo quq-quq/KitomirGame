@@ -3,25 +3,52 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public abstract class Bunch : ScriptableObject
 {
-    [SerializeField] private Bunch nextBunch;
-    [ReadOnly, SerializeField]
-    private Bunch _previousBunch;
+    [SerializeField] private Bunch _nextBunch;
+    [ReadOnly, SerializeField] private Bunch _previousBunch;
 
-#if UNITY_EDITOR
-    private void OnValidate()
+    public Bunch NextBunch 
+    { 
+         get => _nextBunch;        
+    }
+
+
+    protected void OnValidate()
     {
         Bunch[] bunches = Resources.LoadAll<Bunch>("Bunches");
+
+        if (_previousBunch == this)
+        {
+            _previousBunch = null;
+            return;
+        }
+
+        if(_nextBunch == this )
+        {
+            _nextBunch = null;
+            return;
+        }
+
+        if (_nextBunch == _previousBunch)
+        {
+
+        }
+
         foreach (Bunch bunch in bunches)
         {
-            if (bunch.nextBunch == this)
+            if (bunch._nextBunch == this)
             {
                 _previousBunch = bunch;
-                break;
+                return;
             }
         }
+
+        _previousBunch = null;
+        return;
     }
-#endif
+
+    
 }

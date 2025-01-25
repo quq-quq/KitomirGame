@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Answer Of Player Bunch", menuName = "Answer Of Player Bunch", order = 0)]
 public class AnswersOfPlayerBunch : Bunch
 {
+
     [System.Serializable]
     public struct AnswerAndNextBunch
     {
@@ -17,5 +18,15 @@ public class AnswersOfPlayerBunch : Bunch
     public IReadOnlyList<AnswerAndNextBunch> AnswerAndNextBunches
     {
         get => _answerAndNextBunches;
+    }
+
+    private void OnValidate()
+    {
+        base.OnValidate();
+
+        if (_answerAndNextBunches.Count > 4)
+        {
+            _answerAndNextBunches.RemoveRange(4, _answerAndNextBunches.Count - 4);
+        }
     }
 }
