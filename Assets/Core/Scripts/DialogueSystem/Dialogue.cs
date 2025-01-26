@@ -27,6 +27,13 @@ namespace Dialogue_system
         [SerializeField] private float _speedOverride;
         [SerializeField] private WriteType _writeType;
         [SerializeField] private Color _colorText = Color.white;
+        [Space(20)]
+        [SerializeField] private string _triggerForAnimations;
+
+        private string TriggerForAnimations
+        {
+            get => _triggerForAnimations;
+        }
 
         public float ReputationOfSpeech
         {
