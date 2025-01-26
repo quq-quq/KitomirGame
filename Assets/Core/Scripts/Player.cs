@@ -58,6 +58,7 @@ public class Player : MonoBehaviour {
     public void SelectInteractiveObject(InteractiveObject interactiveObject) {
         if (_selectedInteractiveObject is null) {
             _selectedInteractiveObject = interactiveObject;
+            Debug.Log(_selectedInteractiveObject);
         }
     }
 
@@ -69,5 +70,9 @@ public class Player : MonoBehaviour {
 
     public bool IsWalking() {
         return _isWalking;
+    }
+
+    public bool IsItemSelected(InteractiveObject interactiveObject) {
+        return _selectedInteractiveObject == interactiveObject;
     }
 }

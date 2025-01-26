@@ -12,7 +12,9 @@ public class Door : InteractiveObject {
     }
 
     private void FadeScreen_OnFadeComplete(object sender, EventArgs e) {
-        SceneManager.LoadScene(sceneToLoad);
+        if (Player.Instance.IsItemSelected(this)) {
+            SceneManager.LoadScene(sceneToLoad);
+        }
     }
 
     public override void Interact() {
