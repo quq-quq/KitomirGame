@@ -128,9 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9bb96fe8c9f12349a16c35bb9de8f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _StartDialogueOnStart: 1
+  _StartDialogueOnStart: 0
   _isItADialog: 1
-  _bunch: {fileID: 11400000, guid: ff2030e7dc2bc1e488f9c0de92c79402, type: 2}
+  _bunch: {fileID: 0}
   _oneCharTime: 0.05
   _parent: {fileID: 1645019221097026624}
   _avatar: {fileID: 6349172033477141345}
@@ -287,7 +287,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -5402055590886982128, guid: 65818d0f5768f45ddb08caf563427e41, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

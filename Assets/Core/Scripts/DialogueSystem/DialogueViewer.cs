@@ -156,7 +156,8 @@ namespace Dialogue_system
                 _avatar.color = Color.clear;
             }
             _mainText.font = dialogue.Font;
-            _mainText.color = dialogue.ColorText;
+            _mainText.color = Color.black;
+            _nameText.color = Color.black;
             _nameText.text = dialogue.CharacterName;
             _currentCharTime = dialogue.SpeedOverride > 0 ? dialogue.SpeedOverride : _oneCharTime;
             _mainText.text = dialogue.MainText;
