@@ -5,8 +5,8 @@ using UnityEngine.UI;
 public class ReputationChange : MonoBehaviour
 {
     [SerializeField, Range(0, 1)] private float _startReputation;
+    [SerializeField, Range(0, 1)] private float _whenPassed;
     [SerializeField] private Scrollbar _scrollbar;
-
     private void Start()
     {
         _scrollbar.value = _startReputation;
@@ -18,6 +18,10 @@ public class ReputationChange : MonoBehaviour
 
         if (dialogues.Length == 0)
         {
+            if(_scrollbar.value >= _whenPassed)
+            {
+                //do smf
+            }
             Destroy(gameObject);
         }
     }

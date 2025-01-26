@@ -27,7 +27,7 @@ namespace Dialogue_system
         [SerializeField] private TMP_Text _mainText;
         [SerializeField] private TMP_Text _nameText;
         [SerializeField] Button _buttonForAnswersOfPlayer;
-        [SerializeField] ReputationChange _reputation;
+        [SerializeField] ReputationChange _reputationScrollBar;
         [Space(20)]
         [SerializeField] private List<DialogueViewer> _nextBunches;
 
@@ -161,7 +161,7 @@ namespace Dialogue_system
             _nameText.text = dialogue.CharacterName;
             _currentCharTime = dialogue.SpeedOverride > 0 ? dialogue.SpeedOverride : _oneCharTime;
             _mainText.text = dialogue.MainText;
-            _reputation.ChangeReputation(dialogue.ReputationOfSpeech);
+            _reputationScrollBar.ChangeReputation(dialogue.ReputationOfSpeech);
             StartCoroutine(WriteTextCoroutine());
         }
 
