@@ -6,17 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5996c718-9b42-4e37-9821-ae2a4d845c13" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Data/Sounds/AudioClipRefs.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Data/Sounds/AudioClipRefs.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Prefabs/Sound/MusicManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Prefabs/Sound/MusicManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/CorridorScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/CorridorScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/FadeScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/FadeScreen.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/InteractiveObjects/Door.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/InteractiveObjects/Door.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/ScriptableObjects/AudioClipRefs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/ScriptableObjects/AudioClipRefs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Sounds/SoundController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Sounds/SoundController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Sounds/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Sounds/SoundManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/InteractiveObjects/InteractiveObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/InteractiveObjects/InteractiveObject.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +38,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;TimohaSoundtracks&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;TimohaBranch&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/goga/Unity/Projects/StudyProject&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -114,6 +107,8 @@
       <workItem from="1737794380349" duration="6461000" />
       <workItem from="1737808776866" duration="2541000" />
       <workItem from="1737846050502" duration="1741000" />
+      <workItem from="1737851311665" duration="1284000" />
+      <workItem from="1737886251934" duration="2040000" />
     </task>
     <servers />
   </component>

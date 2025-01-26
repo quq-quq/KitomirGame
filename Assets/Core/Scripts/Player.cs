@@ -70,4 +70,8 @@ public class Player : MonoBehaviour {
     public bool IsWalking() {
         return _isWalking;
     }
+
+    public bool IsItemSelected(InteractiveObject interactiveObject) {
+        return _selectedInteractiveObject == interactiveObject;
+    }
 }
