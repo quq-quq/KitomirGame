@@ -1097,6 +1097,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: dialbitcoin3
       objectReference: {fileID: 0}
+    - target: {fileID: 1645019221097026624, guid: 75a1176a1ba1d054ea17c7533a5d3c9b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1944342709738655516, guid: 75a1176a1ba1d054ea17c7533a5d3c9b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1282,6 +1286,10 @@ PrefabInstance:
     - target: {fileID: 1645019221097026624, guid: 75a1176a1ba1d054ea17c7533a5d3c9b, type: 3}
       propertyPath: m_Name
       value: dialbitcoin2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1645019221097026624, guid: 75a1176a1ba1d054ea17c7533a5d3c9b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1944342709738655516, guid: 75a1176a1ba1d054ea17c7533a5d3c9b, type: 3}
       propertyPath: m_Pivot.x
@@ -1509,7 +1517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8546394259821420789, guid: dee64e0440a5aa24f8b6d29a42cdaf44, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1651,7 +1659,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8546394259821420789, guid: dee64e0440a5aa24f8b6d29a42cdaf44, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2183,7 +2191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8546394259821420789, guid: dee64e0440a5aa24f8b6d29a42cdaf44, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2609,6 +2617,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: dial23cat
       objectReference: {fileID: 0}
+    - target: {fileID: 1645019221097026624, guid: 75a1176a1ba1d054ea17c7533a5d3c9b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1944342709738655516, guid: 75a1176a1ba1d054ea17c7533a5d3c9b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2798,6 +2810,10 @@ PrefabInstance:
     - target: {fileID: 1645019221097026624, guid: 75a1176a1ba1d054ea17c7533a5d3c9b, type: 3}
       propertyPath: m_Name
       value: dialbitcoin1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1645019221097026624, guid: 75a1176a1ba1d054ea17c7533a5d3c9b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1944342709738655516, guid: 75a1176a1ba1d054ea17c7533a5d3c9b, type: 3}
       propertyPath: m_Pivot.x
@@ -2991,6 +3007,10 @@ PrefabInstance:
     - target: {fileID: 1645019221097026624, guid: 75a1176a1ba1d054ea17c7533a5d3c9b, type: 3}
       propertyPath: m_Name
       value: dial22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1645019221097026624, guid: 75a1176a1ba1d054ea17c7533a5d3c9b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1944342709738655516, guid: 75a1176a1ba1d054ea17c7533a5d3c9b, type: 3}
       propertyPath: m_Pivot.x
@@ -4036,6 +4056,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75a1176a1ba1d054ea17c7533a5d3c9b, type: 3}
+--- !u!114 &1919751086 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2536973284944391280, guid: 75a1176a1ba1d054ea17c7533a5d3c9b, type: 3}
+  m_PrefabInstance: {fileID: 956408947}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9bb96fe8c9f12349a16c35bb9de8f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2040396681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4047,6 +4078,10 @@ PrefabInstance:
     - target: {fileID: 1645019221097026624, guid: 75a1176a1ba1d054ea17c7533a5d3c9b, type: 3}
       propertyPath: m_Name
       value: dial21bitcoin
+      objectReference: {fileID: 0}
+    - target: {fileID: 1645019221097026624, guid: 75a1176a1ba1d054ea17c7533a5d3c9b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1944342709738655516, guid: 75a1176a1ba1d054ea17c7533a5d3c9b, type: 3}
       propertyPath: m_Pivot.x
@@ -4274,7 +4309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8546394259821420789, guid: dee64e0440a5aa24f8b6d29a42cdaf44, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4400,6 +4435,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 86392914806497613, guid: 82095c93f53da40b59041ad614c4f57f, type: 3}
+      propertyPath: _startDialogue
+      value: 
+      objectReference: {fileID: 1919751086}
+    - target: {fileID: 86392914806497613, guid: 82095c93f53da40b59041ad614c4f57f, type: 3}
+      propertyPath: interactAreaRadius
+      value: 2.75
+      objectReference: {fileID: 0}
     - target: {fileID: 367145706982103885, guid: 82095c93f53da40b59041ad614c4f57f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.04
