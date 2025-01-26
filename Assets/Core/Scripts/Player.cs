@@ -20,24 +20,23 @@ public class Player : MonoBehaviour {
     private Rigidbody2D _rb;
     private InteractiveObject _selectedInteractiveObject;
     private bool _isWalking;
-    private bool _canMove;
     private Vector2 _inputVector;
     private float _x;
     private float _y;
 
     private void Awake() {
         Instance = this;
-        _canMove = true;
     }
 
     private void Start() {
+        transform.position = ConfigGameManager.Instance.spawnAtOnNewScene;
         GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
         FadeScreen.Instance.OnFadeStarted += FadeScreen_OnFadeStarted;
         _rb = GetComponent<Rigidbody2D>();
     }
 
     private void FadeScreen_OnFadeStarted(object sender, FadeScreen.OnFadeStartedEventArgs e) {
-        throw new NotImplementedException();
+        moveSpeed = 0f;
     }
 
     private void Update()

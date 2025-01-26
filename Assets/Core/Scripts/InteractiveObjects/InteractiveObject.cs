@@ -7,22 +7,19 @@ public class InteractiveObject : MonoBehaviour {
     [SerializeField] private GameObject interactSign;
     [SerializeField] private float interactAreaRadius;
     
-    private bool _isPlayerInInteractArea = false;
-    [SerializeField] protected bool IsInteractable = false;
+    [SerializeField] protected bool IsInteractable;
 
     private void Start() {
-        interactSign.SetActive(false);
+        interactSign.SetActive(IsInteractable);
     }
     
     private void Update() {
         float distance = Vector3.Distance(transform.position, Player.Instance.transform.position);
-        if (_isPlayerInInteractArea == false && distance <= interactAreaRadius && IsInteractable) {
-            _isPlayerInInteractArea = true;
+        if (distance <= interactAreaRadius && IsInteractable) {
             interactSign.SetActive(true);
             Player.Instance.SelectInteractiveObject(this);
         }
-        else if (_isPlayerInInteractArea && distance > interactAreaRadius && IsInteractable) {
-            _isPlayerInInteractArea = false;
+        else if (distance > interactAreaRadius && IsInteractable) {
             interactSign.SetActive(false);
             Player.Instance.DeselectInteractiveObject(this);
         }

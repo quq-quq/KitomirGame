@@ -6,19 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="5996c718-9b42-4e37-9821-ae2a4d845c13" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Prefabs/Biker.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Prefabs/Biker.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Prefabs/Dedus.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Prefabs/Dedus.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Prefabs/Kitomir.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Prefabs/Kitomir.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Prefabs/Shalava.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Prefabs/Shalava.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/ITAuditoriumScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/ITAuditoriumScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/MathsAuditoriumScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/MathsAuditoriumScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/PhysicsAuditoriumScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/PhysicsAuditoriumScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/GameInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/GameInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/CorridorScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/CorridorScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/ConfigGameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/ConfigGameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/InteractiveObjects/Door.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/InteractiveObjects/Door.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/InteractiveObjects/InteractiveObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/InteractiveObjects/InteractiveObject.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Sounds/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Sounds/SoundManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Reputation/Reputation Change.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Reputation/Reputation Change.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,10 +24,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4329c3c34eb04a1fae94b355d2bed7f81dea00/23/1c7774b9/Color.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4329c3c34eb04a1fae94b355d2bed7f81dea00/4f/5bc03bd2/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/50aeaeb42dc14809ba2b81c540d1cdc818600/8c/6a7c27b8/AudioSource.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Core/Scripts/MainMenu/MainMenu.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Core/Scripts/ScriptableObjects/AudioClipRefs.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Core/Scripts/Sounds/SoundManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -48,7 +39,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;TimohaBranch2&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;TimohaBranch4&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/goga/Unity/Projects/StudyProject&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
