@@ -58,7 +58,6 @@ public class Player : MonoBehaviour {
     public void SelectInteractiveObject(InteractiveObject interactiveObject) {
         if (_selectedInteractiveObject is null) {
             _selectedInteractiveObject = interactiveObject;
-            Debug.Log(_selectedInteractiveObject);
         }
     }
 

@@ -9,6 +9,7 @@ public class Door : InteractiveObject {
 
     private void Start() {
         FadeScreen.Instance.OnFadeComplete += FadeScreen_OnFadeComplete;
+        IsInteractable = ConfigGameManager.Instance.IsDoorInteractable(sceneToLoad);
     }
 
     private void FadeScreen_OnFadeComplete(object sender, EventArgs e) {
