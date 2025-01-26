@@ -27,7 +27,7 @@ public class SoundManager : MonoBehaviour {
     }
 
     private void Player_OnDoorOpened(object sender, Player.OnDoorOpenEventArgs e) {
-        PlaySound(audioClipRefs.openDoor, e.senderTransform.position);
+        PlaySound(audioClipRefs.openDoor, e.SenderTransform.position);
     }
 
     private void PlaySound(AudioClip audioClip, Vector3 position, float volume=1f) {

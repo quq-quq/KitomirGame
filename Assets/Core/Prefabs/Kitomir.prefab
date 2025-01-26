@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4512809325693083299}
   - component: {fileID: 7420207656589222395}
   - component: {fileID: 142135399026627966}
+  - component: {fileID: 5889359442755197202}
   m_Layer: 0
   m_Name: Kitomir
   m_TagString: Untagged
@@ -48,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  _anim: {fileID: 1739346750407468096}
+  anim: {fileID: 1739346750407468096}
 --- !u!61 &7420207656589222395
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -122,6 +123,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5889359442755197202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3712631617227504415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdbe44043d8487bf29e16c298063ff36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6399651710621728266
 GameObject:
   m_ObjectHideFlags: 0
