@@ -34,8 +34,8 @@ MonoBehaviour:
     _writeType: 1
     _colorText: {r: 0, g: 0, b: 0, a: 1}
   - _reputationOfSpeech: 0
-    _mainText: "\u041D\u0443, \u043F\u0430\u0446\u0430\u043D.. \u041F\u0420\u041E\u0412\u0410\u041B!
-      \u0422\u044B \u043E\u0442\u0447\u0438\u0441\u043B\u0435\u043D."
+    _mainText: "\u041D\u0443, \u0447\u0442\u043E, \u043A\u0440\u0438\u043F\u0442\u043E\u0431\u0430\u0440\u043E\u043D..
+      \u041F\u0420\u041E\u0412\u0410\u041B! \u0422\u044B \u043E\u0442\u0447\u0438\u0441\u043B\u0435\u043D."
     _characterName: "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0442\u0438\u043A"
     _avatar: {fileID: 0}
     _background: {fileID: -5402055590886982128, guid: 65818d0f5768f45ddb08caf563427e41, type: 3}
