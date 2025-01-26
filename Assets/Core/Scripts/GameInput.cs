@@ -22,10 +22,4 @@ public class GameInput : MonoBehaviour {
     private void Interact_performed(InputAction.CallbackContext obj) {
         OnInteractAction?.Invoke(this, EventArgs.Empty);
     }
-
-    public Vector2 GetMovementVectorNormalized() {
-        Vector2 inputVector = _playerInputActions.Player.Move.ReadValue<Vector2>();
-
-        return inputVector.normalized;
-    }
 }

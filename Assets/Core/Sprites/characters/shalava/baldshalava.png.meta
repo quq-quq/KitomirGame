@@ -1,58 +1,85 @@
 fileFormatVersion: 2
-guid: d8fec9cde0eb4064a8daf1929e207121
+guid: fc3e4c06ad6cb415da69728e82e60841
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6638379901146246058
-    second: kitomir_0
+      213: 3616737899510749793
+    second: baldshalava_0
   - first:
-      213: -50578906603894799
-    second: kitomir_1
+      213: -7744827626566229591
+    second: baldshalava_1
   - first:
-      213: -640060209604633333
-    second: kitomir_2
+      213: 3792067108225326187
+    second: baldshalava_2
   - first:
-      213: 7948339923284087646
-    second: kitomir_3
+      213: 8723378633671782102
+    second: baldshalava_3
   - first:
-      213: 1644127889980626883
-    second: kitomir_4
+      213: 5699953174979001810
+    second: baldshalava_4
   - first:
-      213: 2264604846048983055
-    second: kitomir_5
+      213: 8519240288310941196
+    second: baldshalava_5
   - first:
-      213: -8336709076416237858
-    second: kitomir_6
+      213: 8993707998161168923
+    second: baldshalava_6
   - first:
-      213: -7514153178633602673
-    second: kitomir_7
+      213: 1481313114037074449
+    second: baldshalava_7
   - first:
-      213: -7708867958695173512
-    second: kitomir_8
+      213: -6458730253087677521
+    second: baldshalava_8
   - first:
-      213: -231467301383065103
-    second: kitomir_9
+      213: 2561294628870753260
+    second: baldshalava_9
   - first:
-      213: -7162909668589409136
-    second: kitomir_10
+      213: 7015154252490019537
+    second: baldshalava_10
   - first:
-      213: 5059753308781408489
-    second: kitomir_11
+      213: 8548331698046670902
+    second: baldshalava_11
   - first:
-      213: -2308564342111547550
-    second: kitomir_12
+      213: 4012928898058424022
+    second: baldshalava_12
   - first:
-      213: -7875373817011347760
-    second: kitomir_13
+      213: 5905352635676301829
+    second: baldshalava_13
   - first:
-      213: 1574017887173679944
-    second: kitomir_14
+      213: 3060302883545409697
+    second: baldshalava_14
   - first:
-      213: 7416299221482145402
-    second: kitomir_15
+      213: -1009065482491102298
+    second: baldshalava_15
   - first:
-      213: -5575273935473861387
-    second: kitomir_16
+      213: 3926105069248499650
+    second: baldshalava_16
+  - first:
+      213: -1040374175309214039
+    second: baldshalava_17
+  - first:
+      213: -3250056236359166990
+    second: baldshalava_18
+  - first:
+      213: -7025028575209740925
+    second: baldshalava_19
+  - first:
+      213: 9075321152270169396
+    second: baldshalava_20
+  - first:
+      213: 5560405337210413802
+    second: baldshalava_21
+  - first:
+      213: 5690195182255661819
+    second: baldshalava_22
+  - first:
+      213: -8341688725189196198
+    second: baldshalava_23
+  - first:
+      213: -7899751758175721390
+    second: baldshalava_24
+  - first:
+      213: 6049693411341088395
+    second: baldshalava_25
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -148,375 +175,353 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: kitomir_0
+      name: baldshalava_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 130
-        width: 16
-        height: 27
+        x: 0
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 654d51cc6acbfd3a0800000000000000
-      internalID: -6638379901146246058
+      spriteID: 16ad70215fb313230800000000000000
+      internalID: 3616737899510749793
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kitomir_1
+      name: baldshalava_1
       rect:
         serializedVersion: 2
-        x: 40
-        y: 131
-        width: 16
-        height: 27
+        x: 48
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1f74fbe90ce4c4ff0800000000000000
-      internalID: -50578906603894799
+      spriteID: 9a163e7be48d48490800000000000000
+      internalID: -7744827626566229591
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kitomir_2
+      name: baldshalava_2
       rect:
         serializedVersion: 2
-        x: 72
-        y: 130
-        width: 16
-        height: 27
+        x: 96
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b0d57ab61ac0e17f0800000000000000
-      internalID: -640060209604633333
+      spriteID: b6c963691f020a430800000000000000
+      internalID: 3792067108225326187
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kitomir_3
+      name: baldshalava_3
       rect:
         serializedVersion: 2
-        x: 104
-        y: 131
-        width: 16
-        height: 27
+        x: 144
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e5357615c0d2e4e60800000000000000
-      internalID: 7948339923284087646
+      spriteID: 6de2d3d16aaaf0970800000000000000
+      internalID: 8723378633671782102
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kitomir_4
+      name: baldshalava_4
       rect:
         serializedVersion: 2
-        x: 8
-        y: 98
-        width: 16
-        height: 27
+        x: 192
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3c79b9fda9d11d610800000000000000
-      internalID: 1644127889980626883
+      spriteID: 2ddbbf6863d4a1f40800000000000000
+      internalID: 5699953174979001810
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kitomir_5
+      name: baldshalava_5
       rect:
         serializedVersion: 2
-        x: 40
-        y: 99
-        width: 16
-        height: 27
+        x: 240
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f08b06deb1e7d6f10800000000000000
-      internalID: 2264604846048983055
+      spriteID: c0658f4c7eb6a3670800000000000000
+      internalID: 8519240288310941196
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kitomir_6
+      name: baldshalava_6
       rect:
         serializedVersion: 2
-        x: 72
-        y: 98
-        width: 16
-        height: 27
+        x: 288
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ede6f68c34f0e4c80800000000000000
-      internalID: -8336709076416237858
+      spriteID: b1a6cfb06c110dc70800000000000000
+      internalID: 8993707998161168923
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kitomir_7
+      name: baldshalava_7
       rect:
         serializedVersion: 2
-        x: 104
-        y: 99
-        width: 16
-        height: 27
+        x: 336
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f89fba7ee7d58b790800000000000000
-      internalID: -7514153178633602673
+      spriteID: 11abe4bcd6eae8410800000000000000
+      internalID: 1481313114037074449
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kitomir_8
+      name: baldshalava_8
       rect:
         serializedVersion: 2
-        x: 9
-        y: 66
-        width: 15
-        height: 27
+        x: 384
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 87265955f69940590800000000000000
-      internalID: -7708867958695173512
+      spriteID: fa3e3acfd0bfd56a0800000000000000
+      internalID: -6458730253087677521
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kitomir_9
+      name: baldshalava_9
       rect:
         serializedVersion: 2
-        x: 41
-        y: 66
-        width: 15
-        height: 27
+        x: 432
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1f1b1fb37b9a9ccf0800000000000000
-      internalID: -231467301383065103
+      spriteID: ceb05f605eb8b8320800000000000000
+      internalID: 2561294628870753260
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kitomir_10
+      name: baldshalava_10
       rect:
         serializedVersion: 2
-        x: 73
-        y: 66
-        width: 15
-        height: 27
+        x: 480
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 09c648d6b9b389c90800000000000000
-      internalID: -7162909668589409136
+      spriteID: 1d21d30ff95da5160800000000000000
+      internalID: 7015154252490019537
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kitomir_11
+      name: baldshalava_11
       rect:
         serializedVersion: 2
-        x: 105
-        y: 66
-        width: 15
-        height: 27
+        x: 528
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9e0f50d93dad73640800000000000000
-      internalID: 5059753308781408489
+      spriteID: 638984c6366c1a670800000000000000
+      internalID: 8548331698046670902
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kitomir_12
+      name: baldshalava_12
       rect:
         serializedVersion: 2
-        x: 8
-        y: 34
-        width: 15
-        height: 27
+        x: 576
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 26fce4f46f456ffd0800000000000000
-      internalID: -2308564342111547550
+      spriteID: 6de0ca54299c0b730800000000000000
+      internalID: 4012928898058424022
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kitomir_13
+      name: baldshalava_13
       rect:
         serializedVersion: 2
-        x: 40
-        y: 34
-        width: 15
-        height: 27
+        x: 624
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0de50ab2d3d05b290800000000000000
-      internalID: -7875373817011347760
+      spriteID: 50a17ea2fe604f150800000000000000
+      internalID: 5905352635676301829
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kitomir_14
+      name: baldshalava_14
       rect:
         serializedVersion: 2
-        x: 72
-        y: 34
-        width: 15
-        height: 27
+        x: 672
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 84b191bcde808d510800000000000000
-      internalID: 1574017887173679944
+      spriteID: 1a8e3d62241687a20800000000000000
+      internalID: 3060302883545409697
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kitomir_15
+      name: baldshalava_15
       rect:
         serializedVersion: 2
-        x: 104
-        y: 34
-        width: 15
-        height: 27
+        x: 720
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a76037449dcfbe660800000000000000
-      internalID: 7416299221482145402
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: kitomir_16
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 6
-        width: 19
-        height: 19
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5fc169e05e5a0a2b0800000000000000
-      internalID: -5575273935473861387
+      spriteID: 6ab72093a441ff1f0800000000000000
+      internalID: -1009065482491102298
       vertices: []
       indices: 
       edges: []
@@ -525,7 +530,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 377db8ed64be4774c83e5502b53dc516
+    spriteID: ddf6b20de51b6465487c64ff9c633447
     internalID: 0
     vertices: []
     indices: 
@@ -535,23 +540,22 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      kitomir_0: -6638379901146246058
-      kitomir_1: -50578906603894799
-      kitomir_10: -7162909668589409136
-      kitomir_11: 5059753308781408489
-      kitomir_12: -2308564342111547550
-      kitomir_13: -7875373817011347760
-      kitomir_14: 1574017887173679944
-      kitomir_15: 7416299221482145402
-      kitomir_16: -5575273935473861387
-      kitomir_2: -640060209604633333
-      kitomir_3: 7948339923284087646
-      kitomir_4: 1644127889980626883
-      kitomir_5: 2264604846048983055
-      kitomir_6: -8336709076416237858
-      kitomir_7: -7514153178633602673
-      kitomir_8: -7708867958695173512
-      kitomir_9: -231467301383065103
+      baldshalava_0: 3616737899510749793
+      baldshalava_1: -7744827626566229591
+      baldshalava_10: 7015154252490019537
+      baldshalava_11: 8548331698046670902
+      baldshalava_12: 4012928898058424022
+      baldshalava_13: 5905352635676301829
+      baldshalava_14: 3060302883545409697
+      baldshalava_15: -1009065482491102298
+      baldshalava_2: 3792067108225326187
+      baldshalava_3: 8723378633671782102
+      baldshalava_4: 5699953174979001810
+      baldshalava_5: 8519240288310941196
+      baldshalava_6: 8993707998161168923
+      baldshalava_7: 1481313114037074449
+      baldshalava_8: -6458730253087677521
+      baldshalava_9: 2561294628870753260
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
