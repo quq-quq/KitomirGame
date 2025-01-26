@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7420207656589222395}
   - component: {fileID: 142135399026627966}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Kitomir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  _anim: {fileID: 1739346750407468096}
 --- !u!61 &7420207656589222395
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -82,7 +83,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.67}
+  m_Offset: {x: -0.00995779, y: -0.68991554}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -92,7 +93,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.97, y: 0.36}
+  m_Size: {x: 0.8836994, y: 0.39983106}
   m_EdgeRadius: 0
 --- !u!50 &142135399026627966
 Rigidbody2D:
@@ -109,7 +110,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 1661fdd87d8982892af2e72da02d0118, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
