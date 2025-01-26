@@ -1,12 +1,16 @@
+using System;
 using Dialogue_system;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ReputationChange : MonoBehaviour
 {
+    
     [SerializeField, Range(0, 1)] private float _startReputation;
     [SerializeField, Range(0, 1)] private float _whenPassed;
     [SerializeField] private Scrollbar _scrollbar;
+
     private void Start()
     {
         _scrollbar.value = _startReputation;
@@ -20,8 +24,12 @@ public class ReputationChange : MonoBehaviour
         {
             if(_scrollbar.value >= _whenPassed)
             {
-                //do smf
+                ConfigGameManager.Instance.ExamPassed(SceneManager.GetActiveScene().name);
             }
+            else if (_scrollbar.value < _whenPassed) {
+                ConfigGameManager.Instance.ExamFailed();
+            }
+            
             Destroy(gameObject);
         }
     }
