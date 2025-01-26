@@ -29,7 +29,6 @@ public class Player : MonoBehaviour {
     }
 
     private void Start() {
-        transform.position = ConfigGameManager.Instance.spawnAtOnNewScene;
         GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
         FadeScreen.Instance.OnFadeStarted += FadeScreen_OnFadeStarted;
         _rb = GetComponent<Rigidbody2D>();

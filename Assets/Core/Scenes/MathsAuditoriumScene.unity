@@ -669,6 +669,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 195937652}
   m_CullTransparentMesh: 1
+--- !u!114 &208379935 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2536973284944391280, guid: 75a1176a1ba1d054ea17c7533a5d3c9b, type: 3}
+  m_PrefabInstance: {fileID: 153757970}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9bb96fe8c9f12349a16c35bb9de8f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &209994875
 GameObject:
   m_ObjectHideFlags: 0
@@ -2719,7 +2730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8546394259821420789, guid: dee64e0440a5aa24f8b6d29a42cdaf44, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2853,7 +2864,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8546394259821420789, guid: dee64e0440a5aa24f8b6d29a42cdaf44, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3650,6 +3661,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7443202566654384, guid: 25f7514840f8346b7a13affccc2226a0, type: 3}
+      propertyPath: _startDialogue
+      value: 
+      objectReference: {fileID: 208379935}
+    - target: {fileID: 7443202566654384, guid: 25f7514840f8346b7a13affccc2226a0, type: 3}
+      propertyPath: interactAreaRadius
+      value: 2.42
+      objectReference: {fileID: 0}
     - target: {fileID: 5627442875657767311, guid: 25f7514840f8346b7a13affccc2226a0, type: 3}
       propertyPath: m_Name
       value: Shalava

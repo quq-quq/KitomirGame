@@ -14,7 +14,6 @@ public class Door : InteractiveObject {
 
     private void FadeScreen_OnFadeComplete(object sender, EventArgs e) {
         if (Player.Instance.IsItemSelected(this)) {
-            //ConfigGameManager.Instance.SetPlayerPosition(SceneManager.GetActiveScene().name);
             SceneManager.LoadScene(sceneToLoad);
         }
     }
