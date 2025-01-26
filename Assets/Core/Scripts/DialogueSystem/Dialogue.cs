@@ -22,8 +22,7 @@ namespace Dialogue_system
         [SerializeField] private string _characterName;
         [SerializeField] private Sprite _avatar;
         [SerializeField] private Sprite _background;
-        [SerializeField] private TMP_FontAsset _font;
-        [SerializeField] private bool _isSpeedOverride;
+        [SerializeField] private TMP_FontAsset _font; 
         [SerializeField] private float _speedOverride;
         [SerializeField] private WriteType _writeType;
         [SerializeField] private Color _colorText = Color.white;
@@ -38,11 +37,6 @@ namespace Dialogue_system
             get => _writeType;
         }
 
-        public bool IsSpeedOverride
-        {
-            get => _isSpeedOverride;
-            set => _isSpeedOverride = value;
-        }
 
         public float SpeedOverride
         {

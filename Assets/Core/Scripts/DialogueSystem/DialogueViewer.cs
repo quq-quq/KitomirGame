@@ -9,54 +9,65 @@ namespace Dialogue_system
 {
     public class DialogueViewer : MonoBehaviour
     {
+
         [Header("Dialogue Viewer Settings")]
+        [SerializeField] bool _StartDialogueOnStart;
         [SerializeField] bool _isItADialog;
-        [SerializeField] DialogueBunch _startBunch;
+        [SerializeField] private DialogueBunch _bunch;
+        
+
         
         [SerializeField] private float _oneCharTime;
 
         [Space]
         [Header("Links")]
-        [SerializeField] private GameObject _parent;
+        [SerializeField] private GameObject _parent;//for destroying
         [SerializeField] private Image _avatar;
         [SerializeField] private Image _background;
         [SerializeField] private TMP_Text _mainText;
         [SerializeField] private TMP_Text _nameText;
         [SerializeField] Button _buttonForAnswersOfPlayer;
         [Space(20)]
-        [SerializeField] private List<DialogueViewer> _Answers;
-        [SerializeField] private List<DialogueViewer> _dialogueViewers;
+        [SerializeField] private List<DialogueViewer> _nextBunches;
 
         private int _currentIndexDialogue = 0;
         private bool _isWriting = false;
+        private bool _isStarting = false;
         private float _currentCharTime;
         private WriterDialogue _currentWriter;
-        private DialogueBunch _bunch;
         private Dialogue CurrentDialogue => _bunch.Dialogues[_currentIndexDialogue];
         private int CountOfDialogue => _bunch.Dialogues.Count;
 
         private void OnEnable()
         {
-            BunchBus.StartOrContinueDialogue += StartDialogue;
-            _buttonForAnswersOfPlayer.onClick.AddListener(EndDialogue);
+            if(!_isItADialog)
+                _buttonForAnswersOfPlayer.onClick.AddListener(EndDialogue);
 
-            if (_startBunch != null)
+            if (_bunch != null)
             {
-                _bunch = _startBunch;
                 StartDialogue(_bunch);
+            }
+            else
+            {
+                Destroy(_parent);
             }
         }
 
         private void OnDisable()
         {
-            BunchBus.StartOrContinueDialogue -= StartDialogue;
-            _buttonForAnswersOfPlayer.onClick.RemoveListener(EndDialogue);
+            if(!_isItADialog)
+                _buttonForAnswersOfPlayer.onClick.RemoveListener(EndDialogue);
         }
 
         private void Awake()
         {
-            _parent.SetActive(false);
-            _mainText.text = string.Empty;
+            if (!_StartDialogueOnStart)
+            {
+                _mainText.text = string.Empty;
+                _parent.SetActive(false);
+                
+            }
+
         }
 
 
@@ -80,9 +91,9 @@ namespace Dialogue_system
 
         public void StartDialogue(DialogueBunch dialogueBunch)
         {
-            _bunch = dialogueBunch;
-            if (_parent.activeSelf)
+            if (_isStarting)
                 return;
+            _isStarting = true;
             _parent.SetActive(true);
             _currentCharTime = _oneCharTime;
             _currentIndexDialogue = 0;
@@ -96,41 +107,23 @@ namespace Dialogue_system
             _currentIndexDialogue = 0;
             _mainText.text = string.Empty;
             _isWriting = false;
-            _parent.SetActive(false);
+            _isStarting= false;
 
-
-
-            //if(_bunch.NextBunch != null)
-            //{
-            //    if (_bunch.NextBunch is DialogueBunch nextDialogueBunch)
-            //    {
-            //        BunchBus.StartOrContinueDialogue?.Invoke(nextDialogueBunch);
-            //    }
-
-            //    if (_bunch.NextBunch is AnswersOfPlayerBunch answersOfPlayerBunch)
-            //    {
-            //        BunchBus.StartOrContinueAnswersOfPlayer?.Invoke(answersOfPlayerBunch);
-            //    }
-            //}
-
-            if (_isItADialog)
+            if (_nextBunches.Count > 0)
             {
-                _Answers[0].gameObject.SetActive(true);
-                _Answers[0].gameObject.SetActive(true);
-                _Answers[0].gameObject.SetActive(true);
-                _dialogueViewers[0].gameObject.SetActive(false);
-                _dialogueViewers.RemoveAt(0);
+                if (_isItADialog)
+                {
+                    for (int i = 0; i < _nextBunches.Count; i++)
+                    {
+                        _nextBunches[i]._parent.SetActive(true);
+                    }
+                }
+                else
+                {
+                    _nextBunches[0]._parent.SetActive(true);
+                }
             }
-            else
-            {
-                _dialogueViewers[0].gameObject.SetActive(true);
-                _Answers[0].gameObject.SetActive(false);
-                _Answers[0].gameObject.SetActive(false);
-                _Answers[0].gameObject.SetActive(false);
-                _Answers.RemoveAt(0);
-                _Answers.RemoveAt(0);
-                _Answers.RemoveAt(0);
-            }
+            Destroy(_parent);
         }
 
         private void NextDialogue()

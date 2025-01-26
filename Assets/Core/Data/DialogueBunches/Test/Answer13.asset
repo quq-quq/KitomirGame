@@ -9,18 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ff050f801ae4c40b7c6cea23652dc53, type: 3}
-  m_Name: Answer1
+  m_Script: {fileID: 11500000, guid: 2ad9601d562f7044e844e34dfbdfb87b, type: 3}
+  m_Name: Answer13
   m_EditorClassIdentifier: 
-  _nextBunch: {fileID: 0}
-  _previousBunch: {fileID: 0}
   _dialogues:
-  - _mainText: "\u0437\u0430\u0435\u0431\u0446\u0430"
-    _characterName: 2
-    _avatar: {fileID: -1006778216898774202, guid: 1e6f64e4c48cef5a99dcce662c309e3b, type: 3}
+  - _mainText: " \u043F\u0440\u0435\u043A\u0440\u0430\u0441\u043D\u043E!"
+    _characterName: "\u041A\u0438\u0442\u043E\u043C\u0438\u0440"
+    _avatar: {fileID: -1595724956640751167, guid: 169c2b3b2c4edc24fb32e51b3064ba3e, type: 3}
     _background: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-    _font: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
-    _isSpeedOverride: 0
+    _font: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
     _speedOverride: 0
-    _writeType: 2
+    _writeType: 0
     _colorText: {r: 0, g: 0, b: 0, a: 1}
