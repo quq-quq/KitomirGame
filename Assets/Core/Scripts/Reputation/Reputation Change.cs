@@ -1,3 +1,4 @@
+using Dialogue_system;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,16 @@ public class ReputationChange : MonoBehaviour
     private void Start()
     {
         _scrollbar.value = _startReputation;
+    }
+
+    private void Update()
+    {
+        DialogueViewer[] dialogues = FindObjectsOfType<DialogueViewer>();
+
+        if (dialogues.Length == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void ChangeReputation(float value)

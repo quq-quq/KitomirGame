@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: FirstDialogue
   m_EditorClassIdentifier: 
   _dialogues:
-  - _mainText: "\u041F\u0440\u0438\u0432\u0435\u0442!"
+  - _reputationOfSpeech: 0
+    _mainText: "\u041F\u0440\u0438\u0432\u0435\u0442!"
     _characterName: "\u0423\u0447\u0438\u0442\u0435\u043B\u044C"
     _avatar: {fileID: -8329232540906379405, guid: 1e82669d83673f74fa09ab0ebf5fc562, type: 3}
     _background: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
     _font: {fileID: 11400000, guid: 85877b8ba8364bc4eaa1c94a54fc80af, type: 2}
     _speedOverride: 0
-    _writeType: 0
+    _writeType: 1
     _colorText: {r: 0, g: 0, b: 0, a: 1}
-  - _mainText: "\u041A\u0430\u043A \u0443 \u0442\u0435\u0431\u044F \u0434\u0435\u043B\u0430?"
+  - _reputationOfSpeech: 0
+    _mainText: "\u041A\u0430\u043A \u0443 \u0442\u0435\u0431\u044F \u0434\u0435\u043B\u0430?"
     _characterName: "\u0423\u0447\u0438\u0442\u0435\u043B\u044C"
     _avatar: {fileID: -8329232540906379405, guid: 1e82669d83673f74fa09ab0ebf5fc562, type: 3}
     _background: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
