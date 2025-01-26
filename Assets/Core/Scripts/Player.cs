@@ -1,41 +1,50 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour {
     
     public static Player Instance { get; private set; }
     
     public event EventHandler<OnDoorOpenEventArgs> OnDoorOpened;
-
     
-
+    
     public class OnDoorOpenEventArgs : EventArgs {
-        public Transform senderTransform;
+        public Transform SenderTransform;
     }
 
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private Animator _anim;
+    [SerializeField] private Animator anim;
 
     private Rigidbody2D _rb;
     private InteractiveObject _selectedInteractiveObject;
     private bool _isWalking;
+    private bool _canMove;
     private Vector2 _inputVector;
     private float _x;
     private float _y;
 
     private void Awake() {
         Instance = this;
+        _canMove = true;
     }
 
     private void Start() {
         GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
+        FadeScreen.Instance.OnFadeStarted += FadeScreen_OnFadeStarted;
         _rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void FadeScreen_OnFadeStarted(object sender, FadeScreen.OnFadeStartedEventArgs e) {
+        throw new NotImplementedException();
     }
 
     private void Update()
     {
-        GetMovementInput();
+        _inputVector = GameInput.Instance.GetMovementVectorNormalised();
+        _x = _inputVector.x;
+        _y = _inputVector.y;
         Animate();
     }
 
@@ -48,13 +57,6 @@ public class Player : MonoBehaviour {
         _rb.linearVelocity = _inputVector * moveSpeed;
     }
 
-    private void GetMovementInput()
-    {
-        _x = Input.GetAxisRaw("Horizontal");
-        _y = Input.GetAxisRaw("Vertical");
-        _inputVector = new Vector2(_x, _y);
-        _inputVector.Normalize();
-    }
 
     private void Animate()
     {
@@ -69,10 +71,10 @@ public class Player : MonoBehaviour {
 
         if (_isWalking)
         {
-            _anim.SetFloat("x", _x);
-            _anim.SetFloat("y", _y);
+            anim.SetFloat("x", _x);
+            anim.SetFloat("y", _y);
         }
-        _anim.SetBool("moving", _isWalking);
+        anim.SetBool("moving", _isWalking);
     }
 
     private void GameInput_OnInteractAction(object sender, EventArgs e)
@@ -84,9 +86,8 @@ public class Player : MonoBehaviour {
             {
                 OnDoorOpened?.Invoke(this, new OnDoorOpenEventArgs
                 {
-                    senderTransform = _selectedInteractiveObject.transform
-                }
-                );
+                    SenderTransform = _selectedInteractiveObject.transform
+                });
             }
         }
     }
