@@ -27,6 +27,7 @@ namespace Dialogue_system
         [SerializeField] private TMP_Text _mainText;
         [SerializeField] private TMP_Text _nameText;
         [SerializeField] Button _buttonForAnswersOfPlayer;
+        [SerializeField] ReputationChange _reputation;
         [Space(20)]
         [SerializeField] private List<DialogueViewer> _nextBunches;
 
@@ -75,7 +76,7 @@ namespace Dialogue_system
         {
             if (!_isWriting) return;
 
-            if (Input.GetKeyDown(KeyCode.Return) && _isItADialog)
+            if (Input.GetMouseButtonDown(0) && _isItADialog)
             {
                 if (_mainText.text == _currentWriter.EndText())
                 {
@@ -159,6 +160,7 @@ namespace Dialogue_system
             _nameText.text = dialogue.CharacterName;
             _currentCharTime = dialogue.SpeedOverride > 0 ? dialogue.SpeedOverride : _oneCharTime;
             _mainText.text = dialogue.MainText;
+            _reputation.ChangeReputation(dialogue.ReputationOfSpeech);
             StartCoroutine(WriteTextCoroutine());
         }
 

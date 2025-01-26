@@ -18,6 +18,7 @@ namespace Dialogue_system
     [System.Serializable]
     public class Dialogue
     {
+        [SerializeField, Range(-1, 1)] private float _reputationOfSpeech;
         [SerializeField, Multiline(5)] private string _mainText;
         [SerializeField] private string _characterName;
         [SerializeField] private Sprite _avatar;
@@ -26,6 +27,11 @@ namespace Dialogue_system
         [SerializeField] private float _speedOverride;
         [SerializeField] private WriteType _writeType;
         [SerializeField] private Color _colorText = Color.white;
+
+        public float ReputationOfSpeech
+        {
+            get => _reputationOfSpeech;
+        }
 
         public Color ColorText
         {
