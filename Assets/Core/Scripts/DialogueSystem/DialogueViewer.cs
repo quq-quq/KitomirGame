@@ -94,7 +94,6 @@ namespace Dialogue_system
             if (_isStarting)
                 return;
             _isStarting = true;
-            _parent.SetActive(true);
             _currentCharTime = _oneCharTime;
             _currentIndexDialogue = 0;
             _mainText.text = string.Empty;
@@ -121,6 +120,7 @@ namespace Dialogue_system
                 else
                 {
                     _nextBunches[0]._parent.SetActive(true);
+                    Debug.Log("hi");
                 }
             }
             Destroy(_parent);
@@ -158,6 +158,7 @@ namespace Dialogue_system
             _mainText.color = dialogue.ColorText;
             _nameText.text = dialogue.CharacterName;
             _currentCharTime = dialogue.SpeedOverride > 0 ? dialogue.SpeedOverride : _oneCharTime;
+            _mainText.text = dialogue.MainText;
             StartCoroutine(WriteTextCoroutine());
         }
 

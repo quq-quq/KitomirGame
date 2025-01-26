@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ad9601d562f7044e844e34dfbdfb87b, type: 3}
-  m_Name: AfterAnswer12
+  m_Name: Answer14
   m_EditorClassIdentifier: 
   _dialogues:
-  - _mainText: "\u0418\u0441\u0447\u0435\u0440\u043F\u044B\u0432\u0430\u044E\u0449\u0438\u0439
-      \u043E\u0442\u0432\u0435\u0442."
-    _characterName: "\u0423\u0447\u0438\u0442\u0435\u043B\u044C"
-    _avatar: {fileID: -8329232540906379405, guid: 1e82669d83673f74fa09ab0ebf5fc562, type: 3}
+  - _mainText: " \u043F\u043E\u0448\u0435\u043B \u0442\u044B \u043D\u0430\u0445\u0443\u0439
+      \u043F\u0438\u0434\u0440"
+    _characterName: "\u041A\u0438\u0442\u043E\u043C\u0438\u0440"
+    _avatar: {fileID: -1595724956640751167, guid: 169c2b3b2c4edc24fb32e51b3064ba3e, type: 3}
     _background: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
     _font: {fileID: 11400000, guid: 85877b8ba8364bc4eaa1c94a54fc80af, type: 2}
     _speedOverride: 0
-    _writeType: 0
+    _writeType: 3
     _colorText: {r: 0, g: 0, b: 0, a: 1}
