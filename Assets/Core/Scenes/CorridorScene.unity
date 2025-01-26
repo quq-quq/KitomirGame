@@ -3450,6 +3450,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasReputation
       objectReference: {fileID: 0}
+    - target: {fileID: 723641360767853652, guid: c02e76664fedbf446a8bc75b26a7fc42, type: 3}
+      propertyPath: _whenPassed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 800204339269129068, guid: c02e76664fedbf446a8bc75b26a7fc42, type: 3}
       propertyPath: m_Pivot.x
       value: 0
