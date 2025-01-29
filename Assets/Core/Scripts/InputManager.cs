@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+    
 public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; private set; }
@@ -35,5 +36,11 @@ public class InputManager : MonoBehaviour
     private void Interact_performed(InputAction.CallbackContext obj)
     {
         OnInteractAction?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void OnDisable()
+    {
+        _playerInputActions.Player.Interact.performed -= Interact_performed;
+        _playerInputActions.Player.Disable();
     }
 }

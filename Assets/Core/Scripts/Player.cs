@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+
+
 public class Player : MonoBehaviour 
 {
     public static Player Instance { get; private set; }
@@ -70,5 +72,10 @@ public class Player : MonoBehaviour
         {
             _selectedObject.Interact();
         }
+    }
+
+    private void OnDisable()
+    {
+        InputManager.Instance.OnInteractAction -= InputManager_OnInteractAction;
     }
 }
