@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -16,10 +17,10 @@ public class GameManager : MonoBehaviour
     private void Door_OnDoorOpen(object sender, Door.OnDoorOpenEventArgs e)
     {
         // todo sound of door opening
-        LoadScene(e.SceneToLoadName);
+        StartCoroutine(LoadScene(e.SceneToLoadName));
     }
 
-    private void LoadScene(string sceneName)
+    private IEnumerator LoadScene(string sceneName)
     {
         FadeScreen fadeScreen = Instantiate(_fadeScreenPrefab).GetComponent<FadeScreen>();
         float waitAfterFadingDuration = 0f;
@@ -28,8 +29,8 @@ public class GameManager : MonoBehaviour
             // todo vehicle motor sound
             waitAfterFadingDuration = 13f;
         }
-        StartCoroutine(fadeScreen.Fade(1.5f, waitAfterFadingDuration));
+        yield return StartCoroutine(fadeScreen.Fade(1.5f, waitAfterFadingDuration));
         
-        // todo load scene (the problem is that the LoadScene method does not wait for the end of the Fade coroutine)
+        Debug.Log("" + sceneName + "is ready to get loaded");
     }
 }
