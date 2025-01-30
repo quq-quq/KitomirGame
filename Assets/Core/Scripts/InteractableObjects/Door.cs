@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,13 +12,11 @@ public class Door : InteractableObject
         public string SceneToLoadName;
     }
     
-    [SerializeField] private Scene _sceneToLoad;
+    [SerializeField] private SceneAsset _sceneToLoad;
     
     
     public override void Interact()
     {
-        
-        Debug.Log("Door Interact");
         OnDoorOpen?.Invoke(this, new OnDoorOpenEventArgs {
             SceneToLoadName = _sceneToLoad.name
         });
