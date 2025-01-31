@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Door : InteractableObject
 {
-    public event EventHandler<OnDoorOpenEventArgs> OnDoorOpen;
+    public static event EventHandler<OnDoorOpenEventArgs> OnDoorOpen;
     public class OnDoorOpenEventArgs : EventArgs
     {
         public string SceneToLoadName;
