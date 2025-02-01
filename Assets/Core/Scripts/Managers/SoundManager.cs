@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 public class SoundManager : MonoBehaviour
 {
-    // [SerializeField] audioClipRefsSO
+    [SerializeField] private AudioClipRefsSO _audioClipRefsSO;
     
     private void Start()
     {
@@ -14,12 +14,12 @@ public class SoundManager : MonoBehaviour
 
     private void FadeScreen_OnWaitAfterFadingStarted(object sender, EventArgs e)
     {
-        // start vehicle motor sound
+        PlaySound(_audioClipRefsSO.vehicleNoise, Vector2.zero);
     }
 
     private void Door_OnDoorOpen(object sender, Door.OnDoorOpenEventArgs e)
     {
-        // start opening door sound
+        PlaySound(_audioClipRefsSO.openDoor, e.DoorPosition);
     }
 
     private void PlaySound(AudioClip audioClip, Vector2 position, float volume = 1f)
