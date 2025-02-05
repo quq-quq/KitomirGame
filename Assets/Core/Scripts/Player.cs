@@ -5,12 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour 
 {
     public static Player Instance { get; private set; }
+    public bool IsMoving { get; private set; }
+    public bool CanAct { get; set; } = true;
 
     [SerializeField] private float _moveSpeed = 5f;
     
     private Vector2 _movementVector;
     private Rigidbody2D _rigidbody2D;
-    private bool _canAct = true;
     private InteractableObject _selectedObject;
     
     private void Awake()
@@ -59,16 +60,22 @@ public class Player : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (_canAct)
+        if (CanAct)
         {
             _movementVector = InputManager.Instance.GetMovementVectorNormalised();
             _rigidbody2D.linearVelocity = _movementVector * _moveSpeed;
+            IsMoving = _movementVector != Vector2.zero;
+        }
+        else if (IsMoving)
+        {
+            _rigidbody2D.linearVelocity = Vector2.zero;
+            IsMoving = false;
         }
     }
 
     private void InputManager_OnInteractAction(object sender, EventArgs e)
     {
-        if (_selectedObject != null && _canAct)
+        if (_selectedObject != null && CanAct)
         {
             _selectedObject.Interact();
         }

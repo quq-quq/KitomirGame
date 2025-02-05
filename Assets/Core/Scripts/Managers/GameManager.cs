@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     private void Door_OnDoorOpen(object sender, Door.OnDoorOpenEventArgs e)
     {
+        Player.Instance.CanAct = false;
         StartCoroutine(LoadScene(e.SceneToLoadName));
     }
 

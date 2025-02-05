@@ -4,7 +4,21 @@ using Random = UnityEngine.Random;
 
 public class SoundManager : MonoBehaviour
 {
+    public static SoundManager Instance { get; private set; }
+    
     [SerializeField] private AudioClipRefsSO _audioClipRefsSO;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     
     private void Start()
     {
@@ -30,6 +44,11 @@ public class SoundManager : MonoBehaviour
     private void PlaySound(AudioClip[] audioClips, Vector2 position, float volume = 1f)
     {
         AudioSource.PlayClipAtPoint(audioClips[Random.Range(0, audioClips.Length)], position, volume);
+    }
+
+    public void PlayFootstepsSound()
+    {
+        PlaySound(_audioClipRefsSO.footsteps, Player.Instance.transform.position);
     }
 
     private void OnDisable()
