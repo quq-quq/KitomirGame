@@ -1,14 +1,28 @@
+using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 
+public enum TypeOfDialogue
+{
+    SimplePhrases,
+    Answers
+}
+
 [System.Serializable]
 public class DialogueBaseClass
 {
-    [SerializeField, Multiline(3)] private string _inputText;
+    public struct Answer
+    {
+        public string inputText;
+        public DialogueBaseClass nextDialogueBaseClass;
+    }
+
     [SerializeField] private float _symbolTime;
-    [SerializeField] private DialogueElement _dialogueElement;
+    [SerializeField, Multiline(3)] private string _inputSimpleText;
+    [SerializeField] private List<Answer> _answers;
 
     protected IEnumerator WritingText(string inputText, TextMeshPro textHolder, float symbolTime)
     {
