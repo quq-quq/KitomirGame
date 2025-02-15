@@ -14,14 +14,20 @@ public enum TypeOfDialogue
 [System.Serializable]
 public class DialogueBaseClass
 {
+    [System.Serializable]
     public struct Answer
     {
         public string inputText;
         public DialogueBaseClass nextDialogueBaseClass;
     }
+    [System.Serializable]
+    public struct SimplePhrase
+    {
+        [SerializeField, Multiline(3)] public string inputText;
+    }
 
     [SerializeField] private float _symbolTime;
-    [SerializeField, Multiline(3)] private string _inputSimpleText;
+    [SerializeField] private SimplePhrase _simplePhrase;
     [SerializeField] private List<Answer> _answers;
 
     protected IEnumerator WritingText(string inputText, TextMeshPro textHolder, float symbolTime)
