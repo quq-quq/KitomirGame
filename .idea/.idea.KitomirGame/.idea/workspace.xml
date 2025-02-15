@@ -6,7 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="5996c718-9b42-4e37-9821-ae2a4d845c13" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/InputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/KitomirHomeScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/KitomirHomeScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/MainMenuScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/MainMenuScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/SampleScene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/SampleScene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/TimohaMovementsScene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/TimohaMovementsScene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/InteractableObjects/Door.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/InteractableObjects/Door.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/PlayerSounds.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/PlayerSounds.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/SceneNames.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/SceneNames.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/UI/ButtonContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/UI/ButtonContainer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +38,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Core/Scripts/Managers/SoundManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Core/Scripts/PlayerSounds.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Core/Scripts/ScriptableObjects/AudioClipRefsSO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Core/Scripts/UI/MenuButton.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -112,7 +125,8 @@
       <workItem from="1738282354334" duration="1466000" />
       <workItem from="1738417541397" duration="790000" />
       <workItem from="1738776050598" duration="3124000" />
-      <workItem from="1739621172314" duration="2350000" />
+      <workItem from="1739621172314" duration="2492000" />
+      <workItem from="1739628661532" duration="5614000" />
     </task>
     <servers />
   </component>

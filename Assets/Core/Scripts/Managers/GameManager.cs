@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private FadeScreen _fadeScreen;
@@ -10,7 +11,13 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Door.OnDoorOpen += Door_OnDoorOpen;
+        MenuButton.OnPlayButtonPressed += MenuButton_OnPlayButtonPressed;
         StartCoroutine(_fadeScreen.Appear(1.5f));
+    }
+
+    private void MenuButton_OnPlayButtonPressed(object sender, EventArgs e)
+    {
+        StartCoroutine(LoadScene(SceneNames.KITOMIR_HOME_SCENE));
     }
 
     private void Door_OnDoorOpen(object sender, Door.OnDoorOpenEventArgs e)
@@ -22,7 +29,8 @@ public class GameManager : MonoBehaviour
     private IEnumerator LoadScene(string sceneName)
     {
         float waitAfterFadingDuration = 0f;
-        if (sceneName is SceneNames.KITOMIR_HOME_SCENE or SceneNames.HAPPY_END_SCENE)
+        if ((sceneName == SceneNames.CORRIDOR_SCENE && SceneManager.GetActiveScene().name == SceneNames.KITOMIR_HOME_SCENE) 
+            || sceneName == SceneNames.HAPPY_END_SCENE)
         {
             waitAfterFadingDuration = 13f;
         }

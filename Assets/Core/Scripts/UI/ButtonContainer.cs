@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 
+
 public class ButtonContainer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI[] _buttons;
@@ -29,7 +30,7 @@ public class ButtonContainer : MonoBehaviour
 
     private void InputManager_MainMenuButtonPressed(object sender, EventArgs e)
     {
-        throw new NotImplementedException();
+        _buttons[_selectedButtonId].gameObject.GetComponentInParent<MenuButton>().onPressMethod.Invoke();
     }
 
     private void InputManager_MainMenuSwitchUp(object sender, EventArgs e)

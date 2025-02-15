@@ -1,6 +1,6 @@
 public abstract class SceneNames
 {
-    
+    //Пидор пидорасик пидорок
     public const string MAIN_MENU_SCENE = "MainMenuScene";
     public const string KITOMIR_HOME_SCENE = "KitomirHomeScene";
     public const string CORRIDOR_SCENE = "CorridorScene";
