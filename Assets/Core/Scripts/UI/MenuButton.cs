@@ -11,7 +11,6 @@ public class MenuButton : MonoBehaviour
     
     public void Play()
     {
-        Debug.Log("Play");
         OnPlayButtonPressed?.Invoke(this, EventArgs.Empty);
     }
 

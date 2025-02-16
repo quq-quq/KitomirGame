@@ -41,8 +41,10 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out InteractableObject interactableObject))
         {
-            interactableObject.Select();
-            _selectedObject = interactableObject;
+            if (interactableObject.TrySelect())
+            {
+                _selectedObject = interactableObject;
+            }
         }
     }
 
