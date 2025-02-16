@@ -5,7 +5,13 @@ using UnityEngine.UI;
 
 public class FadeScreen : MonoBehaviour
 {
+    public static event EventHandler<OnFadingStartedEventArgs> OnFadingStarted;
     public static event EventHandler OnWaitAfterFadingStarted;
+
+    public class OnFadingStartedEventArgs : EventArgs
+    {
+        public float FadingDuration;
+    }
     
     [SerializeField] private Image _fadeImage;
     
@@ -18,6 +24,8 @@ public class FadeScreen : MonoBehaviour
 
     public IEnumerator Fade(float duration, float waitAfterFadingDuration = 0f)
     {
+        OnFadingStarted?.Invoke(this, new OnFadingStartedEventArgs { FadingDuration = duration });
+        
         for (float i = 0; i <= duration; i+=.1f)
         {
             _color.a = i/duration;
@@ -44,7 +52,7 @@ public class FadeScreen : MonoBehaviour
         _fadeImage.color = _color;
         for (float i = 0; i <= duration; i+=.1f)
         {
-            _color.a = 1 - i/duration;
+            _color.a = 1f - i/duration;
             _fadeImage.color = _color;
             yield return new WaitForSeconds(.1f);
         }

@@ -131,6 +131,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 5994845128199069416, guid: 1a88c8ce063cb0969b51588779fa8679, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 8c41d8b787b5b80d5bd7bc965e2f94b5, type: 3}
+    - target: {fileID: 5994845128199069416, guid: 1a88c8ce063cb0969b51588779fa8679, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8c41d8b787b5b80d5bd7bc965e2f94b5, type: 3}
     - target: {fileID: 7696002801343710842, guid: 1a88c8ce063cb0969b51588779fa8679, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
