@@ -1,7 +1,5 @@
-using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 
@@ -18,8 +16,9 @@ public class DialogueBaseClass
     public struct Answer
     {
         public string inputText;
-        public DialogueBaseClass nextDialogueBaseClass;
+        public List<DialogueBaseClass> nextDialogueBaseClasses;
     }
+
     [System.Serializable]
     public struct SimplePhrase
     {
@@ -27,12 +26,15 @@ public class DialogueBaseClass
     }
 
     [SerializeField] private float _symbolTime;
+    [SerializeField] private TypeOfDialogue _typeOfDialogue; // Новое поле для выбора типа диалога
     [SerializeField] private SimplePhrase _simplePhrase;
     [SerializeField] private List<Answer> _answers;
 
+    public TypeOfDialogue TypeOfDialogue => _typeOfDialogue; // Свойство для доступа к типу диалога
+
     protected IEnumerator WritingText(string inputText, TextMeshPro textHolder, float symbolTime)
     {
-        for(int i = 0; i < inputText.Length; i++)
+        for (int i = 0; i < inputText.Length; i++)
         {
             textHolder.text += inputText[i];
             yield return new WaitForSeconds(symbolTime);
