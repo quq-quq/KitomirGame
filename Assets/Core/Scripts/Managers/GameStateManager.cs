@@ -6,12 +6,13 @@ public static class GameStateManager
 
     public static void InitGameState()
     {
-        State = GameState.AtHome;
+        State = GameState.MainMenu;
     }
 }
 
 public enum GameState
 {
+    MainMenu,
     AtHome,
     PhysicsExam,
     MathsExam,

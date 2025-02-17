@@ -177,7 +177,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1471385474}
     m_Modifications:
     - target: {fileID: 4162871250991685713, guid: 1ec6f67cb7ac7c123945b475c7278130, type: 3}
       propertyPath: _fadeScreen
@@ -221,15 +221,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8412565042143066847, guid: 1ec6f67cb7ac7c123945b475c7278130, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8412565042143066847, guid: 1ec6f67cb7ac7c123945b475c7278130, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8412565042143066847, guid: 1ec6f67cb7ac7c123945b475c7278130, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8412565042143066847, guid: 1ec6f67cb7ac7c123945b475c7278130, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -248,6 +248,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ec6f67cb7ac7c123945b475c7278130, type: 3}
+--- !u!4 &434719137 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8412565042143066847, guid: 1ec6f67cb7ac7c123945b475c7278130, type: 3}
+  m_PrefabInstance: {fileID: 434719136}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &561793836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -670,6 +675,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 309267171}
     m_Modifications:
+    - target: {fileID: 1235237905184601102, guid: ae88dc4390d9414ed891f156b7e8c788, type: 3}
+      propertyPath: _sceneToLoad
+      value: 
+      objectReference: {fileID: 102900000, guid: ff95282e1bd6805dfbac2207a1bc3a4d, type: 3}
     - target: {fileID: 6200197853658431787, guid: ae88dc4390d9414ed891f156b7e8c788, type: 3}
       propertyPath: m_Name
       value: HappyEndDoor
@@ -797,8 +806,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3691825653497158610, guid: 1a88c8ce063cb0969b51588779fa8679, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7696002801343710842, guid: 1a88c8ce063cb0969b51588779fa8679, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 434719137}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a88c8ce063cb0969b51588779fa8679, type: 3}
 --- !u!114 &1471385473 stripped
@@ -812,6 +825,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ee420eb1ecc190b8f2a926d5607732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1471385474 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7696002801343710842, guid: 1a88c8ce063cb0969b51588779fa8679, type: 3}
+  m_PrefabInstance: {fileID: 1471385472}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1475553929
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,7 +1372,6 @@ SceneRoots:
   - {fileID: 1879289284}
   - {fileID: 996228269}
   - {fileID: 1471385472}
-  - {fileID: 434719136}
   - {fileID: 1151511881}
   - {fileID: 1475553931}
   - {fileID: 1209899410}

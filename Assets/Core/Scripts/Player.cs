@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
         {
             if (_selectedObject == interactableObject)
             {
-                _selectedObject.Deselect();   
+                _selectedObject.Deselect();
                 _selectedObject = null;
             }
         }

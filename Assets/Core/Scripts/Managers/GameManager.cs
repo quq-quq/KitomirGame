@@ -12,17 +12,18 @@ public class GameManager : MonoBehaviour
     
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name == SceneNames.KITOMIR_HOME_SCENE)
+
+        if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE)
+        {
+            GameStateManager.InitGameState();
+        }
+        else if (SceneManager.GetActiveScene().name == SceneNames.KITOMIR_HOME_SCENE)
         {
             GameStateManager.State = GameState.AtHome;
         }
 
         if (SceneManager.GetActiveScene().name == SceneNames.CORRIDOR_SCENE)
         {
-            if (GameStateManager.PreviousSceneName == SceneNames.KITOMIR_HOME_SCENE)
-            {
-                return;
-            }
             foreach (var spawner in _spawnerList)
             {
                 if (spawner.Scene.name == GameStateManager.PreviousSceneName)
