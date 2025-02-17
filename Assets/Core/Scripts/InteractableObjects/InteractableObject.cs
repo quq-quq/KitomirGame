@@ -8,6 +8,7 @@ public class InteractableObject : MonoBehaviour
  
     private bool _isInteractable = true;
     
+    
     private void Start()
     {
         _interactiveSign.SetActive(false);

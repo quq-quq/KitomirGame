@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class MenuButton : MonoBehaviour
 {
-    [SerializeField] public UnityEvent onPressMethod;
+    [SerializeField] public UnityEvent OnPressMethod;
 
     public static event EventHandler OnPlayButtonPressed; 
     

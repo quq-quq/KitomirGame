@@ -30,7 +30,7 @@ public class ButtonContainer : MonoBehaviour
 
     private void InputManager_MainMenuButtonPressed(object sender, EventArgs e)
     {
-        _buttons[_selectedButtonId].gameObject.GetComponentInParent<MenuButton>().onPressMethod.Invoke();
+        _buttons[_selectedButtonId].gameObject.GetComponentInParent<MenuButton>().OnPressMethod.Invoke();
     }
 
     private void InputManager_MainMenuSwitchUp(object sender, EventArgs e)

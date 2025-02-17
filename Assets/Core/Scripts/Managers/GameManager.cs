@@ -8,6 +8,13 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private FadeScreen _fadeScreen;
 
+    // Можно сделать этот объект don't destroy on load и хранить информацию о прошлой сцене здесь.
+    // В таком случае у GameManager будет SerializeField поле - список спавнпоинтов на этой карте, каждый из которых
+    // соответствует предыдущей сцене.
+    // В таком случае придётся в иерархии вынести GameManager из Managers
+    
+    // Также можно хранить информацию о прошлой сцене в конфиге и загружать её оттуда
+    
     private void Start()
     {
         Door.OnDoorOpen += Door_OnDoorOpen;
