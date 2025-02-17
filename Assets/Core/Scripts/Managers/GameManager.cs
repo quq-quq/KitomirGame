@@ -6,17 +6,32 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private FadeScreen _fadeScreen;
-
-    // Можно сделать этот объект don't destroy on load и хранить информацию о прошлой сцене здесь.
-    // В таком случае у GameManager будет SerializeField поле - список спавнпоинтов на этой карте, каждый из которых
-    // соответствует предыдущей сцене.
-    // В таком случае придётся в иерархии вынести GameManager из Managers
     
-    // Также можно хранить информацию о прошлой сцене в конфиге и загружать её оттуда
+    [SerializeField] private FadeScreen _fadeScreen;
+    [SerializeField] private Spawner[] _spawnerList;
     
     private void Start()
     {
+        if (SceneManager.GetActiveScene().name == SceneNames.KITOMIR_HOME_SCENE)
+        {
+            GameStateManager.State = GameState.AtHome;
+        }
+
+        if (SceneManager.GetActiveScene().name == SceneNames.CORRIDOR_SCENE)
+        {
+            if (GameStateManager.PreviousSceneName == SceneNames.KITOMIR_HOME_SCENE)
+            {
+                return;
+            }
+            foreach (var spawner in _spawnerList)
+            {
+                if (spawner.Scene.name == GameStateManager.PreviousSceneName)
+                {
+                    Player.Instance.gameObject.transform.position = spawner.transform.position;
+                }
+            }
+        }
+        
         Door.OnDoorOpen += Door_OnDoorOpen;
         MenuButton.OnPlayButtonPressed += MenuButton_OnPlayButtonPressed;
         StartCoroutine(_fadeScreen.Appear(1.5f));
@@ -36,11 +51,19 @@ public class GameManager : MonoBehaviour
     private IEnumerator LoadScene(string sceneName)
     {
         float waitAfterFadingDuration = 0f;
-        if ((sceneName == SceneNames.CORRIDOR_SCENE && SceneManager.GetActiveScene().name == SceneNames.KITOMIR_HOME_SCENE) 
-            || sceneName == SceneNames.HAPPY_END_SCENE)
-        {
-            waitAfterFadingDuration = 13f;
-        }
+        
+        // if (GameStateManager.State == GameState.AtHome)
+        // {
+        //     waitAfterFadingDuration = 13f;
+        //     GameStateManager.State = GameState.PhysicsExam;
+        // }
+        // else if (GameStateManager.State == GameState.ITExam)
+        // {
+        //     waitAfterFadingDuration = 13f;
+        //     GameStateManager.State = GameState.ExamsPassed;
+        // }
+        GameStateManager.PreviousSceneName = SceneManager.GetActiveScene().name;
+        
         yield return StartCoroutine(_fadeScreen.Fade(1.5f, waitAfterFadingDuration));
 
         SceneManager.LoadScene(sceneName);

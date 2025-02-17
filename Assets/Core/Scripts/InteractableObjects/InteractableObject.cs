@@ -21,7 +21,10 @@ public class InteractableObject : MonoBehaviour
 
     public bool TrySelect()
     {
-        _interactiveSign.SetActive(true);
+        if (_isInteractable)
+        {
+            _interactiveSign.SetActive(true);
+        }
         
         return _isInteractable;
     }
