@@ -11,12 +11,9 @@
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/KitomirHomeScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/KitomirHomeScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/MathsAuditoriumScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/MathsAuditoriumScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/PhysicsAuditoriumScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/PhysicsAuditoriumScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameStateManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Timer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Timer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/UI/TimerVisual.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/UI/TimerVisual.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +36,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Core/Scripts/ScriptableObjects/AudioClipRefsSO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Core/Scripts/Timer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Core/Scripts/UI/MenuButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@7e62d7f44df2/Runtime/UGUI/UI/Core/Image.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -133,6 +131,8 @@
       <workItem from="1739789524903" duration="3851000" />
       <workItem from="1739794835886" duration="1588000" />
       <workItem from="1739799677202" duration="380000" />
+      <workItem from="1739801631275" duration="2875000" />
+      <workItem from="1739886609036" duration="2476000" />
     </task>
     <servers />
   </component>
