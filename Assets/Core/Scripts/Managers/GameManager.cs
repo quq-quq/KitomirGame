@@ -1,18 +1,31 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
+    public static bool IsGamePaused { get; private set; }
     
     [SerializeField] private FadeScreen _fadeScreen;
     [SerializeField] private Spawner[] _spawnerList;
+    [SerializeField] private GameObject _pauseMenu;
+    
+    private bool _canBePaused = true;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
     
     private void Start()
     {
-
         if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE)
         {
             GameStateManager.InitGameState();
@@ -35,7 +48,18 @@ public class GameManager : MonoBehaviour
         
         Door.OnDoorOpen += Door_OnDoorOpen;
         MenuButton.OnPlayButtonPressed += MenuButton_OnPlayButtonPressed;
+        InputManager.Instance.OnPauseAction += InputManager_OnPauseAction;
+        
+        _pauseMenu.SetActive(false);
         StartCoroutine(_fadeScreen.Appear(1.5f));
+    }
+
+    private void InputManager_OnPauseAction(object sender, EventArgs e)
+    {
+        if (SceneManager.GetActiveScene().name != SceneNames.MAIN_MENU_SCENE)
+        {
+            Pause();
+        }
     }
 
     private void MenuButton_OnPlayButtonPressed(object sender, EventArgs e)
@@ -51,6 +75,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator LoadScene(string sceneName)
     {
+        _canBePaused = false;
         float waitAfterFadingDuration = 0f;
         
         // if (GameStateManager.State == GameState.AtHome)
@@ -70,8 +95,65 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    private void Pause()
+    {
+        if (_canBePaused)
+        {
+            if (!IsGamePaused)
+            {
+                Time.timeScale = 0f;
+                _pauseMenu.SetActive(true);
+                Player.Instance.CanAct = false;
+                IsGamePaused = true;
+            }
+            else
+            {
+                Resume();
+            }
+        }
+    }
+
+    public void Resume()
+    {
+        _pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        Player.Instance.CanAct = true;
+        IsGamePaused = false;
+    }
+    
     private void OnDisable()
     {
         Door.OnDoorOpen -= Door_OnDoorOpen;
+        MenuButton.OnPlayButtonPressed -= MenuButton_OnPlayButtonPressed;
+        InputManager.Instance.OnPauseAction -= InputManager_OnPauseAction;
+    }
+
+    public static void TimeScaleZeroInvoke(object sender, EventArgs e, EventHandler eventToInvoke)
+    {
+        Time.timeScale = 1f;
+        eventToInvoke?.Invoke(sender, e);
+        if (IsGamePaused)
+        {
+            Time.timeScale = 0f;
+        }
+        
+    }
+
+    public static void TimeScaleZeroInvoke(UnityEvent unityEvent)
+    {
+        Time.timeScale = 1f;
+        unityEvent?.Invoke();
+        if (IsGamePaused)
+        {
+            Time.timeScale = 0f;
+        }
+    }
+
+    public static void RestartGame()
+    {
+        IsGamePaused = false;
+        Time.timeScale = 1f;
+        Destroy(Timer.Instance.gameObject);
+        SceneManager.LoadScene(SceneNames.MAIN_MENU_SCENE);
     }
 }

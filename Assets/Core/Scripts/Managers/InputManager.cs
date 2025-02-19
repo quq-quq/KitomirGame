@@ -8,12 +8,13 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; private set; }
     public event EventHandler OnInteractAction;
-    public event EventHandler OnMainMenuSwitchUp;
-    public event EventHandler OnMainMenuSwitchDown;
-    public event EventHandler OnMainMenuButtonPressed;
+    public event EventHandler OnPauseAction;
+    public event EventHandler OnMenuSwitchUp;
+    public event EventHandler OnMenuSwitchDown;
+    public event EventHandler OnMenuButtonPressed;
     
     private PlayerInputActions _playerInputActions;
-    private MainMenuInputActions _menuInputActions;
+    private MenuInputActions _menuInputActions;
     
     private void Awake()
     {
@@ -29,30 +30,58 @@ public class InputManager : MonoBehaviour
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
         _playerInputActions.Player.Interact.performed += Interact_performed;
+        _playerInputActions.Player.Pause.performed += Pause_performed;
+        
+        _menuInputActions = new MenuInputActions();
+        _menuInputActions.Enable();
+        _menuInputActions.Navigation.UpSwitch.performed += UpSwitch_performed;
+        _menuInputActions.Navigation.DownSwitch.performed += DownSwitch_performed;
+        _menuInputActions.Navigation.PressButton.performed += PressButton_performed;
+    }
 
-        if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE)
-        {
-            _menuInputActions = new MainMenuInputActions();
-            _menuInputActions.Enable();
-            _menuInputActions.Navigation.UpSwitch.performed += UpSwitch_performed;
-            _menuInputActions.Navigation.DownSwitch.performed += DownSwitch_performed;
-            _menuInputActions.Navigation.PressButton.performed += PressButton_performed;
-        }
+    private void Pause_performed(InputAction.CallbackContext obj)
+    {
+        OnPauseAction?.Invoke(this, EventArgs.Empty);
     }
 
     private void PressButton_performed(InputAction.CallbackContext obj)
     {
-        OnMainMenuButtonPressed?.Invoke(this, EventArgs.Empty);
+        // we invoke this event only when the game is paused or when we are in the main menu scene
+        if (GameManager.IsGamePaused)
+        {
+            GameManager.TimeScaleZeroInvoke(this, EventArgs.Empty, OnMenuButtonPressed);
+        }
+        else if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE)
+        {
+            OnMenuButtonPressed?.Invoke(this, EventArgs.Empty);
+        }
+        
     }
 
     private void DownSwitch_performed(InputAction.CallbackContext obj)
     {
-        OnMainMenuSwitchDown?.Invoke(this, EventArgs.Empty);
+        // we invoke this event only when the game is paused or when we are in the main menu scene
+        if (GameManager.IsGamePaused)
+        {
+            GameManager.TimeScaleZeroInvoke(this, EventArgs.Empty, OnMenuSwitchDown);
+        }
+        else if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE)
+        {
+            OnMenuSwitchDown?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     private void UpSwitch_performed(InputAction.CallbackContext obj)
     {
-        OnMainMenuSwitchUp?.Invoke(this, EventArgs.Empty);
+        // we invoke this event only when the game is paused or when we are in the main menu scene
+        if (GameManager.IsGamePaused)
+        {
+            GameManager.TimeScaleZeroInvoke(this, EventArgs.Empty, OnMenuSwitchUp);
+        }
+        else if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE)
+        {
+            OnMenuSwitchUp?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     public Vector2 GetMovementVectorNormalised()
@@ -72,12 +101,9 @@ public class InputManager : MonoBehaviour
         _playerInputActions.Player.Interact.performed -= Interact_performed;
         _playerInputActions.Player.Disable();
 
-        if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE)
-        {
-            _menuInputActions.Navigation.UpSwitch.performed -= UpSwitch_performed;
-            _menuInputActions.Navigation.DownSwitch.performed -= DownSwitch_performed;
-            _menuInputActions.Navigation.PressButton.performed -= PressButton_performed;
-            _menuInputActions.Disable();
-        }
+        _menuInputActions.Navigation.UpSwitch.performed -= UpSwitch_performed;
+        _menuInputActions.Navigation.DownSwitch.performed -= DownSwitch_performed;
+        _menuInputActions.Navigation.PressButton.performed -= PressButton_performed;
+        _menuInputActions.Disable();
     }
 }

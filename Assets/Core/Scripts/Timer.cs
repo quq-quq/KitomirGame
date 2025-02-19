@@ -6,7 +6,7 @@ public class Timer : MonoBehaviour
     
     private const float TIMER_MAX = 15 * 60; //15 minutes
     
-    private static Timer Instance { get; set; }
+    public static Timer Instance { get; private set; }
     private float _timer; 
     private bool _isRunning;
 

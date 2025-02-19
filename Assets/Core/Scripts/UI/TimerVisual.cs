@@ -26,6 +26,6 @@ public class TimerVisual : MonoBehaviour
 
     private string GetTimerText(float timeLeft)
     {
-        return $"{(int)(timeLeft / 60)}:{(int)(timeLeft % 60)}";
+        return $"{(int)(timeLeft / 60)}:{(int)(timeLeft % 60):00}";
     }
 }
