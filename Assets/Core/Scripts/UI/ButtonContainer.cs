@@ -8,9 +8,9 @@ using UnityEngine.Events;
 public class ButtonContainer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI[] _defaultButtons;
-    [SerializeField] [CanBeNull] private TextMeshProUGUI[] _hiddenButtons = null;
+    [SerializeField] [CanBeNull] private TextMeshProUGUI[] _hiddenButtons;
     [SerializeField] private GameObject _defaultButtonsGroup;
-    [SerializeField] [CanBeNull] private GameObject _hiddenButtonsGroup = null;
+    [SerializeField] [CanBeNull] private GameObject _hiddenButtonsGroup;
     
     private readonly Color _selectedColorText = Color.black;
     private readonly Color _unselectedColorText = new (0.490566f, 0.490566f, 0.490566f, 1f);

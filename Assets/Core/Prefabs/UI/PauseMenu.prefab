@@ -47,7 +47,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &485114467143483417
 RectTransform:
   m_ObjectHideFlags: 0
@@ -721,7 +721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2172708754466778256, guid: 29b3a60e22eae0b20adae470c74f745e, type: 3}
       propertyPath: OnPressMethod.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AcceptBackToMenu
+      value: RejectBackToMenu
       objectReference: {fileID: 0}
     - target: {fileID: 2172708754466778256, guid: 29b3a60e22eae0b20adae470c74f745e, type: 3}
       propertyPath: OnPressMethod.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -733,7 +733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3749263743602901256, guid: 29b3a60e22eae0b20adae470c74f745e, type: 3}
       propertyPath: m_text
-      value: "\u0414\u0430"
+      value: "\u041D\u0435\u0442"
       objectReference: {fileID: 0}
     - target: {fileID: 3749263743602901256, guid: 29b3a60e22eae0b20adae470c74f745e, type: 3}
       propertyPath: m_fontSize
@@ -749,11 +749,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5636428238854925221, guid: 29b3a60e22eae0b20adae470c74f745e, type: 3}
       propertyPath: m_Name
-      value: ResumeText
+      value: RejectText
       objectReference: {fileID: 0}
     - target: {fileID: 9093208409158845505, guid: 29b3a60e22eae0b20adae470c74f745e, type: 3}
       propertyPath: m_Name
-      value: AcceptButton
+      value: RejectButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1245,7 +1245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2172708754466778256, guid: 29b3a60e22eae0b20adae470c74f745e, type: 3}
       propertyPath: OnPressMethod.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RejectBackToMenu
+      value: AcceptBackToMenu
       objectReference: {fileID: 0}
     - target: {fileID: 2172708754466778256, guid: 29b3a60e22eae0b20adae470c74f745e, type: 3}
       propertyPath: OnPressMethod.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -1257,7 +1257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3749263743602901256, guid: 29b3a60e22eae0b20adae470c74f745e, type: 3}
       propertyPath: m_text
-      value: "\u041D\u0435\u0442"
+      value: "\u0414\u0430"
       objectReference: {fileID: 0}
     - target: {fileID: 3749263743602901256, guid: 29b3a60e22eae0b20adae470c74f745e, type: 3}
       propertyPath: m_fontSize
@@ -1273,11 +1273,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5636428238854925221, guid: 29b3a60e22eae0b20adae470c74f745e, type: 3}
       propertyPath: m_Name
-      value: BackToMenuText
+      value: AcceptText
       objectReference: {fileID: 0}
     - target: {fileID: 9093208409158845505, guid: 29b3a60e22eae0b20adae470c74f745e, type: 3}
       propertyPath: m_Name
-      value: RejectButton
+      value: AcceptButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

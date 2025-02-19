@@ -6,26 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="5996c718-9b42-4e37-9821-ae2a4d845c13" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/InputSystem/MainMenuInputActions.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/InputSystem/MainMenuInputActions.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/InputSystem/MainMenuInputActions.inputactions" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/InputSystem/MainMenuInputActions.inputactions.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/InputSystem/PlayerInputActions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/InputSystem/PlayerInputActions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/InputSystem/PlayerInputActions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/InputSystem/PlayerInputActions.inputactions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/CorridorScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/CorridorScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/HappyEndScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/HappyEndScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/ITAuditoriumScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/ITAuditoriumScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/KitomirHomeScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/KitomirHomeScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/MainMenuScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/MainMenuScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/MathsAuditoriumScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/MathsAuditoriumScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/PhysicsAuditoriumScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/PhysicsAuditoriumScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/InputManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Timer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Timer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/UI/ButtonContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/UI/ButtonContainer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/UI/MenuButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/UI/MenuButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/UI/TimerVisual.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/UI/TimerVisual.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +139,8 @@
       <workItem from="1739886609036" duration="2476000" />
       <workItem from="1739890314875" duration="7540000" />
       <workItem from="1739950736496" duration="5269000" />
-      <workItem from="1739963909535" duration="2488000" />
+      <workItem from="1739963909535" duration="4091000" />
+      <workItem from="1739971000407" duration="259000" />
     </task>
     <servers />
   </component>

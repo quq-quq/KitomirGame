@@ -69,7 +69,10 @@ public class GameManager : MonoBehaviour
 
     private void Door_OnDoorOpen(object sender, Door.OnDoorOpenEventArgs e)
     {
-        Player.Instance.CanAct = false;
+        if (Player.Instance != null)
+        {
+            Player.Instance.CanAct = false;
+        }
         StartCoroutine(LoadScene(e.SceneToLoadName));
     }
 
@@ -102,9 +105,13 @@ public class GameManager : MonoBehaviour
             if (!IsGamePaused)
             {
                 Time.timeScale = 0f;
-                _pauseMenu.SetActive(true);
-                Player.Instance.CanAct = false;
+                _pauseMenu.SetActive(true); 
                 IsGamePaused = true;
+                
+                if (Player.Instance != null)
+                {
+                    Player.Instance.CanAct = false;
+                }
             }
             else
             {
@@ -116,8 +123,10 @@ public class GameManager : MonoBehaviour
     public void Resume()
     {
         _pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
-        Player.Instance.CanAct = true;
+        Time.timeScale = 1f;if (Player.Instance != null)
+        {
+            Player.Instance.CanAct = true;
+        }
         IsGamePaused = false;
     }
     
@@ -153,7 +162,10 @@ public class GameManager : MonoBehaviour
     {
         IsGamePaused = false;
         Time.timeScale = 1f;
-        Destroy(Timer.Instance.gameObject);
+        if (Timer.Instance != null)
+        {
+            Destroy(Timer.Instance.gameObject);
+        }
         SceneManager.LoadScene(SceneNames.MAIN_MENU_SCENE);
     }
 }
