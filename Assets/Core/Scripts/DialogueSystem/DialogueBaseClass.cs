@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 public enum TypeOfDialogue
@@ -15,24 +16,54 @@ public class DialogueBaseClass
     [System.Serializable]
     public struct Answer
     {
-        public string inputText;
-        public List<DialogueBaseClass> nextDialogueBaseClasses;
+        [SerializeField] private string inputText;
+        [SerializeField] private List<DialogueBaseClass> nextDialogueBaseClasses;
+
+        public string InputText
+        {
+            get => inputText;
+        }
+        public IReadOnlyList<DialogueBaseClass> NextDialogueBaseClasses
+        {
+            get => nextDialogueBaseClasses;
+        }
     }
 
     [System.Serializable]
     public struct SimplePhrase
     {
-        [SerializeField, Multiline(3)] public string inputText;
+        [SerializeField, Multiline(3)] private string inputText;
+
+        public string InputText
+        {
+            get => inputText;
+        }
     }
 
     [SerializeField] private float _symbolTime;
-    [SerializeField] private TypeOfDialogue _typeOfDialogue; // Новое поле для выбора типа диалога
+    [SerializeField] private TypeOfDialogue _typeOfDialogue;
     [SerializeField] private SimplePhrase _simplePhrase;
     [SerializeField] private List<Answer> _answers;
 
-    public TypeOfDialogue TypeOfDialogue => _typeOfDialogue; // Свойство для доступа к типу диалога
+    public float SymbolTime
+    {
+        get => _symbolTime;
+    }
+    public TypeOfDialogue TypeOfDialogue
+    {
+        get => _typeOfDialogue;
+    }
+    public SimplePhrase simplePhrase
+    {
+        get => _simplePhrase;
+    }
+    public IReadOnlyList<Answer> Answers
+    {
+        get => _answers;
+    }
 
-    protected IEnumerator WritingText(string inputText, TextMeshPro textHolder, float symbolTime)
+
+    public IEnumerator WritingText(string inputText, TMP_Text textHolder, float symbolTime)
     {
         for (int i = 0; i < inputText.Length; i++)
         {

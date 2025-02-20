@@ -12,12 +12,18 @@ public class DialogueBaseClassDrawer : PropertyDrawer
         SerializedProperty typeOfDialogue = property.FindPropertyRelative("_typeOfDialogue");
         SerializedProperty simplePhrase = property.FindPropertyRelative("_simplePhrase");
         SerializedProperty answers = property.FindPropertyRelative("_answers");
+        SerializedProperty symbolTime = property.FindPropertyRelative("_symbolTime");
 
         float currentY = position.y; // Текущая позиция по оси Y
 
         // Рисуем выпадающий список для выбора типа диалога
         Rect typeRect = new Rect(position.x, currentY, position.width, EditorGUIUtility.singleLineHeight);
         EditorGUI.PropertyField(typeRect, typeOfDialogue);
+        currentY += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
+
+        // Рисуем поле _symbolTime
+        Rect symbolTimeRect = new Rect(position.x, currentY, position.width, EditorGUIUtility.singleLineHeight);
+        EditorGUI.PropertyField(symbolTimeRect, symbolTime);
         currentY += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
 
         // Определяем, что показывать
@@ -45,8 +51,10 @@ public class DialogueBaseClassDrawer : PropertyDrawer
         SerializedProperty typeOfDialogue = property.FindPropertyRelative("_typeOfDialogue");
         SerializedProperty simplePhrase = property.FindPropertyRelative("_simplePhrase");
         SerializedProperty answers = property.FindPropertyRelative("_answers");
+        SerializedProperty symbolTime = property.FindPropertyRelative("_symbolTime");
 
         float height = EditorGUIUtility.singleLineHeight; // Высота для выпадающего списка _typeOfDialogue
+        height += EditorGUIUtility.singleLineHeight; // Высота для _symbolTime
 
         if (typeOfDialogue.enumValueIndex == (int)TypeOfDialogue.SimplePhrases)
         {
@@ -57,7 +65,7 @@ public class DialogueBaseClassDrawer : PropertyDrawer
             height += EditorGUI.GetPropertyHeight(answers); // Высота для _answers
         }
 
-        height += EditorGUIUtility.standardVerticalSpacing * 2; // Добавляем отступы
+        height += EditorGUIUtility.standardVerticalSpacing * 3; // Добавляем отступы
 
         return height;
     }
