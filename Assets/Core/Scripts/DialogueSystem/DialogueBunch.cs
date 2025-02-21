@@ -19,13 +19,13 @@ public class DialogueBunch : ScriptableObject
         SetIdForEveryElement(_rootDialogue);
     }
 
-    private void SetIdForEveryElement(List<DialogueBaseClass> dialogueBaseClasses)
+    private void SetIdForEveryElement(List<DialogueBaseClass> dialogue)
     {
-        foreach (DialogueBaseClass dialogueElement in dialogueBaseClasses)
+        foreach (DialogueBaseClass dialogueElement in dialogue)
         {
             dialogueElement.Id = setterId;
             setterId++;
-            Debug.Log($"Id - {dialogueElement.Id}");
+            //Debug.Log($"Id - {dialogueElement.Id}");
             if (dialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
             {
                 foreach (DialogueBaseClass.Answer answer in dialogueElement.Answers)
@@ -34,6 +34,5 @@ public class DialogueBunch : ScriptableObject
                 }
             }
         }
-
     }
 }

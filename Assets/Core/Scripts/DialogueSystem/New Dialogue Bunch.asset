@@ -12,4 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad9601d562f7044e844e34dfbdfb87b, type: 3}
   m_Name: New Dialogue Bunch
   m_EditorClassIdentifier: 
-  _rootDialogue: []
+  _rootDialogue:
+  - _symbolTime: 0
+    _typeOfDialogue: 1
+    _simplePhrase:
+      inputText: 
+    _answers:
+    - inputText: g
+      nextDialogueBaseClasses:
+      - _symbolTime: 0
+        _typeOfDialogue: 0
+        _simplePhrase:
+          inputText: g
+        _answers: []
+        Id: 1
+    Id: 0
+  - _symbolTime: 0
+    _typeOfDialogue: 0
+    _simplePhrase:
+      inputText: g
+    _answers: []
+    Id: 2
+  - _symbolTime: 0
+    _typeOfDialogue: 1
+    _simplePhrase:
+      inputText: 
+    _answers:
+    - inputText: g
+      nextDialogueBaseClasses:
+      - _symbolTime: 0
+        _typeOfDialogue: 0
+        _simplePhrase:
+          inputText: f
+        _answers: []
+        Id: 4
+    Id: 3

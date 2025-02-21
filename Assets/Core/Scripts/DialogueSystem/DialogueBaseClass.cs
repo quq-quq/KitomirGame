@@ -40,12 +40,12 @@ public class DialogueBaseClass
         }
     }
 
-    [SerializeField] private float _symbolTime;
-    [SerializeField] private TypeOfDialogue _typeOfDialogue;
+    [SerializeField] private float _symbolTime = 0.1f;
+    [SerializeField] private TypeOfDialogue _typeOfDialogue = TypeOfDialogue.SimplePhrases;
     [SerializeField] private SimplePhrase _simplePhrase;
     [SerializeField] private List<Answer> _answers;
-    public int Id = -1;
 
+    public int Id { get; set; } = -1;
     public float SymbolTime
     {
         get => _symbolTime;
@@ -63,8 +63,13 @@ public class DialogueBaseClass
         get => _answers;
     }
 
-    public IEnumerator WritingText(string inputText, TMP_Text textHolder, float symbolTime)
+    public static IEnumerator WritingText(string inputText, TMP_Text textHolder, float symbolTime)
     {
+        if(inputText == null)
+        {
+            yield break;
+        }
+        textHolder.text = string.Empty;
         for (int i = 0; i < inputText.Length; i++)
         {
             textHolder.text += inputText[i];
