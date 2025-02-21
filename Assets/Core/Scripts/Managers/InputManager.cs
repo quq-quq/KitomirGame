@@ -109,6 +109,12 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    public Vector2 GetMovementVector()
+    {
+        Vector2 movementVector = _playerInputActions.Player.Move.ReadValue<Vector2>();
+        return movementVector;
+    }
+    
     public Vector2 GetMovementVectorNormalised()
     {
         Vector2 movementVector = _playerInputActions.Player.Move.ReadValue<Vector2>();
