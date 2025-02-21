@@ -567,7 +567,7 @@ MonoBehaviour:
   _dialogueCanvas: {fileID: 1626849986}
   _dialogueAnimator: {fileID: 1626849987}
   _simplePhraseChamber: {fileID: 1984452539}
-  _answersChamber: {fileID: 326596987}
+  _answersChamberLayoutGroup: {fileID: 326596987}
   _answerButtonPrefab: {fileID: 2926362396367259065, guid: 73a8dec9ca20ecf4f90681e82fdf975c, type: 3}
 --- !u!4 &1838701594
 Transform:

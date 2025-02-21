@@ -6,8 +6,10 @@ using UnityEngine.UIElements;
 
 public class DialogueViewer : MonoBehaviour
 {
+    [Header("Dev settings")]
     [SerializeField] DialogueBunch _dialogueBunch;
     [SerializeField] private bool _isActiveOnStart;
+    [Space(30), Header("Maintenance settings")]
     [SerializeField] private Canvas _dialogueCanvas;
     [SerializeField] private Animator _dialogueAnimator;
     [SerializeField] private TMP_Text _simplePhraseChamber;
@@ -25,7 +27,7 @@ public class DialogueViewer : MonoBehaviour
             Debug.LogError("GameObject dont have AnswerButtonScript or GameObjet dont initialised");
         }
 
-        _answersChamberTransform = _answersChamberLayoutGroup.transform;
+        _answersChamberTransform = _answersChamberLayoutGroup.gameObject.transform;
         _simplePhraseChamber.color = Color.black;
         _simplePhraseChamber.text = "";
         _isStarted = false;
@@ -52,7 +54,7 @@ public class DialogueViewer : MonoBehaviour
     {
         if (!_isStarted)
         {
-            yield return new WaitForSeconds(getCurrentAnim().length);
+            yield return new WaitForSeconds(GetCurrentAnim(_dialogueAnimator).length);
             _isStarted = true;
         }
         ViewDialogue();
@@ -65,7 +67,6 @@ public class DialogueViewer : MonoBehaviour
             if (_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
             {
                 Coroutine writingText = StartCoroutine(_currentDialogueElement.WritingText(_currentDialogueElement.simplePhrase.InputText, _simplePhraseChamber, _currentDialogueElement.SymbolTime));
-
             }
             if (_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
             {
@@ -73,18 +74,16 @@ public class DialogueViewer : MonoBehaviour
                 {
                     AnswerButton currentAnswerButton = Instantiate(_answerButtonPrefab, _answersChamberTransform).GetComponent<AnswerButton>();
                     StartCoroutine(_currentDialogueElement.WritingText(_currentDialogueElement.Answers[i].InputText, currentAnswerButton.TextChamber, _currentDialogueElement.SymbolTime));
-
                 }
             }
         }
-
     }
 
-    private void SetCurrentDialogueElement(TypeOfDialogue typeOfDialogue)
+    private void SetNextDialogueElement(TypeOfDialogue typeOfDialogue)
     {       
         if (typeOfDialogue == TypeOfDialogue.SimplePhrases)
         {
-
+            bool isFinding = false;
         }
         if(typeOfDialogue == TypeOfDialogue.Answers)
         {
@@ -95,11 +94,10 @@ public class DialogueViewer : MonoBehaviour
         }
     }
 
-
     //for next evolution
-    private AnimationClip getCurrentAnim()
+    private AnimationClip GetCurrentAnim(Animator anim)
     {
-        foreach(AnimationClip clip in _dialogueAnimator.runtimeAnimatorController.animationClips)
+        foreach(AnimationClip clip in anim.runtimeAnimatorController.animationClips)
         {
             return clip;
         }

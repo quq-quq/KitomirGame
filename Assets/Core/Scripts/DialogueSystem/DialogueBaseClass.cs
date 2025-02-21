@@ -23,7 +23,7 @@ public class DialogueBaseClass
         {
             get => inputText;
         }
-        public IReadOnlyList<DialogueBaseClass> NextDialogueBaseClasses
+        public List<DialogueBaseClass> NextDialogueBaseClasses
         {
             get => nextDialogueBaseClasses;
         }
@@ -44,6 +44,7 @@ public class DialogueBaseClass
     [SerializeField] private TypeOfDialogue _typeOfDialogue;
     [SerializeField] private SimplePhrase _simplePhrase;
     [SerializeField] private List<Answer> _answers;
+    public int Id = -1;
 
     public float SymbolTime
     {
@@ -57,11 +58,10 @@ public class DialogueBaseClass
     {
         get => _simplePhrase;
     }
-    public IReadOnlyList<Answer> Answers
+    public List<Answer> Answers
     {
         get => _answers;
     }
-
 
     public IEnumerator WritingText(string inputText, TMP_Text textHolder, float symbolTime)
     {
@@ -71,4 +71,5 @@ public class DialogueBaseClass
             yield return new WaitForSeconds(symbolTime);
         }
     }
+
 }

@@ -5,9 +5,35 @@ using static DialogueBunch;
 [CreateAssetMenu(menuName = "Custom/DialogueBunch"), System.Serializable]
 public class DialogueBunch : ScriptableObject
 {
-    [SerializeField]private List<DialogueBaseClass> _rootDialogues = new List<DialogueBaseClass>();
-    public IReadOnlyList<DialogueBaseClass> RootDialogues
+    [SerializeField]private List<DialogueBaseClass> _rootDialogue = new List<DialogueBaseClass>();
+    private int setterId = 0;
+
+    public List<DialogueBaseClass> RootDialogue
     {
-        get => _rootDialogues;
+        get => _rootDialogue;
+    }
+
+    private void OnValidate()
+    {
+        setterId = 0;
+        SetIdForEveryElement(_rootDialogue);
+    }
+
+    private void SetIdForEveryElement(List<DialogueBaseClass> dialogueBaseClasses)
+    {
+        foreach (DialogueBaseClass dialogueElement in dialogueBaseClasses)
+        {
+            dialogueElement.Id = setterId;
+            setterId++;
+            Debug.Log($"Id - {dialogueElement.Id}");
+            if (dialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
+            {
+                foreach (DialogueBaseClass.Answer answer in dialogueElement.Answers)
+                {
+                    SetIdForEveryElement(answer.NextDialogueBaseClasses);
+                }
+            }
+        }
+
     }
 }
