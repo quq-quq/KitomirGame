@@ -24,6 +24,12 @@ public class SoundManager : MonoBehaviour
     {
         Door.OnDoorOpen += Door_OnDoorOpen;
         FadeScreen.OnWaitAfterFadingStarted += FadeScreen_OnWaitAfterFadingStarted;
+        InputManager.Instance.OnSecretInputSolved += InputManager_OnSecretInputSolved;
+    }
+
+    private void InputManager_OnSecretInputSolved(object sender, EventArgs e)
+    {
+        PlaySound(_audioClipRefsSO.success, Vector3.zero);
     }
 
     private void FadeScreen_OnWaitAfterFadingStarted(object sender, EventArgs e)

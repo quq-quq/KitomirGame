@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Spawner[] _spawnerList;
     [SerializeField] private GameObject _pauseMenu;
     
+    private Coroutine _fadeScreenCoroutine;
     private bool _canBePaused = true;
 
     private void Awake()
@@ -49,9 +50,15 @@ public class GameManager : MonoBehaviour
         Door.OnDoorOpen += Door_OnDoorOpen;
         MenuButton.OnPlayButtonPressed += MenuButton_OnPlayButtonPressed;
         InputManager.Instance.OnPauseAction += InputManager_OnPauseAction;
+        InputManager.Instance.OnSecretInputSolved += InputManager_OnSecretInputSolved;
         
         _pauseMenu.SetActive(false);
-        StartCoroutine(_fadeScreen.Appear(1.5f));
+        _fadeScreenCoroutine = StartCoroutine(_fadeScreen.Appear(1.5f));
+    }
+
+    private void InputManager_OnSecretInputSolved(object sender, EventArgs e)
+    {
+        StartCoroutine(LoadScene(SceneNames.SECRET_GAME_MODE_SCENE));
     }
 
     private void InputManager_OnPauseAction(object sender, EventArgs e)
@@ -93,6 +100,7 @@ public class GameManager : MonoBehaviour
         // }
         GameStateManager.PreviousSceneName = SceneManager.GetActiveScene().name;
         
+        StopCoroutine(_fadeScreenCoroutine);
         yield return StartCoroutine(_fadeScreen.Fade(1.5f, waitAfterFadingDuration));
 
         SceneManager.LoadScene(sceneName);
@@ -145,7 +153,6 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0f;
         }
-        
     }
 
     public static void TimeScaleZeroInvoke(UnityEvent unityEvent)

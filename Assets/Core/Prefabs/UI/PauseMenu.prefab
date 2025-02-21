@@ -153,7 +153,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6976866014679084177}
-  - component: {fileID: 4020970348187432376}
+  - component: {fileID: 1387174232777587197}
   m_Layer: 0
   m_Name: ButtonContainer
   m_TagString: Untagged
@@ -182,7 +182,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4020970348187432376
+--- !u!114 &1387174232777587197
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,16 +191,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2647618395763670454}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 135b41b9a2318e17189b3f84f96911dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c4b7b7e85d6ed3c3a86a9564034740f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultButtons:
+  DefaultButtons:
   - {fileID: 8713818924414787952}
   - {fileID: 4748086153412504163}
+  DefaultButtonsGroup: {fileID: 865160884717446636}
   _hiddenButtons:
   - {fileID: 84203469841076343}
   - {fileID: 5197921770652479573}
-  _defaultButtonsGroup: {fileID: 865160884717446636}
   _hiddenButtonsGroup: {fileID: 7238850498711295130}
 --- !u!1 &4483368422782949757
 GameObject:
