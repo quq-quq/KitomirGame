@@ -7,7 +7,8 @@
     <list default="true" id="5996c718-9b42-4e37-9821-ae2a4d845c13" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/SecretGameModeScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/SecretGameModeScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/InputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/SecretGameModePlayer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/SecretGameModePlayer.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,6 +140,7 @@
       <workItem from="1739971000407" duration="985000" />
       <workItem from="1740136315227" duration="540000" />
       <workItem from="1740137297528" duration="4276000" />
+      <workItem from="1740156336725" duration="3936000" />
     </task>
     <servers />
   </component>
