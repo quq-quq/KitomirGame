@@ -5,7 +5,7 @@ using static DialogueBunch;
 [CreateAssetMenu(menuName = "Custom/DialogueBunch"), System.Serializable]
 public class DialogueBunch : ScriptableObject
 {
-    [SerializeField]private List<DialogueBaseClass> _rootDialogue = new List<DialogueBaseClass>();
+    [SerializeField]private List<DialogueBaseClass> _rootDialogue;
     private int setterId = 0;
 
     public List<DialogueBaseClass> RootDialogue

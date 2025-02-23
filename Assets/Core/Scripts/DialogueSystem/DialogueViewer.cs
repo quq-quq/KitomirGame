@@ -33,6 +33,7 @@ public class DialogueViewer : MonoBehaviour
         _simplePhraseChamber.color = Color.black;
         _simplePhraseChamber.text = "";
         _isGoing = false;
+        _currentDialogueElement = _dialogueBunch.RootDialogue[0];
 
         if (_isActiveOnStart)
         {
@@ -50,12 +51,15 @@ public class DialogueViewer : MonoBehaviour
         if (_isGoing && _currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && (Input.anyKeyDown))
         {
             _currentDialogueElement = SetNewElementAtSimplePhrase(_dialogueBunch.RootDialogue);
-            //also set element (exi from answer)
             if (_currentDialogueElement == null)
             {
+                Debug.Log("1");
                 //_currentDialogueElement = SetNewElementAtSimplePhrase(_dialogueBunch.RootDialogue, _currentAnswerId);
             }
+            //Debug.Log($"1 - {_currentDialogueElement.simplePhrase.InputText}");
+            //Debug.Log($"1 - {_currentDialogueElement.Id}");
             ViewDialogue();
+            if (_currentDialogueElement == null) Debug.Log("2");
         }
     }
 
@@ -72,7 +76,6 @@ public class DialogueViewer : MonoBehaviour
             yield return new WaitForSeconds(GetCurrentAnim(_dialogueAnimator).length);
             _isGoing = true;
         }
-        _currentDialogueElement = _dialogueBunch.RootDialogue[0];
         ViewDialogue();
     }
 
@@ -121,71 +124,114 @@ public class DialogueViewer : MonoBehaviour
         }
     }
 
+    //private DialogueBaseClass SetNewElementAtSimplePhrase(List<DialogueBaseClass> dialogue)
+    //{
+        
+    //    DialogueBaseClass currentDialogueElement = null;
+    //    foreach (DialogueBaseClass dialogueElement in dialogue)
+    //    {
+    //        if (currentDialogueElement == null)
+    //        {
+    //            if(_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
+    //            {
+    //                if ((_currentDialogueElement.Id + 1 == dialogueElement.Id) && dialogue.Contains(_currentDialogueElement))
+    //                {
+    //                    currentDialogueElement = dialogueElement;
+    //                    return currentDialogueElement;
+    //                }
+
+    //                if (dialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
+    //                {
+    //                    foreach (DialogueBaseClass.Answer answer in dialogueElement.Answers)
+    //                    {
+    //                        currentDialogueElement = SetNewElementAtSimplePhrase(answer.NextDialogueBaseClasses);
+    //                        if(currentDialogueElement != null)
+    //                        {
+    //                            return currentDialogueElement;
+    //                        }
+    //                    }
+    //                }
+    //            }
+
+    //        }
+    //        else break;
+    //    }
+    //    return currentDialogueElement;
+    //}
+
+    //private DialogueBaseClass SetNewElementAtSimplePhrase(List<DialogueBaseClass> dialogue, int answeId)
+    //{
+    //    DialogueBaseClass currentDialogueElement = null;
+    //    for (int i = 0; i < dialogue.Count - 1; i++)
+    //    {
+    //        if (currentDialogueElement == null)
+    //        {
+    //            if (_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
+    //            {
+    //                if (dialogue[i].Id == _currentAnswerId)
+    //                {
+    //                    currentDialogueElement = dialogue[i + 1];
+    //                    return currentDialogueElement;
+    //                }
+
+    //                if (dialogue[i].TypeOfDialogue == TypeOfDialogue.Answers)
+    //                {
+    //                    foreach (DialogueBaseClass.Answer answer in dialogue[i].Answers)
+    //                    {
+    //                        currentDialogueElement = SetNewElementAtSimplePhrase(answer.NextDialogueBaseClasses);
+    //                        if (currentDialogueElement != null)
+    //                        {
+    //                            return currentDialogueElement;
+    //                        }
+    //                    }
+    //                }
+    //            }
+
+    //        }
+    //        else break;
+    //    }
+    //    return currentDialogueElement;
+    //}
+
     private DialogueBaseClass SetNewElementAtSimplePhrase(List<DialogueBaseClass> dialogue)
     {
-        
         DialogueBaseClass currentDialogueElement = null;
-        foreach (DialogueBaseClass dialogueElement in dialogue)
+        if (_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
         {
-            if (currentDialogueElement == null)
+            for (int i = 0; i < dialogue.Count - 1; i++)
             {
-                if(_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
+                if (dialogue[i] == _currentDialogueElement)
                 {
-                    if ((_currentDialogueElement.Id + 1 == dialogueElement.Id) && dialogue.Contains(_currentDialogueElement))
-                    {
-                        currentDialogueElement = dialogueElement;
-                        return currentDialogueElement;
-                    }
+                    currentDialogueElement = dialogue[i + 1];
+                    return currentDialogueElement;
+                }
 
-                    if (dialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
+                if (dialogue[i].TypeOfDialogue == TypeOfDialogue.Answers)
+                {
+                    foreach (DialogueBaseClass.Answer answer in dialogue[i].Answers)
                     {
-                        foreach (DialogueBaseClass.Answer answer in dialogueElement.Answers)
+                        currentDialogueElement = SetNewElementAtSimplePhrase(answer.NextDialogueBaseClasses);
+                        if (currentDialogueElement != null)
                         {
-                            currentDialogueElement = SetNewElementAtSimplePhrase(answer.NextDialogueBaseClasses);
-                            if(currentDialogueElement != null)
-                            {
-                                return currentDialogueElement;
-                            }
+                            return currentDialogueElement;
                         }
                     }
                 }
-
             }
-            else break;
-        }
-        return currentDialogueElement;
-    }
-
-    private DialogueBaseClass SetNewElementAtSimplePhrase(List<DialogueBaseClass> dialogue, int answeId)
-    {
-        DialogueBaseClass currentDialogueElement = null;
-        for (int i = 0; i < dialogue.Count - 1; i++)
-        {
-            if (currentDialogueElement == null)
+            for (int i = 0; i < dialogue.Count - 1; i++)
             {
-                if (_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
+                if (dialogue[i].TypeOfDialogue == TypeOfDialogue.Answers)
                 {
-                    if (dialogue[i] == _currentDialogueElement)
+                    foreach (DialogueBaseClass.Answer answer in dialogue[i].Answers)
                     {
-                        currentDialogueElement = dialogue[i + 1];
-                        return currentDialogueElement;
-                    }
-
-                    if (dialogue[i].TypeOfDialogue == TypeOfDialogue.Answers)
-                    {
-                        foreach (DialogueBaseClass.Answer answer in dialogue[i].Answers)
+                        if (answer.NextDialogueBaseClasses.Contains(_currentDialogueElement))
                         {
-                            currentDialogueElement = SetNewElementAtSimplePhrase(answer.NextDialogueBaseClasses);
-                            if (currentDialogueElement != null)
-                            {
-                                return currentDialogueElement;
-                            }
+                            currentDialogueElement = dialogue[i + 1];
+                            return currentDialogueElement;
                         }
                     }
                 }
-
             }
-            else break;
         }
         return currentDialogueElement;
     }
