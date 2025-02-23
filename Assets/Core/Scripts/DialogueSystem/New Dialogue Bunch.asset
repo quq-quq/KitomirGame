@@ -13,37 +13,51 @@ MonoBehaviour:
   m_Name: New Dialogue Bunch
   m_EditorClassIdentifier: 
   _rootDialogue:
-  - _symbolTime: 0
+  - _symbolTime: 0.1
     _typeOfDialogue: 1
     _simplePhrase:
-      inputText: 
+      inputText: "\u0410 \u043D\u0443 \u043A\u0430 \u0432\u0435\u0449\u0438 \u043E\u0442\u0434\u0430\u043B"
     _answers:
-    - inputText: g
+    - inputText: "\u043E\u0431\u043E\u0437\u0432\u0430\u0442\u044C"
       nextDialogueBaseClasses:
       - _symbolTime: 0
         _typeOfDialogue: 0
         _simplePhrase:
-          inputText: g
+          inputText: "\u0442\u044B \u0447\u043C\u043E"
         _answers: []
-        Id: 1
-    Id: 0
-  - _symbolTime: 0
+      - _symbolTime: 0
+        _typeOfDialogue: 1
+        _simplePhrase:
+          inputText: "\u0442\u044B \u0447\u043C\u043E"
+        _answers: []
+      - _symbolTime: 0
+        _typeOfDialogue: 0
+        _simplePhrase:
+          inputText: "\u0442\u044B \u0447\u043C\u043E"
+        _answers: []
+    - inputText: "\u043F\u0438\u0434\u043E\u0440\u043D\u0443\u0442\u044C"
+      nextDialogueBaseClasses:
+      - _symbolTime: 0
+        _typeOfDialogue: 0
+        _simplePhrase:
+          inputText: "\u0442\u044B \u0433\u0435\u0439"
+        _answers: []
+    - inputText: "\u043A\u0435\u043A\u0430\u043D\u0443\u0442\u044C"
+      nextDialogueBaseClasses:
+      - _symbolTime: 0.2
+        _typeOfDialogue: 0
+        _simplePhrase:
+          inputText: "\u043A\u0435\u043A"
+        _answers: []
+  - _symbolTime: 0.1
     _typeOfDialogue: 0
     _simplePhrase:
-      inputText: g
+      inputText: "\u0432\u0435\u0449\u0438 \u043E\u0442\u0434\u0430\u043B \u043A\u043E\u043C\u0443
+        \u0433\u043E\u0432\u043E\u0440\u044E \u0431\u043B\u044F"
     _answers: []
-    Id: 2
-  - _symbolTime: 0
-    _typeOfDialogue: 1
+  - _symbolTime: 0.1
+    _typeOfDialogue: 0
     _simplePhrase:
-      inputText: 
-    _answers:
-    - inputText: g
-      nextDialogueBaseClasses:
-      - _symbolTime: 0
-        _typeOfDialogue: 0
-        _simplePhrase:
-          inputText: f
-        _answers: []
-        Id: 4
-    Id: 3
+      inputText: "\u0431\u044B\u0441\u0442\u0440\u043E \u043E\u0442\u0434\u0430\u043B
+        \u0432\u0435\u0449\u0438\n"
+    _answers: []
