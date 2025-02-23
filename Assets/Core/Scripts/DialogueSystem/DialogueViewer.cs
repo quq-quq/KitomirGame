@@ -2,9 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
-using UnityEngine.UIElements;
 using System.Collections.Generic;
-using System.Linq;
 
 public class DialogueViewer : MonoBehaviour
 {
@@ -16,11 +14,10 @@ public class DialogueViewer : MonoBehaviour
     [SerializeField] private Animator _dialogueAnimator;
     [SerializeField] private TMP_Text _simplePhraseChamber;
     [SerializeField] private VerticalLayoutGroup _answersChamberLayoutGroup;
-    [SerializeField, Tooltip("must contain AnswerButton script")] private GameObject _answerButtonPrefab;
-    private DialogueBaseClass _currentDialogueElement;
+    [SerializeField, Tooltip("must contain AnswerButton script")] private GameObject _answerButtonPrefab;    
     private Transform _answersChamberTransform;
+    private DialogueBaseClass _currentDialogueElement;
     private bool _isGoing;
-    private int _currentAnswerId = -1;
 
     private void Start()
     {
@@ -29,11 +26,11 @@ public class DialogueViewer : MonoBehaviour
             Debug.LogError("GameObject dont have AnswerButtonScript or GameObjet dont initialised");
         }
 
-        _answersChamberTransform = _answersChamberLayoutGroup.gameObject.transform;
         _simplePhraseChamber.color = Color.black;
         _simplePhraseChamber.text = "";
-        _isGoing = false;
+        _answersChamberTransform = _answersChamberLayoutGroup.gameObject.transform;
         _currentDialogueElement = _dialogueBunch.RootDialogue[0];
+        _isGoing = false;
 
         if (_isActiveOnStart)
         {
@@ -51,23 +48,9 @@ public class DialogueViewer : MonoBehaviour
         if (_isGoing && _currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && (Input.anyKeyDown))
         {
             _currentDialogueElement = SetNewElementAtSimplePhrase(_dialogueBunch.RootDialogue);
-            if (_currentDialogueElement == null)
-            {
-                Debug.Log("1");
-                //_currentDialogueElement = SetNewElementAtSimplePhrase(_dialogueBunch.RootDialogue, _currentAnswerId);
-            }
-            //Debug.Log($"1 - {_currentDialogueElement.simplePhrase.InputText}");
-            //Debug.Log($"1 - {_currentDialogueElement.Id}");
             ViewDialogue();
-            if (_currentDialogueElement == null) Debug.Log("2");
         }
     }
-
-    //как ад листенер в ансверс баттон и ремув листенер с переходом на следующий диалог
-    //и как в целом реализовать перепрыгивание между элементами банча
-    //через метод в ансвер баттон которые получает значекния надо
-    // а обычный текст просто через сет куррент диалог
-    //остальсь уничтожение и активация перехода и завершение
 
     private IEnumerator Starter()
     {
@@ -84,12 +67,14 @@ public class DialogueViewer : MonoBehaviour
         _isGoing = false;
         _dialogueAnimator.SetTrigger("IsEnding");
         yield return new WaitForSeconds(GetCurrentAnim(_dialogueAnimator).length);
+
         foreach (Transform child in _answersChamberTransform)
         {
             Destroy(child.gameObject);
         }
         _simplePhraseChamber.text = string.Empty;
         _dialogueCanvas.gameObject.SetActive(false);
+        _currentDialogueElement = _dialogueBunch.RootDialogue[0];
     }
 
     private void ViewDialogue()
@@ -123,75 +108,6 @@ public class DialogueViewer : MonoBehaviour
             StartCoroutine(Ender());
         }
     }
-
-    //private DialogueBaseClass SetNewElementAtSimplePhrase(List<DialogueBaseClass> dialogue)
-    //{
-        
-    //    DialogueBaseClass currentDialogueElement = null;
-    //    foreach (DialogueBaseClass dialogueElement in dialogue)
-    //    {
-    //        if (currentDialogueElement == null)
-    //        {
-    //            if(_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
-    //            {
-    //                if ((_currentDialogueElement.Id + 1 == dialogueElement.Id) && dialogue.Contains(_currentDialogueElement))
-    //                {
-    //                    currentDialogueElement = dialogueElement;
-    //                    return currentDialogueElement;
-    //                }
-
-    //                if (dialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
-    //                {
-    //                    foreach (DialogueBaseClass.Answer answer in dialogueElement.Answers)
-    //                    {
-    //                        currentDialogueElement = SetNewElementAtSimplePhrase(answer.NextDialogueBaseClasses);
-    //                        if(currentDialogueElement != null)
-    //                        {
-    //                            return currentDialogueElement;
-    //                        }
-    //                    }
-    //                }
-    //            }
-
-    //        }
-    //        else break;
-    //    }
-    //    return currentDialogueElement;
-    //}
-
-    //private DialogueBaseClass SetNewElementAtSimplePhrase(List<DialogueBaseClass> dialogue, int answeId)
-    //{
-    //    DialogueBaseClass currentDialogueElement = null;
-    //    for (int i = 0; i < dialogue.Count - 1; i++)
-    //    {
-    //        if (currentDialogueElement == null)
-    //        {
-    //            if (_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
-    //            {
-    //                if (dialogue[i].Id == _currentAnswerId)
-    //                {
-    //                    currentDialogueElement = dialogue[i + 1];
-    //                    return currentDialogueElement;
-    //                }
-
-    //                if (dialogue[i].TypeOfDialogue == TypeOfDialogue.Answers)
-    //                {
-    //                    foreach (DialogueBaseClass.Answer answer in dialogue[i].Answers)
-    //                    {
-    //                        currentDialogueElement = SetNewElementAtSimplePhrase(answer.NextDialogueBaseClasses);
-    //                        if (currentDialogueElement != null)
-    //                        {
-    //                            return currentDialogueElement;
-    //                        }
-    //                    }
-    //                }
-    //            }
-
-    //        }
-    //        else break;
-    //    }
-    //    return currentDialogueElement;
-    //}
 
     private DialogueBaseClass SetNewElementAtSimplePhrase(List<DialogueBaseClass> dialogue)
     {
@@ -238,9 +154,11 @@ public class DialogueViewer : MonoBehaviour
 
     public void SetNewElementAtAnswer(DialogueBaseClass currentDialogueElement)
     {
-        _currentDialogueElement = currentDialogueElement;
-        _currentAnswerId = currentDialogueElement.Id;
-        ViewDialogue();
+        if(_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
+        {
+            _currentDialogueElement = currentDialogueElement;
+            ViewDialogue();
+        }
     }
 
     //for next evolution

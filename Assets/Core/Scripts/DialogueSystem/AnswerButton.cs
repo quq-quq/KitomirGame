@@ -20,11 +20,11 @@ public class AnswerButton : MonoBehaviour
         _textChamber.color = Color.black;
         _textChamber.text = string.Empty;
         _button = GetComponent<Button>();
-        _button?.onClick.AddListener(() => DialogueViewer.SetNewElementAtAnswer(NextDialogueClass));
+        _button.onClick.AddListener(() => DialogueViewer.SetNewElementAtAnswer(NextDialogueClass));
     }
 
     private void OnDisable()
     {
-        _button?.onClick.RemoveListener(() => DialogueViewer.SetNewElementAtAnswer(NextDialogueClass));
+        _button.onClick.RemoveListener(() => DialogueViewer.SetNewElementAtAnswer(NextDialogueClass));
     }
 }

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 public enum TypeOfDialogue
@@ -19,11 +18,11 @@ public class DialogueBaseClass
         [SerializeField] private string inputText;
         [SerializeField] private List<DialogueBaseClass> nextDialogueBaseClasses;
 
-        public string InputText
+        public readonly string InputText
         {
             get => inputText;
         }
-        public List<DialogueBaseClass> NextDialogueBaseClasses
+        public readonly List<DialogueBaseClass> NextDialogueBaseClasses
         {
             get => nextDialogueBaseClasses;
         }
@@ -34,7 +33,7 @@ public class DialogueBaseClass
     {
         [SerializeField, Multiline(3)] private string inputText;
 
-        public string InputText
+        public readonly string InputText
         {
             get => inputText;
         }
@@ -45,7 +44,6 @@ public class DialogueBaseClass
     [SerializeField] private SimplePhrase _simplePhrase;
     [SerializeField] private List<Answer> _answers;
 
-    public int Id { get; set; } = -1;
     public float SymbolTime
     {
         get => _symbolTime;
