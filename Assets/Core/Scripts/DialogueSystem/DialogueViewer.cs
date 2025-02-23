@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
+using System.Linq;
 
 public class DialogueViewer : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class DialogueViewer : MonoBehaviour
     private DialogueBaseClass _currentDialogueElement;
     private Transform _answersChamberTransform;
     private bool _isGoing;
-    private int _currentIndex;
+    private int _currentAnswerId = -1;
 
     private void Start()
     {
@@ -49,6 +50,11 @@ public class DialogueViewer : MonoBehaviour
         if (_isGoing && _currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && (Input.anyKeyDown))
         {
             _currentDialogueElement = SetNewElementAtSimplePhrase(_dialogueBunch.RootDialogue);
+            //also set element (exi from answer)
+            if (_currentDialogueElement == null)
+            {
+                //_currentDialogueElement = SetNewElementAtSimplePhrase(_dialogueBunch.RootDialogue, _currentAnswerId);
+            }
             ViewDialogue();
         }
     }
@@ -117,6 +123,7 @@ public class DialogueViewer : MonoBehaviour
 
     private DialogueBaseClass SetNewElementAtSimplePhrase(List<DialogueBaseClass> dialogue)
     {
+        
         DialogueBaseClass currentDialogueElement = null;
         foreach (DialogueBaseClass dialogueElement in dialogue)
         {
@@ -124,11 +131,12 @@ public class DialogueViewer : MonoBehaviour
             {
                 if(_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
                 {
-                    if (_currentDialogueElement.Id + 1 == dialogueElement.Id)
+                    if ((_currentDialogueElement.Id + 1 == dialogueElement.Id) && dialogue.Contains(_currentDialogueElement))
                     {
                         currentDialogueElement = dialogueElement;
                         return currentDialogueElement;
                     }
+
                     if (dialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
                     {
                         foreach (DialogueBaseClass.Answer answer in dialogueElement.Answers)
@@ -147,9 +155,45 @@ public class DialogueViewer : MonoBehaviour
         }
         return currentDialogueElement;
     }
+
+    private DialogueBaseClass SetNewElementAtSimplePhrase(List<DialogueBaseClass> dialogue, int answeId)
+    {
+        DialogueBaseClass currentDialogueElement = null;
+        for (int i = 0; i < dialogue.Count - 1; i++)
+        {
+            if (currentDialogueElement == null)
+            {
+                if (_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
+                {
+                    if (dialogue[i] == _currentDialogueElement)
+                    {
+                        currentDialogueElement = dialogue[i + 1];
+                        return currentDialogueElement;
+                    }
+
+                    if (dialogue[i].TypeOfDialogue == TypeOfDialogue.Answers)
+                    {
+                        foreach (DialogueBaseClass.Answer answer in dialogue[i].Answers)
+                        {
+                            currentDialogueElement = SetNewElementAtSimplePhrase(answer.NextDialogueBaseClasses);
+                            if (currentDialogueElement != null)
+                            {
+                                return currentDialogueElement;
+                            }
+                        }
+                    }
+                }
+
+            }
+            else break;
+        }
+        return currentDialogueElement;
+    }
+
     public void SetNewElementAtAnswer(DialogueBaseClass currentDialogueElement)
     {
         _currentDialogueElement = currentDialogueElement;
+        _currentAnswerId = currentDialogueElement.Id;
         ViewDialogue();
     }
 
