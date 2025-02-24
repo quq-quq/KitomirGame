@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class PlayerSounds : MonoBehaviour
 {
     private const float FOOTSTEPS_TIMER_MAX = .3f;

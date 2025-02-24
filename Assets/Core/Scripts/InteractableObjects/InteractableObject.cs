@@ -3,7 +3,11 @@ using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
 {
+    
     [SerializeField] private GameObject _interactiveSign;
+ 
+    private bool _isInteractable = true;
+    
     
     private void Start()
     {
@@ -15,13 +19,23 @@ public class InteractableObject : MonoBehaviour
         Debug.Log("Parent's Interact");
     }
 
-    public void Select()
+    public bool TrySelect()
     {
-        _interactiveSign.SetActive(true);
+        if (_isInteractable)
+        {
+            _interactiveSign.SetActive(true);
+        }
+        
+        return _isInteractable;
     }
 
     public void Deselect()
     {
         _interactiveSign.SetActive(false);
+    }
+
+    public void SetInteractable(bool isInteractable)
+    {
+        _isInteractable = isInteractable;
     }
 }

@@ -6,23 +6,32 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Core/Scenes/SampleScene.unity
+    path: Assets/Core/Scenes/NotToUseInGame/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
     path: Assets/Core/Scenes/KitomirHomeScene.unity
-    guid: b6fd1aee61ab0362e98f31f98200d32e
+    guid: 14e0c7d05eabc1a21ae6b17860e2e56d
   - enabled: 1
     path: Assets/Core/Scenes/CorridorScene.unity
-    guid: cbcf4c94b0b475f94aea1ce610af8ea2
+    guid: 718e2049c8433d26fa6f952347a13960
   - enabled: 1
     path: Assets/Core/Scenes/MathsAuditoriumScene.unity
-    guid: 95ade1697a9e725109342d7e8a4bf52d
+    guid: 45d853f414732d7d79a23539aaaf436c
   - enabled: 1
     path: Assets/Core/Scenes/ITAuditoriumScene.unity
-    guid: e79b12c9c06c84472b53d1cdf29dea90
+    guid: d9251e730d395c7e7826af21ba2e3405
   - enabled: 1
     path: Assets/Core/Scenes/PhysicsAuditoriumScene.unity
-    guid: 2efc16876fddcfc4e925619a1f4380b9
+    guid: 97d562559290355b5919bf775afe784d
+  - enabled: 1
+    path: Assets/Core/Scenes/HappyEndScene.unity
+    guid: ff95282e1bd6805dfbac2207a1bc3a4d
+  - enabled: 1
+    path: Assets/Core/Scenes/MainMenuScene.unity
+    guid: 9e604680d3f7fea0aa278b3d2f6ad961
+  - enabled: 1
+    path: Assets/Core/Scenes/SecretGameModeScene.unity
+    guid: abf923309e49455d3995eaed7531fad7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
