@@ -13,6 +13,7 @@ public class DialogueViewer : MonoBehaviour
     [SerializeField] private Canvas _dialogueCanvas;
     [SerializeField] private Animator _dialogueAnimator;
     [SerializeField] private TMP_Text _simplePhraseChamber;
+    [SerializeField] private TMP_Text _nameChamber;
     [SerializeField] private VerticalLayoutGroup _answersChamberLayoutGroup;
     [SerializeField, Tooltip("must contain AnswerButton script")] private GameObject _answerButtonPrefab;    
     private Transform _answersChamberTransform;
@@ -97,8 +98,9 @@ public class DialogueViewer : MonoBehaviour
                 for (int i = 0; i < _currentDialogueElement.Answers.Count; i++)
                 {
                     AnswerButton currentAnswerButton = Instantiate(_answerButtonPrefab, _answersChamberTransform).GetComponent<AnswerButton>();
-                    currentAnswerButton.NextDialogueClass = _currentDialogueElement.Answers[i].NextDialogueBaseClasses[0];
-                    currentAnswerButton.DialogueViewer = this;
+                    DialogueBaseClass nextDialogueElement = _currentDialogueElement.Answers[i].NextDialogueBaseClasses[0];
+                    currentAnswerButton.Button.onClick.AddListener(() => SetNewElementAtAnswer(nextDialogueElement));
+
                     StartCoroutine(DialogueBaseClass.WritingText(_currentDialogueElement.Answers[i].InputText, currentAnswerButton.TextChamber, _currentDialogueElement.SymbolTime));
                 }
             }
