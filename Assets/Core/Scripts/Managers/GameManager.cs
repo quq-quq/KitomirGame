@@ -116,6 +116,10 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 0f;
                 _pauseMenu.SetActive(true); 
                 IsGamePaused = true;
+                if (SceneManager.GetActiveScene().name == SceneNames.HAPPY_END_SCENE)
+                {
+                    MusicManager.Instance.PauseSoundtrack();
+                }
                 
                 if (Player.Instance != null)
                 {
@@ -137,6 +141,10 @@ public class GameManager : MonoBehaviour
             Player.Instance.CanAct = true;
         }
         IsGamePaused = false;
+        if (SceneManager.GetActiveScene().name == SceneNames.HAPPY_END_SCENE)
+        {
+            MusicManager.Instance.ResumeSoundtrack();
+        }
     }
     
     private void OnDisable()
@@ -152,7 +160,11 @@ public class GameManager : MonoBehaviour
     {
         if (e.CurrentState == GameState.ExamsFailed)
         {
-            
+            if (DialogueViewer.IsGoing)
+            {
+                //todo finish dialogue
+            }
+            Player.Instance.CanAct = false;
             StartCoroutine(LoadScene(SceneNames.SAD_END_SCENE));
             Timer.Instance.DestroyTimer();
         }

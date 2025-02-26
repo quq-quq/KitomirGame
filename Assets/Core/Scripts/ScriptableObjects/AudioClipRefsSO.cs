@@ -15,5 +15,6 @@ public class AudioClipRefsSO : ScriptableObject
     public AudioClip openDoor;
     public AudioClip commissarOpenDoor;
     public AudioClip vehicleNoise;
+    public AudioClip almostOutOfTimeTic;
 
 }

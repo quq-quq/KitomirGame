@@ -1,14 +1,19 @@
+using System;
 using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
+    public static Timer Instance { get; private set; }
+    public event EventHandler OnAlmostOutOfTime;
+    
     [SerializeField] private TimerVisual _timerVisual;
     
-    private const float TIMER_MAX = 5; //15 minutes
+    private const float TIMER_MAX = 15f; //15 minutes
+    private const float ALMOST_OUT_OF_TIME = 10f;
     
-    public static Timer Instance { get; private set; }
     private float _timer; 
     private bool _isRunning;
+    private bool _isAlmostOutOfTime;
 
     private void Awake()
     {
@@ -34,6 +39,11 @@ public class Timer : MonoBehaviour
         {
             _timer -= Time.deltaTime;
             _timerVisual.UpdateVisual(_timer/TIMER_MAX, _timer);
+            if (_timer <= ALMOST_OUT_OF_TIME && !_isAlmostOutOfTime)
+            {
+                OnAlmostOutOfTime?.Invoke(this, EventArgs.Empty);
+                _isAlmostOutOfTime = true;
+            }
         }
         else if (_timer <= 0 && _isRunning)
         {
