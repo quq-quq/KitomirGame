@@ -48,7 +48,6 @@ public class InputManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE && _mainMenuPlayerSecretInput != MAIN_MENU_SECRET_INPUT)
         {
-            
             if (Input.anyKeyDown)
             {
                 _mainMenuPlayerSecretInput += Input.inputString.ToLower();
@@ -56,8 +55,13 @@ public class InputManager : MonoBehaviour
                 {
                     _mainMenuPlayerSecretInput = "r";
                 }
-            }
 
+                if (_mainMenuPlayerSecretInput.Length > 7)
+                {
+                    _mainMenuPlayerSecretInput = "";
+                }
+            }
+            
             if (_mainMenuPlayerSecretInput == MAIN_MENU_SECRET_INPUT)
             {
                 OnSecretInputSolved?.Invoke(this, EventArgs.Empty);
@@ -72,7 +76,6 @@ public class InputManager : MonoBehaviour
 
     private void PressButton_performed(InputAction.CallbackContext obj)
     {
-        // we invoke this event only when the game is paused or when we are in the main menu scene
         if (GameManager.IsGamePaused)
         {
             GameManager.TimeScaleZeroInvoke(this, EventArgs.Empty, OnMenuButtonPressed);
@@ -81,17 +84,15 @@ public class InputManager : MonoBehaviour
         {
             OnMenuButtonPressed?.Invoke(this, EventArgs.Empty);
         }
-        
     }
 
     private void DownSwitch_performed(InputAction.CallbackContext obj)
     {
-        // we invoke this event only when the game is paused or when we are in the main menu scene
         if (GameManager.IsGamePaused)
         {
             GameManager.TimeScaleZeroInvoke(this, EventArgs.Empty, OnMenuSwitchDown);
         }
-        else if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE)
+        else
         {
             OnMenuSwitchDown?.Invoke(this, EventArgs.Empty);
         }
@@ -99,12 +100,11 @@ public class InputManager : MonoBehaviour
 
     private void UpSwitch_performed(InputAction.CallbackContext obj)
     {
-        // we invoke this event only when the game is paused or when we are in the main menu scene
         if (GameManager.IsGamePaused)
         {
             GameManager.TimeScaleZeroInvoke(this, EventArgs.Empty, OnMenuSwitchUp);
         }
-        else if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE)
+        else
         {
             OnMenuSwitchUp?.Invoke(this, EventArgs.Empty);
         }
