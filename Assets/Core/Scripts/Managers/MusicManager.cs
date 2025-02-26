@@ -6,7 +6,21 @@ public class MusicManager : MonoBehaviour
 {
     [SerializeField] private AudioSource _audioSource;
     
-    public void Start()
+    public static MusicManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    
+    private void Start()
     {
         FadeScreen.OnFadingStarted += FadeScreen_OnFadingStarted;
     }
@@ -30,6 +44,16 @@ public class MusicManager : MonoBehaviour
         {
             _audioSource.volume = 0f;
         }
+    }
+
+    public void PauseSoundtrack()
+    {
+        _audioSource.Pause();
+    }
+
+    public void ResumeSoundtrack()
+    {
+        _audioSource.UnPause();
     }
 
     private void OnDisable()

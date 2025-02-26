@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -25,6 +26,24 @@ public class SoundManager : MonoBehaviour
         Door.OnDoorOpen += Door_OnDoorOpen;
         FadeScreen.OnWaitAfterFadingStarted += FadeScreen_OnWaitAfterFadingStarted;
         InputManager.Instance.OnSecretInputSolved += InputManager_OnSecretInputSolved;
+        if (Timer.Instance != null)
+        {
+            Timer.Instance.OnAlmostOutOfTime += Timer_OnAlmostOutOfTime;
+        }
+        GameStateManager.OnStateChanged += GameStateManager_OnStateChanged;
+    }
+
+    private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
+    {
+        if (GameStateManager.State == GameState.ExamsFailed)
+        {
+            PlaySound(_audioClipRefsSO.hardFail, Vector3.zero);
+        }
+    }
+
+    private void Timer_OnAlmostOutOfTime(object sender, EventArgs e)
+    {
+        PlaySound(_audioClipRefsSO.almostOutOfTimeTic, Vector3.zero);
     }
 
     private void InputManager_OnSecretInputSolved(object sender, EventArgs e)
@@ -61,5 +80,10 @@ public class SoundManager : MonoBehaviour
     {
         Door.OnDoorOpen -= Door_OnDoorOpen;
         FadeScreen.OnWaitAfterFadingStarted -= FadeScreen_OnWaitAfterFadingStarted;
+        InputManager.Instance.OnSecretInputSolved -= InputManager_OnSecretInputSolved;
+        if (Timer.Instance != null)
+        {
+            Timer.Instance.OnAlmostOutOfTime -= Timer_OnAlmostOutOfTime;
+        }
     }
 }
