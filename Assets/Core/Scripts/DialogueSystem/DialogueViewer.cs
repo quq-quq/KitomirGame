@@ -15,10 +15,10 @@ public class DialogueViewer : MonoBehaviour
     [SerializeField] private TMP_Text _simplePhraseChamber;
     [SerializeField] private TMP_Text _nameChamber;
     [SerializeField] private ButtonContainer _answersChamberLayoutGroup;
-    [SerializeField, Tooltip("must contain AnswerButton script")] private GameObject _answerButtonPrefab;    
+    [SerializeField, Tooltip("must contain AnswerButton script")] private GameObject _answerButtonPrefab;
+    public static bool IsGoing {get; private set; }
     private Transform _answersChamberTransform;
     private DialogueBaseClass _currentDialogueElement;
-    private bool _isGoing;
 
     private void Start()
     {
@@ -31,7 +31,7 @@ public class DialogueViewer : MonoBehaviour
         _simplePhraseChamber.text = "";
         _answersChamberTransform = _answersChamberLayoutGroup.gameObject.transform;
         _currentDialogueElement = _dialogueBunch.RootDialogue[0];
-        _isGoing = false;
+        IsGoing = false;
 
         if (_isActiveOnStart)
         {
@@ -46,7 +46,7 @@ public class DialogueViewer : MonoBehaviour
 
     private void Update()
     {
-        if (_isGoing && _currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && (Input.anyKeyDown))
+        if (IsGoing && _currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && (Input.anyKeyDown))
         {
             _currentDialogueElement = SetNewElementAtSimplePhrase(_dialogueBunch.RootDialogue);
             ViewDialogue();
@@ -55,17 +55,17 @@ public class DialogueViewer : MonoBehaviour
 
     private IEnumerator Starter()
     {
-        if (!_isGoing)
+        if (!IsGoing)
         {
             yield return new WaitForSeconds(GetCurrentAnim(_dialogueAnimator).length);
-            _isGoing = true;
+            IsGoing = true;
         }
         ViewDialogue();
     }
 
     private IEnumerator Ender()
     {
-        _isGoing = false;
+        IsGoing = false;
         _dialogueAnimator.SetTrigger("IsEnding");
         yield return new WaitForSeconds(GetCurrentAnim(_dialogueAnimator).length);
 

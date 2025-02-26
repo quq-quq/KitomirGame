@@ -10,15 +10,42 @@ public class PauseButtonContainer : ButtonContainer
     [SerializeField] private GameObject _hiddenButtonsGroup;
 
 
-    protected override void Start()
+    private void Start()
     {
-        
         _hiddenButtonsGroup?.SetActive(false);
-        base.Start();
+        InitializeContainer();
+        
+        InputManager.Instance.OnMenuSwitchUp += InputManager_OnMenuSwitchUp;
+        InputManager.Instance.OnMenuSwitchDown += InputManager_OnMenuSwitchDown;
+        InputManager.Instance.OnMenuButtonPressed += InputManager_OnMenuButtonPressed;
         MenuButton.OnHiddenButtonsNeedToSetActive += MenuButton_OnHiddenButtonsNeedToSetActive;
     }
+
+    private void InputManager_OnMenuSwitchUp(object sender, EventArgs e)
+    {
+        if (GameManager.IsGamePaused)
+        {
+            SwitchButtonUp();
+        }
+    }
     
+    private void InputManager_OnMenuSwitchDown(object sender, EventArgs e)
+    {
+        if (GameManager.IsGamePaused)
+        {
+            SwitchButtonDown();
+        }
+    }
     
+    private void InputManager_OnMenuButtonPressed(object sender, EventArgs e)
+    {
+        if (GameManager.IsGamePaused)
+        {
+            PressButton();
+        }
+    }
+
+
     private void MenuButton_OnHiddenButtonsNeedToSetActive(object sender, EventArgs e)
     {
         ResetActiveButtonsGroup();
@@ -52,6 +79,9 @@ public class PauseButtonContainer : ButtonContainer
     protected override void OnDestroy()
     {
         base.OnDestroy();
+        InputManager.Instance.OnMenuSwitchUp -= InputManager_OnMenuSwitchUp;
+        InputManager.Instance.OnMenuSwitchDown -= InputManager_OnMenuSwitchDown;
+        InputManager.Instance.OnMenuButtonPressed -= InputManager_OnMenuButtonPressed;
         MenuButton.OnHiddenButtonsNeedToSetActive -= MenuButton_OnHiddenButtonsNeedToSetActive;
     }
 }

@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
 
     private void Pause()
     {
-        if (_canBePaused)
+        if (_canBePaused && !DialogueViewer.IsGoing)
         {
             if (!IsGamePaused)
             {
@@ -173,6 +173,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(Timer.Instance.gameObject);
         }
+
         SceneManager.LoadScene(SceneNames.MAIN_MENU_SCENE);
     }
 }

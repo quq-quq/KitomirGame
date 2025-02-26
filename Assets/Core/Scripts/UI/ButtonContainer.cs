@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -17,22 +16,10 @@ public class ButtonContainer : MonoBehaviour
     protected int SelectedButtonId;
     public List<TextMeshProUGUI> Buttons {  get; protected set; }
 
-    protected virtual void Start()
+    private void Start()
     {
-        SelectedButtonId = 0;
-
-        Buttons = DefaultButtons;
-        DefaultButtonsGroup.SetActive(true);
+        InitializeContainer();
         
-        foreach (var button in Buttons)
-        {
-            button.color = _unselectedColorText;
-        }
-        if (Buttons.Count > 0)
-        {
-            SelectButton(SelectedButtonId);
-        }
-
         InputManager.Instance.OnMenuSwitchUp += InputManager_OnMenuSwitchUp;
         InputManager.Instance.OnMenuSwitchDown += InputManager_OnMenuSwitchDown;
         InputManager.Instance.OnMenuButtonPressed += InputManager_OnMenuButtonPressed;
@@ -41,6 +28,31 @@ public class ButtonContainer : MonoBehaviour
 
     private void InputManager_OnMenuButtonPressed(object sender, EventArgs e)
     {
+        if (!GameManager.IsGamePaused)
+        {
+            PressButton();
+        }
+    }
+
+    private void InputManager_OnMenuSwitchUp(object sender, EventArgs e)
+    {
+        if (!GameManager.IsGamePaused)
+        {
+            SwitchButtonUp();
+        }
+    }
+
+    private void InputManager_OnMenuSwitchDown(object sender, EventArgs e)
+    {
+        if (!GameManager.IsGamePaused)
+        {
+            SwitchButtonDown();
+        }
+    }
+
+    protected void PressButton()
+    {
+        if (Buttons.Count == 0) return;
         UnityEvent unityEvent = Buttons[SelectedButtonId].gameObject.GetComponentInParent<MenuButton>().OnPressMethod;
         if (GameManager.IsGamePaused)
         {
@@ -52,9 +64,8 @@ public class ButtonContainer : MonoBehaviour
         }
     }
 
-    private void InputManager_OnMenuSwitchUp(object sender, EventArgs e)
+    protected void SwitchButtonUp()
     {
-        
         if (SelectedButtonId > 0)
         {
             DeselectButton(SelectedButtonId);
@@ -63,7 +74,7 @@ public class ButtonContainer : MonoBehaviour
         }
     }
 
-    private void InputManager_OnMenuSwitchDown(object sender, EventArgs e)
+    protected void SwitchButtonDown()
     {
         if (SelectedButtonId < Buttons.Count - 1)
         {
@@ -95,6 +106,23 @@ public class ButtonContainer : MonoBehaviour
         {
             SelectedButtonId = 0;
             SelectButton(0);
+        }
+    }
+
+    protected void InitializeContainer()
+    {
+        SelectedButtonId = 0;
+
+        Buttons = DefaultButtons;
+        DefaultButtonsGroup.SetActive(true);
+        
+        foreach (var button in Buttons)
+        {
+            button.color = _unselectedColorText;
+        }
+        if (Buttons.Count > 0)
+        {
+            SelectButton(SelectedButtonId);
         }
     }
 
