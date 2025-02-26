@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
         MenuButton.OnPlayButtonPressed += MenuButton_OnPlayButtonPressed;
         InputManager.Instance.OnPauseAction += InputManager_OnPauseAction;
         InputManager.Instance.OnSecretInputSolved += InputManager_OnSecretInputSolved;
+        GameStateManager.OnStateChanged += GameStateManager_OnStateChanged;
         
         _pauseMenu.SetActive(false);
         _fadeScreenCoroutine = StartCoroutine(_fadeScreen.Appear(1.5f));
@@ -143,6 +144,18 @@ public class GameManager : MonoBehaviour
         Door.OnDoorOpen -= Door_OnDoorOpen;
         MenuButton.OnPlayButtonPressed -= MenuButton_OnPlayButtonPressed;
         InputManager.Instance.OnPauseAction -= InputManager_OnPauseAction;
+        InputManager.Instance.OnSecretInputSolved -= InputManager_OnSecretInputSolved;
+        GameStateManager.OnStateChanged -= GameStateManager_OnStateChanged;
+    }
+    
+    private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
+    {
+        if (e.CurrentState == GameState.ExamsFailed)
+        {
+            
+            StartCoroutine(LoadScene(SceneNames.SAD_END_SCENE));
+            Timer.Instance.DestroyTimer();
+        }
     }
 
     public static void TimeScaleZeroInvoke(object sender, EventArgs e, EventHandler eventToInvoke)
@@ -171,7 +184,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         if (Timer.Instance != null)
         {
-            Destroy(Timer.Instance.gameObject);
+            Timer.Instance.DestroyTimer();
         }
 
         SceneManager.LoadScene(SceneNames.MAIN_MENU_SCENE);

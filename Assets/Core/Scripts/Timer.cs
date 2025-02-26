@@ -4,7 +4,7 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] private TimerVisual _timerVisual;
     
-    private const float TIMER_MAX = 15 * 60; //15 minutes
+    private const float TIMER_MAX = 5; //15 minutes
     
     public static Timer Instance { get; private set; }
     private float _timer; 
@@ -38,11 +38,13 @@ public class Timer : MonoBehaviour
         else if (_timer <= 0 && _isRunning)
         {
             GameStateManager.State = GameState.ExamsFailed;
+            _isRunning = false;
         }
     }
 
     public void DestroyTimer()
     {
+        Instance = null;
         Destroy(gameObject);
     }
 
