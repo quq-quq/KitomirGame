@@ -8,7 +8,7 @@ public class StartForMenu : MonoBehaviour
 {
     [SerializeField] private float _delaySeconds;
     [SerializeField] private float _fadeSeconds;
-    [SerializeField] private ButtonContainer _pauseButtonContainer; 
+    [SerializeField] private ButtonContainer _buttonContainer; 
     private CanvasGroup _canvasGroup;
 
     void Awake()
@@ -21,10 +21,10 @@ public class StartForMenu : MonoBehaviour
     {
         _canvasGroup.alpha = 1;
         
-        _pauseButtonContainer.gameObject.SetActive(false);
+        _buttonContainer.gameObject.SetActive(false);
         yield return new WaitForSeconds(_delaySeconds);
         _canvasGroup.DOFade(0, _fadeSeconds);
-        _pauseButtonContainer.gameObject.SetActive(true);
+        _buttonContainer.gameObject.SetActive(true);
 
     }
 }
