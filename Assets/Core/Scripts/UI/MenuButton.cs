@@ -1,15 +1,22 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
 
 public class MenuButton : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI _textChamber;
     [SerializeField] public UnityEvent OnPressMethod;
 
     public static event EventHandler OnPlayButtonPressed;
     public static event EventHandler OnHiddenButtonsNeedToSetActive;
-    
+
+    public TextMeshProUGUI TextChamber
+    {
+        get => _textChamber;
+    }
+
     public void Play()
     {
         OnPlayButtonPressed?.Invoke(this, EventArgs.Empty);

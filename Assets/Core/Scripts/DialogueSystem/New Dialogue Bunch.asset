@@ -56,11 +56,6 @@ MonoBehaviour:
         _simplePhrase:
           inputText: "\u0442\u044B \u0433\u0435\u0439"
         _answers: []
-      - _symbolTime: 0
-        _typeOfDialogue: 1
-        _simplePhrase:
-          inputText: "\u0442\u044B \u0433\u0435\u0439"
-        _answers: []
     - inputText: "\u043A\u0435\u043A\u0430\u043D\u0443\u0442\u044C"
       nextDialogueBaseClasses:
       - _symbolTime: 0.2
@@ -68,12 +63,6 @@ MonoBehaviour:
         _simplePhrase:
           inputText: "\u043A\u0435\u043A"
         _answers: []
-  - _symbolTime: 0.1
-    _typeOfDialogue: 0
-    _simplePhrase:
-      inputText: "\u0432\u0435\u0449\u0438 \u043E\u0442\u0434\u0430\u043B \u043A\u043E\u043C\u0443
-        \u0433\u043E\u0432\u043E\u0440\u044E \u0431\u043B\u044F"
-    _answers: []
   - _symbolTime: 0.1
     _typeOfDialogue: 0
     _simplePhrase:

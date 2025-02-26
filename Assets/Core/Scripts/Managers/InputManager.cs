@@ -14,6 +14,7 @@ public class InputManager : MonoBehaviour
     public event EventHandler OnMenuButtonPressed;
     public event EventHandler OnSecretInputSolved;
 
+
     private const string MAIN_MENU_SECRET_INPUT = "rulada";
     
     private PlayerInputActions _playerInputActions;
@@ -76,7 +77,7 @@ public class InputManager : MonoBehaviour
         {
             GameManager.TimeScaleZeroInvoke(this, EventArgs.Empty, OnMenuButtonPressed);
         }
-        else if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE)
+        else
         {
             OnMenuButtonPressed?.Invoke(this, EventArgs.Empty);
         }

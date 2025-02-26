@@ -1,11 +1,12 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class PauseButtonContainer : ButtonContainer
 {
     
-    [SerializeField] private TextMeshProUGUI[] _hiddenButtons;
+    [SerializeField] private List<TextMeshProUGUI> _hiddenButtons;
     [SerializeField] private GameObject _hiddenButtonsGroup;
 
 
@@ -25,7 +26,7 @@ public class PauseButtonContainer : ButtonContainer
     
     private void ResetActiveButtonsGroup()
     {
-        for (int i = 0; i < Buttons.Length; i++)
+        for (int i = 0; i < Buttons.Count; i++)
         {
             DeselectButton(i);
         }

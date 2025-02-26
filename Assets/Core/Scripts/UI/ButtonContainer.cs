@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -6,14 +8,14 @@ using UnityEngine.Events;
 
 public class ButtonContainer : MonoBehaviour
 {
-    [SerializeField] protected TextMeshProUGUI[] DefaultButtons;
+    [SerializeField] protected List<TextMeshProUGUI> DefaultButtons = new List<TextMeshProUGUI>();
     [SerializeField] protected GameObject DefaultButtonsGroup;
     
     private readonly Color _selectedColorText = Color.black;
     private readonly Color _unselectedColorText = new (0.490566f, 0.490566f, 0.490566f, 1f);
     
     protected int SelectedButtonId;
-    protected TextMeshProUGUI[] Buttons;
+    public List<TextMeshProUGUI> Buttons {  get; protected set; }
 
     protected virtual void Start()
     {
@@ -26,8 +28,10 @@ public class ButtonContainer : MonoBehaviour
         {
             button.color = _unselectedColorText;
         }
-        
-        SelectButton(SelectedButtonId);
+        if (Buttons.Count > 0)
+        {
+            SelectButton(SelectedButtonId);
+        }
 
         InputManager.Instance.OnMenuSwitchUp += InputManager_OnMenuSwitchUp;
         InputManager.Instance.OnMenuSwitchDown += InputManager_OnMenuSwitchDown;
@@ -61,7 +65,7 @@ public class ButtonContainer : MonoBehaviour
 
     private void InputManager_OnMenuSwitchDown(object sender, EventArgs e)
     {
-        if (SelectedButtonId < Buttons.Length - 1)
+        if (SelectedButtonId < Buttons.Count - 1)
         {
             DeselectButton(SelectedButtonId);
             SelectedButtonId++;
@@ -81,6 +85,16 @@ public class ButtonContainer : MonoBehaviour
         if (Buttons[buttonId].text.StartsWith(">"))
         {
             Buttons[buttonId].text = Buttons[buttonId].text.Substring(1, Buttons[buttonId].text.Length - 2);
+        }
+    }
+
+    public void AddButton(TextMeshProUGUI buttonText)
+    {
+        Buttons.Add(buttonText);
+        if (Buttons.Count == 1)
+        {
+            SelectedButtonId = 0;
+            SelectButton(0);
         }
     }
 

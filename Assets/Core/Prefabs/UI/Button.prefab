@@ -298,6 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b998c8e4f0769bde3acbe9478f6e1838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _textChamber: {fileID: 3749263743602901256}
   OnPressMethod:
     m_PersistentCalls:
       m_Calls: []

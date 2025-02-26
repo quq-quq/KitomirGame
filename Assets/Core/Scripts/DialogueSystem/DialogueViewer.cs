@@ -14,7 +14,7 @@ public class DialogueViewer : MonoBehaviour
     [SerializeField] private Animator _dialogueAnimator;
     [SerializeField] private TMP_Text _simplePhraseChamber;
     [SerializeField] private TMP_Text _nameChamber;
-    [SerializeField] private VerticalLayoutGroup _answersChamberLayoutGroup;
+    [SerializeField] private ButtonContainer _answersChamberLayoutGroup;
     [SerializeField, Tooltip("must contain AnswerButton script")] private GameObject _answerButtonPrefab;    
     private Transform _answersChamberTransform;
     private DialogueBaseClass _currentDialogueElement;
@@ -22,10 +22,10 @@ public class DialogueViewer : MonoBehaviour
 
     private void Start()
     {
-        if (_answerButtonPrefab == null || _answerButtonPrefab.GetComponent<AnswerButton>() == null)
-        {
-            Debug.LogError("GameObject dont have AnswerButtonScript or GameObjet dont initialised");
-        }
+        //if (_answerButtonPrefab == null || _answerButtonPrefab.GetComponent<AnswerButton>() == null)
+        //{
+        //    Debug.LogError("GameObject dont have AnswerButtonScript or GameObjet dont initialised");
+        //}
 
         _simplePhraseChamber.color = Color.black;
         _simplePhraseChamber.text = "";
@@ -83,6 +83,7 @@ public class DialogueViewer : MonoBehaviour
         StopAllCoroutines();
         foreach (Transform child in _answersChamberTransform)
         {
+            _answersChamberLayoutGroup.Buttons.Clear();
             Destroy(child.gameObject);
         }
         _simplePhraseChamber.text = string.Empty;
@@ -97,11 +98,13 @@ public class DialogueViewer : MonoBehaviour
             {
                 for (int i = 0; i < _currentDialogueElement.Answers.Count; i++)
                 {
-                    AnswerButton currentAnswerButton = Instantiate(_answerButtonPrefab, _answersChamberTransform).GetComponent<AnswerButton>();
+                    MenuButton currentAnswerButton = Instantiate(_answerButtonPrefab, _answersChamberTransform).GetComponent<MenuButton>();
                     DialogueBaseClass nextDialogueElement = _currentDialogueElement.Answers[i].NextDialogueBaseClasses[0];
-                    currentAnswerButton.Button.onClick.AddListener(() => SetNewElementAtAnswer(nextDialogueElement));
+                    currentAnswerButton.OnPressMethod.AddListener(() => SetNewElementAtAnswer(nextDialogueElement));
 
-                    StartCoroutine(DialogueBaseClass.WritingText(_currentDialogueElement.Answers[i].InputText, currentAnswerButton.TextChamber, _currentDialogueElement.SymbolTime));
+                    //StartCoroutine(DialogueBaseClass.WritingText(_currentDialogueElement.Answers[i].InputText, currentAnswerButton.TextChamber, _currentDialogueElement.SymbolTime));
+                    currentAnswerButton.TextChamber.text = _currentDialogueElement.Answers[i].InputText;
+                    _answersChamberLayoutGroup.AddButton(currentAnswerButton.TextChamber);
                 }
             }
         }
