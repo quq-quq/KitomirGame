@@ -1,30 +1,42 @@
 using DG.Tweening;
 using System.Collections;
-using UnityEditor.ShaderGraph.Internal;
+using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent (typeof(CanvasGroup))]
 public class StartForMenu : MonoBehaviour
 {
-    [SerializeField] private float _delaySeconds;
-    [SerializeField] private float _fadeSeconds;
-    [SerializeField] private ButtonContainer _buttonContainer; 
-    private CanvasGroup _canvasGroup;
-
-    void Awake()
+    [System.Serializable]
+    private struct Frame
     {
-        _canvasGroup = GetComponent<CanvasGroup>();
+        [SerializeField] public CanvasGroup canvasGroup;
+        [Space(10)]
+        [SerializeField] public float outFadeTime;
+        [SerializeField] public float frameTime;
+        [SerializeField] public float fadeTime;
+    }
+
+    [SerializeField] private ButtonContainer _buttonContainer;
+    [Space(10)]
+    [SerializeField] private List<Frame> _frames;
+
+    void Start()
+    {
         StartCoroutine(StartDelay());
     }
 
     private IEnumerator StartDelay()
     {
-        _canvasGroup.alpha = 1;
-        
         _buttonContainer.gameObject.SetActive(false);
-        yield return new WaitForSeconds(_delaySeconds);
-        _canvasGroup.DOFade(0, _fadeSeconds);
-        _buttonContainer.gameObject.SetActive(true);
 
+        foreach (Frame frame in _frames)
+        {
+            frame.canvasGroup.gameObject.SetActive(true);
+            yield return frame.canvasGroup.DOFade(1, frame.outFadeTime).WaitForCompletion();
+            yield return new WaitForSeconds(frame.frameTime);
+            yield return frame.canvasGroup.DOFade(0, frame.fadeTime).WaitForCompletion();
+            frame.canvasGroup.gameObject.SetActive(false);
+        }
+
+        _buttonContainer.gameObject.SetActive(true);
     }
 }
