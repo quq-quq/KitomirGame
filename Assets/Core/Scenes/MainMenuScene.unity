@@ -1922,9 +1922,9 @@ MonoBehaviour:
   - canvasGroup: {fileID: 918898229}
     outFadeTime: 0
     frameTime: 0.5
-    fadeTime: 0
+    fadeTime: 0.5
   - canvasGroup: {fileID: 119758493}
-    outFadeTime: 0.5
+    outFadeTime: 0
     frameTime: 6
     fadeTime: 2
 --- !u!4 &1759153884
