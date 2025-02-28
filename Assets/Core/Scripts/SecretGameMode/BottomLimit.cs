@@ -7,6 +7,7 @@ public class BottomLimit : MonoBehaviour
         if (collision.TryGetComponent(out CollectableItem collectableItem))
         {
             Destroy(collectableItem.gameObject);
+            SecretGameModePlayer.Instance.LooseHealth();
         }
     }
 }
