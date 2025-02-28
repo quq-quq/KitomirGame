@@ -6,10 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="5996c718-9b42-4e37-9821-ae2a4d845c13" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Prefabs/SecretGameMode/RuladaItem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Prefabs/SecretGameMode/RuladaItem.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/SecretGameModeScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/SecretGameModeScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/SecretGameMode/BottomLimit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/SecretGameMode/BottomLimit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/SecretGameMode/SecretGameModePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/SecretGameMode/SecretGameModePlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Animations/UI/FinalScenePause.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Animations/UI/FinalScenePause.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/KitomirHomeScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/KitomirHomeScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Player/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Player/PlayerVisual.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Player/PlayerVisual.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -148,7 +149,8 @@
       <workItem from="1740575194159" duration="1362000" />
       <workItem from="1740585850330" duration="4431000" />
       <workItem from="1740675876455" duration="3615000" />
-      <workItem from="1740742798707" duration="1759000" />
+      <workItem from="1740742798707" duration="1909000" />
+      <workItem from="1740745637540" duration="402000" />
     </task>
     <servers />
   </component>

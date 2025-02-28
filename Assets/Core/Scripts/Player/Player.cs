@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private Vector2 _movementVector;
     private Rigidbody2D _rigidbody2D;
     private InteractableObject _selectedObject;
+    private PlayerVisual _playerVisual;
     
     private void Awake()
     {
@@ -30,11 +31,13 @@ public class Player : MonoBehaviour
     {
         InputManager.Instance.OnInteractAction += InputManager_OnInteractAction;
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _playerVisual = GetComponentInChildren<PlayerVisual>();
     }
 
     private void FixedUpdate()
     {
         HandleMovement();
+        _playerVisual.UpdateVisual(_movementVector.x, _movementVector.y);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
