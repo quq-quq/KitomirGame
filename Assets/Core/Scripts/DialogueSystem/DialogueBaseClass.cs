@@ -40,6 +40,7 @@ public class DialogueBaseClass
     }
 
     [SerializeField] private float _symbolTime = 0.1f;
+    [SerializeField] private string _inputName;
     [SerializeField] private TypeOfDialogue _typeOfDialogue = TypeOfDialogue.SimplePhrases;
     [SerializeField] private SimplePhrase _simplePhrase;
     [SerializeField] private List<Answer> _answers;
@@ -47,6 +48,10 @@ public class DialogueBaseClass
     public float SymbolTime
     {
         get => _symbolTime;
+    }
+    public string InputName
+    {
+        get => _inputName;
     }
     public TypeOfDialogue TypeOfDialogue
     {
@@ -60,19 +65,4 @@ public class DialogueBaseClass
     {
         get => _answers;
     }
-
-    public static IEnumerator WritingText(string inputText, TMP_Text textHolder, float symbolTime)
-    {
-        if(inputText == null)
-        {
-            yield break;
-        }
-        textHolder.text = string.Empty;
-        for (int i = 0; i < inputText.Length; i++)
-        {
-            textHolder.text += inputText[i];
-            yield return new WaitForSeconds(symbolTime);
-        }
-    }
-
 }

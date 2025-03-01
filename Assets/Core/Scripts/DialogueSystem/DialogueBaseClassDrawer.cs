@@ -8,29 +8,44 @@ public class DialogueBaseClassDrawer : PropertyDrawer
     {
         EditorGUI.BeginProperty(position, label, property);
 
+        // Получаем ссылки на поля
         SerializedProperty typeOfDialogue = property.FindPropertyRelative("_typeOfDialogue");
+        SerializedProperty symbolTime = property.FindPropertyRelative("_symbolTime");
+        SerializedProperty inputName = property.FindPropertyRelative("_inputName"); // Поле _inputName
         SerializedProperty simplePhrase = property.FindPropertyRelative("_simplePhrase");
         SerializedProperty answers = property.FindPropertyRelative("_answers");
-        SerializedProperty symbolTime = property.FindPropertyRelative("_symbolTime");
 
-        float currentY = position.y;
+        float currentY = position.y; // Текущая позиция по оси Y
 
+        // Рисуем выпадающий список для выбора типа диалога
         Rect typeRect = new Rect(position.x, currentY, position.width, EditorGUIUtility.singleLineHeight);
         EditorGUI.PropertyField(typeRect, typeOfDialogue);
         currentY += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
 
+        // Рисуем поле _symbolTime
         Rect symbolTimeRect = new Rect(position.x, currentY, position.width, EditorGUIUtility.singleLineHeight);
         EditorGUI.PropertyField(symbolTimeRect, symbolTime);
         currentY += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
 
+        // Показываем _inputName только если выбран SimplePhrases
         if (typeOfDialogue.enumValueIndex == (int)TypeOfDialogue.SimplePhrases)
         {
+            Rect inputNameRect = new Rect(position.x, currentY, position.width, EditorGUIUtility.singleLineHeight);
+            EditorGUI.PropertyField(inputNameRect, inputName);
+            currentY += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
+        }
+
+        // Определяем, что показывать
+        if (typeOfDialogue.enumValueIndex == (int)TypeOfDialogue.SimplePhrases)
+        {
+            // Показываем _simplePhrase
             Rect phraseRect = new Rect(position.x, currentY, position.width, EditorGUI.GetPropertyHeight(simplePhrase));
             EditorGUI.PropertyField(phraseRect, simplePhrase, true);
             currentY += EditorGUI.GetPropertyHeight(simplePhrase) + EditorGUIUtility.standardVerticalSpacing;
         }
         else if (typeOfDialogue.enumValueIndex == (int)TypeOfDialogue.Answers)
         {
+            // Показываем _answers
             Rect answersRect = new Rect(position.x, currentY, position.width, EditorGUI.GetPropertyHeight(answers));
             EditorGUI.PropertyField(answersRect, answers, true);
             currentY += EditorGUI.GetPropertyHeight(answers) + EditorGUIUtility.standardVerticalSpacing;
@@ -41,24 +56,30 @@ public class DialogueBaseClassDrawer : PropertyDrawer
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
+        // Вычисляем общую высоту в зависимости от выбранного типа диалога
         SerializedProperty typeOfDialogue = property.FindPropertyRelative("_typeOfDialogue");
         SerializedProperty simplePhrase = property.FindPropertyRelative("_simplePhrase");
         SerializedProperty answers = property.FindPropertyRelative("_answers");
-        SerializedProperty symbolTime = property.FindPropertyRelative("_symbolTime");
 
-        float height = EditorGUIUtility.singleLineHeight;
-        height += EditorGUIUtility.singleLineHeight;
+        float height = EditorGUIUtility.singleLineHeight; // Высота для выпадающего списка _typeOfDialogue
+        height += EditorGUIUtility.singleLineHeight; // Высота для _symbolTime
+
+        // Добавляем высоту для _inputName только если выбран SimplePhrases
+        if (typeOfDialogue.enumValueIndex == (int)TypeOfDialogue.SimplePhrases)
+        {
+            height += EditorGUIUtility.singleLineHeight; // Высота для _inputName
+        }
 
         if (typeOfDialogue.enumValueIndex == (int)TypeOfDialogue.SimplePhrases)
         {
-            height += EditorGUI.GetPropertyHeight(simplePhrase);
+            height += EditorGUI.GetPropertyHeight(simplePhrase); // Высота для _simplePhrase
         }
         else if (typeOfDialogue.enumValueIndex == (int)TypeOfDialogue.Answers)
         {
-            height += EditorGUI.GetPropertyHeight(answers);
+            height += EditorGUI.GetPropertyHeight(answers); // Высота для _answers
         }
 
-        height += EditorGUIUtility.standardVerticalSpacing * 3;
+        height += EditorGUIUtility.standardVerticalSpacing * 4; // Добавляем отступы
 
         return height;
     }
