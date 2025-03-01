@@ -2,15 +2,13 @@ using UnityEngine;
 
 public class CollectableItem : MonoBehaviour
 {
-    [SerializeField] private float _fallingSpeed;
     
     private Rigidbody2D _rigidbody2D;
-    private Camera _camera;
+    private float _fallingSpeed;
 
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _camera = Camera.main;
     }
 
     private void Update()
@@ -21,5 +19,10 @@ public class CollectableItem : MonoBehaviour
         // {
         //     Destroy(gameObject);
         // }
+    }
+
+    public void SetFallingSpeed(float fallingSpeedMin, float fallingSpeedMax)
+    {
+        _fallingSpeed = Random.Range(fallingSpeedMin, fallingSpeedMax);
     }
 }

@@ -6,6 +6,7 @@ public class SecretGameModePlayer : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private int _health;
+    [SerializeField] private SecretGameModePlayerVisual _visual;
 
     public static SecretGameModePlayer Instance { get; private set; }
     public event EventHandler OnScoreChanged;
@@ -14,6 +15,7 @@ public class SecretGameModePlayer : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private Vector2 _movementVector;
     private int _score;
+    public bool IsWalking { get; private set; }
 
     public int Score
     {
@@ -58,7 +60,9 @@ private void Awake()
         float x = InputManager.Instance.GetMovementVector().x;
         x = (x > 0f) ? 1f : (x < 0f) ? -1f : 0f;
         _movementVector = new Vector2(x, 0f);
+        IsWalking = _movementVector != Vector2.zero;
         _rigidbody2D.linearVelocity = _movementVector * _moveSpeed;
+        _visual.UpdateVisual();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
