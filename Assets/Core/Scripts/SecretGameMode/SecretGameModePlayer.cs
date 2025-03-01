@@ -11,6 +11,7 @@ public class SecretGameModePlayer : MonoBehaviour
     public static SecretGameModePlayer Instance { get; private set; }
     public event EventHandler OnScoreChanged;
     public event EventHandler OnHealthChanged;
+    public event EventHandler OnGameOver;
 
     private Rigidbody2D _rigidbody2D;
     private Vector2 _movementVector;
@@ -79,7 +80,13 @@ private void Awake()
         Health--;
         if (Health == 0f)
         {
-            //game over
+            OnGameOver?.Invoke(this, EventArgs.Empty);
         }
+    }
+
+    private void Restart()
+    {
+        Health = 0;
+        Score = 0;
     }
 }
