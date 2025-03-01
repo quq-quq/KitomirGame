@@ -16,9 +16,13 @@ public class DialogueViewer : MonoBehaviour
     [SerializeField] private TMP_Text _nameChamber;
     [SerializeField] private ButtonContainer _answersChamberLayoutGroup;
     [SerializeField, Tooltip("must contain AnswerButton script")] private GameObject _answerButtonPrefab;
-    public static bool IsGoing {get; private set; }
+    
     private Transform _answersChamberTransform;
     private DialogueBaseClass _currentDialogueElement;
+    private Coroutine _writingCoroutine;
+    private bool _isWriting = false;
+
+    public static bool IsGoing { get; private set; } = false;
 
     private void Start()
     {
@@ -26,12 +30,6 @@ public class DialogueViewer : MonoBehaviour
         //{
         //    Debug.LogError("GameObject dont have AnswerButtonScript or GameObjet dont initialised");
         //}
-
-        _simplePhraseChamber.color = Color.black;
-        _simplePhraseChamber.text = "";
-        _answersChamberTransform = _answersChamberLayoutGroup.gameObject.transform;
-        _currentDialogueElement = _dialogueBunch.RootDialogue[0];
-        IsGoing = false;
 
         if (_isActiveOnStart)
         {
@@ -46,20 +44,38 @@ public class DialogueViewer : MonoBehaviour
 
     private void Update()
     {
-        if (IsGoing && _currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && (Input.anyKeyDown))
+        if (IsGoing && _currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && Input.anyKeyDown)
         {
-            _currentDialogueElement = SetNewElementAtSimplePhrase(_dialogueBunch.RootDialogue);
-            ViewDialogue();
+            if (_isWriting && _simplePhraseChamber.text.Length > 1)
+            {
+                _simplePhraseChamber.text = _currentDialogueElement.simplePhrase.InputText;
+                _isWriting = false;
+                StopCoroutine(_writingCoroutine);
+            }
+            else
+            {
+                _currentDialogueElement = SetNewElementAtSimplePhrase(_dialogueBunch.RootDialogue);
+                ViewDialogue();
+            }
+
         }
     }
 
     private IEnumerator Starter()
     {
+        _simplePhraseChamber.color = Color.black;
+        _simplePhraseChamber.text = "";
+        _answersChamberTransform = _answersChamberLayoutGroup.gameObject.transform;
+        _simplePhraseChamber.text = string.Empty;
+        _nameChamber.text = string.Empty;
+        _currentDialogueElement = _dialogueBunch.RootDialogue[0];
+
         if (!IsGoing)
         {
             yield return new WaitForSeconds(GetCurrentAnim(_dialogueAnimator).length);
             IsGoing = true;
         }
+
         ViewDialogue();
     }
 
@@ -74,6 +90,7 @@ public class DialogueViewer : MonoBehaviour
             Destroy(child.gameObject);
         }
         _simplePhraseChamber.text = string.Empty;
+        _nameChamber.text = string.Empty;
         _dialogueCanvas.gameObject.SetActive(false);
         _currentDialogueElement = _dialogueBunch.RootDialogue[0];
     }
@@ -87,12 +104,16 @@ public class DialogueViewer : MonoBehaviour
             Destroy(child.gameObject);
         }
         _simplePhraseChamber.text = string.Empty;
+        _nameChamber.text = string.Empty;
 
         if (_currentDialogueElement != null)
         {
+            
             if (_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
             {
-                StartCoroutine(DialogueBaseClass.WritingText(_currentDialogueElement.simplePhrase.InputText, _simplePhraseChamber, _currentDialogueElement.SymbolTime));
+                _nameChamber.text = _currentDialogueElement.InputName;
+                _writingCoroutine = StartCoroutine(Writer.WritingText(_currentDialogueElement.simplePhrase.InputText, _simplePhraseChamber, _currentDialogueElement.SymbolTime, WritingTextComplition));
+                _isWriting = true;
             }
             if (_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
             {
@@ -174,5 +195,10 @@ public class DialogueViewer : MonoBehaviour
             return clip;
         }
         return null;
+    }
+    
+    private void WritingTextComplition()
+    {
+        _isWriting = false;
     }
 }
