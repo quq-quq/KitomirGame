@@ -14,22 +14,24 @@ public class DialogueViewer : MonoBehaviour
     [SerializeField] private Animator _dialogueAnimator;
     [SerializeField] private TMP_Text _simplePhraseChamber;
     [SerializeField] private TMP_Text _nameChamber;
+    [SerializeField] private TMP_Text _gradeChamber;
     [SerializeField] private ButtonContainer _answersChamberLayoutGroup;
-    [SerializeField, Tooltip("must contain AnswerButton script")] private GameObject _answerButtonPrefab;
-    
-    private Transform _answersChamberTransform;
-    private DialogueBaseClass _currentDialogueElement;
-    private Coroutine _writingCoroutine;
+    [SerializeField, Tooltip("must contain MenuButton script")] private GameObject _answerButtonPrefab;
     private bool _isWriting = false;
-
+    private Transform _answersChamberTransform;    
+    private Coroutine _writingCoroutine;
+    
     public static bool IsGoing { get; private set; } = false;
+    public DialogueBaseClass CurrentDialogueElement { get; private set; }
 
     private void Start()
     {
-        //if (_answerButtonPrefab == null || _answerButtonPrefab.GetComponent<AnswerButton>() == null)
-        //{
-        //    Debug.LogError("GameObject dont have AnswerButtonScript or GameObjet dont initialised");
-        //}
+        if (_answerButtonPrefab == null || _answerButtonPrefab.GetComponent<MenuButton>() == null)
+        {
+            Debug.LogError("GameObject dont have ButtonContainer or GameObjet dont initialised");
+        }
+
+        _answersChamberTransform = _answersChamberLayoutGroup.gameObject.transform;
 
         if (_isActiveOnStart)
         {
@@ -44,31 +46,37 @@ public class DialogueViewer : MonoBehaviour
 
     private void Update()
     {
-        if (IsGoing && _currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && Input.anyKeyDown)
+        if (IsGoing && CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && Input.anyKeyDown)
         {
             if (_isWriting && _simplePhraseChamber.text.Length > 1)
             {
-                _simplePhraseChamber.text = _currentDialogueElement.simplePhrase.InputText;
+                _simplePhraseChamber.text = CurrentDialogueElement.simplePhrase.InputText;
                 _isWriting = false;
                 StopCoroutine(_writingCoroutine);
             }
             else
             {
-                _currentDialogueElement = SetNewElementAtSimplePhrase(_dialogueBunch.RootDialogue);
+                CurrentDialogueElement = SetNewElementAtSimplePhrase(_dialogueBunch.RootDialogue);
                 ViewDialogue();
             }
 
         }
     }
 
-    private IEnumerator Starter()
+    private void Reseter()
     {
         _simplePhraseChamber.color = Color.black;
-        _simplePhraseChamber.text = "";
-        _answersChamberTransform = _answersChamberLayoutGroup.gameObject.transform;
+        _nameChamber.color = Color.black;
         _simplePhraseChamber.text = string.Empty;
         _nameChamber.text = string.Empty;
-        _currentDialogueElement = _dialogueBunch.RootDialogue[0];
+        _gradeChamber.text = string.Empty;
+        CurrentDialogueElement = _dialogueBunch.RootDialogue[0];
+
+    }
+
+    private IEnumerator Starter()
+    {
+        Reseter();
 
         if (!IsGoing)
         {
@@ -89,10 +97,8 @@ public class DialogueViewer : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        _simplePhraseChamber.text = string.Empty;
-        _nameChamber.text = string.Empty;
+        Reseter();
         _dialogueCanvas.gameObject.SetActive(false);
-        _currentDialogueElement = _dialogueBunch.RootDialogue[0];
     }
 
     private void ViewDialogue()
@@ -106,25 +112,25 @@ public class DialogueViewer : MonoBehaviour
         _simplePhraseChamber.text = string.Empty;
         _nameChamber.text = string.Empty;
 
-        if (_currentDialogueElement != null)
+        if (CurrentDialogueElement != null)
         {
             
-            if (_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
+            if (CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
             {
-                _nameChamber.text = _currentDialogueElement.InputName;
-                _writingCoroutine = StartCoroutine(Writer.WritingText(_currentDialogueElement.simplePhrase.InputText, _simplePhraseChamber, _currentDialogueElement.SymbolTime, WritingTextComplition));
+                _nameChamber.text = CurrentDialogueElement.InputName;
+                _writingCoroutine = StartCoroutine(Writer.WritingText(CurrentDialogueElement.simplePhrase.InputText, _simplePhraseChamber, CurrentDialogueElement.SymbolTime, WritingTextComplition));
                 _isWriting = true;
             }
-            if (_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
+            if (CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
             {
-                for (int i = 0; i < _currentDialogueElement.Answers.Count; i++)
+                for (int i = 0; i < CurrentDialogueElement.Answers.Count; i++)
                 {
                     MenuButton currentAnswerButton = Instantiate(_answerButtonPrefab, _answersChamberTransform).GetComponent<MenuButton>();
-                    DialogueBaseClass nextDialogueElement = _currentDialogueElement.Answers[i].NextDialogueBaseClasses[0];
+                    DialogueBaseClass nextDialogueElement = CurrentDialogueElement.Answers[i].NextDialogueBaseClasses[0];
                     currentAnswerButton.OnPressMethod.AddListener(() => SetNewElementAtAnswer(nextDialogueElement));
 
-                    //StartCoroutine(DialogueBaseClass.WritingText(_currentDialogueElement.Answers[i].InputText, currentAnswerButton.TextChamber, _currentDialogueElement.SymbolTime));
-                    currentAnswerButton.TextChamber.text = _currentDialogueElement.Answers[i].InputText;
+                    //StartCoroutine(DialogueBaseClass.WritingText(CurrentDialogueElement.Answers[i].InputText, currentAnswerButton.TextChamber, CurrentDialogueElement.SymbolTime));
+                    currentAnswerButton.TextChamber.text = CurrentDialogueElement.Answers[i].InputText;
                     _answersChamberLayoutGroup.AddButton(currentAnswerButton.TextChamber);
                 }
             }
@@ -138,11 +144,11 @@ public class DialogueViewer : MonoBehaviour
     private DialogueBaseClass SetNewElementAtSimplePhrase(List<DialogueBaseClass> dialogue)
     {
         DialogueBaseClass currentDialogueElement = null;
-        if (_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
+        if (CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
         {
             for (int i = 0; i < dialogue.Count - 1; i++)
             {
-                if (dialogue[i] == _currentDialogueElement)
+                if (dialogue[i] == CurrentDialogueElement)
                 {
                     currentDialogueElement = dialogue[i + 1];
                     return currentDialogueElement;
@@ -166,7 +172,7 @@ public class DialogueViewer : MonoBehaviour
                 {
                     foreach (DialogueBaseClass.Answer answer in dialogue[i].Answers)
                     {
-                        if (answer.NextDialogueBaseClasses.Contains(_currentDialogueElement))
+                        if (answer.NextDialogueBaseClasses.Contains(CurrentDialogueElement))
                         {
                             currentDialogueElement = dialogue[i + 1];
                             return currentDialogueElement;
@@ -180,9 +186,9 @@ public class DialogueViewer : MonoBehaviour
 
     public void SetNewElementAtAnswer(DialogueBaseClass currentDialogueElement)
     {
-        if(_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
+        if(CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
         {
-            _currentDialogueElement = currentDialogueElement;
+            CurrentDialogueElement = currentDialogueElement;
             ViewDialogue();
         }
     }

@@ -36,19 +36,19 @@ MonoBehaviour:
     _answers:
     - inputText: "\u043E\u0431\u043E\u0437\u0432\u0430\u0442\u044C"
       nextDialogueBaseClasses:
-      - _symbolTime: 0.5
+      - _symbolTime: 0.1
         _inputName: 
         _typeOfDialogue: 0
         _simplePhrase:
           inputText: "\u0442\u044B \u0447\u043C\u043E"
         _answers: []
-      - _symbolTime: 0.3
+      - _symbolTime: 0.1
         _inputName: 
         _typeOfDialogue: 0
         _simplePhrase:
           inputText: "\u0442\u044B \u0433\u043E\u043E\u0432\u043D\u043E\u043E\u043E"
         _answers: []
-      - _symbolTime: 0.5
+      - _symbolTime: 0.1
         _inputName: 
         _typeOfDialogue: 0
         _simplePhrase:
