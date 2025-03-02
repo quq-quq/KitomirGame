@@ -15,13 +15,13 @@ public class DialogueBaseClass
     [System.Serializable]
     public struct Answer
     {
-        [SerializeField, Range(0, 100)] private float _newReputation;
+        [SerializeField, Range(-100, 100)] private float _addReputation;
         [SerializeField] private string inputText;
         [SerializeField] private List<DialogueBaseClass> nextDialogueBaseClasses;
 
-        public readonly float NewReputation
+        public readonly float AddReputation
         {
-            get => _newReputation;
+            get => _addReputation;
         }
         public readonly string InputText
         {
@@ -50,7 +50,7 @@ public class DialogueBaseClass
     }
 
     [SerializeField] private TypeOfDialogue _typeOfDialogue = TypeOfDialogue.SimplePhrases;
-    [SerializeField] private float _symbolTime = 0.1f;
+    [SerializeField, Min(0)] private float _symbolTime = 0.05f;
     [SerializeField] private SimplePhrase _simplePhrase;
     [SerializeField] private List<Answer> _answers;
 

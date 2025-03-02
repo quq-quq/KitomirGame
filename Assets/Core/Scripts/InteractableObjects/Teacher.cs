@@ -24,16 +24,15 @@ public class Teacher : InteractableObject
     {
         if (!DialogueViewer.IsGoing || _setAnimParameters.Count == 0)
         {
-            Debug.Log("2");
             return;
         }
         else
         {
+            Deselect();
             foreach( SetAnimParameter setAnimParameter in _setAnimParameters)
             {
                 if(setAnimParameter.typeOfDialogue == _dialogueViewer.CurrentDialogueElement.TypeOfDialogue && setAnimParameter.inputText == _dialogueViewer.CurrentDialogueElement.simplePhrase.InputText)
                 {
-                    Debug.Log("1");
                     _animator.SetBool(setAnimParameter.boolParameterName, setAnimParameter.BoolParameterInput);
                 }
             }
@@ -42,6 +41,20 @@ public class Teacher : InteractableObject
 
     public override void Interact()
     {
-        Debug.Log("Teacher Interact");
+        if (!DialogueViewer.IsGoing)
+        {
+            if (_dialogueViewer != null)
+                StartCoroutine(_dialogueViewer.Starter());
+        }
+    }
+
+    public override bool TrySelect()
+    {
+        if (_isInteractable && _dialogueViewer != null)
+        {
+            _interactiveSign.SetActive(true);
+        }
+
+        return _isInteractable;
     }
 }

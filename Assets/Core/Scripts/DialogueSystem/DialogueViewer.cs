@@ -36,7 +36,6 @@ public class DialogueViewer : MonoBehaviour
 
         if (_isActiveOnStart)
         {
-            _dialogueCanvas.gameObject.SetActive(true);
             StartCoroutine(Starter());
         }
         else
@@ -47,7 +46,7 @@ public class DialogueViewer : MonoBehaviour
 
     private void Update()
     {
-        if (IsGoing && CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && Input.anyKeyDown)
+        if (IsGoing && CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)))
         {
             if (_isWriting && _simplePhraseChamber.text.Length > 1)
             {
@@ -64,8 +63,9 @@ public class DialogueViewer : MonoBehaviour
         }
     }
 
-    private IEnumerator Starter()
+    public IEnumerator Starter()
     {
+        _dialogueCanvas.gameObject.SetActive(true);
         Reseter();
         _gradeChamber.text = string.Empty;
         CurrentDialogueElement = _dialogueBunch.RootDialogue[0];
@@ -73,9 +73,9 @@ public class DialogueViewer : MonoBehaviour
         {
             yield return new WaitForSeconds(GetCurrentAnim(_dialogueAnimator).length);
             IsGoing = true;
+            ViewDialogue();
+            _gradeChamber.text = "...";
         }
-
-        ViewDialogue();
     }
 
     private IEnumerator Ender()
@@ -86,6 +86,7 @@ public class DialogueViewer : MonoBehaviour
         _dialogueAnimator.SetTrigger("IsEnding");
         yield return new WaitForSeconds(GetCurrentAnim(_dialogueAnimator).length);
         _dialogueCanvas.gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     private void ViewDialogue()
@@ -107,8 +108,8 @@ public class DialogueViewer : MonoBehaviour
                 {
                     MenuButton currentAnswerButton = Instantiate(_answerButtonPrefab, _answersChamberTransform).GetComponent<MenuButton>();
                     DialogueBaseClass nextDialogueElement = CurrentDialogueElement.Answers[i].NextDialogueBaseClasses[0];
-                    float newReputation = CurrentDialogueElement.Answers[i].NewReputation;
-                    currentAnswerButton.OnPressMethod.AddListener(() => SetNewElementAtAnswer(nextDialogueElement, newReputation));
+                    float addReputation = CurrentDialogueElement.Answers[i].AddReputation;
+                    currentAnswerButton.OnPressMethod.AddListener(() => SetNewElementAtAnswer(nextDialogueElement, addReputation));
 
                     //StartCoroutine(DialogueBaseClass.WritingText(CurrentDialogueElement.Answers[i].InputText, currentAnswerButton.TextChamber, CurrentDialogueElement.SymbolTime));
                     currentAnswerButton.TextChamber.text = CurrentDialogueElement.Answers[i].InputText;
@@ -122,6 +123,7 @@ public class DialogueViewer : MonoBehaviour
         }
     }
 
+    //надо переписать, после вопроса если идет вопрос (те последней до перехода к новому вопросу была простая фраза), закрывается книжка
     private DialogueBaseClass SetNewElementAtSimplePhrase(List<DialogueBaseClass> dialogue)
     {
         DialogueBaseClass currentDialogueElement = null;
@@ -165,15 +167,15 @@ public class DialogueViewer : MonoBehaviour
         return currentDialogueElement;
     }
 
-    public void SetNewElementAtAnswer(DialogueBaseClass currentDialogueElement, float newReputation)
+    public void SetNewElementAtAnswer(DialogueBaseClass currentDialogueElement, float addReputation)
     {
         if(CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
         {
-            _dialogueBunch.Reputation = newReputation;
+            _dialogueBunch.Reputation += addReputation;
             CurrentDialogueElement = currentDialogueElement;
             
             ViewDialogue();
-            SetGrade(newReputation);
+            SetGrade(_dialogueBunch.Reputation);
         }
     }
 
@@ -211,19 +213,23 @@ public class DialogueViewer : MonoBehaviour
     {
         if (reputation > _dialogueBunch.MaxReputation)
         {
-            _gradeChamber.text = "5!";
+            _gradeChamber.text = "5:)";
+            return;
         }
-        else if(reputation < _dialogueBunch.MinReputation)
+        if(reputation < _dialogueBunch.MinReputation)
         {
-            _gradeChamber.text = "2:(";
+            _gradeChamber.text = "2;(";
+            return;
         }
-        else if(reputation > 65)
+        if(reputation > (_dialogueBunch.MinReputation+_dialogueBunch.MaxReputation)/2)
         {
             _gradeChamber.text = "4";
+            return;
         }
-        else if (reputation > 40)
+        if (reputation > (_dialogueBunch.MinReputation - _dialogueBunch.MaxReputation) / 2)
         {
             _gradeChamber.text = "3..";
+            return;
         }
     }
 }
