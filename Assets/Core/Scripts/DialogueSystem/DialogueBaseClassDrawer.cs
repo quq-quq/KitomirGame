@@ -10,10 +10,9 @@ public class DialogueBaseClassDrawer : PropertyDrawer
 
         // Получаем ссылки на поля
         SerializedProperty typeOfDialogue = property.FindPropertyRelative("_typeOfDialogue");
-        SerializedProperty symbolTime = property.FindPropertyRelative("_symbolTime");
-        SerializedProperty inputName = property.FindPropertyRelative("_inputName"); // Поле _inputName
         SerializedProperty simplePhrase = property.FindPropertyRelative("_simplePhrase");
         SerializedProperty answers = property.FindPropertyRelative("_answers");
+        SerializedProperty symbolTime = property.FindPropertyRelative("_symbolTime");
 
         float currentY = position.y; // Текущая позиция по оси Y
 
@@ -26,14 +25,6 @@ public class DialogueBaseClassDrawer : PropertyDrawer
         Rect symbolTimeRect = new Rect(position.x, currentY, position.width, EditorGUIUtility.singleLineHeight);
         EditorGUI.PropertyField(symbolTimeRect, symbolTime);
         currentY += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
-
-        // Показываем _inputName только если выбран SimplePhrases
-        if (typeOfDialogue.enumValueIndex == (int)TypeOfDialogue.SimplePhrases)
-        {
-            Rect inputNameRect = new Rect(position.x, currentY, position.width, EditorGUIUtility.singleLineHeight);
-            EditorGUI.PropertyField(inputNameRect, inputName);
-            currentY += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
-        }
 
         // Определяем, что показывать
         if (typeOfDialogue.enumValueIndex == (int)TypeOfDialogue.SimplePhrases)
@@ -60,15 +51,10 @@ public class DialogueBaseClassDrawer : PropertyDrawer
         SerializedProperty typeOfDialogue = property.FindPropertyRelative("_typeOfDialogue");
         SerializedProperty simplePhrase = property.FindPropertyRelative("_simplePhrase");
         SerializedProperty answers = property.FindPropertyRelative("_answers");
+        SerializedProperty symbolTime = property.FindPropertyRelative("_symbolTime");
 
         float height = EditorGUIUtility.singleLineHeight; // Высота для выпадающего списка _typeOfDialogue
         height += EditorGUIUtility.singleLineHeight; // Высота для _symbolTime
-
-        // Добавляем высоту для _inputName только если выбран SimplePhrases
-        if (typeOfDialogue.enumValueIndex == (int)TypeOfDialogue.SimplePhrases)
-        {
-            height += EditorGUIUtility.singleLineHeight; // Высота для _inputName
-        }
 
         if (typeOfDialogue.enumValueIndex == (int)TypeOfDialogue.SimplePhrases)
         {
@@ -79,7 +65,7 @@ public class DialogueBaseClassDrawer : PropertyDrawer
             height += EditorGUI.GetPropertyHeight(answers); // Высота для _answers
         }
 
-        height += EditorGUIUtility.standardVerticalSpacing * 4; // Добавляем отступы
+        height += EditorGUIUtility.standardVerticalSpacing * 3; // Добавляем отступы
 
         return height;
     }

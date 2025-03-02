@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class DialogueViewer : MonoBehaviour
 {
@@ -63,21 +64,11 @@ public class DialogueViewer : MonoBehaviour
         }
     }
 
-    private void Reseter()
-    {
-        _simplePhraseChamber.color = Color.black;
-        _nameChamber.color = Color.black;
-        _simplePhraseChamber.text = string.Empty;
-        _nameChamber.text = string.Empty;
-        _gradeChamber.text = string.Empty;
-        CurrentDialogueElement = _dialogueBunch.RootDialogue[0];
-
-    }
-
     private IEnumerator Starter()
     {
         Reseter();
-
+        _gradeChamber.text = string.Empty;
+        CurrentDialogueElement = _dialogueBunch.RootDialogue[0];
         if (!IsGoing)
         {
             yield return new WaitForSeconds(GetCurrentAnim(_dialogueAnimator).length);
@@ -89,35 +80,24 @@ public class DialogueViewer : MonoBehaviour
 
     private IEnumerator Ender()
     {
+        Reseter();
+        _gradeChamber.text = string.Empty;
         IsGoing = false;
         _dialogueAnimator.SetTrigger("IsEnding");
         yield return new WaitForSeconds(GetCurrentAnim(_dialogueAnimator).length);
-
-        foreach (Transform child in _answersChamberTransform)
-        {
-            Destroy(child.gameObject);
-        }
-        Reseter();
         _dialogueCanvas.gameObject.SetActive(false);
     }
 
     private void ViewDialogue()
     {
         StopAllCoroutines();
-        foreach (Transform child in _answersChamberTransform)
-        {
-            _answersChamberLayoutGroup.Buttons.Clear();
-            Destroy(child.gameObject);
-        }
-        _simplePhraseChamber.text = string.Empty;
-        _nameChamber.text = string.Empty;
+        Reseter();
 
         if (CurrentDialogueElement != null)
         {
-            
             if (CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
             {
-                _nameChamber.text = CurrentDialogueElement.InputName;
+                _nameChamber.text = CurrentDialogueElement.simplePhrase.InputName;
                 _writingCoroutine = StartCoroutine(Writer.WritingText(CurrentDialogueElement.simplePhrase.InputText, _simplePhraseChamber, CurrentDialogueElement.SymbolTime, WritingTextComplition));
                 _isWriting = true;
             }
@@ -127,7 +107,8 @@ public class DialogueViewer : MonoBehaviour
                 {
                     MenuButton currentAnswerButton = Instantiate(_answerButtonPrefab, _answersChamberTransform).GetComponent<MenuButton>();
                     DialogueBaseClass nextDialogueElement = CurrentDialogueElement.Answers[i].NextDialogueBaseClasses[0];
-                    currentAnswerButton.OnPressMethod.AddListener(() => SetNewElementAtAnswer(nextDialogueElement));
+                    float newReputation = CurrentDialogueElement.Answers[i].NewReputation;
+                    currentAnswerButton.OnPressMethod.AddListener(() => SetNewElementAtAnswer(nextDialogueElement, newReputation));
 
                     //StartCoroutine(DialogueBaseClass.WritingText(CurrentDialogueElement.Answers[i].InputText, currentAnswerButton.TextChamber, CurrentDialogueElement.SymbolTime));
                     currentAnswerButton.TextChamber.text = CurrentDialogueElement.Answers[i].InputText;
@@ -184,14 +165,32 @@ public class DialogueViewer : MonoBehaviour
         return currentDialogueElement;
     }
 
-    public void SetNewElementAtAnswer(DialogueBaseClass currentDialogueElement)
+    public void SetNewElementAtAnswer(DialogueBaseClass currentDialogueElement, float newReputation)
     {
         if(CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
         {
+            _dialogueBunch.Reputation = newReputation;
             CurrentDialogueElement = currentDialogueElement;
+            
             ViewDialogue();
+            SetGrade(newReputation);
         }
     }
+
+    private void Reseter()
+    {
+        _simplePhraseChamber.color = Color.black;
+        _nameChamber.color = Color.black;
+        _gradeChamber.color = Color.red;
+        _simplePhraseChamber.text = string.Empty;
+        _nameChamber.text = string.Empty;
+        foreach (Transform child in _answersChamberTransform)
+        {
+            _answersChamberLayoutGroup.Buttons.Clear();
+            Destroy(child.gameObject);
+        }
+    }
+
 
     //for next evolution
     private AnimationClip GetCurrentAnim(Animator anim)
@@ -206,5 +205,25 @@ public class DialogueViewer : MonoBehaviour
     private void WritingTextComplition()
     {
         _isWriting = false;
+    }
+
+    private void SetGrade(float reputation)
+    {
+        if (reputation > _dialogueBunch.MaxReputation)
+        {
+            _gradeChamber.text = "5!";
+        }
+        else if(reputation < _dialogueBunch.MinReputation)
+        {
+            _gradeChamber.text = "2:(";
+        }
+        else if(reputation > 65)
+        {
+            _gradeChamber.text = "4";
+        }
+        else if (reputation > 40)
+        {
+            _gradeChamber.text = "3..";
+        }
     }
 }
