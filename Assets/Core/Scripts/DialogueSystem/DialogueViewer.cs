@@ -46,9 +46,9 @@ public class DialogueViewer : MonoBehaviour
 
     private void Update()
     {
-        if (IsGoing && CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)))
+        if (IsGoing && CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && _simplePhraseChamber.text.Length > 1)
         {
-            if (_isWriting && _simplePhraseChamber.text.Length > 1)
+            if (_isWriting)
             {
                 _simplePhraseChamber.text = CurrentDialogueElement.simplePhrase.InputText;
                 _isWriting = false;
@@ -131,12 +131,15 @@ public class DialogueViewer : MonoBehaviour
         {
             for (int i = 0; i < dialogue.Count - 1; i++)
             {
+                Debug.Log(dialogue[i].simplePhrase.InputText + "    "+ CurrentDialogueElement.simplePhrase.InputText);
                 if (dialogue[i] == CurrentDialogueElement)
                 {
                     currentDialogueElement = dialogue[i + 1];
                     return currentDialogueElement;
                 }
-
+            }
+            for (int i = 0; i < dialogue.Count - 1; i++)
+            {
                 if (dialogue[i].TypeOfDialogue == TypeOfDialogue.Answers)
                 {
                     foreach (DialogueBaseClass.Answer answer in dialogue[i].Answers)
@@ -158,6 +161,7 @@ public class DialogueViewer : MonoBehaviour
                         if (answer.NextDialogueBaseClasses.Contains(CurrentDialogueElement))
                         {
                             currentDialogueElement = dialogue[i + 1];
+                            Debug.Log("1");
                             return currentDialogueElement;
                         }
                     }
