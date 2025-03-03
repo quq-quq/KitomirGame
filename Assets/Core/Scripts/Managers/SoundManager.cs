@@ -30,7 +30,27 @@ public class SoundManager : MonoBehaviour
         {
             Timer.Instance.OnAlmostOutOfTime += Timer_OnAlmostOutOfTime;
         }
+
+        if (BottomLimit.Instance != null)
+        {
+            BottomLimit.Instance.OnItemDropped += BottomLimit_OnItemDropped;
+        }
+
+        if (SecretGameModePlayer.Instance != null)
+        {
+            SecretGameModePlayer.Instance.OnGameOver += SecretGameModePlayer_OnGameOver;
+        }
         GameStateManager.OnStateChanged += GameStateManager_OnStateChanged;
+    }
+
+    private void SecretGameModePlayer_OnGameOver(object sender, EventArgs e)
+    {
+        PlaySound(_audioClipRefsSO.hardFail, Vector3.zero);
+    }
+
+    private void BottomLimit_OnItemDropped(object sender, EventArgs e)
+    {
+        PlaySound(_audioClipRefsSO.fail, Vector3.zero);
     }
 
     private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
@@ -85,5 +105,10 @@ public class SoundManager : MonoBehaviour
         {
             Timer.Instance.OnAlmostOutOfTime -= Timer_OnAlmostOutOfTime;
         }
+        if (BottomLimit.Instance != null)
+        {
+            BottomLimit.Instance.OnItemDropped -= BottomLimit_OnItemDropped;
+        }
+        GameStateManager.OnStateChanged -= GameStateManager_OnStateChanged;
     }
 }

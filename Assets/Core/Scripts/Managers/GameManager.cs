@@ -168,6 +168,11 @@ public class GameManager : MonoBehaviour
             StartCoroutine(LoadScene(SceneNames.SAD_END_SCENE));
             Timer.Instance.DestroyTimer();
         }
+
+        if (e.CurrentState == GameState.ExamsPassed)
+        {
+            Timer.Instance.DestroyTimer();
+        }
     }
 
     public static void TimeScaleZeroInvoke(object sender, EventArgs e, EventHandler eventToInvoke)
