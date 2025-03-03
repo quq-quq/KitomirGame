@@ -129,21 +129,26 @@ public class DialogueViewer : MonoBehaviour
         DialogueBaseClass currentDialogueElement = null;
         if (CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
         {
-            for (int i = 0; i < dialogue.Count - 1; i++)
+            if (dialogue.Contains(CurrentDialogueElement))
             {
-                Debug.Log(dialogue[i].simplePhrase.InputText + "    "+ CurrentDialogueElement.simplePhrase.InputText);
-                if (dialogue[i] == CurrentDialogueElement)
+                if (dialogue[dialogue.Count - 1] == CurrentDialogueElement)
                 {
-                    currentDialogueElement = dialogue[i + 1];
-                    return currentDialogueElement;
+                    //когда конечный в данном листе
+                    Debug.Log("-1");
+                    return null;
+                    
                 }
+                currentDialogueElement = dialogue[dialogue.IndexOf(CurrentDialogueElement) + 1];
+                return currentDialogueElement;
             }
-            for (int i = 0; i < dialogue.Count - 1; i++)
+            //если нам надо спуститься глубже и в данном листе нет того чего мы ищем
+            for (int i = 0; i < dialogue.Count; i++)
             {
                 if (dialogue[i].TypeOfDialogue == TypeOfDialogue.Answers)
                 {
                     foreach (DialogueBaseClass.Answer answer in dialogue[i].Answers)
                     {
+                        //??
                         currentDialogueElement = SetNewElementAtSimplePhrase(answer.NextDialogueBaseClasses);
                         if (currentDialogueElement != null)
                         {
@@ -152,23 +157,22 @@ public class DialogueViewer : MonoBehaviour
                     }
                 }
             }
-            for (int i = 0; i < dialogue.Count - 1; i++)
-            {
-                if (dialogue[i].TypeOfDialogue == TypeOfDialogue.Answers)
-                {
-                    foreach (DialogueBaseClass.Answer answer in dialogue[i].Answers)
-                    {
-                        if (answer.NextDialogueBaseClasses.Contains(CurrentDialogueElement))
-                        {
-                            currentDialogueElement = dialogue[i + 1];
-                            Debug.Log("1");
-                            return currentDialogueElement;
-                        }
-                    }
-                }
-            }
+            //for (int i = 0; i < dialogue.Count - 1; i++)
+            //{
+            //    if (dialogue[i].TypeOfDialogue == TypeOfDialogue.Answers)
+            //    {
+            //        foreach (DialogueBaseClass.Answer answer in dialogue[i].Answers)
+            //        {
+            //            if (answer.NextDialogueBaseClasses.Contains(CurrentDialogueElement))
+            //            {
+            //                currentDialogueElement = dialogue[i + 1];
+            //                return currentDialogueElement;
+            //            }
+            //        }
+            //    }
+            //}
         }
-        return currentDialogueElement;
+        return null;
     }
 
     public void SetNewElementAtAnswer(DialogueBaseClass currentDialogueElement, float addReputation)

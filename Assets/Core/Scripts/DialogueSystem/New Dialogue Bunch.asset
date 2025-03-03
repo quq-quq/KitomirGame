@@ -74,12 +74,6 @@ MonoBehaviour:
               _inputName: 
               inputText: "\u043A\u0442\u043E \u044F?"
             _answers: []
-      - _typeOfDialogue: 0
-        _symbolTime: 0
-        _simplePhrase:
-          _inputName: 
-          inputText: "\u0442\u044B \u0447\u043C\u043E \u0435\u0449\u0435 \u0440\u0430\u0437"
-        _answers: []
     - _addReputation: 0
       inputText: "\u043F\u0438\u0434\u043E\u0440\u043D\u0443\u0442\u044C"
       nextDialogueBaseClasses:
