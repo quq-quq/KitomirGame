@@ -476,6 +476,7 @@ MonoBehaviour:
   _isActiveOnStart: 0
   _dialogueCanvas: {fileID: 7894715482675298070}
   _dialogueAnimator: {fileID: 375402528756516274}
+  _triggerForEndName: IsEnding
   _simplePhraseChamber: {fileID: 8485054398829188914}
   _nameChamber: {fileID: 7356506262055992083}
   _gradeChamber: {fileID: 2500867738056571783}

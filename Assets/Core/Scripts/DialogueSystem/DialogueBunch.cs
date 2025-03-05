@@ -11,6 +11,7 @@ public class DialogueBunch : ScriptableObject
     [SerializeField, Min(0)] float _gradeTypingSpeed;
     [Space(10)]
     [SerializeField]private List<DialogueBaseClass> _rootDialogue;
+    private int id = 0;
 
     public float Reputation
     {
@@ -47,4 +48,36 @@ public class DialogueBunch : ScriptableObject
     {
         get => _rootDialogue;
     }
+//#if UNITY_EDITOR
+//    public void OnValidate()
+//    {
+
+//        id = 0;
+//        Debug.Log("----------------------");
+//        SetId(RootDialogue);
+//        UnityEditor.EditorUtility.SetDirty(this);
+//    }
+//#endif
+
+//    public void SetId(List<DialogueBaseClass> dialogue)
+//    {
+//        foreach(DialogueBaseClass el in dialogue)
+//        {
+//            el.Id = id;
+//            id++;
+//            if(el.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
+//            {
+//                Debug.Log(el.simplePhrase.InputText + " " + id);
+//            }
+//            if (el.TypeOfDialogue == TypeOfDialogue.Answers)
+//            {
+//                Debug.Log("ANSW" +" " + id);
+//                foreach (DialogueBaseClass.Answer answer in el.Answers)
+//                {
+//                    SetId(answer.NextDialogueBaseClasses);
+//                }
+                
+//            }
+//        }
+//    }
 }

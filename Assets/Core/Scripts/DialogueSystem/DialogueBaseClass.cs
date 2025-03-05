@@ -70,4 +70,6 @@ public class DialogueBaseClass
     {
         get => _answers;
     }
+
+    //public int Id { get; set; }
 }

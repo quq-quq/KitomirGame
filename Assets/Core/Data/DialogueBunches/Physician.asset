@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _reputation: 100
   _minReputation: 60
-  _maxReputation: 70
+  _maxReputation: 80
   _gradeTypingSpeed: 0.5
   _rootDialogue:
   - _typeOfDialogue: 0
