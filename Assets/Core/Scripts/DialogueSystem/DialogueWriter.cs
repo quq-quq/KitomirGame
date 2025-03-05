@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class DialogueWriter
 {
-    public static IEnumerator SimpleWritingText(string inputText, TMP_Text textHolder, float symbolTime)
+    public IEnumerator SimpleWritingText(string inputText, TMP_Text textHolder, float symbolTime)
     {
         if (inputText == null)
         {
@@ -19,7 +19,7 @@ public class DialogueWriter
             yield return new WaitForSeconds(symbolTime);
         }
     }
-    public static IEnumerator SimpleWritingText(string inputText, TMP_Text textHolder, float symbolTime, Action OnComplete)
+    public IEnumerator SimpleWritingText(string inputText, TMP_Text textHolder, float symbolTime, Action OnComplete)
     {
         if (inputText == null)
         {

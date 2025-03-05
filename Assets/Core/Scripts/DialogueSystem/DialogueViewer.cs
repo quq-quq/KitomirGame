@@ -26,7 +26,7 @@ public class DialogueViewer : MonoBehaviour
     private Transform _answersChamberTransform;    
     private Coroutine _writingCoroutine;
     private DialogueSeter _dialogueSeter;
-    //private List<DialogueBaseClass> _previousAnswers;
+    private DialogueWriter _dialogueWriter;
 
     public static bool IsGoing { get; private set; } = false;
     public DialogueBaseClass CurrentDialogueElement { get; private set; }
@@ -40,6 +40,7 @@ public class DialogueViewer : MonoBehaviour
 
         _answersChamberTransform = _answersChamberLayoutGroup.gameObject.transform;
         _dialogueSeter = new DialogueSeter(_dialogueBunch);
+        _dialogueWriter = new DialogueWriter();
 
         if (_isActiveOnStart)
         {
@@ -105,7 +106,7 @@ public class DialogueViewer : MonoBehaviour
             if (CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
             {
                 _nameChamber.text = CurrentDialogueElement.simplePhrase.InputName;
-                _writingCoroutine = StartCoroutine(DialogueWriter.SimpleWritingText(CurrentDialogueElement.simplePhrase.InputText, _simplePhraseChamber, CurrentDialogueElement.SymbolTime, WritingTextComplition));
+                _writingCoroutine = StartCoroutine(_dialogueWriter.SimpleWritingText(CurrentDialogueElement.simplePhrase.InputText, _simplePhraseChamber, CurrentDialogueElement.SymbolTime, WritingTextCompletion));
                 _isWriting = true;
             }
             if (CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
@@ -118,7 +119,7 @@ public class DialogueViewer : MonoBehaviour
                     currentAnswerButton.OnPressMethod.AddListener(() => SetNewElementAtAnswerBufer(nextDialogueElement, addReputation));
                     currentAnswerButton.OnPressMethod.AddListener(ViewDialogue);
 
-                    //StartCoroutine(DialogueBaseClass.SimpleWritingText(_currentDialogueElement.Answers[i].InputText, currentAnswerButton.TextChamber, _currentDialogueElement.SymbolTime));
+                    //StartCoroutine(_dialogueWriter.SimpleWritingText(_currentDialogueElement.Answers[i].InputText, currentAnswerButton.TextChamber, _currentDialogueElement.SymbolTime));
                     currentAnswerButton.TextChamber.text = CurrentDialogueElement.Answers[i].InputText;
                     _answersChamberLayoutGroup.AddButton(currentAnswerButton.TextChamber);
                 }
@@ -159,7 +160,7 @@ public class DialogueViewer : MonoBehaviour
         CurrentDialogueElement = _dialogueSeter.SetNewElementAtAnswer(nextDialogueElement, addReputation, CurrentDialogueElement);
     }
 
-    private void WritingTextComplition()
+    private void WritingTextCompletion()
     {
         _isWriting = false;
     }
@@ -178,109 +179,4 @@ public class DialogueViewer : MonoBehaviour
             Destroy(child.gameObject);
         }
     }
-
-    ////надо переписать, после вопроса если идет вопрос (те последней до перехода к новому вопросу была простая фраза), закрывается книжка
-    //private DialogueBaseClass SetNewElementAtSimplePhrase(List<DialogueBaseClass> dialogue)
-    //{
-    //    DialogueBaseClass currentDialogueElement = null;
-    //    if (CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
-    //    {
-    //        if (dialogue.Contains(CurrentDialogueElement))
-    //        {
-    //            if (dialogue[dialogue.Count - 1] == CurrentDialogueElement && _dialogueBunch.RootDialogue[_dialogueBunch.RootDialogue.Count - 1] != CurrentDialogueElement)
-    //            {
-    //                //_currentDialogueElement = SetNextElAfterPreviousAnswer(_dialogueBunch.RootDialogue);
-    //                //return _currentDialogueElement;
-    //            }
-    //            currentDialogueElement = dialogue[dialogue.IndexOf(CurrentDialogueElement) + 1];
-    //            return currentDialogueElement;
-    //        }
-    //        //если нам надо спуститься глубже и в данном листе нет того чего мы ищем
-    //        for (int i = 0; i < dialogue.Count; i++)
-    //        {
-    //            if (dialogue[i].TypeOfDialogue == TypeOfDialogue.Answers)
-    //            {
-    //                foreach (DialogueBaseClass.Answer answer in dialogue[i].Answers)
-    //                {
-    //                    //??
-    //                    currentDialogueElement = SetNewElementAtSimplePhrase(answer.NextDialogueBaseClasses);
-    //                    if (currentDialogueElement != null)
-    //                    {
-    //                        return currentDialogueElement;
-    //                    }
-    //                }
-    //            }
-    //        }
-    //    }
-    //    return null;
-    //}
-
-    //public void SetNewElementAtAnswer(DialogueBaseClass currentDialogueElement, float addReputation)
-    //{
-    //    if(CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
-    //    {
-    //        //_previousAnswers.Add(_currentDialogueElement);
-    //        //SetPreviousAnswers(_dialogueBunch.RootDialogue);
-
-    //        _dialogueBunch.Reputation += addReputation;
-    //        CurrentDialogueElement = currentDialogueElement;
-
-    //    }
-    //}
-
-    //private void SetPreviousAnswers(List<DialogueBaseClass> dialogue)
-    //{
-    //    if (CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
-    //    {
-    //        if (dialogue.Contains(_previousAnswers[_previousAnswers.Count - 2]) && dialogue.Contains(_previousAnswers[_previousAnswers.Count - 1]))
-    //        {
-    //            _previousAnswers.RemoveAt(_previousAnswers.Count - 2);
-    //            return;
-    //        }
-    //        foreach (DialogueBaseClass el in dialogue)
-    //        {
-    //            if (el.TypeOfDialogue == TypeOfDialogue.Answers)
-    //            {
-    //                foreach (DialogueBaseClass.Answer answer in el.Answers)
-    //                {
-    //                    SetPreviousAnswers(answer.NextDialogueBaseClasses);
-    //                }
-    //            }
-    //        }
-    //    }
-    //    return;
-    //}
-
-    //private DialogueBaseClass SetNextElAfterPreviousAnswer(List<DialogueBaseClass> dialogue)
-    //{
-    //    if (CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
-    //    {
-    //        DialogueBaseClass currentDialogueElement = null;
-    //        if (dialogue.Contains(_previousAnswers[_previousAnswers.Count - 1]))
-    //        {
-    //            if (dialogue[dialogue.Count - 1] != _previousAnswers[_previousAnswers.Count - 1])
-    //            {
-    //                currentDialogueElement = dialogue[dialogue.IndexOf(_previousAnswers[_previousAnswers.Count - 1]) + 1];
-    //                return currentDialogueElement;
-    //            }
-    //        }
-    //        foreach (DialogueBaseClass el in dialogue)
-    //        {
-    //            if (el.TypeOfDialogue == TypeOfDialogue.Answers)
-    //            {
-    //                foreach (DialogueBaseClass.Answer answer in el.Answers)
-    //                {
-    //                    currentDialogueElement = SetNextElAfterPreviousAnswer(answer.NextDialogueBaseClasses);
-    //                    if (currentDialogueElement != null)
-    //                    {
-    //                        return currentDialogueElement;
-    //                    }
-    //                }
-    //            }
-    //        }
-
-    //    }
-    //    return null;
-    //}
-
 }

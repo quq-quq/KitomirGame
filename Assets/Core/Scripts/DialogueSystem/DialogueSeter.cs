@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DialogueSeter
 {
-    
     private DialogueBunch _dialogueBunch;
     private List<DialogueBaseClass> _previousAnswers;
 
@@ -21,12 +20,12 @@ public class DialogueSeter
         {
             if (dialogue.Contains(currentDialogueElement))
             {
-                //if (dialogue[dialogue.Count - 1] == currentDialogueElement && _dialogueBunch.RootDialogue[_dialogueBunch.RootDialogue.Count - 1] != currentDialogueElement)
-                //{
-                //    nextDialogueElement = SetNextElAfterPreviousAnswer(_dialogueBunch.RootDialogue);
-                //    return nextDialogueElement;
+                if (dialogue[^1] == currentDialogueElement && _dialogueBunch.RootDialogue[^1] != currentDialogueElement)
+                {
+                    nextDialogueElement = SetNextElAfterPreviousAnswer(_dialogueBunch.RootDialogue, currentDialogueElement);
+                    return nextDialogueElement;
+                }
 
-                //}
                 nextDialogueElement = dialogue[dialogue.IndexOf(currentDialogueElement) + 1];
                 return nextDialogueElement;
             }
@@ -52,8 +51,8 @@ public class DialogueSeter
     {
         if (currentDialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
         {
-            //_previousAnswers.Add(nextDialogueElement);
-            //SetPreviousAnswers(_dialogueBunch.RootDialogue);
+            _previousAnswers.Add(currentDialogueElement);
+            SetPreviousAnswers(_dialogueBunch.RootDialogue);
 
             _dialogueBunch.Reputation += addReputation;
             return nextDialogueElement;
@@ -61,58 +60,59 @@ public class DialogueSeter
         return null;
     }
 
-    //private void SetPreviousAnswers(List<DialogueBaseClass> dialogue)
-    //{
-    //    if (_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
-    //    {
-    //        if (dialogue.Contains(_previousAnswers[_previousAnswers.Count - 2]) && dialogue.Contains(_previousAnswers[_previousAnswers.Count - 1]))
-    //        {
-    //            _previousAnswers.RemoveAt(_previousAnswers.Count - 2);
-    //            return;
-    //        }
-    //        foreach (DialogueBaseClass el in dialogue)
-    //        {
-    //            if (el.TypeOfDialogue == TypeOfDialogue.Answers)
-    //            {
-    //                foreach (DialogueBaseClass.Answer answer in el.Answers)
-    //                {
-    //                    SetPreviousAnswers(answer.NextDialogueBaseClasses);
-    //                }
-    //            }
-    //        }
-    //    }
-    //    return;
-    //}
+    private void SetPreviousAnswers(List<DialogueBaseClass> dialogue)
+    {
+        for(int i = 0; i < _previousAnswers.Count-1; i++)
+        {
+            if (dialogue.Contains(_previousAnswers[i]) && dialogue.Contains(_previousAnswers[^1]))
+            {
+                _previousAnswers.RemoveAt(i);
+                return;
+            }
+        }
 
-    //private DialogueBaseClass SetNextElAfterPreviousAnswer(List<DialogueBaseClass> dialogue)
-    //{
-    //    if (_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
-    //    {
-    //        DialogueBaseClass currentDialogueElement = null;
-    //        if (dialogue.Contains(_previousAnswers[_previousAnswers.Count - 1]))
-    //        {
-    //            if (dialogue[dialogue.Count - 1] != _previousAnswers[_previousAnswers.Count - 1])
-    //            {
-    //                currentDialogueElement = dialogue[dialogue.IndexOf(_previousAnswers[_previousAnswers.Count - 1]) + 1];
-    //                return currentDialogueElement;
-    //            }
-    //        }
-    //        foreach (DialogueBaseClass el in dialogue)
-    //        {
-    //            if (el.TypeOfDialogue == TypeOfDialogue.Answers)
-    //            {
-    //                foreach (DialogueBaseClass.Answer answer in el.Answers)
-    //                {
-    //                    currentDialogueElement = SetNextElAfterPreviousAnswer(answer.NextDialogueBaseClasses);
-    //                    if (currentDialogueElement != null)
-    //                    {
-    //                        return currentDialogueElement;
-    //                    }
-    //                }
-    //            }
-    //        }
+        foreach (DialogueBaseClass el in dialogue)
+        {
+            if (el.TypeOfDialogue == TypeOfDialogue.Answers)
+            {
+                foreach (DialogueBaseClass.Answer answer in el.Answers)
+                {
+                    SetPreviousAnswers(answer.NextDialogueBaseClasses);
+                }
+            }
+        }
+        return;
+    }
 
-    //    }
-    //    return null;
-    //}
+    private DialogueBaseClass SetNextElAfterPreviousAnswer(List<DialogueBaseClass> dialogue, DialogueBaseClass currentDialogueElement)
+    {
+        if (currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
+        {
+            DialogueBaseClass nextDialogueElement = null;
+            if (dialogue.Contains(_previousAnswers[^1]))
+            {
+                if (dialogue[^1] != _previousAnswers[^1])
+                {
+                    nextDialogueElement = dialogue[dialogue.IndexOf(_previousAnswers[^1]) + 1];
+                    return nextDialogueElement;
+                }
+            }
+            foreach (DialogueBaseClass el in dialogue)
+            {
+                if (el.TypeOfDialogue == TypeOfDialogue.Answers)
+                {
+                    foreach (DialogueBaseClass.Answer answer in el.Answers)
+                    {
+                        nextDialogueElement = SetNextElAfterPreviousAnswer(answer.NextDialogueBaseClasses, currentDialogueElement);
+                        if (nextDialogueElement != null)
+                        {
+                            return nextDialogueElement;
+                        }
+                    }
+                }
+            }
+
+        }
+        return null;
+    }
 }
