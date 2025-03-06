@@ -46,7 +46,9 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE && _mainMenuPlayerSecretInput != MAIN_MENU_SECRET_INPUT)
+        if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE 
+            && _mainMenuPlayerSecretInput != MAIN_MENU_SECRET_INPUT
+            && GameStateManager.State != GameState.FirstEntry)
         {
             if (Input.anyKeyDown)
             {

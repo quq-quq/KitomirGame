@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public static class GameStateManager
 {
@@ -10,6 +11,7 @@ public static class GameStateManager
         set
         {
             _state = value;
+            //Debug.Log(State);
             OnStateChanged?.Invoke(null, new OnStateChangedEventArgs { CurrentState = _state });
         }
     }
@@ -21,15 +23,11 @@ public static class GameStateManager
 
 
     private static GameState _state;
-
-    public static void InitGameState()
-    {
-        State = GameState.MainMenu;
-    }
 }
 
 public enum GameState
 {
+    FirstEntry,
     MainMenu,
     AtHome,
     PhysicsExam,

@@ -27,11 +27,7 @@ public class GameManager : MonoBehaviour
     
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE)
-        {
-            GameStateManager.InitGameState();
-        }
-        else if (SceneManager.GetActiveScene().name == SceneNames.KITOMIR_HOME_SCENE)
+        if (SceneManager.GetActiveScene().name == SceneNames.KITOMIR_HOME_SCENE)
         {
             GameStateManager.State = GameState.AtHome;
         }
@@ -52,9 +48,19 @@ public class GameManager : MonoBehaviour
         InputManager.Instance.OnPauseAction += InputManager_OnPauseAction;
         InputManager.Instance.OnSecretInputSolved += InputManager_OnSecretInputSolved;
         GameStateManager.OnStateChanged += GameStateManager_OnStateChanged;
+
+        if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE)
+        {
+            StartForMenu.OnMenuButtonContainerAppear += StartForMenu_OnMenuButtonContainerAppear;
+        }
         
         _pauseMenu.SetActive(false);
         _fadeScreenCoroutine = StartCoroutine(_fadeScreen.Appear(1.5f));
+    }
+
+    private void StartForMenu_OnMenuButtonContainerAppear(object sender, EventArgs e)
+    {
+        GameStateManager.State = GameState.MainMenu;
     }
 
     private void InputManager_OnSecretInputSolved(object sender, EventArgs e)
@@ -154,6 +160,11 @@ public class GameManager : MonoBehaviour
         InputManager.Instance.OnPauseAction -= InputManager_OnPauseAction;
         InputManager.Instance.OnSecretInputSolved -= InputManager_OnSecretInputSolved;
         GameStateManager.OnStateChanged -= GameStateManager_OnStateChanged;
+        
+        if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE)
+        {
+            StartForMenu.OnMenuButtonContainerAppear -= StartForMenu_OnMenuButtonContainerAppear;
+        }
     }
     
     private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)

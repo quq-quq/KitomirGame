@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -36,21 +35,21 @@ public class SoundManager : MonoBehaviour
             BottomLimit.Instance.OnItemDropped += BottomLimit_OnItemDropped;
         }
 
-        if (SecretGameModePlayer.Instance != null)
-        {
-            SecretGameModePlayer.Instance.OnGameOver += SecretGameModePlayer_OnGameOver;
-        }
+        // if (SecretGameModePlayer.Instance != null)
+        // {
+        //     SecretGameModePlayer.Instance.OnGameOver += SecretGameModePlayer_OnGameOver;
+        // }
         GameStateManager.OnStateChanged += GameStateManager_OnStateChanged;
     }
 
-    private void SecretGameModePlayer_OnGameOver(object sender, EventArgs e)
-    {
-        PlaySound(_audioClipRefsSO.hardFail, Vector3.zero);
-    }
+    // private void SecretGameModePlayer_OnGameOver(object sender, EventArgs e)
+    // {
+    //     PlaySound(_audioClipRefsSO.hardFail, Vector3.zero);
+    // }
 
     private void BottomLimit_OnItemDropped(object sender, EventArgs e)
     {
-        PlaySound(_audioClipRefsSO.fail, Vector3.zero);
+        PlaySound(_audioClipRefsSO.ruladaFall, Vector3.zero);
     }
 
     private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
@@ -68,7 +67,7 @@ public class SoundManager : MonoBehaviour
 
     private void InputManager_OnSecretInputSolved(object sender, EventArgs e)
     {
-        PlaySound(_audioClipRefsSO.success, Vector3.zero);
+        PlaySound(_audioClipRefsSO.hardSuccess, Vector3.zero);
     }
 
     private void FadeScreen_OnWaitAfterFadingStarted(object sender, EventArgs e)

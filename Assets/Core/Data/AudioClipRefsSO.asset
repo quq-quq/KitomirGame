@@ -15,9 +15,10 @@ MonoBehaviour:
   fail:
   - {fileID: 8300000, guid: 834db8d5a5175b1cfbcd1801d4c9d33d, type: 3}
   - {fileID: 8300000, guid: f9a2e91efd4f40bb38841abdfd5c15d4, type: 3}
+  ruladaFall: {fileID: 8300000, guid: 39789a1ad13a3ad669983b3791dd8ea5, type: 3}
   hardFail: {fileID: 8300000, guid: 9f30b1657788ab458a588a543a16a361, type: 3}
   success: {fileID: 8300000, guid: d9955ec52910d5ebfa9271ae1efded66, type: 3}
-  hardSuccess: {fileID: 0}
+  hardSuccess: {fileID: 8300000, guid: 0c9c1b5bb575e38d9b3f442c7dd4caf3, type: 3}
   footsteps: {fileID: 8300000, guid: 76f3f0c3f5aff22188ae09ce338370b9, type: 3}
   alarm: {fileID: 8300000, guid: 54347613d425b75e89fbf96762e3997a, type: 3}
   alarmOff: {fileID: 8300000, guid: 0cab744d35dcf2b478ee59ef62245299, type: 3}

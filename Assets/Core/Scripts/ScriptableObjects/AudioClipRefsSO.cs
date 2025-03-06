@@ -5,6 +5,7 @@ public class AudioClipRefsSO : ScriptableObject
 {
     
     public AudioClip[] fail;
+    public AudioClip ruladaFall;
     public AudioClip hardFail;
     public AudioClip success;
     public AudioClip hardSuccess;

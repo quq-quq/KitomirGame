@@ -6,13 +6,27 @@
   <component name="ChangeListManager">
     <list default="true" id="5996c718-9b42-4e37-9821-ae2a4d845c13" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Prefabs/SecretGameMode/RuladaItem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Prefabs/SecretGameMode/RuladaItem.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/ITAuditoriumScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/ITAuditoriumScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/SecretGameModeScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/SecretGameModeScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Data/AudioClipRefsSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Data/AudioClipRefsSO.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/MainMenuScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/MainMenuScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameStateManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/InputManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/SoundManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/SecretGameMode/BottomLimit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/SecretGameMode/BottomLimit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/SecretGameMode/CollectableItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/SecretGameMode/CollectableItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/ScriptableObjects/AudioClipRefsSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/ScriptableObjects/AudioClipRefsSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/UI/StartForMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/UI/StartForMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Sounds/Music/ChocoPie(Original).mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Sounds/Music/ChocoPie(Original).mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Sounds/Music/LittlejamsetJAM1(final boss).mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Sounds/Music/LittlejamsetJAM1(final boss).mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Sounds/Music/oh my Guts!2(main menu.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Sounds/Music/oh my Guts!2(main menu.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Sounds/Music/senpai(maths).mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Sounds/Music/senpai(maths).mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Sounds/Music/shroooming(physics).mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Sounds/Music/shroooming(physics).mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Sounds/Music/stuff2(corridor).mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Sounds/Music/stuff2(corridor).mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Sounds/Music/unost_v_sapogah.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Sounds/Music/unost_v_sapogah.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Sounds/Music/то что возможно найти.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Sounds/Music/то что возможно найти.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Sounds/SFX/Footstep middle room.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Sounds/SFX/Footstep middle room.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Sprites/Backgrounds/projector.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Sprites/Backgrounds/projector.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Sprites/Backgrounds/scene.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Sprites/Backgrounds/scene.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Sprites/Backgrounds/upperCurtains.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Sprites/Backgrounds/upperCurtains.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Sprites/characters/soldier/soldat.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Sprites/characters/soldier/soldat.png.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,21 +70,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;TimohaSafeBranch&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/goga/Unity/Projects/StudyProject&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/goga/Unity/Projects/StudyProject",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../../Hub/Editor/6000.0.35f1/Editor/Unity" />
@@ -158,6 +172,7 @@
       <workItem from="1740745637540" duration="507000" />
       <workItem from="1740824291507" duration="6427000" />
       <workItem from="1740985026332" duration="4826000" />
+      <workItem from="1741277583591" duration="1997000" />
     </task>
     <servers />
   </component>

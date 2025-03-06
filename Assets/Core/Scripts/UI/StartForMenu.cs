@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,15 +20,25 @@ public class StartForMenu : MonoBehaviour
     [Space(10)]
     [SerializeField] private List<Frame> _frames;
 
+    public static event EventHandler OnMenuButtonContainerAppear;
+    
     void Start()
     {
-        StartCoroutine(StartDelay());
+        if (GameStateManager.State == GameState.FirstEntry)
+        {
+            StartCoroutine(StartDelay());
+        }
     }
 
     private IEnumerator StartDelay()
     {
         _buttonContainer.gameObject.SetActive(false);
 
+        foreach (var frame in _frames)
+        {
+            frame.canvasGroup.alpha = 1f;
+        }
+        
         foreach (Frame frame in _frames)
         {
             frame.canvasGroup.gameObject.SetActive(true);
@@ -38,5 +49,6 @@ public class StartForMenu : MonoBehaviour
         }
 
         _buttonContainer.gameObject.SetActive(true);
+        OnMenuButtonContainerAppear?.Invoke(this, EventArgs.Empty);
     }
 }
