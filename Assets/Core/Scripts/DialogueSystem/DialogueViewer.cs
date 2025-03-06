@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using DG.Tweening;
 
 public class DialogueViewer : MonoBehaviour
 {
@@ -21,8 +22,14 @@ public class DialogueViewer : MonoBehaviour
     [SerializeField] private TMP_Text _gradeChamber;
     [SerializeField] private ButtonContainer _answersChamberLayoutGroup;
     [Space(10)]
+    [SerializeField] RectTransform _endGradeTransform;
+    [SerializeField] float _durationForEndGradeView;
+    [SerializeField] float _durationForEndGradeMove;
+    [SerializeField] float _ofsetForEndGradeView;
+    [Space(10)]
     [SerializeField, Tooltip("must contain MenuButton script")] private GameObject _answerButtonPrefab;
     private bool _isWriting = false;
+    private Vector2 _endGradePos;
     private Transform _answersChamberTransform;    
     private Coroutine _writingCoroutine;
     private DialogueSeter _dialogueSeter;
@@ -39,6 +46,7 @@ public class DialogueViewer : MonoBehaviour
         }
 
         _answersChamberTransform = _answersChamberLayoutGroup.gameObject.transform;
+        _endGradePos = _endGradeTransform.position;
         _dialogueSeter = new DialogueSeter(_dialogueBunch);
         _dialogueWriter = new DialogueWriter();
 
@@ -87,10 +95,26 @@ public class DialogueViewer : MonoBehaviour
 
     private IEnumerator Ender()
     {
-        Reseter();        
+        Reseter();
+        ViewGrade(_dialogueBunch.Reputation, _gradeChamber);
         IsGoing = false;
         _dialogueAnimator.SetTrigger(_triggerForEndName);
-        yield return new WaitForSeconds(_dialogueAnimator.GetCurrentAnimatorStateInfo(0).length);
+        _gradeChamber.rectTransform.DOMove(_endGradePos, _durationForEndGradeMove);
+        float duration;
+        if(_dialogueAnimator.GetCurrentAnimatorStateInfo(0).length > _durationForEndGradeMove)
+        {
+            duration = _dialogueAnimator.GetCurrentAnimatorStateInfo(0).length;
+        }
+        else
+        {
+            duration = _durationForEndGradeMove;
+        }
+        yield return new WaitForSeconds(duration);
+        
+        yield return new WaitForSeconds(_durationForEndGradeMove);
+        yield return new WaitForSeconds(_ofsetForEndGradeView);
+        _gradeChamber.DOFade(0, _durationForEndGradeView);
+        yield return new WaitForSeconds(_durationForEndGradeView);
         _dialogueCanvas.gameObject.SetActive(false);
         Destroy(gameObject);
     }
