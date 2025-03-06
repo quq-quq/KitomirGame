@@ -180,8 +180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada47f18c0c0285298e38cba82bea661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fallingSpeedMax: 4
-  _fallingSpeedMin: 6
+  _rotationDurationMax: 3
+  _rotationDurationMin: 1
 --- !u!50 &8438798819478784156
 Rigidbody2D:
   serializedVersion: 5

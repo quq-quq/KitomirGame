@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 
 public class MenuButton : MonoBehaviour
@@ -45,5 +46,11 @@ public class MenuButton : MonoBehaviour
     public void RejectBackToMenu()
     {
         OnHiddenButtonsNeedToSetActive?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void RestartSecretGameMode()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneNames.SECRET_GAME_MODE_SCENE);
     }
 }
