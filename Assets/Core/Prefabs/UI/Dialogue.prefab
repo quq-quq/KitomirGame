@@ -248,8 +248,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 237.35182, y: -46.15783}
-  m_SizeDelta: {x: 2279.251, y: 694.0006}
+  m_AnchoredPosition: {x: 223.01605, y: -46.15783}
+  m_SizeDelta: {x: 2411.2524, y: 694.0006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5022917388037370892
 MonoBehaviour:
@@ -519,9 +519,9 @@ MonoBehaviour:
   _gradeChamber: {fileID: 2500867738056571783}
   _answersChamberLayoutGroup: {fileID: 2379959903926714524}
   _endGradeTransform: {fileID: 8389154635582402211}
-  _durationForEndGradeView: 0.5
   _durationForEndGradeMove: 1.5
   _ofsetForEndGradeView: 0.5
+  _durationForEndGradeView: 0.5
   _answerButtonPrefab: {fileID: 9093208409158845505, guid: 29b3a60e22eae0b20adae470c74f745e, type: 3}
 --- !u!1 &6887424196449439085
 GameObject:
@@ -615,12 +615,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 83.3
+  m_fontSize: 89.85
   m_fontSizeBase: 83.3
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 90
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256

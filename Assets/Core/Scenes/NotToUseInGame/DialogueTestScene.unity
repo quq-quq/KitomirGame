@@ -517,7 +517,11 @@ PrefabInstance:
     - target: {fileID: 5905011266673196597, guid: 640d450748e8c1141856fcf1752e0cfe, type: 3}
       propertyPath: _dialogueBunch
       value: 
+<<<<<<< HEAD
       objectReference: {fileID: 11400000, guid: 47ce53eb50c15614eb28df7ff4d2453c, type: 2}
+=======
+      objectReference: {fileID: 11400000, guid: 53d4599a550b3e14cb9da88dd1156196, type: 2}
+>>>>>>> Fedor0703
     - target: {fileID: 5905011266673196597, guid: 640d450748e8c1141856fcf1752e0cfe, type: 3}
       propertyPath: _isActiveOnStart
       value: 1
