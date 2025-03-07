@@ -43,32 +43,25 @@ public class DialogueBunch : ScriptableObject
 //#if UNITY_EDITOR
 //    public void OnValidate()
 //    {
-
-//        id = 0;
-//        Debug.Log("----------------------");
-//        SetId(RootDialogue);
+//        SetTypeParameters(RootDialogue);
 //        UnityEditor.EditorUtility.SetDirty(this);
 //    }
 //#endif
 
-//    public void SetId(List<DialogueBaseClass> dialogue)
+//    public void SetTypeParameters(List<DialogueBaseClass> dialogue)
 //    {
-//        foreach(DialogueBaseClass el in dialogue)
+//        foreach (DialogueBaseClass el in dialogue)
 //        {
-//            el.Id = id;
-//            id++;
 //            if(el.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
 //            {
-//                Debug.Log(el.simplePhrase.InputText + " " + id);
+                
 //            }
 //            if (el.TypeOfDialogue == TypeOfDialogue.Answers)
 //            {
-//                Debug.Log("ANSW" +" " + id);
 //                foreach (DialogueBaseClass.Answer answer in el.Answers)
 //                {
-//                    SetId(answer.NextDialogueBaseClasses);
+//                    SetTypeParameters(answer.NextDialogueBaseClasses);
 //                }
-                
 //            }
 //        }
 //    }

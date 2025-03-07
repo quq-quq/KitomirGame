@@ -120,44 +120,4 @@ public class DialogueSeter
         }
         return;
     }
-
-    //private DialogueBaseClass SetNextElAfterPreviousAnswer(List<DialogueBaseClass> dialogue, DialogueBaseClass currentDialogueElement)
-    //{
-    //    if (currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
-    //    {
-    //        DialogueBaseClass nextDialogueElement = null;
-    //        if (dialogue.Contains(_previousAnswers[^1]))
-    //        {
-    //            if (dialogue[^1] != _previousAnswers[^1])
-    //            {
-    //                nextDialogueElement = dialogue[dialogue.IndexOf(_previousAnswers[^1]) + 1];
-    //                if(nextDialogueElement != currentDialogueElement)
-    //                {
-    //                    return nextDialogueElement;
-    //                }
-    //                else
-    //                {
-    //                    return null;
-    //                }
-                    
-    //            }
-    //        }
-    //        foreach (DialogueBaseClass el in dialogue)
-    //        {
-    //            if (el.TypeOfDialogue == TypeOfDialogue.Answers)
-    //            {
-    //                foreach (DialogueBaseClass.Answer answer in el.Answers)
-    //                {
-    //                    nextDialogueElement = SetNextElAfterPreviousAnswer(answer.NextDialogueBaseClasses, currentDialogueElement);
-    //                    if (nextDialogueElement != null)
-    //                    {
-    //                        return nextDialogueElement;
-    //                    }
-    //                }
-    //            }
-    //        }
-
-    //    }
-    //    return null;
-    //}
 }

@@ -515,6 +515,10 @@ PrefabInstance:
       value: Dialogue
       objectReference: {fileID: 0}
     - target: {fileID: 5905011266673196597, guid: 640d450748e8c1141856fcf1752e0cfe, type: 3}
+      propertyPath: _dialogueBunch
+      value: 
+      objectReference: {fileID: 11400000, guid: 53d4599a550b3e14cb9da88dd1156196, type: 2}
+    - target: {fileID: 5905011266673196597, guid: 640d450748e8c1141856fcf1752e0cfe, type: 3}
       propertyPath: _isActiveOnStart
       value: 1
       objectReference: {fileID: 0}
