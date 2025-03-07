@@ -29,7 +29,7 @@ public class InteractableObject : MonoBehaviour
         return _isInteractable;
     }
 
-    public void Deselect()
+    public virtual void Deselect()
     {
         _interactiveSign.SetActive(false);
     }

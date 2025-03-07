@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad9601d562f7044e844e34dfbdfb87b, type: 3}
   m_Name: Physician
   m_EditorClassIdentifier: 
-  _reputation: 100
+  _isReputationable: 1
+  _startReputation: 70
   _minReputation: 60
   _maxReputation: 80
-  _gradeTypingSpeed: 0.5
   _rootDialogue:
   - _typeOfDialogue: 0
     _symbolTime: 0.2

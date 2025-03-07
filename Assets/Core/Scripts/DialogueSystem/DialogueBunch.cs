@@ -5,13 +5,18 @@ using UnityEngine.Rendering;
 [CreateAssetMenu(menuName = "Custom/DialogueBunch"), System.Serializable]
 public class DialogueBunch : ScriptableObject
 {
-    [SerializeField, Range(0, 100)] private float _startReputation = 50f;
+    [SerializeField] private bool _isReputationable;
+    [SerializeField, Range(0, 100)] private float _startReputation;
     [SerializeField, Range(0, 98)] private float _minReputation = 40f;
     [SerializeField, Range(2, 100)] private float _maxReputation = 85f;
-    [Space(10)]
+    [Space(20)]
     [SerializeField]private List<DialogueBaseClass> _rootDialogue;
     private float _reputation = 50f;
 
+    public bool IsReputationable
+    {
+        get => _isReputationable;
+    }
     public float Reputation
     {
         get => _reputation;

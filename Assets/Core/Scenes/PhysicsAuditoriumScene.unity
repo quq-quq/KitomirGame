@@ -489,10 +489,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 303473309321669096, guid: 640d450748e8c1141856fcf1752e0cfe, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3486761419032693711, guid: 640d450748e8c1141856fcf1752e0cfe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -535,79 +531,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5831748646253091606, guid: 640d450748e8c1141856fcf1752e0cfe, type: 3}
       propertyPath: m_Name
-      value: Dialogue
+      value: DialogueMain
       objectReference: {fileID: 0}
     - target: {fileID: 5905011266673196597, guid: 640d450748e8c1141856fcf1752e0cfe, type: 3}
       propertyPath: _dialogueBunch
       value: 
       objectReference: {fileID: 11400000, guid: 47ce53eb50c15614eb28df7ff4d2453c, type: 2}
-    - target: {fileID: 5905011266673196597, guid: 640d450748e8c1141856fcf1752e0cfe, type: 3}
-      propertyPath: _isActiveOnStart
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5905011266673196597, guid: 640d450748e8c1141856fcf1752e0cfe, type: 3}
-      propertyPath: _endGradeTransform
-      value: 
-      objectReference: {fileID: 771975930}
-    - target: {fileID: 5905011266673196597, guid: 640d450748e8c1141856fcf1752e0cfe, type: 3}
-      propertyPath: _triggerForEndName
-      value: IsEnding
-      objectReference: {fileID: 0}
-    - target: {fileID: 5905011266673196597, guid: 640d450748e8c1141856fcf1752e0cfe, type: 3}
-      propertyPath: _ofsetForEndGradeView
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5905011266673196597, guid: 640d450748e8c1141856fcf1752e0cfe, type: 3}
-      propertyPath: _durationForEndGradeMove
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5905011266673196597, guid: 640d450748e8c1141856fcf1752e0cfe, type: 3}
-      propertyPath: _durationForEndGradeView
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 4751869488756874114, guid: 640d450748e8c1141856fcf1752e0cfe, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 771975930}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 640d450748e8c1141856fcf1752e0cfe, type: 3}
---- !u!1 &771975929
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 771975930}
-  m_Layer: 5
-  m_Name: PointForGrade
-  m_TagString: Untagged
-  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &771975930
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 771975929}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.71505, y: 0.71505, z: 0.71505}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1163860891}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &970663616 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7582172296902018744, guid: ae88dc4390d9414ed891f156b7e8c788, type: 3}
@@ -950,11 +884,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 11.028327}
   m_EdgeRadius: 0
---- !u!224 &1163860891 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4751869488756874114, guid: 640d450748e8c1141856fcf1752e0cfe, type: 3}
-  m_PrefabInstance: {fileID: 639240369}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1189124951
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,9 +24,9 @@ public class DialogueViewer : MonoBehaviour
     [SerializeField] private ButtonContainer _answersChamberLayoutGroup;
     [Space(10)]
     [SerializeField] RectTransform _endGradeTransform;
-    [SerializeField] float _durationForEndGradeView;
     [SerializeField] float _durationForEndGradeMove;
     [SerializeField] float _ofsetForEndGradeView;
+    [SerializeField] float _durationForEndGradeView;
     [Space(10)]
     [SerializeField, Tooltip("must contain MenuButton script")] private GameObject _answerButtonPrefab;
     private bool _isWriting = false;
@@ -63,7 +63,7 @@ public class DialogueViewer : MonoBehaviour
 
     private void Update()
     {
-        if (IsGoing && CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && _simplePhraseChamber.text.Length > 1)
+        if (IsCurrentViewerActive() && CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && _simplePhraseChamber.text.Length > 1)
         {
             if (_isWriting)
             {
@@ -88,35 +88,50 @@ public class DialogueViewer : MonoBehaviour
         CurrentDialogueElement = _dialogueBunch.RootDialogue[0];
         if (!IsGoing)
         {
-            yield return new WaitForSeconds(_dialogueAnimator.GetCurrentAnimatorStateInfo(0).length);
             IsGoing = true;
+            yield return new WaitForSeconds(_dialogueAnimator.GetCurrentAnimatorStateInfo(0).length);
             ViewDialogue();
-            _gradeChamber.text = "...";
+            if (_dialogueBunch.IsReputationable)
+            {
+                _gradeChamber.text = "...";
+            }   
         }
     }
 
     private IEnumerator Ender()
     {
         Reseter();
-        ViewGrade(_dialogueBunch.Reputation, _gradeChamber);
+        
         IsGoing = false;
         _dialogueAnimator.SetTrigger(_triggerForEndName);
-        _gradeChamber.rectTransform.DOMove(_endGradePos, _durationForEndGradeMove);
-        float duration;
-        if(_dialogueAnimator.GetCurrentAnimatorStateInfo(0).length > _durationForEndGradeMove)
+
+        if (_dialogueBunch.IsReputationable)
         {
-            duration = _dialogueAnimator.GetCurrentAnimatorStateInfo(0).length;
+            ViewGrade(_dialogueBunch.Reputation, _gradeChamber);
+            _gradeChamber.rectTransform.DOMove(_endGradePos, _durationForEndGradeMove);
+            float duration;
+            if (_dialogueAnimator.GetCurrentAnimatorStateInfo(0).length > _durationForEndGradeMove)
+            {
+                duration = _dialogueAnimator.GetCurrentAnimatorStateInfo(0).length;
+            }
+            else
+            {
+                duration = _durationForEndGradeMove;
+            }
+            yield return new WaitForSeconds(duration);
+            yield return new WaitForSeconds(_ofsetForEndGradeView);
+            _gradeChamber.DOFade(0, _durationForEndGradeView);
+            yield return new WaitForSeconds(_durationForEndGradeView);
+            
+            if (_dialogueBunch.Reputation < _dialogueBunch.MinReputation)
+            {
+                GameStateManager.State = GameState.ExamsFailed;
+            }
         }
         else
         {
-            duration = _durationForEndGradeMove;
+            yield return new WaitForSeconds(_dialogueAnimator.GetCurrentAnimatorStateInfo(0).length);
         }
-        yield return new WaitForSeconds(duration);
-        
-        yield return new WaitForSeconds(_durationForEndGradeMove);
-        yield return new WaitForSeconds(_ofsetForEndGradeView);
-        _gradeChamber.DOFade(0, _durationForEndGradeView);
-        yield return new WaitForSeconds(_durationForEndGradeView);
         _dialogueCanvas.gameObject.SetActive(false);
         if (_isDestroyingInTheEnd)
         {
@@ -128,7 +143,10 @@ public class DialogueViewer : MonoBehaviour
     {
         StopAllCoroutines();
         Reseter();
-        ViewGrade(_dialogueBunch.Reputation, _gradeChamber);
+        if (_dialogueBunch.IsReputationable)
+        {
+            ViewGrade(_dialogueBunch.Reputation, _gradeChamber);
+        }
 
         if (CurrentDialogueElement != null)
         {
@@ -198,14 +216,19 @@ public class DialogueViewer : MonoBehaviour
     {
         _simplePhraseChamber.color = Color.black;
         _nameChamber.color = Color.black;
-        _gradeChamber.color = Color.red;
         _simplePhraseChamber.text = string.Empty;
         _nameChamber.text = string.Empty;
+        _gradeChamber.color = Color.red;
         _gradeChamber.text = string.Empty;
         foreach (Transform child in _answersChamberTransform)
         {
             _answersChamberLayoutGroup.Buttons.Clear();
             Destroy(child.gameObject);
         }
+    }
+
+    public bool IsCurrentViewerActive()
+    {
+        return IsGoing && _dialogueCanvas.gameObject.activeSelf;
     }
 }

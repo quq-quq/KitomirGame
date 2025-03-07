@@ -20,7 +20,7 @@ public class DialogueSeter
         {
             if (dialogue.Contains(currentDialogueElement))
             {
-                if (dialogue[^1] == currentDialogueElement && _dialogueBunch.RootDialogue[^1] != currentDialogueElement)
+                if (dialogue[^1] == currentDialogueElement)
                 {
                     nextDialogueElement = SetNextElAfterPreviousAnswer(_dialogueBunch.RootDialogue, currentDialogueElement);
                     return nextDialogueElement;
