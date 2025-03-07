@@ -10,7 +10,7 @@ public class Teacher : InteractableObject
         public string boolParameterName;
         public bool BoolParameterInput;
         [Space(10)]
-        public TypeOfDialogue typeOfDialogue;
+        [HideInInspector]public TypeOfDialogue typeOfDialogue;
         [Multiline]public string inputText;
 
     }
