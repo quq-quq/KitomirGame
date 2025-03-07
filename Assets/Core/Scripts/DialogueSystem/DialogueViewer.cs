@@ -11,6 +11,7 @@ public class DialogueViewer : MonoBehaviour
     [Header("Dev settings")]
     [SerializeField] DialogueBunch _dialogueBunch;
     [SerializeField] private bool _isActiveOnStart;
+    [SerializeField] private bool _isDestroyingInTheEnd;
     [Space(40), Header("Maintenance settings")]
     [SerializeField] private Canvas _dialogueCanvas;
     [Space(10)]
@@ -82,6 +83,7 @@ public class DialogueViewer : MonoBehaviour
     public IEnumerator Starter()
     {
         _dialogueCanvas.gameObject.SetActive(true);
+        _dialogueBunch.ResetReputation();
         Reseter();
         CurrentDialogueElement = _dialogueBunch.RootDialogue[0];
         if (!IsGoing)
@@ -116,7 +118,10 @@ public class DialogueViewer : MonoBehaviour
         _gradeChamber.DOFade(0, _durationForEndGradeView);
         yield return new WaitForSeconds(_durationForEndGradeView);
         _dialogueCanvas.gameObject.SetActive(false);
-        Destroy(gameObject);
+        if (_isDestroyingInTheEnd)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void ViewDialogue()

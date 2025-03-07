@@ -108,6 +108,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8389154635582402211}
   - {fileID: 5670397207865224454}
   m_Father: {fileID: 3486761419032693711}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -427,6 +428,41 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &5216697525220958821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8389154635582402211}
+  m_Layer: 5
+  m_Name: PointForGrade
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8389154635582402211
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5216697525220958821}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.71505, y: 0.71505, z: 0.71505}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4751869488756874114}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5831748646253091606
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,8 +508,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e6fcef740a0fe648825cc40111d7773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dialogueBunch: {fileID: 11400000, guid: b6d1bea243fc75c4fa6040bd980bdcab, type: 2}
+  _dialogueBunch: {fileID: 0}
   _isActiveOnStart: 0
+  _isDestroyingInTheEnd: 1
   _dialogueCanvas: {fileID: 7894715482675298070}
   _dialogueAnimator: {fileID: 375402528756516274}
   _triggerForEndName: IsEnding
@@ -481,6 +518,10 @@ MonoBehaviour:
   _nameChamber: {fileID: 7356506262055992083}
   _gradeChamber: {fileID: 2500867738056571783}
   _answersChamberLayoutGroup: {fileID: 2379959903926714524}
+  _endGradeTransform: {fileID: 8389154635582402211}
+  _durationForEndGradeView: 0.5
+  _durationForEndGradeMove: 1.5
+  _ofsetForEndGradeView: 0.5
   _answerButtonPrefab: {fileID: 9093208409158845505, guid: 29b3a60e22eae0b20adae470c74f745e, type: 3}
 --- !u!1 &6887424196449439085
 GameObject:
