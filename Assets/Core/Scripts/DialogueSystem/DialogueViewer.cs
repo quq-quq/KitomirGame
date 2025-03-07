@@ -3,37 +3,56 @@ using TMPro;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using DG.Tweening;
 
 public class DialogueViewer : MonoBehaviour
 {
     [Header("Dev settings")]
     [SerializeField] DialogueBunch _dialogueBunch;
     [SerializeField] private bool _isActiveOnStart;
-    [Space(30), Header("Maintenance settings")]
+    [SerializeField] private bool _isDestroyingInTheEnd;
+    [Space(40), Header("Maintenance settings")]
     [SerializeField] private Canvas _dialogueCanvas;
+    [Space(10)]
     [SerializeField] private Animator _dialogueAnimator;
+    [SerializeField] private string _triggerForEndName;
+    [Space(10)]
     [SerializeField] private TMP_Text _simplePhraseChamber;
     [SerializeField] private TMP_Text _nameChamber;
+    [SerializeField] private TMP_Text _gradeChamber;
     [SerializeField] private ButtonContainer _answersChamberLayoutGroup;
-    [SerializeField, Tooltip("must contain AnswerButton script")] private GameObject _answerButtonPrefab;
-    
-    private Transform _answersChamberTransform;
-    private DialogueBaseClass _currentDialogueElement;
-    private Coroutine _writingCoroutine;
+    [Space(10)]
+    [SerializeField] RectTransform _endGradeTransform;
+    [SerializeField] float _durationForEndGradeView;
+    [SerializeField] float _durationForEndGradeMove;
+    [SerializeField] float _ofsetForEndGradeView;
+    [Space(10)]
+    [SerializeField, Tooltip("must contain MenuButton script")] private GameObject _answerButtonPrefab;
     private bool _isWriting = false;
+    private Vector2 _endGradePos;
+    private Transform _answersChamberTransform;    
+    private Coroutine _writingCoroutine;
+    private DialogueSeter _dialogueSeter;
+    private DialogueWriter _dialogueWriter;
 
     public static bool IsGoing { get; private set; } = false;
+    public DialogueBaseClass CurrentDialogueElement { get; private set; }
 
     private void Start()
     {
-        //if (_answerButtonPrefab == null || _answerButtonPrefab.GetComponent<AnswerButton>() == null)
-        //{
-        //    Debug.LogError("GameObject dont have AnswerButtonScript or GameObjet dont initialised");
-        //}
+        if (_answerButtonPrefab == null || _answerButtonPrefab.GetComponent<MenuButton>() == null)
+        {
+            Debug.LogError("GameObject dont have ButtonContainer or GameObjet dont initialised");
+        }
+
+        _answersChamberTransform = _answersChamberLayoutGroup.gameObject.transform;
+        _endGradePos = _endGradeTransform.position;
+        _dialogueSeter = new DialogueSeter(_dialogueBunch);
+        _dialogueWriter = new DialogueWriter();
 
         if (_isActiveOnStart)
         {
-            _dialogueCanvas.gameObject.SetActive(true);
             StartCoroutine(Starter());
         }
         else
@@ -44,87 +63,93 @@ public class DialogueViewer : MonoBehaviour
 
     private void Update()
     {
-        if (IsGoing && _currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && Input.anyKeyDown)
+        if (IsGoing && CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && _simplePhraseChamber.text.Length > 1)
         {
-            if (_isWriting && _simplePhraseChamber.text.Length > 1)
+            if (_isWriting)
             {
-                _simplePhraseChamber.text = _currentDialogueElement.simplePhrase.InputText;
+                _simplePhraseChamber.text = CurrentDialogueElement.simplePhrase.InputText;
                 _isWriting = false;
                 StopCoroutine(_writingCoroutine);
             }
             else
             {
-                _currentDialogueElement = SetNewElementAtSimplePhrase(_dialogueBunch.RootDialogue);
+                CurrentDialogueElement = _dialogueSeter.SetNewElementAtSimplePhrase(_dialogueBunch.RootDialogue, CurrentDialogueElement);
                 ViewDialogue();
             }
 
         }
     }
 
-    private IEnumerator Starter()
+    public IEnumerator Starter()
     {
-        _simplePhraseChamber.color = Color.black;
-        _simplePhraseChamber.text = "";
-        _answersChamberTransform = _answersChamberLayoutGroup.gameObject.transform;
-        _simplePhraseChamber.text = string.Empty;
-        _nameChamber.text = string.Empty;
-        _currentDialogueElement = _dialogueBunch.RootDialogue[0];
-
+        _dialogueCanvas.gameObject.SetActive(true);
+        _dialogueBunch.ResetReputation();
+        Reseter();
+        CurrentDialogueElement = _dialogueBunch.RootDialogue[0];
         if (!IsGoing)
         {
-            yield return new WaitForSeconds(GetCurrentAnim(_dialogueAnimator).length);
+            yield return new WaitForSeconds(_dialogueAnimator.GetCurrentAnimatorStateInfo(0).length);
             IsGoing = true;
+            ViewDialogue();
+            _gradeChamber.text = "...";
         }
-
-        ViewDialogue();
     }
 
     private IEnumerator Ender()
     {
+        Reseter();
+        ViewGrade(_dialogueBunch.Reputation, _gradeChamber);
         IsGoing = false;
-        _dialogueAnimator.SetTrigger("IsEnding");
-        yield return new WaitForSeconds(GetCurrentAnim(_dialogueAnimator).length);
-
-        foreach (Transform child in _answersChamberTransform)
+        _dialogueAnimator.SetTrigger(_triggerForEndName);
+        _gradeChamber.rectTransform.DOMove(_endGradePos, _durationForEndGradeMove);
+        float duration;
+        if(_dialogueAnimator.GetCurrentAnimatorStateInfo(0).length > _durationForEndGradeMove)
         {
-            Destroy(child.gameObject);
+            duration = _dialogueAnimator.GetCurrentAnimatorStateInfo(0).length;
         }
-        _simplePhraseChamber.text = string.Empty;
-        _nameChamber.text = string.Empty;
+        else
+        {
+            duration = _durationForEndGradeMove;
+        }
+        yield return new WaitForSeconds(duration);
+        
+        yield return new WaitForSeconds(_durationForEndGradeMove);
+        yield return new WaitForSeconds(_ofsetForEndGradeView);
+        _gradeChamber.DOFade(0, _durationForEndGradeView);
+        yield return new WaitForSeconds(_durationForEndGradeView);
         _dialogueCanvas.gameObject.SetActive(false);
-        _currentDialogueElement = _dialogueBunch.RootDialogue[0];
+        if (_isDestroyingInTheEnd)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void ViewDialogue()
     {
         StopAllCoroutines();
-        foreach (Transform child in _answersChamberTransform)
-        {
-            _answersChamberLayoutGroup.Buttons.Clear();
-            Destroy(child.gameObject);
-        }
-        _simplePhraseChamber.text = string.Empty;
-        _nameChamber.text = string.Empty;
+        Reseter();
+        ViewGrade(_dialogueBunch.Reputation, _gradeChamber);
 
-        if (_currentDialogueElement != null)
+        if (CurrentDialogueElement != null)
         {
-            
-            if (_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
+            if (CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
             {
-                _nameChamber.text = _currentDialogueElement.InputName;
-                _writingCoroutine = StartCoroutine(Writer.WritingText(_currentDialogueElement.simplePhrase.InputText, _simplePhraseChamber, _currentDialogueElement.SymbolTime, WritingTextComplition));
+                _nameChamber.text = CurrentDialogueElement.simplePhrase.InputName;
+                _writingCoroutine = StartCoroutine(_dialogueWriter.SimpleWritingText(CurrentDialogueElement.simplePhrase.InputText, _simplePhraseChamber, CurrentDialogueElement.SymbolTime, WritingTextCompletion));
                 _isWriting = true;
             }
-            if (_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
+            if (CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
             {
-                for (int i = 0; i < _currentDialogueElement.Answers.Count; i++)
+                for (int i = 0; i < CurrentDialogueElement.Answers.Count; i++)
                 {
                     MenuButton currentAnswerButton = Instantiate(_answerButtonPrefab, _answersChamberTransform).GetComponent<MenuButton>();
-                    DialogueBaseClass nextDialogueElement = _currentDialogueElement.Answers[i].NextDialogueBaseClasses[0];
-                    currentAnswerButton.OnPressMethod.AddListener(() => SetNewElementAtAnswer(nextDialogueElement));
+                    DialogueBaseClass nextDialogueElement = CurrentDialogueElement.Answers[i].NextDialogueBaseClasses[0];
+                    float addReputation = CurrentDialogueElement.Answers[i].AddReputation;
+                    currentAnswerButton.OnPressMethod.AddListener(() => SetNewElementAtAnswerBufer(nextDialogueElement, addReputation));
+                    currentAnswerButton.OnPressMethod.AddListener(ViewDialogue);
 
-                    //StartCoroutine(DialogueBaseClass.WritingText(_currentDialogueElement.Answers[i].InputText, currentAnswerButton.TextChamber, _currentDialogueElement.SymbolTime));
-                    currentAnswerButton.TextChamber.text = _currentDialogueElement.Answers[i].InputText;
+                    //StartCoroutine(_dialogueWriter.SimpleWritingText(_currentDialogueElement.Answers[i].InputText, currentAnswerButton.TextChamber, _currentDialogueElement.SymbolTime));
+                    currentAnswerButton.TextChamber.text = CurrentDialogueElement.Answers[i].InputText;
                     _answersChamberLayoutGroup.AddButton(currentAnswerButton.TextChamber);
                 }
             }
@@ -135,70 +160,52 @@ public class DialogueViewer : MonoBehaviour
         }
     }
 
-    private DialogueBaseClass SetNewElementAtSimplePhrase(List<DialogueBaseClass> dialogue)
+    private void ViewGrade(float reputation, TMP_Text gradeChamber)
     {
-        DialogueBaseClass currentDialogueElement = null;
-        if (_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
+        if (reputation > _dialogueBunch.MaxReputation)
         {
-            for (int i = 0; i < dialogue.Count - 1; i++)
-            {
-                if (dialogue[i] == _currentDialogueElement)
-                {
-                    currentDialogueElement = dialogue[i + 1];
-                    return currentDialogueElement;
-                }
-
-                if (dialogue[i].TypeOfDialogue == TypeOfDialogue.Answers)
-                {
-                    foreach (DialogueBaseClass.Answer answer in dialogue[i].Answers)
-                    {
-                        currentDialogueElement = SetNewElementAtSimplePhrase(answer.NextDialogueBaseClasses);
-                        if (currentDialogueElement != null)
-                        {
-                            return currentDialogueElement;
-                        }
-                    }
-                }
-            }
-            for (int i = 0; i < dialogue.Count - 1; i++)
-            {
-                if (dialogue[i].TypeOfDialogue == TypeOfDialogue.Answers)
-                {
-                    foreach (DialogueBaseClass.Answer answer in dialogue[i].Answers)
-                    {
-                        if (answer.NextDialogueBaseClasses.Contains(_currentDialogueElement))
-                        {
-                            currentDialogueElement = dialogue[i + 1];
-                            return currentDialogueElement;
-                        }
-                    }
-                }
-            }
+            gradeChamber.text = "5:)";
+            return;
         }
-        return currentDialogueElement;
-    }
-
-    public void SetNewElementAtAnswer(DialogueBaseClass currentDialogueElement)
-    {
-        if(_currentDialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
+        if (reputation < _dialogueBunch.MinReputation)
         {
-            _currentDialogueElement = currentDialogueElement;
-            ViewDialogue();
+            gradeChamber.text = "2;(";
+            return;
+        }
+        if (reputation > (_dialogueBunch.MinReputation + _dialogueBunch.MaxReputation) / 2)
+        {
+            gradeChamber.text = "4";
+            return;
+        }
+        if (reputation > (_dialogueBunch.MinReputation - _dialogueBunch.MaxReputation) / 2)
+        {
+            gradeChamber.text = "3..";
+            return;
         }
     }
 
-    //for next evolution
-    private AnimationClip GetCurrentAnim(Animator anim)
+    private void SetNewElementAtAnswerBufer(DialogueBaseClass nextDialogueElement, float addReputation)
     {
-        foreach(AnimationClip clip in anim.runtimeAnimatorController.animationClips)
-        {
-            return clip;
-        }
-        return null;
+        CurrentDialogueElement = _dialogueSeter.SetNewElementAtAnswer(nextDialogueElement, addReputation, CurrentDialogueElement);
     }
-    
-    private void WritingTextComplition()
+
+    private void WritingTextCompletion()
     {
         _isWriting = false;
+    }
+
+    private void Reseter()
+    {
+        _simplePhraseChamber.color = Color.black;
+        _nameChamber.color = Color.black;
+        _gradeChamber.color = Color.red;
+        _simplePhraseChamber.text = string.Empty;
+        _nameChamber.text = string.Empty;
+        _gradeChamber.text = string.Empty;
+        foreach (Transform child in _answersChamberTransform)
+        {
+            _answersChamberLayoutGroup.Buttons.Clear();
+            Destroy(child.gameObject);
+        }
     }
 }

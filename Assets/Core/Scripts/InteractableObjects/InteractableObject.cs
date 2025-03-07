@@ -4,9 +4,9 @@ using UnityEngine;
 public class InteractableObject : MonoBehaviour
 {
     
-    [SerializeField] private GameObject _interactiveSign;
+    [SerializeField] protected GameObject _interactiveSign;
  
-    private bool _isInteractable = true;
+    protected bool _isInteractable = true;
     
     
     private void Start()
@@ -19,7 +19,7 @@ public class InteractableObject : MonoBehaviour
         Debug.Log("Parent's Interact");
     }
 
-    public bool TrySelect()
+    public virtual bool TrySelect()
     {
         if (_isInteractable)
         {

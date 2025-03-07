@@ -15,9 +15,14 @@ public class DialogueBaseClass
     [System.Serializable]
     public struct Answer
     {
+        [SerializeField, Range(-100, 100)] private float _addReputation;
         [SerializeField] private string inputText;
         [SerializeField] private List<DialogueBaseClass> nextDialogueBaseClasses;
 
+        public readonly float AddReputation
+        {
+            get => _addReputation;
+        }
         public readonly string InputText
         {
             get => inputText;
@@ -31,27 +36,27 @@ public class DialogueBaseClass
     [System.Serializable]
     public struct SimplePhrase
     {
-        [SerializeField, Multiline(3)] private string inputText;
+        [SerializeField] private string _inputName;
+        [SerializeField, Multiline(6)] private string inputText;
 
+        public readonly string InputName
+        {
+            get => _inputName;
+        }
         public readonly string InputText
         {
             get => inputText;
         }
     }
 
-    [SerializeField] private float _symbolTime = 0.1f;
-    [SerializeField] private string _inputName;
     [SerializeField] private TypeOfDialogue _typeOfDialogue = TypeOfDialogue.SimplePhrases;
+    [SerializeField, Min(0)] private float _symbolTime = 0.05f;
     [SerializeField] private SimplePhrase _simplePhrase;
     [SerializeField] private List<Answer> _answers;
 
     public float SymbolTime
     {
         get => _symbolTime;
-    }
-    public string InputName
-    {
-        get => _inputName;
     }
     public TypeOfDialogue TypeOfDialogue
     {
@@ -65,4 +70,6 @@ public class DialogueBaseClass
     {
         get => _answers;
     }
+
+    //public int Id { get; set; }
 }

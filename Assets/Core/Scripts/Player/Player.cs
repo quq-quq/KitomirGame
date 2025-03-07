@@ -36,6 +36,14 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (DialogueViewer.IsGoing)
+        {
+            CanAct = false;
+        }
+        else
+        {
+            CanAct = true;
+        }
         HandleMovement();
         _playerVisual.UpdateVisual(_movementVector.x, _movementVector.y);
     }

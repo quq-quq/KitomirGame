@@ -4,9 +4,9 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Writer
+public class DialogueWriter
 {
-    public static IEnumerator WritingText(string inputText, TMP_Text textHolder, float symbolTime)
+    public IEnumerator SimpleWritingText(string inputText, TMP_Text textHolder, float symbolTime)
     {
         if (inputText == null)
         {
@@ -19,7 +19,7 @@ public class Writer
             yield return new WaitForSeconds(symbolTime);
         }
     }
-    public static IEnumerator WritingText(string inputText, TMP_Text textHolder, float symbolTime, Action OnComplete)
+    public IEnumerator SimpleWritingText(string inputText, TMP_Text textHolder, float symbolTime, Action OnComplete)
     {
         if (inputText == null)
         {
