@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+        PlayerPrefs.SetInt("IsGameCompleted", 1);
     }
     
     private void Start()
@@ -31,8 +32,7 @@ public class GameManager : MonoBehaviour
         {
             GameStateManager.State = GameState.AtHome;
         }
-
-        if (SceneManager.GetActiveScene().name == SceneNames.CORRIDOR_SCENE)
+        else if (SceneManager.GetActiveScene().name == SceneNames.CORRIDOR_SCENE)
         {
             foreach (var spawner in _spawnerList)
             {

@@ -115,11 +115,21 @@ public class ButtonContainer : MonoBehaviour
 
         Buttons = DefaultButtons;
         DefaultButtonsGroup.SetActive(true);
+        var buttonsToRemove = new List<TextMeshProUGUI>();
         
         foreach (var button in Buttons)
         {
+            if (!button.IsActive())
+            {
+                buttonsToRemove.Add(button);
+            }
             button.color = _unselectedColorText;
         }
+        foreach (var button in buttonsToRemove)
+        {
+            Buttons.Remove(button);
+        }
+        
         if (Buttons.Count > 0)
         {
             SelectButton(SelectedButtonId);

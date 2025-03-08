@@ -53,4 +53,9 @@ public class MenuButton : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneNames.SECRET_GAME_MODE_SCENE);
     }
+
+    public void ShowInfo()
+    {
+        //show info
+    }
 }
