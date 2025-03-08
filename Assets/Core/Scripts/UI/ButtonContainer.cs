@@ -107,6 +107,14 @@ public class ButtonContainer : MonoBehaviour
             SelectedButtonId = 0;
             SelectButton(0);
         }
+
+        for (int i = 0; i < Buttons.Count; i++)
+        {
+            if (i != SelectedButtonId)
+            {
+                DeselectButton(i);
+            }
+        }
     }
 
     protected void InitializeContainer()
