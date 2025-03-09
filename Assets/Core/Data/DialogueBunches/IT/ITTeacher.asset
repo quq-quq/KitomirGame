@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ITTeacher
   m_EditorClassIdentifier: 
   _isReputationable: 1
+  _nextGameState: 7
   _startReputation: 10
   _minReputation: 9
   _maxReputation: 95

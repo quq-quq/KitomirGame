@@ -127,6 +127,10 @@ public class DialogueViewer : MonoBehaviour
             {
                 GameStateManager.State = GameState.ExamsFailed;
             }
+            else
+            {
+                GameStateManager.State = _dialogueBunch.NextGameState;
+            }
         }
         else
         {

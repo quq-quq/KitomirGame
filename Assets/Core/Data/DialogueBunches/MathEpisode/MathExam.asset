@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MathExam
   m_EditorClassIdentifier: 
   _isReputationable: 1
+  _nextGameState: 5
   _startReputation: 50
   _minReputation: 60
   _maxReputation: 70

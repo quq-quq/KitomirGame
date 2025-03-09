@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Physician
   m_EditorClassIdentifier: 
   _isReputationable: 1
+  _nextGameState: 4
   _startReputation: 70
   _minReputation: 60
   _maxReputation: 80

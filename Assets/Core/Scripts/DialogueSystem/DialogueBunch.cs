@@ -1,11 +1,14 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 
+//надо сделать так чтобы репутационные параметры показывалась только при правильной булевой переменной
 [CreateAssetMenu(menuName = "Custom/DialogueBunch"), System.Serializable]
 public class DialogueBunch : ScriptableObject
 {
     [SerializeField] private bool _isReputationable;
+    [SerializeField] private GameState _nextGameState;
     [SerializeField, Range(0, 100)] private float _startReputation;
     [SerializeField, Range(0, 98)] private float _minReputation = 40f;
     [SerializeField, Range(2, 100)] private float _maxReputation = 85f;
@@ -16,6 +19,10 @@ public class DialogueBunch : ScriptableObject
     public bool IsReputationable
     {
         get => _isReputationable;
+    }
+    public GameState NextGameState
+    {
+        get => _nextGameState;
     }
     public float Reputation
     {
@@ -40,29 +47,29 @@ public class DialogueBunch : ScriptableObject
         _reputation = _startReputation;
     }
 
-//#if UNITY_EDITOR
-//    public void OnValidate()
-//    {
-//        SetTypeParameters(RootDialogue);
-//        UnityEditor.EditorUtility.SetDirty(this);
-//    }
-//#endif
+    //#if UNITY_EDITOR
+    //    public void OnValidate()
+    //    {
+    //        SetTypeParameters(RootDialogue);
+    //        UnityEditor.EditorUtility.SetDirty(this);
+    //    }
+    //#endif
 
-//    public void SetTypeParameters(List<DialogueBaseClass> dialogue)
-//    {
-//        foreach (DialogueBaseClass el in dialogue)
-//        {
-//            if(el.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
-//            {
-                
-//            }
-//            if (el.TypeOfDialogue == TypeOfDialogue.Answers)
-//            {
-//                foreach (DialogueBaseClass.Answer answer in el.Answers)
-//                {
-//                    SetTypeParameters(answer.NextDialogueBaseClasses);
-//                }
-//            }
-//        }
-//    }
+    //    public void SetTypeParameters(List<DialogueBaseClass> dialogue)
+    //    {
+    //        foreach (DialogueBaseClass el in dialogue)
+    //        {
+    //            if(el.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
+    //            {
+
+    //            }
+    //            if (el.TypeOfDialogue == TypeOfDialogue.Answers)
+    //            {
+    //                foreach (DialogueBaseClass.Answer answer in el.Answers)
+    //                {
+    //                    SetTypeParameters(answer.NextDialogueBaseClasses);
+    //                }
+    //            }
+    //        }
+    //    }
 }
