@@ -12,16 +12,18 @@ public class CorridorDoorManager : MonoBehaviour
     {
         switch (GameStateManager.State)
         {
-            case GameState.PhysicsExam :
-                _mathsDoor.SetInteractable(false);
-                _iTDoor.SetInteractable(false);
-                _happyEndDoor.SetInteractable(false);
-                break;
             case GameState.MathsExam : 
                 _iTDoor.SetInteractable(false);
                 _happyEndDoor.SetInteractable(false);
                 break;
             case GameState.ITExam : 
+                _happyEndDoor.SetInteractable(false);
+                break;
+            case GameState.ExamsPassed :
+                break;
+            default:
+                _mathsDoor.SetInteractable(false);
+                _iTDoor.SetInteractable(false);
                 _happyEndDoor.SetInteractable(false);
                 break;
         }

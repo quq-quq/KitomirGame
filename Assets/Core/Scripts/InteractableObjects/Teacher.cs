@@ -26,15 +26,12 @@ public class Teacher : InteractableObject
         {
             return;
         }
-        else
+        Deselect();
+        foreach( SetAnimParameter setAnimParameter in _setAnimParameters)
         {
-            Deselect();
-            foreach( SetAnimParameter setAnimParameter in _setAnimParameters)
+            if(setAnimParameter.typeOfDialogue == _dialogueViewer.CurrentDialogueElement.TypeOfDialogue && setAnimParameter.inputText == _dialogueViewer.CurrentDialogueElement.simplePhrase.InputText)
             {
-                if(setAnimParameter.typeOfDialogue == _dialogueViewer.CurrentDialogueElement.TypeOfDialogue && setAnimParameter.inputText == _dialogueViewer.CurrentDialogueElement.simplePhrase.InputText)
-                {
-                    _animator.SetBool(setAnimParameter.boolParameterName, setAnimParameter.BoolParameterInput);
-                }
+                _animator.SetBool(setAnimParameter.boolParameterName, setAnimParameter.BoolParameterInput);
             }
         }
     }

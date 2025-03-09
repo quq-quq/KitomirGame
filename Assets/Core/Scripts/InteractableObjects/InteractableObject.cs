@@ -5,7 +5,6 @@ public class InteractableObject : MonoBehaviour
 {
     
     [SerializeField] protected GameObject _interactiveSign;
- 
     protected bool _isInteractable = true;
     
     

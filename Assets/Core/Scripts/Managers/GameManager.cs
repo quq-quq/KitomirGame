@@ -95,16 +95,15 @@ public class GameManager : MonoBehaviour
         _canBePaused = false;
         float waitAfterFadingDuration = 0f;
         
-        // if (GameStateManager.State == GameState.AtHome)
-        // {
-        //     waitAfterFadingDuration = 13f;
-        //     GameStateManager.State = GameState.PhysicsExam;
-        // }
-        // else if (GameStateManager.State == GameState.ITExam)
-        // {
-        //     waitAfterFadingDuration = 13f;
-        //     GameStateManager.State = GameState.ExamsPassed;
-        // }
+        if (GameStateManager.State == GameState.AtHome)
+        {
+            waitAfterFadingDuration = 13f;
+            GameStateManager.State = GameState.PhysicsExam;
+        }
+        else if (GameStateManager.State == GameState.ExamsPassed && sceneName == SceneNames.HAPPY_END_SCENE)
+        {
+            waitAfterFadingDuration = 13f;
+        }
         GameStateManager.PreviousSceneName = SceneManager.GetActiveScene().name;
         
         StopCoroutine(_fadeScreenCoroutine);
@@ -214,6 +213,7 @@ public class GameManager : MonoBehaviour
         {
             Timer.Instance.DestroyTimer();
         }
+        GameStateManager.State = GameState.AtHome;
 
         SceneManager.LoadScene(SceneNames.MAIN_MENU_SCENE);
     }

@@ -1105,6 +1105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactiveSign: {fileID: 778036167}
+  _isInteractable: 1
   _animator: {fileID: 1011242260}
   _dialogueViewer: {fileID: 1051635697}
   _setAnimParameters:

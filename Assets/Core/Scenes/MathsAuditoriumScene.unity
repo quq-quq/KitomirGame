@@ -321,6 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactiveSign: {fileID: 1280511306}
+  _isInteractable: 1
   _animator: {fileID: 325065577}
   _dialogueViewer: {fileID: 836186762}
   _setAnimParameters:
