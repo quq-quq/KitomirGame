@@ -185,7 +185,6 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                Timer.Instance.DestroyTimer();
                 StartCoroutine(LoadScene(SceneNames.SAD_END_SCENE));
             }
         }

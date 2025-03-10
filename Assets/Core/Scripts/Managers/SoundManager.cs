@@ -55,8 +55,7 @@ public class SoundManager : MonoBehaviour
 
     private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
     {
-        if (e.CurrentState == GameState.ExamsFailed && 
-            !(SceneManager.GetActiveScene().name is SceneNames.KITOMIR_HOME_SCENE or SceneNames.CORRIDOR_SCENE))
+        if (e.CurrentState == GameState.ExamsFailed && Timer.Instance.IsRunning)
         {
             PlaySound(_audioClipRefsSO.commissarOpenDoor, Vector3.zero);
         }   
