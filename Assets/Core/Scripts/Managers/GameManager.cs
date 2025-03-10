@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private FadeScreen _fadeScreen;
     [SerializeField] private Spawner[] _spawnerList;
     [SerializeField] private GameObject _pauseMenu;
+    [SerializeField] private Transform _soliderSpawner;
+    [SerializeField] private GameObject _soliderPrefab;
+    [SerializeField] private float _soliderFadeDuration = .5f;
     
     private Coroutine _fadeScreenCoroutine;
     private bool _canBePaused = true;
@@ -141,7 +145,8 @@ public class GameManager : MonoBehaviour
     public void Resume()
     {
         _pauseMenu.SetActive(false);
-        Time.timeScale = 1f;if (Player.Instance != null)
+        Time.timeScale = 1f;
+        if (Player.Instance != null)
         {
             Player.Instance.CanAct = true;
         }
@@ -174,9 +179,15 @@ public class GameManager : MonoBehaviour
             {
                 //todo finish dialogue
             }
-            Player.Instance.CanAct = false;
-            StartCoroutine(LoadScene(SceneNames.SAD_END_SCENE));
-            Timer.Instance.DestroyTimer();
+            if (Timer.Instance.IsRunning)
+            {
+                StartCoroutine(SadSceneTransition());
+            }
+            else
+            {
+                Timer.Instance.DestroyTimer();
+                StartCoroutine(LoadScene(SceneNames.SAD_END_SCENE));
+            }
         }
 
         if (e.CurrentState == GameState.ExamsPassed)
@@ -216,5 +227,16 @@ public class GameManager : MonoBehaviour
         GameStateManager.State = GameState.AtHome;
 
         SceneManager.LoadScene(SceneNames.MAIN_MENU_SCENE);
+    }
+
+    private IEnumerator SadSceneTransition()
+    {
+        Player.Instance.CanAct = false;
+        Timer.Instance.DestroyTimer();
+        yield return new WaitForSeconds(1);
+        GameObject solider = Instantiate(_soliderPrefab, _soliderSpawner);
+        solider.GetComponent<SpriteRenderer>().DOFade(1f, _soliderFadeDuration);
+        yield return new WaitForSeconds(2);
+        StartCoroutine(LoadScene(SceneNames.SAD_END_SCENE));
     }
 }

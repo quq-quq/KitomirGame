@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
         {
             CanAct = false;
         }
-        else
+        else if (GameStateManager.State != GameState.ExamsFailed)
         {
             CanAct = true;
         }

@@ -5,14 +5,14 @@ public class Timer : MonoBehaviour
 {
     public static Timer Instance { get; private set; }
     public event EventHandler OnAlmostOutOfTime;
+    public bool IsRunning { get; private set; }
     
     [SerializeField] private TimerVisual _timerVisual;
     
-    private const float TIMER_MAX = 15f * 60; //15 minutes
+    private const float TIMER_MAX = 15f; //15 minutes
     private const float ALMOST_OUT_OF_TIME = 10f;
     
     private float _timer; 
-    private bool _isRunning;
     private bool _isAlmostOutOfTime;
 
     private void Awake()
@@ -35,7 +35,7 @@ public class Timer : MonoBehaviour
     
     private void Update()
     {
-        if (_timer > 0 && _isRunning)
+        if (_timer > 0 && IsRunning)
         {
             _timer -= Time.deltaTime;
             _timerVisual.UpdateVisual(_timer/TIMER_MAX, _timer);
@@ -45,10 +45,10 @@ public class Timer : MonoBehaviour
                 _isAlmostOutOfTime = true;
             }
         }
-        else if (_timer <= 0 && _isRunning)
+        else if (_timer <= 0 && IsRunning)
         {
+            IsRunning = false;
             GameStateManager.State = GameState.ExamsFailed;
-            _isRunning = false;
         }
     }
 
@@ -62,18 +62,18 @@ public class Timer : MonoBehaviour
     {
         _timer = TIMER_MAX;
         gameObject.SetActive(true);
-        _isRunning = true;
+        IsRunning = true;
     }
 
     public void PauseTimer()
     {
-        _isRunning = false;
+        IsRunning = false;
         gameObject.SetActive(false);
     }
 
     public void ResumeTimer()
     {
-        _isRunning = true;
+        IsRunning = true;
         gameObject.SetActive(true);
     }
     

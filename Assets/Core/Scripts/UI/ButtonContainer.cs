@@ -66,6 +66,10 @@ public class ButtonContainer : MonoBehaviour
 
     protected void SwitchButtonUp()
     {
+        if (SelectedButtonId-1 > Buttons.Count)
+        {
+            return;
+        }
         if (SelectedButtonId > 0)
         {
             DeselectButton(SelectedButtonId);

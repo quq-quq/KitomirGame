@@ -26,6 +26,15 @@ public class MusicManager : MonoBehaviour
     private void Start()
     {
         FadeScreen.OnFadingStarted += FadeScreen_OnFadingStarted;
+        GameStateManager.OnStateChanged += GameStateManager_OnStateChanged;
+    }
+
+    private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
+    {
+        if (e.CurrentState == GameState.ExamsFailed)
+        {
+            _audioSource.Stop();
+        }
     }
 
     private void Update()

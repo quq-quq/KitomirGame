@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class SoundManager : MonoBehaviour
@@ -54,10 +55,11 @@ public class SoundManager : MonoBehaviour
 
     private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
     {
-        if (GameStateManager.State == GameState.ExamsFailed)
+        if (e.CurrentState == GameState.ExamsFailed && 
+            !(SceneManager.GetActiveScene().name is SceneNames.KITOMIR_HOME_SCENE or SceneNames.CORRIDOR_SCENE))
         {
-            PlaySound(_audioClipRefsSO.hardFail, Vector3.zero);
-        }
+            PlaySound(_audioClipRefsSO.commissarOpenDoor, Vector3.zero);
+        }   
     }
 
     private void Timer_OnAlmostOutOfTime(object sender, EventArgs e)

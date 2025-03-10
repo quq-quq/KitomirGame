@@ -45,3 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fadeScreen: {fileID: 0}
+  _spawnerList: []
+  _pauseMenu: {fileID: 0}
+  _soliderSpawner: {fileID: 0}
+  _soliderPrefab: {fileID: 6313306143839333239, guid: f73b4bf9b977e098f9cd635fa662381e, type: 3}
