@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6263542546970620330
 RectTransform:
   m_ObjectHideFlags: 0
@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -76.044}
-  m_SizeDelta: {x: 468.3987, y: 18.2422}
+  m_AnchoredPosition: {x: -46.630966, y: -128}
+  m_SizeDelta: {x: 436.3448, y: 27.7233}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8503757413086899214
 CanvasRenderer:
@@ -519,6 +519,7 @@ MonoBehaviour:
   _gradeChamber: {fileID: 2500867738056571783}
   _answersChamberLayoutGroup: {fileID: 2379959903926714524}
   _endGradeTransform: {fileID: 8389154635582402211}
+  _gradeLine: {fileID: 5038202703554712668}
   _durationForEndGradeMove: 1.5
   _ofsetForEndGradeView: 0.5
   _durationForEndGradeView: 0.5
