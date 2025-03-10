@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ITStart
   m_EditorClassIdentifier: 
   _isReputationable: 0
+  _nextGameState: 0
   _startReputation: 0
   _minReputation: 40
   _maxReputation: 85
@@ -21,7 +22,13 @@ MonoBehaviour:
     _symbolTime: 0.05
     _simplePhrase:
       _inputName: "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0442\u0438\u043A"
-      inputText: "\u041F\u0430\u0446\u0430\u043D, \u0442\u044B \u0432 \u0430\u0440\u043C\u0435\u0439\u043A\u0443
+      inputText: "\u041F\u0430\u0446\u0430\u043D!"
+    _answers: []
+  - _typeOfDialogue: 0
+    _symbolTime: 0.05
+    _simplePhrase:
+      _inputName: "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0442\u0438\u043A"
+      inputText: "\u0422\u044B \u0432 \u0430\u0440\u043C\u0435\u0439\u043A\u0443
         \u0437\u0430\u0445\u043E\u0442\u0435\u043B?!"
     _answers: []
   - _typeOfDialogue: 0
