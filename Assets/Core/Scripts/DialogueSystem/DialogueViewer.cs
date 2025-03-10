@@ -24,6 +24,7 @@ public class DialogueViewer : MonoBehaviour
     [SerializeField] private ButtonContainer _answersChamberLayoutGroup;
     [Space(10)]
     [SerializeField] RectTransform _endGradeTransform;
+    [SerializeField] Image _gradeLine;
     [SerializeField] float _durationForEndGradeMove;
     [SerializeField] float _ofsetForEndGradeView;
     [SerializeField] float _durationForEndGradeView;
@@ -187,11 +188,13 @@ public class DialogueViewer : MonoBehaviour
         if (reputation > _dialogueBunch.MaxReputation)
         {
             gradeChamber.text = "5:)";
+            _gradeLine.color = Color.red;
             return;
         }
         if (reputation < _dialogueBunch.MinReputation)
         {
             gradeChamber.text = "2;(";
+            _gradeLine.color = Color.red;
             return;
         }
         if (reputation > (_dialogueBunch.MinReputation + _dialogueBunch.MaxReputation) / 2)
@@ -220,9 +223,10 @@ public class DialogueViewer : MonoBehaviour
     {
         _simplePhraseChamber.color = Color.black;
         _nameChamber.color = Color.black;
-        _simplePhraseChamber.text = string.Empty;
-        _nameChamber.text = string.Empty;
         _gradeChamber.color = Color.red;
+        _gradeLine.color = Color.clear;
+        _simplePhraseChamber.text = string.Empty;
+        _nameChamber.text = string.Empty;        
         _gradeChamber.text = string.Empty;
         foreach (Transform child in _answersChamberTransform)
         {
