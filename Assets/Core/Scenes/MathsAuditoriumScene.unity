@@ -321,7 +321,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactiveSign: {fileID: 1280511306}
-  _isInteractable: 1
   _animator: {fileID: 325065577}
   _dialogueViewer: {fileID: 836186762}
   _setAnimParameters:
@@ -1706,8 +1705,8 @@ Camera:
   m_GameObject: {fileID: 1675129510}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.10384616, g: 0.15, b: 0.13846155, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

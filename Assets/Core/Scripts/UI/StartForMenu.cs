@@ -16,7 +16,7 @@ public class StartForMenu : MonoBehaviour
         [SerializeField] public float fadeTime;
     }
 
-    [SerializeField] private ButtonContainer _buttonContainer;
+    [SerializeField] private Canvas _canvasButton;
     [Space(10)]
     [SerializeField] private List<Frame> _frames;
 
@@ -32,7 +32,7 @@ public class StartForMenu : MonoBehaviour
 
     private IEnumerator StartDelay()
     {
-        _buttonContainer.gameObject.SetActive(false);
+        _canvasButton.gameObject.SetActive(false);
 
         foreach (var frame in _frames)
         {
@@ -48,7 +48,8 @@ public class StartForMenu : MonoBehaviour
             frame.canvasGroup.gameObject.SetActive(false);
         }
 
-        _buttonContainer.gameObject.SetActive(true);
+        _canvasButton.gameObject.SetActive(true);
         OnMenuButtonContainerAppear?.Invoke(this, EventArgs.Empty);
     }
+
 }
