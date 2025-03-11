@@ -4,7 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerVisual : MonoBehaviour
 {
+    [Header("For Kitomir Home Scene")]
     [SerializeField] private AnimationClip _animation;
+    [SerializeField] private DialogueViewer _dialogueViewer;
+    [SerializeField] float _ofsetDuration;
     private Animator _animator;
 
     private void Start()
@@ -32,6 +35,13 @@ public class PlayerVisual : MonoBehaviour
         Player.Instance.CanAct = false;
         yield return new WaitForSeconds(_animation.length);
         _animator.SetBool("IsSleeping", false);
-        Player.Instance.CanAct = true;
+        //Player.Instance.CanAct = true;
+        yield return new WaitForSeconds(_ofsetDuration);
+        if (!DialogueViewer.IsGoing)
+        {
+            StartCoroutine(_dialogueViewer.Starter());
+            _dialogueViewer = null;
+        }
+        
     }
 }

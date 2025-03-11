@@ -1148,8 +1148,8 @@ MonoBehaviour:
         _simplePhrase:
           _inputName: 
           inputText: "\u041F\u0440\u0435\u043F\u043E\u0434 \u043D\u0435 \u043F\u043E\u0432\u0435\u0440\u0438\u043B
-            \u0431\u0435\u0437\u0434\u0430\u0440\u043D\u043E\u0439 \u043B\u0436\u0438
-            \u041A\u0438\u0442\u043E\u043C\u0438\u0440\u0430 \u0438 \u0440\u0430\u0437\u043E\u0437\u043B\u0438\u043B\u0441\u044F."
+            \u0438 \u0440\u0430\u0437\u043E\u0437\u043B\u0438\u043B\u0441\u044F \u0438\u0437-\u0437\u0430
+            \u043B\u0436\u0438."
         _answers: []
       - _typeOfDialogue: 0
         _symbolTime: 0.05
@@ -1710,13 +1710,13 @@ MonoBehaviour:
                 _symbolTime: 0.05
                 _simplePhrase:
                   _inputName: "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0442\u0438\u043A"
-                  inputText: "\u041F\u0430\u0446\u0430\u043D..."
+                  inputText: "\u041F\u0430\u0446\u0430\u043D.."
                 _answers: []
               - _typeOfDialogue: 0
                 _symbolTime: 0.05
                 _simplePhrase:
                   _inputName: "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0442\u0438\u043A"
-                  inputText: "\u0422\u044B..."
+                  inputText: "\u0422\u044B.."
                 _answers: []
               - _typeOfDialogue: 0
                 _symbolTime: 0.05
@@ -1752,7 +1752,7 @@ MonoBehaviour:
                 _symbolTime: 0.05
                 _simplePhrase:
                   _inputName: "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0442\u0438\u043A"
-                  inputText: "\u041D\u0443, \u043F\u0430\u0446\u0430\u043D..."
+                  inputText: "\u041D\u0443, \u043F\u0430\u0446\u0430\u043D.."
                 _answers: []
               - _typeOfDialogue: 0
                 _symbolTime: 0.05
@@ -1773,7 +1773,7 @@ MonoBehaviour:
                 _symbolTime: 0.05
                 _simplePhrase:
                   _inputName: "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0442\u0438\u043A"
-                  inputText: "\u041D\u0443, \u043F\u0430\u0446\u0430\u043D..."
+                  inputText: "\u041D\u0443, \u043F\u0430\u0446\u0430\u043D.."
                 _answers: []
               - _typeOfDialogue: 0
                 _symbolTime: 0.05
@@ -1857,7 +1857,7 @@ MonoBehaviour:
             _simplePhrase:
               _inputName: "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0442\u0438\u043A"
               inputText: "\u0423 \u0442\u0435\u0431\u044F \u0435\u0441\u0442\u044C
-                \u043A\u043E\u0442..."
+                \u043A\u043E\u0442.."
             _answers: []
           - _typeOfDialogue: 0
             _symbolTime: 0.2
@@ -1878,7 +1878,7 @@ MonoBehaviour:
                 _symbolTime: 0.05
                 _simplePhrase:
                   _inputName: "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0442\u0438\u043A"
-                  inputText: ...
+                  inputText: . . .
                 _answers: []
               - _typeOfDialogue: 0
                 _symbolTime: 0.05
@@ -1916,13 +1916,13 @@ MonoBehaviour:
                 _symbolTime: 0.05
                 _simplePhrase:
                   _inputName: "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0442\u0438\u043A"
-                  inputText: ...
+                  inputText: . . .
                 _answers: []
               - _typeOfDialogue: 0
                 _symbolTime: 0.05
                 _simplePhrase:
                   _inputName: 
-                  inputText: " \u0423 \u0442\u0435\u0431\u044F \u043E\u0440\u0438\u0435\u043D\u0442\u0430\u043B..."
+                  inputText: " \u0423 \u0442\u0435\u0431\u044F \u043E\u0440\u0438\u0435\u043D\u0442\u0430\u043B.."
                 _answers: []
               - _typeOfDialogue: 0
                 _symbolTime: 0.05
@@ -2006,7 +2006,7 @@ MonoBehaviour:
                 _symbolTime: 0.05
                 _simplePhrase:
                   _inputName: "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0442\u0438\u043A"
-                  inputText: ...
+                  inputText: . . .
                 _answers: []
               - _typeOfDialogue: 0
                 _symbolTime: 0.05

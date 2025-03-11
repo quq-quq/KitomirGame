@@ -1172,18 +1172,18 @@ MonoBehaviour:
   - boolParameterName: isRaging
     BoolParameterInput: 1
     typeOfDialogue: 0
-    inputText: "\u041F\u041E\u0428\u0415\u041B \u0412\u041E\u041D \u041E\u0422\u0421\u042E\u0414\u0410."
+    inputText: "\u041F\u041E\u0428\u0415\u041B \u0412\u041E\u041D \u041E\u0422\u0421\u042E\u0414\u0410!"
   - boolParameterName: isRaging
     BoolParameterInput: 1
     typeOfDialogue: 0
     inputText: "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0442\u0438\u043A \u043D\u0435
       \u043F\u0440\u0438\u043D\u0438\u043C\u0430\u0435\u0442 \u0432\u0430\u0441 \u0432
-      =\u0411\u0410\u0419\u041A\u0415\u0420\u042B=."
+      =\u0411\u0410\u0419\u041A\u0415\u0420\u042B="
   - boolParameterName: isRaging
     BoolParameterInput: 1
     typeOfDialogue: 0
     inputText: "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0442\u0438\u043A \u043D\u0435\u043D\u0430\u0432\u0438\u0434\u0438\u0442
-      \"Phyton\"."
+      \"Python\"."
   - boolParameterName: isRaging
     BoolParameterInput: 1
     typeOfDialogue: 0
@@ -1191,16 +1191,15 @@ MonoBehaviour:
   - boolParameterName: vAhue
     BoolParameterInput: 1
     typeOfDialogue: 0
-    inputText: "\u041F\u0430\u0446\u0430\u043D..."
+    inputText: . . .
   - boolParameterName: isCute
     BoolParameterInput: 1
     typeOfDialogue: 0
-    inputText: "\u0423 \u041C\u0415\u041D\u042F \u0422\u041E\u0416\u0415! \u042F
-      \u043E\u0431\u043E\u0436\u0430\u044E \u044D\u0442\u0443 \u043F\u043E\u0440\u043E\u0434\u0443
-      \u043A\u043E\u0442\u043E\u0432! \u0423 \u043C\u0435\u043D\u044F \u0438\u0445
-      \u0447\u0435\u0442\u0432\u0435\u0440\u043E \u0434\u043E\u043C\u0430, \u0430
-      \u0441\u043A\u043E\u0440\u043E \u044F \u043F\u043B\u0430\u043D\u0438\u0440\u0443\u044E
-      \u0437\u0430\u0432\u0435\u0441\u0442\u0438 \u0435\u0449\u0451 \u043E\u0434\u043D\u043E\u0433\u043E!"
+    inputText: "\u0423 \u041C\u0415\u041D\u042F \u0422\u041E\u0416\u0415! "
+  - boolParameterName: vAhue
+    BoolParameterInput: 1
+    typeOfDialogue: 0
+    inputText: "\u041F\u0430\u0446\u0430\u043D.."
 --- !u!4 &790641699
 Transform:
   m_ObjectHideFlags: 0
