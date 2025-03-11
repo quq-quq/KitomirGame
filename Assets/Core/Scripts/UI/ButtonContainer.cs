@@ -31,6 +31,7 @@ public class ButtonContainer : MonoBehaviour
         try 
         {
             Subscribe();
+            InitializeContainer();
         }
         catch (NullReferenceException e)
         {
@@ -104,6 +105,10 @@ public class ButtonContainer : MonoBehaviour
     protected void SelectButton(int buttonId)
     {
         Buttons[buttonId].color = _selectedColorText;
+        if (Buttons[buttonId].text.StartsWith(">"))
+        {
+            Buttons[buttonId].text = Buttons[buttonId].text.Substring(1, Buttons[buttonId].text.Length - 2);
+        }
         Buttons[buttonId].text = ">" + Buttons[buttonId].text + "<";
     }
 
