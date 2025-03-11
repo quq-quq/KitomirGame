@@ -7,6 +7,7 @@ public class TriggerSpeech : InteractableObject
     [SerializeField] GameState _nessecaryState;
     private Collider2D collider2D;
     private DialogueViewer _dialogueViewer;
+    private bool _isSpeechEnabled;
 
     private void Start()
     {
@@ -26,7 +27,12 @@ public class TriggerSpeech : InteractableObject
 
     public override void Interact()
     {
-        StartCoroutine(_dialogueViewer.Starter());
+        if( !_isSpeechEnabled)
+        {
+            StartCoroutine(_dialogueViewer.Starter());
+            _isSpeechEnabled = true;
+        }
+
     }
 
     public override void Deselect()

@@ -31,7 +31,6 @@ public class PlayerVisual : MonoBehaviour
         _animator.SetBool("IsSleeping", true);
         Player.Instance.CanAct = false;
         yield return new WaitForSeconds(_animation.length);
-        Debug.Log("PIZDA");
         _animator.SetBool("IsSleeping", false);
         Player.Instance.CanAct = true;
     }

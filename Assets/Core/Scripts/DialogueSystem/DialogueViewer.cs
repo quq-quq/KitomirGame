@@ -64,29 +64,32 @@ public class DialogueViewer : MonoBehaviour
 
     private void Update()
     {
-        if (IsCurrentViewerActive() && CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && _simplePhraseChamber.text.Length > 1)
+        if (IsCurrentViewerActive() && CurrentDialogueElement!= null)
         {
-            if (_isWriting)
+            if (CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && _simplePhraseChamber.text.Length > 1)
             {
-                _simplePhraseChamber.text = CurrentDialogueElement.simplePhrase.InputText;
-                _isWriting = false;
-                StopCoroutine(_writingCoroutine);
-            }
-            else
-            {
-                CurrentDialogueElement = _dialogueSeter.SetNewElementAtSimplePhrase(_dialogueBunch.RootDialogue, CurrentDialogueElement);
-                ViewDialogue();
-            }
+                if (_isWriting)
+                {
+                    _simplePhraseChamber.text = CurrentDialogueElement.simplePhrase.InputText;
+                    _isWriting = false;
+                    StopCoroutine(_writingCoroutine);
+                }
+                else
+                {
+                    CurrentDialogueElement = _dialogueSeter.SetNewElementAtSimplePhrase(_dialogueBunch.RootDialogue, CurrentDialogueElement);
+                    ViewDialogue();
+                }
 
+            }
         }
     }
 
     public IEnumerator Starter()
     {
+        CurrentDialogueElement = _dialogueBunch.RootDialogue[0];
         _dialogueCanvas.gameObject.SetActive(true);
         _dialogueBunch.ResetReputation();
         Reseter();
-        CurrentDialogueElement = _dialogueBunch.RootDialogue[0];
         if (!IsGoing)
         {
             IsGoing = true;

@@ -459,6 +459,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 261346975592811533, guid: a3885051aaa11526c80892e25e5cc096, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4952186156217641024, guid: a3885051aaa11526c80892e25e5cc096, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1793,7 +1797,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.40740436, g: 0.45471582, b: 0.48099998, a: 1}
+  m_BackGroundColor: {r: 0.29593495, g: 0.33008128, b: 0.35, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

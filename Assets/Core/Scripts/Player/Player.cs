@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private InteractableObject _selectedObject;
     private PlayerVisual _playerVisual;
+    private bool _isDialogue;
     
     private void Awake()
     {
@@ -39,6 +40,12 @@ public class Player : MonoBehaviour
         if (DialogueViewer.IsGoing)
         {
             CanAct = false;
+            _isDialogue = true;
+        }
+        else if(_isDialogue)
+        {
+            _isDialogue = false;
+            CanAct = true;
         }
         HandleMovement();
         _playerVisual.UpdateVisual(_movementVector.x, _movementVector.y);
