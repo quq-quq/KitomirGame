@@ -6,6 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="5996c718-9b42-4e37-9821-ae2a4d845c13" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Animations/SecretGameModeKitomir/SecretKitomir.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Animations/SecretGameModeKitomir/SecretKitomir.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Animations/kitomir/Kitomir.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Animations/kitomir/Kitomir.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/KitomirHomeScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/KitomirHomeScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/MusicManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/MusicManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/SoundManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Player/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Player/PlayerVisual.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Player/PlayerVisual.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Timer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Timer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Sounds/SFX/fnafalaram.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Sounds/SFX/fnafalaram.mp3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +41,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/50aeaeb42dc14809ba2b81c540d1cdc818600/8c/6a7c27b8/AudioSource.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/82a2fd073ee449928e161903460426d72ae00/06/07b391e0/TweenSettingsExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/82a2fd073ee449928e161903460426d72ae00/ff/427c671b/ShortcutExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8b63965a49a84f2198330a461989cf4434600/71/382cdf75/Animator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e69d54c9b0d742a4b83b67d46f7579438c00/92/bc0aa4fa/Input.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Core/Scripts/Managers/CorridorDoorManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Core/Scripts/Managers/SoundManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -54,7 +66,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;TimohaWakeUp&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/goga/Unity/Projects/StudyProject&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -157,6 +169,8 @@
       <workItem from="1741428895714" duration="1371000" />
       <workItem from="1741521513082" duration="1877000" />
       <workItem from="1741619674705" duration="5262000" />
+      <workItem from="1741629209493" duration="978000" />
+      <workItem from="1741675466961" duration="4496000" />
     </task>
     <servers />
   </component>
