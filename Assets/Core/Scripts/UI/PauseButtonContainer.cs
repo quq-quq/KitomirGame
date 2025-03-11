@@ -75,10 +75,19 @@ public class PauseButtonContainer : ButtonContainer
             SelectButton(SelectedButtonId);
         }
     }
-
+    
     protected override void OnDestroy()
     {
         base.OnDestroy();
+        InputManager.Instance.OnMenuSwitchUp -= InputManager_OnMenuSwitchUp;
+        InputManager.Instance.OnMenuSwitchDown -= InputManager_OnMenuSwitchDown;
+        InputManager.Instance.OnMenuButtonPressed -= InputManager_OnMenuButtonPressed;
+        MenuButton.OnHiddenButtonsNeedToSetActive -= MenuButton_OnHiddenButtonsNeedToSetActive;
+    }
+    
+    protected override void OnDisable()
+    {
+        base.OnDisable();
         InputManager.Instance.OnMenuSwitchUp -= InputManager_OnMenuSwitchUp;
         InputManager.Instance.OnMenuSwitchDown -= InputManager_OnMenuSwitchDown;
         InputManager.Instance.OnMenuButtonPressed -= InputManager_OnMenuButtonPressed;

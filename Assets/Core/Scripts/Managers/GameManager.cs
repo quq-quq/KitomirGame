@@ -27,15 +27,15 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
-        PlayerPrefs.SetInt("IsGameCompleted", 1);
     }
-    
+
     private void Start()
     {
         if (SceneManager.GetActiveScene().name == SceneNames.KITOMIR_HOME_SCENE)
         {
             GameStateManager.State = GameState.AtHome;
         }
+
         if (SceneManager.GetActiveScene().name == SceneNames.CORRIDOR_SCENE)
         {
             foreach (var spawner in _spawnerList)
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        
+
         Door.OnDoorOpen += Door_OnDoorOpen;
         MenuButton.OnPlayButtonPressed += MenuButton_OnPlayButtonPressed;
         InputManager.Instance.OnPauseAction += InputManager_OnPauseAction;
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         {
             StartForMenu.OnMenuButtonContainerAppear += StartForMenu_OnMenuButtonContainerAppear;
         }
-        
+
         _pauseMenu.SetActive(false);
         _fadeScreenCoroutine = StartCoroutine(_fadeScreen.Appear(1.5f));
     }
@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
         {
             Player.Instance.CanAct = false;
         }
+
         StartCoroutine(LoadScene(e.SceneToLoadName));
     }
 
@@ -103,6 +104,7 @@ public class GameManager : MonoBehaviour
         {
             GameStateManager.State = GameState.AtHome;
         }
+
         if (GameStateManager.State == GameState.AtHome && sceneName == SceneNames.CORRIDOR_SCENE)
         {
             waitAfterFadingDuration = 13f;
@@ -112,8 +114,9 @@ public class GameManager : MonoBehaviour
         {
             waitAfterFadingDuration = 13f;
         }
+
         GameStateManager.PreviousSceneName = SceneManager.GetActiveScene().name;
-        
+
         StopCoroutine(_fadeScreenCoroutine);
         yield return StartCoroutine(_fadeScreen.Fade(1.5f, waitAfterFadingDuration));
 
@@ -127,13 +130,13 @@ public class GameManager : MonoBehaviour
             if (!IsGamePaused)
             {
                 Time.timeScale = 0f;
-                _pauseMenu.SetActive(true); 
+                _pauseMenu.SetActive(true);
                 IsGamePaused = true;
                 if (SceneManager.GetActiveScene().name == SceneNames.HAPPY_END_SCENE)
                 {
                     MusicManager.Instance.PauseSoundtrack();
                 }
-                
+
                 if (Player.Instance != null)
                 {
                     Player.Instance.CanAct = false;
@@ -154,13 +157,14 @@ public class GameManager : MonoBehaviour
         {
             Player.Instance.CanAct = true;
         }
+
         IsGamePaused = false;
         if (SceneManager.GetActiveScene().name == SceneNames.HAPPY_END_SCENE)
         {
             MusicManager.Instance.ResumeSoundtrack();
         }
     }
-    
+
     private void OnDisable()
     {
         Door.OnDoorOpen -= Door_OnDoorOpen;
@@ -168,13 +172,13 @@ public class GameManager : MonoBehaviour
         InputManager.Instance.OnPauseAction -= InputManager_OnPauseAction;
         InputManager.Instance.OnSecretInputSolved -= InputManager_OnSecretInputSolved;
         GameStateManager.OnStateChanged -= GameStateManager_OnStateChanged;
-        
+
         if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE)
         {
             StartForMenu.OnMenuButtonContainerAppear -= StartForMenu_OnMenuButtonContainerAppear;
         }
     }
-    
+
     private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
     {
         if (e.CurrentState == GameState.ExamsFailed)
@@ -183,6 +187,7 @@ public class GameManager : MonoBehaviour
             {
                 //todo finish dialogue
             }
+
             if (Timer.Instance.IsRunning)
             {
                 StartCoroutine(SadSceneTransition());
@@ -195,7 +200,9 @@ public class GameManager : MonoBehaviour
 
         if (e.CurrentState == GameState.ExamsPassed)
         {
+            
             Timer.Instance.DestroyTimer();
+            PlayerPrefs.SetInt("IsGameCompleted", 1);
         }
     }
 

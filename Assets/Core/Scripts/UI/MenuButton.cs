@@ -12,6 +12,8 @@ public class MenuButton : MonoBehaviour
 
     public static event EventHandler OnPlayButtonPressed;
     public static event EventHandler OnHiddenButtonsNeedToSetActive;
+    public static event EventHandler OnShowInfoPressed;
+    public static event EventHandler OnHideInfoPressed;
 
     public TextMeshProUGUI TextChamber
     {
@@ -56,6 +58,11 @@ public class MenuButton : MonoBehaviour
 
     public void ShowInfo()
     {
-        //show info
+        OnShowInfoPressed?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void HideInfo()
+    {
+        OnHideInfoPressed?.Invoke(this, EventArgs.Empty);
     }
 }
