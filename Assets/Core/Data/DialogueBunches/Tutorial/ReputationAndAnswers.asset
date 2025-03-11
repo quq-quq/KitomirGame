@@ -13,10 +13,6 @@ MonoBehaviour:
   m_Name: ReputationAndAnswers
   m_EditorClassIdentifier: 
   _isReputationable: 1
-  _nextGameState: 3
-  _startReputation: 50
-  _minReputation: 25
-  _maxReputation: 85
   _rootDialogue:
   - _typeOfDialogue: 0
     _symbolTime: 0.05

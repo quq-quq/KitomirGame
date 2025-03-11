@@ -3,15 +3,14 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-//надо сделать так чтобы репутационные параметры показывалась только при правильной булевой переменной
 [CreateAssetMenu(menuName = "Custom/DialogueBunch"), System.Serializable]
 public class DialogueBunch : ScriptableObject
 {
     [SerializeField] private bool _isReputationable;
-    [SerializeField] private GameState _nextGameState;
-    [SerializeField, Range(0, 100)] private float _startReputation;
-    [SerializeField, Range(0, 98)] private float _minReputation = 40f;
-    [SerializeField, Range(2, 100)] private float _maxReputation = 85f;
+    [HideInInspector] private GameState _nextGameState;
+    [HideInInspector] private float _startReputation;
+    [HideInInspector] private float _minReputation = 40f;
+    [HideInInspector] private float _maxReputation = 85f;
     [Space(20)]
     [SerializeField]private List<DialogueBaseClass> _rootDialogue;
     private float _reputation = 50f;
@@ -47,29 +46,29 @@ public class DialogueBunch : ScriptableObject
         _reputation = _startReputation;
     }
 
-    //#if UNITY_EDITOR
-    //    public void OnValidate()
-    //    {
-    //        SetTypeParameters(RootDialogue);
-    //        UnityEditor.EditorUtility.SetDirty(this);
-    //    }
-    //#endif
+    [CustomEditor(typeof(DialogueBunch))]
+    public class DialogueBunchEditor : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            DialogueBunch dialogueBunch = (DialogueBunch)target;
 
-    //    public void SetTypeParameters(List<DialogueBaseClass> dialogue)
-    //    {
-    //        foreach (DialogueBaseClass el in dialogue)
-    //        {
-    //            if(el.TypeOfDialogue == TypeOfDialogue.SimplePhrases)
-    //            {
+            if (dialogueBunch._isReputationable)
+            {
+                EditorGUILayout.Space();
+                dialogueBunch._nextGameState = (GameState)EditorGUILayout.EnumPopup("Next Game State", dialogueBunch._nextGameState);
+                dialogueBunch._startReputation = EditorGUILayout.Slider("Start Reputation", dialogueBunch._startReputation, 0, 100);
+                dialogueBunch._minReputation = EditorGUILayout.Slider("Min Reputation", dialogueBunch._minReputation, 0, 98);
+                dialogueBunch._maxReputation = EditorGUILayout.Slider("Max Reputation", dialogueBunch._maxReputation, 2, 100);
+            }
 
-    //            }
-    //            if (el.TypeOfDialogue == TypeOfDialogue.Answers)
-    //            {
-    //                foreach (DialogueBaseClass.Answer answer in el.Answers)
-    //                {
-    //                    SetTypeParameters(answer.NextDialogueBaseClasses);
-    //                }
-    //            }
-    //        }
-    //    }
+            EditorGUILayout.Space();
+            DrawDefaultInspector();
+
+            if (GUI.changed)
+            {
+                EditorUtility.SetDirty(dialogueBunch);
+            }
+        }
+    }
 }

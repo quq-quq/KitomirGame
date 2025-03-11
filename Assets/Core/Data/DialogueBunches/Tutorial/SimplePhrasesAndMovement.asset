@@ -13,10 +13,6 @@ MonoBehaviour:
   m_Name: SimplePhrasesAndMovement
   m_EditorClassIdentifier: 
   _isReputationable: 0
-  _nextGameState: 0
-  _startReputation: 0
-  _minReputation: 40
-  _maxReputation: 85
   _rootDialogue:
   - _typeOfDialogue: 0
     _symbolTime: 0.05

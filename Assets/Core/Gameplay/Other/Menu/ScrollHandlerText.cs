@@ -16,7 +16,6 @@ public class ScrollHandlerText : MonoBehaviour, IBeginDragHandler, IEndDragHandl
     private Vector2 _start , _end;
     private Coroutine _currentCoroutine;
     private ScrollRect _scrollRect;
-    private Tween _currentTween;
 
     private void Awake()
     {
@@ -24,8 +23,9 @@ public class ScrollHandlerText : MonoBehaviour, IBeginDragHandler, IEndDragHandl
         _scrollRect.viewport = gameObject.GetComponent<RectTransform>();
         _scrollRect.content = _content;
 
-        _content.pivot = new Vector2(0.5f , 1);
         _scrollRect.viewport.pivot = new Vector2(0.5f, 1);
+        _content.pivot = _scrollRect.viewport.pivot;
+        _content.anchoredPosition = new Vector2(0, 0);
         _start = new Vector2(0, 0);
     }
 
@@ -33,22 +33,20 @@ public class ScrollHandlerText : MonoBehaviour, IBeginDragHandler, IEndDragHandl
     {
         StopCurrentCoroutine();
 
-        float duration = Math.Max(_content.rect.height - _scrollRect.viewport.rect.height, 0) / _speed;
+        float duration = Math.Max(_content.rect.height - _content.anchoredPosition.y - _scrollRect.viewport.rect.height, 0) / _speed;
         _content.anchoredPosition = _start;
-        _currentTween = _content.DOAnchorPosY(Math.Max(_content.rect.height - _scrollRect.viewport.rect.height, 0), duration).SetEase(Ease.Linear);
+        _content.DOAnchorPosY(Math.Max(_content.rect.height - _scrollRect.viewport.rect.height, 0), duration).SetEase(Ease.Linear);
     }
 
     private void OnDisable()
     {
-        _currentTween.Kill();
-        _currentTween= null;
+        _content.DOKill();
         StopCurrentCoroutine();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        _currentTween.Kill();
-        _currentTween = null;
+        _content.DOKill();
         StopCurrentCoroutine();
     }
 
@@ -59,8 +57,8 @@ public class ScrollHandlerText : MonoBehaviour, IBeginDragHandler, IEndDragHandl
         IEnumerator BeforeMovingPause()
         {
             yield return new WaitForSeconds(_currentCoroutineTime);
-            float duration = Math.Max(_scrollRect.viewport.anchoredPosition.y -  (_content.anchoredPosition.y - _content.rect.height), 0) / _speed;
-            _currentTween = _content.DOAnchorPosY(math.max(_content.rect.height - _scrollRect.viewport.rect.height, 0), duration).SetEase(Ease.Linear);
+            float duration = Math.Max(_content.rect.height - _content.anchoredPosition.y - _scrollRect.viewport.rect.height, 0) / _speed;
+            _content.DOAnchorPosY(math.max(_content.rect.height - _scrollRect.viewport.rect.height, 0), duration).SetEase(Ease.Linear);
         }
     }
 

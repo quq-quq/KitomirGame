@@ -1192,14 +1192,18 @@ MonoBehaviour:
     BoolParameterInput: 1
     typeOfDialogue: 0
     inputText: . . .
-  - boolParameterName: isCute
-    BoolParameterInput: 1
-    typeOfDialogue: 0
-    inputText: "\u0423 \u041C\u0415\u041D\u042F \u0422\u041E\u0416\u0415! "
   - boolParameterName: vAhue
     BoolParameterInput: 1
     typeOfDialogue: 0
     inputText: "\u041F\u0430\u0446\u0430\u043D.."
+  - boolParameterName: vAhue
+    BoolParameterInput: 0
+    typeOfDialogue: 0
+    inputText: "\u0423 \u041C\u0415\u041D\u042F \u0422\u041E\u0416\u0415! "
+  - boolParameterName: isCute
+    BoolParameterInput: 1
+    typeOfDialogue: 0
+    inputText: "\u0423 \u041C\u0415\u041D\u042F \u0422\u041E\u0416\u0415! "
 --- !u!4 &790641699
 Transform:
   m_ObjectHideFlags: 0
