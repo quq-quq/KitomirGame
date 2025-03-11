@@ -2,7 +2,9 @@ using System;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class StartForMenu : MonoBehaviour
 {
@@ -16,7 +18,7 @@ public class StartForMenu : MonoBehaviour
         [SerializeField] public float fadeTime;
     }
 
-    [SerializeField] private Canvas _canvasButton;
+    [SerializeField] private ButtonContainer _mainButtonContainer;
     [Space(10)]
     [SerializeField] private List<Frame> _frames;
 
@@ -28,11 +30,23 @@ public class StartForMenu : MonoBehaviour
         {
             StartCoroutine(StartDelay());
         }
+        MenuButton.OnShowInfoPressed += MenuButton_OnShowInfoPressed;
+        MenuButton.OnHideInfoPressed += MenuButton_OnHideInfoPressed;
+    }
+
+    private void MenuButton_OnHideInfoPressed(object sender, EventArgs e)
+    {
+        _mainButtonContainer.gameObject.SetActive(true);
+    }
+
+    private void MenuButton_OnShowInfoPressed(object sender, EventArgs e)
+    {
+        _mainButtonContainer.gameObject.SetActive(false);
     }
 
     private IEnumerator StartDelay()
     {
-        _canvasButton.gameObject.SetActive(false);
+        _mainButtonContainer.gameObject.SetActive(false);
 
         foreach (var frame in _frames)
         {
@@ -48,8 +62,13 @@ public class StartForMenu : MonoBehaviour
             frame.canvasGroup.gameObject.SetActive(false);
         }
 
-        _canvasButton.gameObject.SetActive(true);
+        _mainButtonContainer.gameObject.SetActive(true);
         OnMenuButtonContainerAppear?.Invoke(this, EventArgs.Empty);
     }
 
+    private void OnDisable()
+    {
+        MenuButton.OnShowInfoPressed -= MenuButton_OnShowInfoPressed;
+        MenuButton.OnHideInfoPressed -= MenuButton_OnHideInfoPressed;
+    }
 }
