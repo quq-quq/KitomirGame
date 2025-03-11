@@ -41,6 +41,11 @@ public class SoundManager : MonoBehaviour
         //     SecretGameModePlayer.Instance.OnGameOver += SecretGameModePlayer_OnGameOver;
         // }
         GameStateManager.OnStateChanged += GameStateManager_OnStateChanged;
+
+        if (GameStateManager.State == GameState.AtHome)
+        {
+            PlaySound(_audioClipRefsSO.alarm, Vector2.zero);
+        }
     }
 
     // private void SecretGameModePlayer_OnGameOver(object sender, EventArgs e)

@@ -40,10 +40,6 @@ public class Player : MonoBehaviour
         {
             CanAct = false;
         }
-        else if (GameStateManager.State != GameState.ExamsFailed)
-        {
-            CanAct = true;
-        }
         HandleMovement();
         _playerVisual.UpdateVisual(_movementVector.x, _movementVector.y);
     }

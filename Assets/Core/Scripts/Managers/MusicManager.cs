@@ -83,5 +83,6 @@ public class MusicManager : MonoBehaviour
     private void OnDisable()
     {
         FadeScreen.OnFadingStarted -= FadeScreen_OnFadingStarted;
+        GameStateManager.OnStateChanged -= GameStateManager_OnStateChanged;
     }
 }

@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         {
             GameStateManager.State = GameState.AtHome;
         }
-        else if (SceneManager.GetActiveScene().name == SceneNames.CORRIDOR_SCENE)
+        if (SceneManager.GetActiveScene().name == SceneNames.CORRIDOR_SCENE)
         {
             foreach (var spawner in _spawnerList)
             {
@@ -98,8 +98,12 @@ public class GameManager : MonoBehaviour
     {
         _canBePaused = false;
         float waitAfterFadingDuration = 0f;
-        
-        if (GameStateManager.State == GameState.AtHome)
+
+        if (sceneName == SceneNames.KITOMIR_HOME_SCENE)
+        {
+            GameStateManager.State = GameState.AtHome;
+        }
+        if (GameStateManager.State == GameState.AtHome && sceneName == SceneNames.CORRIDOR_SCENE)
         {
             waitAfterFadingDuration = 13f;
             GameStateManager.State = GameState.PhysicsExam;
