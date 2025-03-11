@@ -143,3 +143,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 42695034172707944}
+  _audioClipRefsSO: {fileID: 11400000, guid: 47a453dff7169c75eb9755382ebebd7a, type: 2}

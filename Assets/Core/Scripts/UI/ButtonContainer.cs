@@ -147,13 +147,13 @@ public class ButtonContainer : MonoBehaviour
         DefaultButtonsGroup.SetActive(true);
         var buttonsToRemove = new List<TextMeshProUGUI>();
         
-        foreach (var button in Buttons)
+        for (int i = 0; i < Buttons.Count; i++)
         {
-            if (!button.IsActive())
+            if (!Buttons[i].IsActive())
             {
-                buttonsToRemove.Add(button);
+                buttonsToRemove.Add(Buttons[i]);
             }
-            button.color = _unselectedColorText;
+            DeselectButton(i);
         }
         foreach (var button in buttonsToRemove)
         {

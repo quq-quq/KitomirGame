@@ -10,7 +10,7 @@ public class PlayerVisual : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        if (SceneManager.GetActiveScene().name == SceneNames.KITOMIR_HOME_SCENE)
+        if (SceneManager.GetActiveScene().name == SceneInfo.KITOMIR_HOME_SCENE)
         {
             StartCoroutine(SleepingAnimation());
         }

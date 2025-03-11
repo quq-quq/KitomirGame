@@ -78,7 +78,7 @@ public class SoundManager : MonoBehaviour
 
     private void FadeScreen_OnWaitAfterFadingStarted(object sender, EventArgs e)
     {
-        PlaySound(_audioClipRefsSO.vehicleNoise, Vector2.zero);
+        PlaySound(_audioClipRefsSO.vehicleNoise, Player.Instance.transform.position);
     }
 
     private void Door_OnDoorOpen(object sender, Door.OnDoorOpenEventArgs e)

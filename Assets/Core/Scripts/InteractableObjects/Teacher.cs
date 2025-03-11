@@ -19,7 +19,7 @@ public class Teacher : InteractableObject
     [SerializeField] private DialogueViewer _dialogueViewer;
     [Space(10)]
     [SerializeField] private List<SetAnimParameter> _setAnimParameters;
-
+    
     private void Update()
     {
         if (!_dialogueViewer.IsCurrentViewerActive() || _setAnimParameters.Count == 0)
