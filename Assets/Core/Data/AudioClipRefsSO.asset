@@ -27,3 +27,4 @@ MonoBehaviour:
   commissarOpenDoor: {fileID: 8300000, guid: 0fb863002dc8c381292815524ec1859a, type: 3}
   vehicleNoise: {fileID: 8300000, guid: 21300f2180e31b096942d8210abc8b11, type: 3}
   almostOutOfTimeTic: {fileID: 8300000, guid: f9e5f53264ef6cb8b8434ff8f43d3043, type: 3}
+  birdSinging: {fileID: 8300000, guid: 57e5cad5c29773501bd60cd06244f67e, type: 3}

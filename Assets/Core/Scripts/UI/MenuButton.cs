@@ -53,7 +53,7 @@ public class MenuButton : MonoBehaviour
     public void RestartSecretGameMode()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneNames.SECRET_GAME_MODE_SCENE);
+        SceneManager.LoadScene(SceneInfo.SECRET_GAME_MODE_SCENE);
     }
 
     public void ShowInfo()

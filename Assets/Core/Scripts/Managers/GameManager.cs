@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     
     private Coroutine _fadeScreenCoroutine;
     private bool _canBePaused = true;
+    private bool _isSceneLoading;
 
     private void Awake()
     {
@@ -31,12 +32,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name == SceneNames.KITOMIR_HOME_SCENE)
+        // change state depending on current scene to easier test inside editor
+        // for example when starting not from main menu scene
+        if (GameStateManager.State == GameState.FirstEntry 
+            && SceneManager.GetActiveScene().name != SceneInfo.MAIN_MENU_SCENE)
         {
-            GameStateManager.State = GameState.AtHome;
+            GameStateManager.State = SceneInfo.SceneStates[SceneManager.GetActiveScene().name];
         }
 
-        if (SceneManager.GetActiveScene().name == SceneNames.CORRIDOR_SCENE)
+        if (SceneManager.GetActiveScene().name == SceneInfo.CORRIDOR_SCENE)
         {
             foreach (var spawner in _spawnerList)
             {
@@ -47,13 +51,18 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        if ((GameStateManager.State is GameState.ExamsPassed or GameState.ExamsFailed) && Timer.Instance != null)
+        {
+            Timer.Instance.DestroyTimer();
+        }
+
         Door.OnDoorOpen += Door_OnDoorOpen;
         MenuButton.OnPlayButtonPressed += MenuButton_OnPlayButtonPressed;
         InputManager.Instance.OnPauseAction += InputManager_OnPauseAction;
         InputManager.Instance.OnSecretInputSolved += InputManager_OnSecretInputSolved;
         GameStateManager.OnStateChanged += GameStateManager_OnStateChanged;
 
-        if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE)
+        if (SceneManager.GetActiveScene().name == SceneInfo.MAIN_MENU_SCENE)
         {
             StartForMenu.OnMenuButtonContainerAppear += StartForMenu_OnMenuButtonContainerAppear;
         }
@@ -69,12 +78,12 @@ public class GameManager : MonoBehaviour
 
     private void InputManager_OnSecretInputSolved(object sender, EventArgs e)
     {
-        StartCoroutine(LoadScene(SceneNames.SECRET_GAME_MODE_SCENE));
+        StartCoroutine(LoadScene(SceneInfo.SECRET_GAME_MODE_SCENE));
     }
 
     private void InputManager_OnPauseAction(object sender, EventArgs e)
     {
-        if (SceneManager.GetActiveScene().name != SceneNames.MAIN_MENU_SCENE)
+        if (SceneManager.GetActiveScene().name != SceneInfo.MAIN_MENU_SCENE)
         {
             Pause();
         }
@@ -82,7 +91,7 @@ public class GameManager : MonoBehaviour
 
     private void MenuButton_OnPlayButtonPressed(object sender, EventArgs e)
     {
-        StartCoroutine(LoadScene(SceneNames.KITOMIR_HOME_SCENE));
+        StartCoroutine(LoadScene(SceneInfo.KITOMIR_HOME_SCENE));
     }
 
     private void Door_OnDoorOpen(object sender, Door.OnDoorOpenEventArgs e)
@@ -97,20 +106,25 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator LoadScene(string sceneName)
     {
+        if (_isSceneLoading)
+        {
+            yield break;
+        }
+        _isSceneLoading = true;
         _canBePaused = false;
         float waitAfterFadingDuration = 0f;
 
-        if (sceneName == SceneNames.KITOMIR_HOME_SCENE)
+        if (sceneName != SceneInfo.CORRIDOR_SCENE && GameStateManager.State != SceneInfo.SceneStates[sceneName])
         {
-            GameStateManager.State = GameState.AtHome;
+            GameStateManager.State = SceneInfo.SceneStates[sceneName];
         }
-
-        if (GameStateManager.State == GameState.AtHome && sceneName == SceneNames.CORRIDOR_SCENE)
+        
+        if (GameStateManager.State == GameState.AtHome && sceneName == SceneInfo.CORRIDOR_SCENE)
         {
             waitAfterFadingDuration = 13f;
             GameStateManager.State = GameState.PhysicsExam;
         }
-        else if (GameStateManager.State == GameState.ExamsPassed && sceneName == SceneNames.HAPPY_END_SCENE)
+        else if (GameStateManager.State == GameState.ExamsPassed && sceneName == SceneInfo.HAPPY_END_SCENE)
         {
             waitAfterFadingDuration = 13f;
         }
@@ -132,7 +146,7 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 0f;
                 _pauseMenu.SetActive(true);
                 IsGamePaused = true;
-                if (SceneManager.GetActiveScene().name == SceneNames.HAPPY_END_SCENE)
+                if (SceneManager.GetActiveScene().name == SceneInfo.HAPPY_END_SCENE)
                 {
                     MusicManager.Instance.PauseSoundtrack();
                 }
@@ -159,7 +173,7 @@ public class GameManager : MonoBehaviour
         }
 
         IsGamePaused = false;
-        if (SceneManager.GetActiveScene().name == SceneNames.HAPPY_END_SCENE)
+        if (SceneManager.GetActiveScene().name == SceneInfo.HAPPY_END_SCENE)
         {
             MusicManager.Instance.ResumeSoundtrack();
         }
@@ -173,7 +187,7 @@ public class GameManager : MonoBehaviour
         InputManager.Instance.OnSecretInputSolved -= InputManager_OnSecretInputSolved;
         GameStateManager.OnStateChanged -= GameStateManager_OnStateChanged;
 
-        if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE)
+        if (SceneManager.GetActiveScene().name == SceneInfo.MAIN_MENU_SCENE)
         {
             StartForMenu.OnMenuButtonContainerAppear -= StartForMenu_OnMenuButtonContainerAppear;
         }
@@ -181,28 +195,34 @@ public class GameManager : MonoBehaviour
 
     private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
     {
-        if (e.CurrentState == GameState.ExamsFailed)
+        switch (e.CurrentState)
         {
-            if (DialogueViewer.IsGoing)
+            case GameState.ExamsFailed:
             {
-                //todo finish dialogue
-            }
+                if (Timer.Instance.IsRunning)
+                {
+                    StartCoroutine(SadSceneTransition());
+                }
+                else
+                {
+                    if (DialogueViewer.IsGoing)
+                    {
+                        //todo finish dialogue
+                    }
+                    StartCoroutine(LoadScene(SceneInfo.SAD_END_SCENE));
+                }
 
-            if (Timer.Instance.IsRunning)
-            {
-                StartCoroutine(SadSceneTransition());
+                break;
             }
-            else
+            case GameState.ExamsPassed:
             {
-                StartCoroutine(LoadScene(SceneNames.SAD_END_SCENE));
+                if (Timer.Instance != null)
+                {
+                    Timer.Instance.DestroyTimer();
+                }
+                PlayerPrefs.SetInt("IsGameCompleted", 1);
+                break;
             }
-        }
-
-        if (e.CurrentState == GameState.ExamsPassed)
-        {
-            
-            Timer.Instance.DestroyTimer();
-            PlayerPrefs.SetInt("IsGameCompleted", 1);
         }
     }
 
@@ -234,19 +254,22 @@ public class GameManager : MonoBehaviour
         {
             Timer.Instance.DestroyTimer();
         }
-        GameStateManager.State = GameState.AtHome;
+        GameStateManager.State = GameState.MainMenu;
 
-        SceneManager.LoadScene(SceneNames.MAIN_MENU_SCENE);
+        SceneManager.LoadScene(SceneInfo.MAIN_MENU_SCENE);
     }
 
     private IEnumerator SadSceneTransition()
     {
         Player.Instance.CanAct = false;
-        Timer.Instance.DestroyTimer();
         yield return new WaitForSeconds(1);
         GameObject solider = Instantiate(_soliderPrefab, _soliderSpawner);
         solider.GetComponent<SpriteRenderer>().DOFade(1f, _soliderFadeDuration);
-        yield return new WaitForSeconds(2);
-        StartCoroutine(LoadScene(SceneNames.SAD_END_SCENE));
+        for (int i = 0; i < 3; i++)
+        {
+            SoundManager.Instance.PlayFootstepsSound();
+            yield return new WaitForSeconds(1f);
+        }
+        StartCoroutine(LoadScene(SceneInfo.SAD_END_SCENE));
     }
 }

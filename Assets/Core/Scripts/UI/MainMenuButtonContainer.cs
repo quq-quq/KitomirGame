@@ -7,7 +7,7 @@ public class MainMenuButtonContainer : MonoBehaviour
     
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE)
+        if (SceneManager.GetActiveScene().name == SceneInfo.MAIN_MENU_SCENE)
         {
             if (PlayerPrefs.HasKey("IsGameCompleted"))
             {

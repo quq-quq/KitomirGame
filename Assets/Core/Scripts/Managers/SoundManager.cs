@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class SoundManager : MonoBehaviour
@@ -60,6 +59,7 @@ public class SoundManager : MonoBehaviour
 
     private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
     {
+        // door sound and commissar appearance
         if (e.CurrentState == GameState.ExamsFailed && Timer.Instance.IsRunning)
         {
             PlaySound(_audioClipRefsSO.commissarOpenDoor, Vector3.zero);
@@ -78,7 +78,7 @@ public class SoundManager : MonoBehaviour
 
     private void FadeScreen_OnWaitAfterFadingStarted(object sender, EventArgs e)
     {
-        PlaySound(_audioClipRefsSO.vehicleNoise, Vector2.zero);
+        PlaySound(_audioClipRefsSO.vehicleNoise, Player.Instance.transform.position);
     }
 
     private void Door_OnDoorOpen(object sender, Door.OnDoorOpenEventArgs e)
@@ -102,7 +102,7 @@ public class SoundManager : MonoBehaviour
     }
 
     private void OnDisable()
-    {
+    {   
         Door.OnDoorOpen -= Door_OnDoorOpen;
         FadeScreen.OnWaitAfterFadingStarted -= FadeScreen_OnWaitAfterFadingStarted;
         InputManager.Instance.OnSecretInputSolved -= InputManager_OnSecretInputSolved;

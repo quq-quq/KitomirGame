@@ -46,7 +46,7 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE 
+        if (SceneManager.GetActiveScene().name == SceneInfo.MAIN_MENU_SCENE 
             && _mainMenuPlayerSecretInput != MAIN_MENU_SECRET_INPUT
             && GameStateManager.State != GameState.FirstEntry)
         {
@@ -98,6 +98,19 @@ public class InputManager : MonoBehaviour
         {
             OnMenuSwitchDown?.Invoke(this, EventArgs.Empty);
         }
+
+        // if (OnMenuSwitchDown != null)
+        // {
+        //     Debug.Log("subscribers:");
+        //     foreach (Delegate subscriber in OnMenuSwitchDown.GetInvocationList())
+        //     {
+        //         Debug.Log(subscriber.Method.Name);
+        //     }
+        // }
+        // else
+        // {
+        //     Debug.Log("null fuck ya");
+        // }
     }
 
     private void UpSwitch_performed(InputAction.CallbackContext obj)
@@ -121,7 +134,6 @@ public class InputManager : MonoBehaviour
     public Vector2 GetMovementVectorNormalised()
     {
         Vector2 movementVector = _playerInputActions.Player.Move.ReadValue<Vector2>();
-        
         return movementVector.normalized;
     }
     

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MusicManager : MonoBehaviour
 {
     [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClipRefsSO _audioClipRefsSO;
 
     public static event EventHandler OnHappySoundtrackFinished;
     public static MusicManager Instance { get; private set; }
@@ -27,6 +28,13 @@ public class MusicManager : MonoBehaviour
     {
         FadeScreen.OnFadingStarted += FadeScreen_OnFadingStarted;
         GameStateManager.OnStateChanged += GameStateManager_OnStateChanged;
+    
+        if (GameStateManager.State == GameState.ExamsPassed 
+            && SceneManager.GetActiveScene().name != SceneInfo.HAPPY_END_SCENE)
+        {
+            _audioSource.resource = _audioClipRefsSO.birdSinging;
+            _audioSource.Play();
+        }
     }
 
     private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
@@ -35,11 +43,16 @@ public class MusicManager : MonoBehaviour
         {
             _audioSource.Stop();
         }
-    }
+
+        if (e.CurrentState == GameState.ExamsPassed)
+        {
+            StartCoroutine(HappyEndSoundTransition());
+        }
+}
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().name == SceneNames.HAPPY_END_SCENE)
+        if (SceneManager.GetActiveScene().name == SceneInfo.HAPPY_END_SCENE)
         {
             if (_audioSource.time >=_audioSource.clip.length && !_hasMusicFinished)
             {
@@ -60,7 +73,7 @@ public class MusicManager : MonoBehaviour
         
         for (float i = 0; i <= duration; i+=.1f)
         {
-            _audioSource.volume = defaultVolume - i/duration;
+            _audioSource.volume -= (defaultVolume/(duration/.1f));
             yield return new WaitForSeconds(.1f);
         }
 
@@ -68,6 +81,16 @@ public class MusicManager : MonoBehaviour
         {
             _audioSource.volume = 0f;
         }
+    }
+
+    private IEnumerator HappyEndSoundTransition()
+    {
+        yield return StartCoroutine(Subside(3f));
+        _audioSource.volume = 1f;
+        _audioSource.resource = _audioClipRefsSO.birdSinging;
+        _audioSource.Play();
+        yield return null;
+
     }
 
     public void PauseSoundtrack()

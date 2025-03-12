@@ -13,14 +13,30 @@ public class PauseButtonContainer : ButtonContainer
     private void Start()
     {
         _hiddenButtonsGroup?.SetActive(false);
-        InitializeContainer();
-        
-        InputManager.Instance.OnMenuSwitchUp += InputManager_OnMenuSwitchUp;
-        InputManager.Instance.OnMenuSwitchDown += InputManager_OnMenuSwitchDown;
-        InputManager.Instance.OnMenuButtonPressed += InputManager_OnMenuButtonPressed;
-        MenuButton.OnHiddenButtonsNeedToSetActive += MenuButton_OnHiddenButtonsNeedToSetActive;
+        if (!_isSubscribed)
+        {
+            Subscribe();
+            InitializeContainer();
+            _wasSubscribedInStart = true;
+        }
     }
 
+    private void OnEnable()
+    {
+        if (_wasSubscribedInStart)
+        {
+            try
+            {
+                Subscribe();
+                InitializeContainer();
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine("mama " + e.Message);
+            }
+        }
+    }
+    
     private void InputManager_OnMenuSwitchUp(object sender, EventArgs e)
     {
         if (GameManager.IsGamePaused)
@@ -75,22 +91,38 @@ public class PauseButtonContainer : ButtonContainer
             SelectButton(SelectedButtonId);
         }
     }
-    
-    protected override void OnDestroy()
+
+    protected override void Subscribe()
     {
-        base.OnDestroy();
+        base.Subscribe();
+        InputManager.Instance.OnMenuSwitchUp += InputManager_OnMenuSwitchUp;
+        InputManager.Instance.OnMenuSwitchDown += InputManager_OnMenuSwitchDown;
+        InputManager.Instance.OnMenuButtonPressed += InputManager_OnMenuButtonPressed;
+        MenuButton.OnHiddenButtonsNeedToSetActive += MenuButton_OnHiddenButtonsNeedToSetActive;
+    }
+
+    protected override void Unsubscribe()
+    {
+        base.Unsubscribe();
         InputManager.Instance.OnMenuSwitchUp -= InputManager_OnMenuSwitchUp;
         InputManager.Instance.OnMenuSwitchDown -= InputManager_OnMenuSwitchDown;
         InputManager.Instance.OnMenuButtonPressed -= InputManager_OnMenuButtonPressed;
         MenuButton.OnHiddenButtonsNeedToSetActive -= MenuButton_OnHiddenButtonsNeedToSetActive;
     }
     
-    protected override void OnDisable()
+    private void OnDestroy()
     {
-        base.OnDisable();
-        InputManager.Instance.OnMenuSwitchUp -= InputManager_OnMenuSwitchUp;
-        InputManager.Instance.OnMenuSwitchDown -= InputManager_OnMenuSwitchDown;
-        InputManager.Instance.OnMenuButtonPressed -= InputManager_OnMenuButtonPressed;
-        MenuButton.OnHiddenButtonsNeedToSetActive -= MenuButton_OnHiddenButtonsNeedToSetActive;
+        if (_isSubscribed)
+        {
+            Unsubscribe();
+        }
+    }
+    
+    private void OnDisable()
+    {
+        if (_isSubscribed)
+        {
+            Unsubscribe();
+        }
     }
 }

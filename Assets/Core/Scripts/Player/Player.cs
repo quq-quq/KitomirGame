@@ -73,12 +73,12 @@ public class Player : MonoBehaviour
             }
         }
     }
-
+    
     private void HandleMovement()
     {
         if (CanAct)
         {
-            _movementVector = InputManager.Instance.GetMovementVectorNormalised();
+            _movementVector = InputManager.Instance.GetMovementVector();
             _rigidbody2D.linearVelocity = _movementVector * _moveSpeed;
             IsMoving = _movementVector != Vector2.zero;
         }
