@@ -26,7 +26,6 @@ public class InputManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            Debug.Log("changed instance field");
         }
         else
         {

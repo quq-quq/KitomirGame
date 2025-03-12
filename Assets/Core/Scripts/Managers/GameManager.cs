@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     
     private Coroutine _fadeScreenCoroutine;
     private bool _canBePaused = true;
+    private bool _isSceneLoading;
 
     private void Awake()
     {
@@ -105,6 +106,11 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator LoadScene(string sceneName)
     {
+        if (_isSceneLoading)
+        {
+            yield break;
+        }
+        _isSceneLoading = true;
         _canBePaused = false;
         float waitAfterFadingDuration = 0f;
 
