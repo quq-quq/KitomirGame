@@ -31,6 +31,7 @@ public class DialogueViewer : MonoBehaviour
     [Space(10)]
     [SerializeField, Tooltip("must contain MenuButton script")] private GameObject _answerButtonPrefab;
     private bool _isWriting = false;
+    private bool _canResulting;
     private Vector2 _endGradePos;
     private Transform _answersChamberTransform;    
     private Coroutine _writingCoroutine;
@@ -163,6 +164,7 @@ public class DialogueViewer : MonoBehaviour
                 _nameChamber.text = CurrentDialogueElement.simplePhrase.InputName;
                 _writingCoroutine = StartCoroutine(_dialogueWriter.SimpleWritingText(CurrentDialogueElement.simplePhrase.InputText, _simplePhraseChamber, CurrentDialogueElement.SymbolTime, WritingTextCompletion));
                 _isWriting = true;
+                _canResulting = _dialogueBunch.CanResulting(CurrentDialogueElement);
             }
             if (CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
             {
@@ -182,7 +184,17 @@ public class DialogueViewer : MonoBehaviour
         }
         else
         {
-            StartCoroutine(Ender());
+            if (_canResulting)
+            {
+                _dialogueBunch.RootDialogue = _dialogueBunch.ResultDialogue;
+                CurrentDialogueElement = _dialogueBunch.ResultDialogue[0];
+                ViewDialogue();
+                _canResulting = false;
+            }
+            else
+            {
+                StartCoroutine(Ender());
+            }
         }
     }
 

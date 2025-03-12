@@ -7,13 +7,19 @@ using UnityEngine.Rendering;
 public class DialogueBunch : ScriptableObject
 {
     [SerializeField] private bool _isReputationable;
-    [HideInInspector] private GameState _nextGameState;
-    [HideInInspector] private float _startReputation;
-    [HideInInspector] private float _minReputation = 40f;
-    [HideInInspector] private float _maxReputation = 85f;
+    private GameState _nextGameState;
+    private float _startReputation;
+    private float _minReputation = 40f;
+    private float _maxReputation = 85f;
+    
     [Space(20)]
     [SerializeField]private List<DialogueBaseClass> _rootDialogue;
+    [Space(20)]
+    [SerializeField] private List<string> _necessaryPhrasesForResult;
+    [SerializeField] private List<DialogueBaseClass> _goodResultDialogue;
+    [SerializeField] private List<DialogueBaseClass> _badResultDialogue;
     private float _reputation = 50f;
+    private bool _canResult = false;
 
     public bool IsReputationable
     {
@@ -39,11 +45,36 @@ public class DialogueBunch : ScriptableObject
     public List<DialogueBaseClass> RootDialogue
     {
         get => _rootDialogue;
+        set
+        {
+            if (value == _goodResultDialogue || value == _badResultDialogue)
+            {
+                _rootDialogue = value;
+            }
+        }
+    }
+    public List<DialogueBaseClass> GoodResultDialogue
+    {
+        get => _goodResultDialogue;
+    }
+    public List<DialogueBaseClass> BadResultDialogue
+    {
+        get => _badResultDialogue;
     }
 
     public void ResetReputation()
     {
         _reputation = _startReputation;
+    }
+
+    public bool CanResulting(DialogueBaseClass currentEl)
+    {
+        if (!_canResult)
+        {
+            _canResult = _necessaryPhrasesForResult.Contains(currentEl.simplePhrase.InputText);
+            return _canResult;
+        }
+        return true;
     }
 
     [CustomEditor(typeof(DialogueBunch))]
@@ -64,6 +95,7 @@ public class DialogueBunch : ScriptableObject
 
             EditorGUILayout.Space();
             DrawDefaultInspector();
+            EditorGUILayout.Space();
 
             if (GUI.changed)
             {
