@@ -102,7 +102,7 @@ public class SoundManager : MonoBehaviour
     }
 
     private void OnDisable()
-    {
+    {   
         Door.OnDoorOpen -= Door_OnDoorOpen;
         FadeScreen.OnWaitAfterFadingStarted -= FadeScreen_OnWaitAfterFadingStarted;
         InputManager.Instance.OnSecretInputSolved -= InputManager_OnSecretInputSolved;

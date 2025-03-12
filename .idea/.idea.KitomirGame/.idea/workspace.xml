@@ -6,12 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="5996c718-9b42-4e37-9821-ae2a4d845c13" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Animations/kitomir/WakingUp.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Animations/kitomir/WakingUp.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/CorridorScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/CorridorScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/MainMenuScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/MainMenuScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/MusicManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/MusicManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/InputManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/SoundManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Player/Player.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/UI/ButtonContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/UI/ButtonContainer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/UI/PauseButtonContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/UI/PauseButtonContainer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +33,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4329c3c34eb04a1fae94b355d2bed7f81dea00/43/6a8efdf4/Object.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4329c3c34eb04a1fae94b355d2bed7f81dea00/4f/5bc03bd2/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4329c3c34eb04a1fae94b355d2bed7f81dea00/73/6f116d8b/Scene.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4329c3c34eb04a1fae94b355d2bed7f81dea00/8d/17e8abd6/SceneManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4329c3c34eb04a1fae94b355d2bed7f81dea00/95/65ae8a79/WaitForSeconds.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4329c3c34eb04a1fae94b355d2bed7f81dea00/ac/86de4e91/Time.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4329c3c34eb04a1fae94b355d2bed7f81dea00/c7/c03b94e6/UnityEventBase.cs" root0="FORCE_HIGHLIGHTING" />
@@ -170,7 +175,9 @@
       <workItem from="1741699226198" duration="4688000" />
       <workItem from="1741715326122" duration="2312000" />
       <workItem from="1741721093521" duration="3378000" />
-      <workItem from="1741765696161" duration="2463000" />
+      <workItem from="1741765696161" duration="4808000" />
+      <workItem from="1741770537492" duration="264000" />
+      <workItem from="1741789651217" duration="3456000" />
     </task>
     <servers />
   </component>
@@ -185,26 +192,18 @@
     <option name="unityProjectFolder" value="true" />
   </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Core/Scripts/Managers/SoundManager.cs</url>
-          <line>81</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/SoundManager.cs" containingFunctionPresentation="Method 'FadeScreen_OnWaitAfterFadingStarted'">
-            <startOffsets>
-              <option value="2476" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2477" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -248,7 +248,7 @@ public class GameManager : MonoBehaviour
         {
             Timer.Instance.DestroyTimer();
         }
-        GameStateManager.State = GameState.AtHome;
+        GameStateManager.State = GameState.MainMenu;
 
         SceneManager.LoadScene(SceneInfo.MAIN_MENU_SCENE);
     }

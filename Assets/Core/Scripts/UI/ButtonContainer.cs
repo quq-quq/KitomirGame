@@ -14,6 +14,7 @@ public class ButtonContainer : MonoBehaviour
     private readonly Color _selectedColorText = Color.black;
     private readonly Color _unselectedColorText = new (0.490566f, 0.490566f, 0.490566f, 1f);
     protected bool _isSubscribed;
+    protected bool _wasSubscribedInStart;
     
     protected int SelectedButtonId;
 
@@ -22,21 +23,43 @@ public class ButtonContainer : MonoBehaviour
         if (!_isSubscribed)
         {
             Subscribe();
+            InitializeContainer();
+            _wasSubscribedInStart = true;
         }
-        InitializeContainer();
     }
 
-    protected virtual void OnEnable()
+    private void OnEnable()
     {
-        try 
+        if (_wasSubscribedInStart)
         {
-            Subscribe();
-            InitializeContainer();
+            try
+            {
+                Subscribe();
+                InitializeContainer();
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine("mama " + e.Message);
+            }
         }
-        catch (NullReferenceException e)
-        {
-            Console.WriteLine("mama" + e.Message);
-        }
+    }
+    
+    protected virtual void Subscribe()
+    {
+        _isSubscribed = true;
+        
+        InputManager.Instance.OnMenuSwitchUp += InputManager_OnMenuSwitchUp;
+        InputManager.Instance.OnMenuSwitchDown += InputManager_OnMenuSwitchDown;
+        InputManager.Instance.OnMenuButtonPressed += InputManager_OnMenuButtonPressed;
+    }
+    
+    protected virtual void Unsubscribe()
+    {
+        _isSubscribed = false;
+        
+        InputManager.Instance.OnMenuSwitchUp -= InputManager_OnMenuSwitchUp;
+        InputManager.Instance.OnMenuSwitchDown -= InputManager_OnMenuSwitchDown;
+        InputManager.Instance.OnMenuButtonPressed -= InputManager_OnMenuButtonPressed;
     }
 
 
@@ -166,31 +189,19 @@ public class ButtonContainer : MonoBehaviour
         }
     }
 
-    protected virtual void Subscribe()
+    private void OnDestroy()
     {
-        _isSubscribed = true;
-        
-        InputManager.Instance.OnMenuSwitchUp += InputManager_OnMenuSwitchUp;
-        InputManager.Instance.OnMenuSwitchDown += InputManager_OnMenuSwitchDown;
-        InputManager.Instance.OnMenuButtonPressed += InputManager_OnMenuButtonPressed;
+        if (_isSubscribed)
+        {
+            Unsubscribe();
+        }
     }
     
-    protected virtual void Unsubscribe()
+    private void OnDisable()
     {
-        _isSubscribed = false;
-        
-        InputManager.Instance.OnMenuSwitchUp -= InputManager_OnMenuSwitchUp;
-        InputManager.Instance.OnMenuSwitchDown -= InputManager_OnMenuSwitchDown;
-        InputManager.Instance.OnMenuButtonPressed -= InputManager_OnMenuButtonPressed;
-    }
-
-    protected virtual void OnDestroy()
-    {
-        Unsubscribe();
-    }
-    
-    protected virtual void OnDisable()
-    {
-        Unsubscribe();
+        if (_isSubscribed)
+        {
+            Unsubscribe();
+        }
     }
 }

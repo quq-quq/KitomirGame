@@ -16,20 +16,23 @@ public class PauseButtonContainer : ButtonContainer
         if (!_isSubscribed)
         {
             Subscribe();
-        }
-        InitializeContainer();
-    }
-
-    protected override void OnEnable()
-    {
-        try 
-        {
-            Subscribe();
             InitializeContainer();
         }
-        catch (NullReferenceException e)
+    }
+
+    private void OnEnable()
+    {
+        if (_wasSubscribedInStart)
         {
-            Console.WriteLine("mama" + e.Message);
+            try
+            {
+                Subscribe();
+                InitializeContainer();
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine("mama " + e.Message);
+            }
         }
     }
     
@@ -106,13 +109,19 @@ public class PauseButtonContainer : ButtonContainer
         MenuButton.OnHiddenButtonsNeedToSetActive -= MenuButton_OnHiddenButtonsNeedToSetActive;
     }
     
-    protected override void OnDestroy()
+    private void OnDestroy()
     {
-        Unsubscribe();
+        if (_isSubscribed)
+        {
+            Unsubscribe();
+        }
     }
     
-    protected override void OnDisable()
+    private void OnDisable()
     {
-        Unsubscribe();
+        if (_isSubscribed)
+        {
+            Unsubscribe();
+        }
     }
 }
