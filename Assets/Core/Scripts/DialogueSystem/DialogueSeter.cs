@@ -15,6 +15,21 @@ public class DialogueSeter
         _dialogueBunch = dialogueBunch;
     }
 
+    private DialogueBaseClass SetNewDialogue()
+    {
+        if(_dialogueBunch.Reputation < _dialogueBunch.MinReputation)
+        {
+            _dialogueBunch.RootDialogue = _dialogueBunch.BadResultDialogue;
+            return _dialogueBunch.RootDialogue[0];
+        }
+        if(_dialogueBunch.Reputation > _dialogueBunch.MaxReputation)
+        {
+            _dialogueBunch.RootDialogue = _dialogueBunch.GoodResultDialogue;
+            return _dialogueBunch.RootDialogue[0];
+        }
+        return null;
+    }
+
     public DialogueBaseClass SetNewElementAtSimplePhrase(List<DialogueBaseClass> dialogue, DialogueBaseClass currentDialogueElement)
     {
         DialogueBaseClass nextDialogueElement = null;

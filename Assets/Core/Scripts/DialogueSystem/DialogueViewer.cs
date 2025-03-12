@@ -184,7 +184,7 @@ public class DialogueViewer : MonoBehaviour
         }
         else
         {
-            if (_canResulting)
+            if (_canResulting && _dialogueBunch.IsReputationable && _dialogueBunch.Reputation > _dialogueBunch.MinReputation)
             {
                 _dialogueBunch.RootDialogue = _dialogueBunch.ResultDialogue;
                 CurrentDialogueElement = _dialogueBunch.ResultDialogue[0];
