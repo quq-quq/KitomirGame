@@ -17,6 +17,7 @@ public class PauseButtonContainer : ButtonContainer
         {
             Subscribe();
             InitializeContainer();
+            _wasSubscribedInStart = true;
         }
     }
 

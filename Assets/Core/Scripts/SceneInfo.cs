@@ -20,6 +20,7 @@ public abstract class SceneInfo
         { MATHS_AUDITORIUM_SCENE, GameState.MathsExam },
         { ITAUDITORIUM_SCENE, GameState.ITExam },
         { SAD_END_SCENE, GameState.ExamsFailed },
-        { HAPPY_END_SCENE, GameState.ExamsPassed }
+        { HAPPY_END_SCENE, GameState.ExamsPassed },
+        { SECRET_GAME_MODE_SCENE, GameState.MainMenu }
     };
 }
