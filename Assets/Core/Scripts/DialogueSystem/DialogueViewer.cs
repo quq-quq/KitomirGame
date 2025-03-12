@@ -33,7 +33,7 @@ public class DialogueViewer : MonoBehaviour
     private bool _isWriting = false;
     private bool _canResulting;
     private Vector2 _endGradePos;
-    private Transform _answersChamberTransform;    
+    private Transform _answersChamberTransform;
     private Coroutine _writingCoroutine;
     private DialogueSeter _dialogueSeter;
     private DialogueWriter _dialogueWriter;
@@ -65,7 +65,7 @@ public class DialogueViewer : MonoBehaviour
 
     private void Update()
     {
-        if (IsCurrentViewerActive() && CurrentDialogueElement!= null)
+        if (IsCurrentViewerActive() && CurrentDialogueElement != null)
         {
             if (CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && _simplePhraseChamber.text.Length > 1)
             {
@@ -77,7 +77,7 @@ public class DialogueViewer : MonoBehaviour
                 }
                 else
                 {
-                    CurrentDialogueElement = _dialogueSeter.SetNewElementAtSimplePhrase(_dialogueBunch.RootDialogue, CurrentDialogueElement);
+                    CurrentDialogueElement = _dialogueSeter.SetNewElementAtSimplePhrase(_dialogueBunch.CurrentDialogue, CurrentDialogueElement);
                     ViewDialogue();
                 }
 
@@ -87,26 +87,26 @@ public class DialogueViewer : MonoBehaviour
 
     public IEnumerator Starter()
     {
-        CurrentDialogueElement = _dialogueBunch.RootDialogue[0];
+        _dialogueBunch.ResetBunch();
+        CurrentDialogueElement = _dialogueBunch.CurrentDialogue[0];
         _dialogueCanvas.gameObject.SetActive(true);
-        _dialogueBunch.ResetReputation();
         Reseter();
         if (!IsGoing)
         {
             IsGoing = true;
             yield return new WaitForSeconds(_dialogueAnimator.GetCurrentAnimatorStateInfo(0).length);
-            ViewDialogue();
             if (_dialogueBunch.IsReputationable)
             {
                 _gradeChamber.text = "...";
-            }   
+            } 
+            ViewDialogue();
         }
     }
 
     private IEnumerator Ender()
     {
         Reseter();
-        
+
         IsGoing = false;
         _dialogueAnimator.SetTrigger(_triggerForEndName);
 
@@ -127,7 +127,7 @@ public class DialogueViewer : MonoBehaviour
             yield return new WaitForSeconds(_ofsetForEndGradeView);
             _gradeChamber.DOFade(0, _durationForEndGradeView);
             yield return new WaitForSeconds(_durationForEndGradeView);
-            
+
             if (_dialogueBunch.Reputation < _dialogueBunch.MinReputation)
             {
                 GameStateManager.State = GameState.ExamsFailed;
@@ -164,7 +164,10 @@ public class DialogueViewer : MonoBehaviour
                 _nameChamber.text = CurrentDialogueElement.simplePhrase.InputName;
                 _writingCoroutine = StartCoroutine(_dialogueWriter.SimpleWritingText(CurrentDialogueElement.simplePhrase.InputText, _simplePhraseChamber, CurrentDialogueElement.SymbolTime, WritingTextCompletion));
                 _isWriting = true;
-                _canResulting = _dialogueBunch.CanResulting(CurrentDialogueElement);
+                if (!_canResulting)
+                {
+                    _canResulting = _dialogueBunch.NecessaryPhrasesForResult.Contains(CurrentDialogueElement.simplePhrase.InputText);
+                }
             }
             if (CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
             {
@@ -184,12 +187,11 @@ public class DialogueViewer : MonoBehaviour
         }
         else
         {
-            if (_canResulting && _dialogueBunch.IsReputationable && _dialogueBunch.Reputation > _dialogueBunch.MinReputation)
+            if (_canResulting && _dialogueBunch.IsReputationable)
             {
-                _dialogueBunch.RootDialogue = _dialogueBunch.ResultDialogue;
-                CurrentDialogueElement = _dialogueBunch.ResultDialogue[0];
-                ViewDialogue();
+                CurrentDialogueElement = _dialogueSeter.SetNewDialogue();
                 _canResulting = false;
+                ViewDialogue(); 
             }
             else
             {
@@ -241,7 +243,7 @@ public class DialogueViewer : MonoBehaviour
         _gradeChamber.color = Color.red;
         _gradeLine.color = Color.clear;
         _simplePhraseChamber.text = string.Empty;
-        _nameChamber.text = string.Empty;        
+        _nameChamber.text = string.Empty;
         _gradeChamber.text = string.Empty;
         foreach (Transform child in _answersChamberTransform)
         {

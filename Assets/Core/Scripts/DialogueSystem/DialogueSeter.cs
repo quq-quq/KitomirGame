@@ -8,26 +8,34 @@ public class DialogueSeter
     private List<DialogueBaseClass> _previousAnswers;
     private List<DialogueBaseClass> _nextSimplePhrases;
 
-    public DialogueSeter( DialogueBunch dialogueBunch)
+    public DialogueSeter(DialogueBunch dialogueBunch)
     {
         _previousAnswers = new List<DialogueBaseClass>();
         _nextSimplePhrases = new List<DialogueBaseClass>();
         _dialogueBunch = dialogueBunch;
     }
 
-    private DialogueBaseClass SetNewDialogue()
+    public DialogueBaseClass SetNewDialogue()
     {
-        if(_dialogueBunch.Reputation < _dialogueBunch.MinReputation)
+        if (_dialogueBunch.Reputation < _dialogueBunch.MinReputation && _dialogueBunch.BadResultDialogue.Count!=0)
         {
-            _dialogueBunch.RootDialogue = _dialogueBunch.BadResultDialogue;
-            return _dialogueBunch.RootDialogue[0];
+            _dialogueBunch.CurrentDialogue = _dialogueBunch.BadResultDialogue;
+            return _dialogueBunch.CurrentDialogue[0];
         }
-        if(_dialogueBunch.Reputation > _dialogueBunch.MaxReputation)
+        else if (_dialogueBunch.Reputation > _dialogueBunch.MaxReputation && _dialogueBunch.GoodResultDialogue.Count != 0)
         {
-            _dialogueBunch.RootDialogue = _dialogueBunch.GoodResultDialogue;
-            return _dialogueBunch.RootDialogue[0];
+            _dialogueBunch.CurrentDialogue = _dialogueBunch.GoodResultDialogue;
+            return _dialogueBunch.CurrentDialogue[0];
         }
-        return null;
+        else
+        {
+            if(_dialogueBunch.MidResultDialogue.Count != 0)
+            {
+                _dialogueBunch.CurrentDialogue = _dialogueBunch.MidResultDialogue;
+                return _dialogueBunch.CurrentDialogue[0];
+            }
+            return null;
+        }
     }
 
     public DialogueBaseClass SetNewElementAtSimplePhrase(List<DialogueBaseClass> dialogue, DialogueBaseClass currentDialogueElement)
@@ -78,8 +86,8 @@ public class DialogueSeter
         if (currentDialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
         {
             _previousAnswers.Add(currentDialogueElement);
-            SetLastAnswerInList(_dialogueBunch.RootDialogue);
-            SetPreviousAnswersInList(_dialogueBunch.RootDialogue);
+            SetLastAnswerInList(_dialogueBunch.CurrentDialogue);
+            SetPreviousAnswersInList(_dialogueBunch.CurrentDialogue);
 
             _dialogueBunch.Reputation += addReputation;
             return nextDialogueElement;
@@ -91,7 +99,7 @@ public class DialogueSeter
     {
         if (dialogue.Contains(_previousAnswers[^1]))
         {
-            if(dialogue.IndexOf(_previousAnswers[^1]) == dialogue.Count - 1)
+            if (dialogue.IndexOf(_previousAnswers[^1]) == dialogue.Count - 1)
             {
                 _previousAnswers.RemoveAt(_previousAnswers.Count - 1);
                 return;
@@ -113,7 +121,7 @@ public class DialogueSeter
 
     private void SetPreviousAnswersInList(List<DialogueBaseClass> dialogue)
     {
-        for(int i = 0; i < _previousAnswers.Count-1; i++)
+        for (int i = 0; i < _previousAnswers.Count - 1; i++)
         {
             if (dialogue.Contains(_previousAnswers[i]) && dialogue.Contains(_previousAnswers[^1]))
             {

@@ -5,21 +5,26 @@ using UnityEngine.Rendering;
 
 [CreateAssetMenu(menuName = "Custom/DialogueBunch"), System.Serializable]
 public class DialogueBunch : ScriptableObject
-{
-    [SerializeField] private bool _isReputationable;
-    private GameState _nextGameState;
-    private float _startReputation;
-    private float _minReputation = 40f;
-    private float _maxReputation = 85f;
-    
+{   
     [Space(20)]
     [SerializeField]private List<DialogueBaseClass> _rootDialogue;
-    [Space(20)]
+    [Space(70)]
+    [Header("Reputation Parameters")]
+    [SerializeField, Tooltip("To Activate Reputation System")] private bool _isReputationable = false;
+    [SerializeField, Range(0, 100)] private float _startReputation = 60f;
+    [SerializeField, Range(0, 97)] private float _minReputation = 40f;
+    [SerializeField, Range(3, 100)] private float _maxReputation = 85f;
+    [Space(10)]
+    [SerializeField] private GameState _nextGameState;
+    [Space(10)]
     [SerializeField] private List<string> _necessaryPhrasesForResult;
     [SerializeField] private List<DialogueBaseClass> _goodResultDialogue;
+    [SerializeField] private List<DialogueBaseClass> _midResultDialogue;
     [SerializeField] private List<DialogueBaseClass> _badResultDialogue;
+
+
     private float _reputation = 50f;
-    private bool _canResult = false;
+    private List<DialogueBaseClass> _currentDialogue;
 
     public bool IsReputationable
     {
@@ -42,14 +47,14 @@ public class DialogueBunch : ScriptableObject
     {
         get => _maxReputation;
     }
-    public List<DialogueBaseClass> RootDialogue
+    public List<DialogueBaseClass> CurrentDialogue
     {
-        get => _rootDialogue;
+        get => _currentDialogue;
         set
         {
             if (value == _goodResultDialogue || value == _badResultDialogue)
             {
-                _rootDialogue = value;
+                _currentDialogue = value;
             }
         }
     }
@@ -57,50 +62,22 @@ public class DialogueBunch : ScriptableObject
     {
         get => _goodResultDialogue;
     }
+    public List<DialogueBaseClass> MidResultDialogue
+    {
+        get => _midResultDialogue; 
+    }
     public List<DialogueBaseClass> BadResultDialogue
     {
         get => _badResultDialogue;
     }
+    public List<string> NecessaryPhrasesForResult
+    {
+        get => _necessaryPhrasesForResult;
+    }
 
-    public void ResetReputation()
+    public void ResetBunch()
     {
         _reputation = _startReputation;
-    }
-
-    public bool CanResulting(DialogueBaseClass currentEl)
-    {
-        if (!_canResult)
-        {
-            _canResult = _necessaryPhrasesForResult.Contains(currentEl.simplePhrase.InputText);
-            return _canResult;
-        }
-        return true;
-    }
-
-    [CustomEditor(typeof(DialogueBunch))]
-    public class DialogueBunchEditor : Editor
-    {
-        public override void OnInspectorGUI()
-        {
-            DialogueBunch dialogueBunch = (DialogueBunch)target;
-
-            if (dialogueBunch._isReputationable)
-            {
-                EditorGUILayout.Space();
-                dialogueBunch._nextGameState = (GameState)EditorGUILayout.EnumPopup("Next Game State", dialogueBunch._nextGameState);
-                dialogueBunch._startReputation = EditorGUILayout.Slider("Start Reputation", dialogueBunch._startReputation, 0, 100);
-                dialogueBunch._minReputation = EditorGUILayout.Slider("Min Reputation", dialogueBunch._minReputation, 0, 98);
-                dialogueBunch._maxReputation = EditorGUILayout.Slider("Max Reputation", dialogueBunch._maxReputation, 2, 100);
-            }
-
-            EditorGUILayout.Space();
-            DrawDefaultInspector();
-            EditorGUILayout.Space();
-
-            if (GUI.changed)
-            {
-                EditorUtility.SetDirty(dialogueBunch);
-            }
-        }
+        _currentDialogue = _rootDialogue;
     }
 }
