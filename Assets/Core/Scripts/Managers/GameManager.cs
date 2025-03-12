@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (GameStateManager.State == GameState.ExamsPassed)
+        if ((GameStateManager.State is GameState.ExamsPassed or GameState.ExamsFailed) && Timer.Instance != null)
         {
             Timer.Instance.DestroyTimer();
         }
@@ -189,30 +189,34 @@ public class GameManager : MonoBehaviour
 
     private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
     {
-        if (e.CurrentState == GameState.ExamsFailed)
+        switch (e.CurrentState)
         {
-            if (DialogueViewer.IsGoing)
+            case GameState.ExamsFailed:
             {
-                //todo finish dialogue
-            }
+                if (Timer.Instance.IsRunning)
+                {
+                    StartCoroutine(SadSceneTransition());
+                }
+                else
+                {
+                    if (DialogueViewer.IsGoing)
+                    {
+                        //todo finish dialogue
+                    }
+                    StartCoroutine(LoadScene(SceneInfo.SAD_END_SCENE));
+                }
 
-            if (Timer.Instance.IsRunning)
-            {
-                StartCoroutine(SadSceneTransition());
+                break;
             }
-            else
+            case GameState.ExamsPassed:
             {
-                StartCoroutine(LoadScene(SceneInfo.SAD_END_SCENE));
+                if (Timer.Instance != null)
+                {
+                    Timer.Instance.DestroyTimer();
+                }
+                PlayerPrefs.SetInt("IsGameCompleted", 1);
+                break;
             }
-        }
-
-        if (e.CurrentState == GameState.ExamsPassed)
-        {
-            if (Timer.Instance != null)
-            {
-                Timer.Instance.DestroyTimer();
-            }
-            PlayerPrefs.SetInt("IsGameCompleted", 1);
         }
     }
 
@@ -252,11 +256,14 @@ public class GameManager : MonoBehaviour
     private IEnumerator SadSceneTransition()
     {
         Player.Instance.CanAct = false;
-        Timer.Instance.DestroyTimer();
         yield return new WaitForSeconds(1);
         GameObject solider = Instantiate(_soliderPrefab, _soliderSpawner);
         solider.GetComponent<SpriteRenderer>().DOFade(1f, _soliderFadeDuration);
-        yield return new WaitForSeconds(2);
+        for (int i = 0; i < 3; i++)
+        {
+            SoundManager.Instance.PlayFootstepsSound();
+            yield return new WaitForSeconds(1f);
+        }
         StartCoroutine(LoadScene(SceneInfo.SAD_END_SCENE));
     }
 }

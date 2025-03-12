@@ -6,24 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="5996c718-9b42-4e37-9821-ae2a4d845c13" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Data/AudioClipRefsSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Data/AudioClipRefsSO.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Prefabs/ManagersSeparated/MusicManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Prefabs/ManagersSeparated/MusicManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/CorridorScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/CorridorScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/MainMenuScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/MainMenuScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/InteractableObjects/Teacher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/InteractableObjects/Teacher.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/CorridorDoorManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/CorridorDoorManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Animations/kitomir/WakingUp.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Animations/kitomir/WakingUp.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/InputManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/MusicManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/MusicManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/SoundManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Player/PlayerVisual.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Player/PlayerVisual.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/SceneNames.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/SceneInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/SceneNames.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/SceneInfo.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/ScriptableObjects/AudioClipRefsSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/ScriptableObjects/AudioClipRefsSO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/UI/ButtonContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/UI/ButtonContainer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/UI/MainMenuButtonContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/UI/MainMenuButtonContainer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/UI/MenuButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/UI/MenuButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/UI/PauseButtonContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/UI/PauseButtonContainer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +169,8 @@
       <workItem from="1741675466961" duration="4496000" />
       <workItem from="1741699226198" duration="4688000" />
       <workItem from="1741715326122" duration="2312000" />
-      <workItem from="1741721093521" duration="2595000" />
+      <workItem from="1741721093521" duration="3378000" />
+      <workItem from="1741765696161" duration="2463000" />
     </task>
     <servers />
   </component>
@@ -198,5 +187,24 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Core/Scripts/Managers/SoundManager.cs</url>
+          <line>81</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/SoundManager.cs" containingFunctionPresentation="Method 'FadeScreen_OnWaitAfterFadingStarted'">
+            <startOffsets>
+              <option value="2476" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2477" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

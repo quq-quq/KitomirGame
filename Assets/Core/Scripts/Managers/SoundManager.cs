@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class SoundManager : MonoBehaviour
@@ -60,6 +59,7 @@ public class SoundManager : MonoBehaviour
 
     private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
     {
+        // door sound and commissar appearance
         if (e.CurrentState == GameState.ExamsFailed && Timer.Instance.IsRunning)
         {
             PlaySound(_audioClipRefsSO.commissarOpenDoor, Vector3.zero);

@@ -13,7 +13,7 @@ public class ButtonContainer : MonoBehaviour
     
     private readonly Color _selectedColorText = Color.black;
     private readonly Color _unselectedColorText = new (0.490566f, 0.490566f, 0.490566f, 1f);
-    private bool _isSubscribed;
+    protected bool _isSubscribed;
     
     protected int SelectedButtonId;
 
@@ -26,7 +26,7 @@ public class ButtonContainer : MonoBehaviour
         InitializeContainer();
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         try 
         {
@@ -166,7 +166,7 @@ public class ButtonContainer : MonoBehaviour
         }
     }
 
-    private void Subscribe()
+    protected virtual void Subscribe()
     {
         _isSubscribed = true;
         
@@ -175,7 +175,7 @@ public class ButtonContainer : MonoBehaviour
         InputManager.Instance.OnMenuButtonPressed += InputManager_OnMenuButtonPressed;
     }
     
-    private void Unsubscribe()
+    protected virtual void Unsubscribe()
     {
         _isSubscribed = false;
         

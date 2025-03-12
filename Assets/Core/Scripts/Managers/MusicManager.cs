@@ -73,7 +73,7 @@ public class MusicManager : MonoBehaviour
         
         for (float i = 0; i <= duration; i+=.1f)
         {
-            _audioSource.volume = defaultVolume - i/duration;
+            _audioSource.volume -= (defaultVolume/(duration/.1f));
             yield return new WaitForSeconds(.1f);
         }
 
