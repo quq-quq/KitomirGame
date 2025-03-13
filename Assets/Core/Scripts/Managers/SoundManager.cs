@@ -42,6 +42,12 @@ public class SoundManager : MonoBehaviour
         {
             PlaySound(_audioClipRefsSO.alarm, Vector2.zero);
         }
+        DialogueViewer.onCreditBookAction += DialogueViewer_OnCreditBookAction;
+    }
+
+    private void DialogueViewer_OnCreditBookAction(object sender, EventArgs e)
+    {
+        PlaySound(_audioClipRefsSO.paper, Player.Instance.transform.position);
     }
 
     private void BottomLimit_OnItemDropped(object sender, EventArgs e)
@@ -109,6 +115,7 @@ public class SoundManager : MonoBehaviour
         Door.OnDoorOpen -= Door_OnDoorOpen;
         FadeScreen.OnWaitAfterFadingStarted -= FadeScreen_OnWaitAfterFadingStarted;
         InputManager.Instance.OnSecretInputSolved -= InputManager_OnSecretInputSolved;
+        DialogueViewer.onCreditBookAction -= DialogueViewer_OnCreditBookAction;
         if (Timer.Instance != null)
         {
             Timer.Instance.OnAlmostOutOfTime -= Timer_OnAlmostOutOfTime;

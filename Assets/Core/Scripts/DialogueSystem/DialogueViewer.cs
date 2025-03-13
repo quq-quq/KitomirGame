@@ -38,8 +38,10 @@ public class DialogueViewer : MonoBehaviour
     private DialogueSeter _dialogueSeter;
     private DialogueWriter _dialogueWriter;
 
+    public static event EventHandler onCreditBookAction;
     public static bool IsGoing { get; private set; } = false;
     public DialogueBaseClass CurrentDialogueElement { get; private set; }
+
 
     private void Start()
     {
@@ -90,6 +92,7 @@ public class DialogueViewer : MonoBehaviour
         _dialogueBunch.ResetBunch();
         CurrentDialogueElement = _dialogueBunch.CurrentDialogue[0];
         _dialogueCanvas.gameObject.SetActive(true);
+        onCreditBookAction?.Invoke(this, EventArgs.Empty);
         Reseter();
         if (!IsGoing)
         {
@@ -109,6 +112,7 @@ public class DialogueViewer : MonoBehaviour
 
         IsGoing = false;
         _dialogueAnimator.SetTrigger(_triggerForEndName);
+        onCreditBookAction?.Invoke(this, EventArgs.Empty);
 
         if (_dialogueBunch.IsReputationable)
         {
