@@ -18,5 +18,6 @@ public class AudioClipRefsSO : ScriptableObject
     public AudioClip vehicleNoise;
     public AudioClip almostOutOfTimeTic;
     public AudioClip birdSinging;
+    public AudioClip paper;
 
 }
