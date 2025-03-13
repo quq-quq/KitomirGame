@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -6,8 +7,9 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
     
+    [SerializeField] private GameObject _soundSourcePrefab;
     [SerializeField] private AudioClipRefsSO _audioClipRefsSO;
-
+    
     private void Awake()
     {
         if (Instance == null)
@@ -34,11 +36,6 @@ public class SoundManager : MonoBehaviour
         {
             BottomLimit.Instance.OnItemDropped += BottomLimit_OnItemDropped;
         }
-
-        // if (SecretGameModePlayer.Instance != null)
-        // {
-        //     SecretGameModePlayer.Instance.OnGameOver += SecretGameModePlayer_OnGameOver;
-        // }
         GameStateManager.OnStateChanged += GameStateManager_OnStateChanged;
 
         if (GameStateManager.State == GameState.AtHome)
@@ -46,11 +43,6 @@ public class SoundManager : MonoBehaviour
             PlaySound(_audioClipRefsSO.alarm, Vector2.zero);
         }
     }
-
-    // private void SecretGameModePlayer_OnGameOver(object sender, EventArgs e)
-    // {
-    //     PlaySound(_audioClipRefsSO.hardFail, Vector3.zero);
-    // }
 
     private void BottomLimit_OnItemDropped(object sender, EventArgs e)
     {
@@ -88,17 +80,28 @@ public class SoundManager : MonoBehaviour
 
     private void PlaySound(AudioClip audioClip, Vector2 position, float volume = 1f)
     {
-        AudioSource.PlayClipAtPoint(audioClip, position, volume);
+        AudioSource audioSource = Instantiate(_soundSourcePrefab, position, Quaternion.identity)
+            .GetComponent<AudioSource>();
+        audioSource.clip = audioClip;
+        audioSource.volume = volume;
+        audioSource.Play();
+        StartCoroutine(DestroySoundSource(audioSource, audioClip.length));
     }
     
     private void PlaySound(AudioClip[] audioClips, Vector2 position, float volume = 1f)
     {
-        AudioSource.PlayClipAtPoint(audioClips[Random.Range(0, audioClips.Length)], position, volume);
+        PlaySound(audioClips[Random.Range(0, audioClips.Length)], position, volume);
     }
 
     public void PlayFootstepsSound()
     {
         PlaySound(_audioClipRefsSO.footsteps, Player.Instance.transform.position);
+    }
+
+    private IEnumerator DestroySoundSource(AudioSource soundSource, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(soundSource.gameObject);
     }
 
     private void OnDisable()

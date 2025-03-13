@@ -11,8 +11,8 @@ public class ButtonContainer : MonoBehaviour
     [SerializeField] protected GameObject DefaultButtonsGroup;
     public List<TextMeshProUGUI> Buttons {  get; protected set; }
     
-    private readonly Color _selectedColorText = Color.black;
-    private readonly Color _unselectedColorText = new (0.490566f, 0.490566f, 0.490566f, 1f);
+    [SerializeField] private Color _selectedColorText = Color.black;
+    [SerializeField] private Color _unselectedColorText = new (0.490566f, 0.490566f, 0.490566f, 1f);
     protected bool _isSubscribed;
     protected bool _wasSubscribedInStart;
     
