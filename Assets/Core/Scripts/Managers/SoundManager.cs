@@ -78,7 +78,7 @@ public class SoundManager : MonoBehaviour
         PlaySound(_audioClipRefsSO.openDoor, e.DoorPosition);
     }
 
-    private void PlaySound(AudioClip audioClip, Vector2 position, float volume = 1f)
+    private void PlaySound(AudioClip audioClip, Vector2 position, float volume = .4f)
     {
         AudioSource audioSource = Instantiate(_soundSourcePrefab, position, Quaternion.identity)
             .GetComponent<AudioSource>();

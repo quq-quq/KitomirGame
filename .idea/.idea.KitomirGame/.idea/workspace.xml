@@ -6,16 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5996c718-9b42-4e37-9821-ae2a4d845c13" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Data/DialogueBunches/HomeEpisode/WakeUp.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Data/DialogueBunches/HomeEpisode/WakeUp.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Data/DialogueBunches/IT/ITTeacher.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Data/DialogueBunches/IT/ITTeacher.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Data/DialogueBunches/Tutorial/ReputationAndAnswers.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Data/DialogueBunches/Tutorial/ReputationAndAnswers.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Data/DialogueBunches/Tutorial/SimplePhrasesAndMovement.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Data/DialogueBunches/Tutorial/SimplePhrasesAndMovement.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Prefabs/ManagersSeparated/SoundManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Prefabs/ManagersSeparated/SoundManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/KitomirHomeScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/KitomirHomeScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/MainMenuScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/MainMenuScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Prefabs/SoundSource.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Prefabs/SoundSource.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/SoundManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/UI/ButtonContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/UI/ButtonContainer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Sprites/Items/alarm.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Sprites/Items/alarm.png.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +171,7 @@
       <workItem from="1741770537492" duration="264000" />
       <workItem from="1741789651217" duration="5590000" />
       <workItem from="1741865378287" duration="1765000" />
-      <workItem from="1741879506328" duration="2512000" />
+      <workItem from="1741879506328" duration="3234000" />
     </task>
     <servers />
   </component>
