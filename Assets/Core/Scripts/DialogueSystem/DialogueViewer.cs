@@ -98,11 +98,12 @@ public class DialogueViewer : MonoBehaviour
         {
             IsGoing = true;
             yield return new WaitForSeconds(_dialogueAnimator.GetCurrentAnimatorStateInfo(0).length);
+            ViewDialogue();
             if (_dialogueBunch.IsReputationable)
             {
                 _gradeChamber.text = "...";
+                _gradeLine.color = Color.clear;
             } 
-            ViewDialogue();
         }
     }
 
@@ -130,6 +131,7 @@ public class DialogueViewer : MonoBehaviour
             yield return new WaitForSeconds(duration);
             yield return new WaitForSeconds(_ofsetForEndGradeView);
             _gradeChamber.DOFade(0, _durationForEndGradeView);
+            _gradeLine.DOFade(0, _durationForEndGradeView);
             yield return new WaitForSeconds(_durationForEndGradeView);
 
             if (_dialogueBunch.Reputation < _dialogueBunch.MinReputation)

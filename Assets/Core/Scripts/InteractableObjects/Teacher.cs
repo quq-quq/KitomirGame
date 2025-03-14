@@ -32,6 +32,8 @@ public class Teacher : InteractableObject
             if(setAnimParameter.typeOfDialogue == _dialogueViewer.CurrentDialogueElement.TypeOfDialogue && setAnimParameter.inputText == _dialogueViewer.CurrentDialogueElement.simplePhrase.InputText)
             {
                 _animator.SetBool(setAnimParameter.boolParameterName, setAnimParameter.BoolParameterInput);
+                _setAnimParameters.Remove(setAnimParameter);
+                break;
             }
         }
     }
