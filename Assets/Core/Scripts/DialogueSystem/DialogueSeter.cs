@@ -143,4 +143,14 @@ public class DialogueSeter
         }
         return;
     }
+
+    public void Debuger()
+    {
+        foreach(DialogueBaseClass el in _nextSimplePhrases)
+        {
+            Debug.Log(el.simplePhrase.InputText);
+            Debug.Log("1");
+        }
+        Debug.Log("------------------------------------------");
+    }
 }

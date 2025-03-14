@@ -80,6 +80,7 @@ public class DialogueViewer : MonoBehaviour
                 else
                 {
                     CurrentDialogueElement = _dialogueSeter.SetNewElementAtSimplePhrase(_dialogueBunch.CurrentDialogue, CurrentDialogueElement);
+                    _dialogueSeter.Debuger();
                     ViewDialogue();
                 }
 

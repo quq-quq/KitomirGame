@@ -21,8 +21,6 @@ public class DialogueBunch : ScriptableObject
     [SerializeField] private List<DialogueBaseClass> _goodResultDialogue;
     [SerializeField] private List<DialogueBaseClass> _midResultDialogue;
     [SerializeField] private List<DialogueBaseClass> _badResultDialogue;
-
-
     private float _reputation = 50f;
     private List<DialogueBaseClass> _currentDialogue;
 
