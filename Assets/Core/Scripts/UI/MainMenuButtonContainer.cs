@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuButtonContainer : MonoBehaviour
 {
+    [SerializeField] private ButtonContainer _buttonContainer;
     [SerializeField] private GameObject _infoButton;
     
     private void Start()
@@ -13,11 +14,11 @@ public class MainMenuButtonContainer : MonoBehaviour
             {
                 if (PlayerPrefs.GetInt("IsGameCompleted") == 1)
                 {
-                    _infoButton.SetActive(true);
+                    _buttonContainer.SetButtonActive(_infoButton,true);
                     return;
                 }
             }
         }
-        _infoButton.SetActive(false);
+        _buttonContainer.SetButtonActive(_infoButton, false);
     }
 }

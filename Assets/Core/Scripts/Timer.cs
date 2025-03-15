@@ -19,18 +19,14 @@ public class Timer : MonoBehaviour
     {
         if (Instance == null)
         {
-            gameObject.SetActive(false);
             Instance = this;
             DontDestroyOnLoad(this);
-            
-            // 
-            StartTimer();
-            //
         }
         else
         {
             Destroy(gameObject);
         }
+        gameObject.SetActive(false);
     }
     
     private void Update()

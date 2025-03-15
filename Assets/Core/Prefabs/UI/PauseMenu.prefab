@@ -194,10 +194,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c4b7b7e85d6ed3c3a86a9564034740f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultButtons:
+  Buttons: []
+  _selectedColorText: {r: 0, g: 0, b: 0, a: 1}
+  _unselectedColorText: {r: 0.490566, g: 0.490566, b: 0.490566, a: 1}
+  _defaultButtons:
   - {fileID: 8713818924414787952}
   - {fileID: 4748086153412504163}
-  DefaultButtonsGroup: {fileID: 865160884717446636}
+  _defaultButtonsGroup: {fileID: 865160884717446636}
   _hiddenButtons:
   - {fileID: 84203469841076343}
   - {fileID: 5197921770652479573}

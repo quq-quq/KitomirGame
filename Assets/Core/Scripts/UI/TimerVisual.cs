@@ -11,8 +11,8 @@ public class TimerVisual : MonoBehaviour
 
     private const float DEFAULT_PROGRESS_BAR_WIDTH = 1720;
     private const float DEFAULT_PROGRESS_BAR_HEIGHT = 50;
-    private readonly Color _startProgressBarColor = Color.green;
-    private readonly Color _endProgressBarColor = Color.red;
+    private readonly Color _startProgressBarColor = new Color(0.15f, 0.58f, 0.17f);
+    private readonly Color _endProgressBarColor = new Color(0.65f, 0.11f, 0.11f);
 
 
     public void UpdateVisual(float percent, float timeLeft)

@@ -32,6 +32,17 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Door.OnDoorOpen += Door_OnDoorOpen;
+        MenuButton.OnPlayButtonPressed += MenuButton_OnPlayButtonPressed;
+        InputManager.Instance.OnPauseAction += InputManager_OnPauseAction;
+        InputManager.Instance.OnSecretInputSolved += InputManager_OnSecretInputSolved;
+        GameStateManager.OnStateChanged += GameStateManager_OnStateChanged;
+
+        if (SceneManager.GetActiveScene().name == SceneInfo.MAIN_MENU_SCENE)
+        {
+            StartForMenu.OnMenuButtonContainerAppear += StartForMenu_OnMenuButtonContainerAppear;
+        }
+        
         // change state depending on current scene to easier test inside editor
         // for example when starting not from main menu scene
         if (GameStateManager.State == GameState.FirstEntry 
@@ -44,7 +55,7 @@ public class GameManager : MonoBehaviour
         {
             foreach (var spawner in _spawnerList)
             {
-                if (spawner.Scene.name == GameStateManager.PreviousSceneName)
+                if (SceneInfo.SceneNamesMap[spawner.Scene] == GameStateManager.PreviousSceneName)
                 {
                     Player.Instance.gameObject.transform.position = spawner.transform.position;
                 }
@@ -54,17 +65,6 @@ public class GameManager : MonoBehaviour
         if ((GameStateManager.State is GameState.ExamsPassed or GameState.ExamsFailed) && Timer.Instance != null)
         {
             Timer.Instance.DestroyTimer();
-        }
-
-        Door.OnDoorOpen += Door_OnDoorOpen;
-        MenuButton.OnPlayButtonPressed += MenuButton_OnPlayButtonPressed;
-        InputManager.Instance.OnPauseAction += InputManager_OnPauseAction;
-        InputManager.Instance.OnSecretInputSolved += InputManager_OnSecretInputSolved;
-        GameStateManager.OnStateChanged += GameStateManager_OnStateChanged;
-
-        if (SceneManager.GetActiveScene().name == SceneInfo.MAIN_MENU_SCENE)
-        {
-            StartForMenu.OnMenuButtonContainerAppear += StartForMenu_OnMenuButtonContainerAppear;
         }
 
         _pauseMenu.SetActive(false);

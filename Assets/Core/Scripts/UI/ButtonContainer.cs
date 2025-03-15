@@ -7,9 +7,7 @@ using UnityEngine.Events;
 
 public class ButtonContainer : MonoBehaviour
 {
-    [SerializeField] protected List<TextMeshProUGUI> DefaultButtons = new List<TextMeshProUGUI>();
-    [SerializeField] protected GameObject DefaultButtonsGroup;
-    public List<TextMeshProUGUI> Buttons {  get; protected set; }
+    [SerializeField] public List<TextMeshProUGUI> Buttons;
     
     [SerializeField] private Color _selectedColorText = Color.black;
     [SerializeField] private Color _unselectedColorText = new (0.490566f, 0.490566f, 0.490566f, 1f);
@@ -162,30 +160,26 @@ public class ButtonContainer : MonoBehaviour
         }
     }
 
-    protected void InitializeContainer()
+    private void InitializeContainer()
     {
         SelectedButtonId = 0;
-
-        Buttons = DefaultButtons;
-        DefaultButtonsGroup.SetActive(true);
-        var buttonsToRemove = new List<TextMeshProUGUI>();
         
         for (int i = 0; i < Buttons.Count; i++)
         {
-            if (!Buttons[i].IsActive())
-            {
-                buttonsToRemove.Add(Buttons[i]);
-            }
             DeselectButton(i);
         }
-        foreach (var button in buttonsToRemove)
-        {
-            Buttons.Remove(button);
-        }
-        
         if (Buttons.Count > 0)
         {
             SelectButton(SelectedButtonId);
+        }
+    }
+
+    public void SetButtonActive(GameObject menuButton, bool active)
+    {
+        menuButton.SetActive(active);
+        if (!active)
+        {
+            Buttons.Remove(menuButton.GetComponentInChildren<TextMeshProUGUI>());
         }
     }
 

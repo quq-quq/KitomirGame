@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] public SceneAsset Scene;
+    [SerializeField] public SceneNames Scene;
 }

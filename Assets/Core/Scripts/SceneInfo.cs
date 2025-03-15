@@ -12,6 +12,18 @@ public abstract class SceneInfo
     public const string SAD_END_SCENE = "SadEndScene";
     public const string SECRET_GAME_MODE_SCENE = "SecretGameModeScene";
     
+    public static Dictionary<SceneNames, string> SceneNamesMap = new() {
+        { SceneNames.MainMenuScene, "MainMenuScene" },
+        { SceneNames.KitomirHomeScene, "KitomirHomeScene" },
+        { SceneNames.CorridorScene, "CorridorScene" },
+        { SceneNames.PhysicsAuditoriumScene, "PhysicsAuditoriumScene" },
+        { SceneNames.MathsAuditoriumScene, "MathsAuditoriumScene" },
+        { SceneNames.ItauditoriumScene, "ITAuditoriumScene" },
+        { SceneNames.HappyEndScene, "HappyEndScene" },
+        { SceneNames.SadEndScene, "SadEndScene" },
+        { SceneNames.SecretGameModeScene, "SecretGameModeScene" }
+    };
+    
     public static Dictionary<string, GameState> SceneStates = new() {
         { MAIN_MENU_SCENE, GameState.MainMenu },
         { KITOMIR_HOME_SCENE, GameState.AtHome },
@@ -23,4 +35,18 @@ public abstract class SceneInfo
         { HAPPY_END_SCENE, GameState.ExamsPassed },
         { SECRET_GAME_MODE_SCENE, GameState.MainMenu }
     };
+    
+}
+
+public enum SceneNames
+{
+    MainMenuScene,
+    KitomirHomeScene,
+    CorridorScene,
+    PhysicsAuditoriumScene,
+    MathsAuditoriumScene,
+    ItauditoriumScene,
+    HappyEndScene,
+    SadEndScene,
+    SecretGameModeScene,
 }
