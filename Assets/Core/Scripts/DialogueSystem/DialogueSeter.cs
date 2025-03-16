@@ -26,13 +26,16 @@ public class DialogueSeter
             _dialogueBunch.CurrentDialogue = _dialogueBunch.GoodResultDialogue;
             return _dialogueBunch.CurrentDialogue[0];
         }
+        else if (_dialogueBunch.Reputation <= _dialogueBunch.MaxReputation && _dialogueBunch.Reputation >= _dialogueBunch.MinReputation && _dialogueBunch.MidResultDialogue.Count != 0)
+        {
+            Debug.Log("from setter mid");
+            _dialogueBunch.CurrentDialogue = _dialogueBunch.MidResultDialogue;
+            return _dialogueBunch.CurrentDialogue[0];
+        }
         else
         {
-            if(_dialogueBunch.MidResultDialogue.Count != 0)
-            {
-                _dialogueBunch.CurrentDialogue = _dialogueBunch.MidResultDialogue;
-                return _dialogueBunch.CurrentDialogue[0];
-            }
+            Debug.Log("from setter else");
+            _dialogueBunch.CurrentDialogue = null;
             return null;
         }
     }
@@ -46,7 +49,7 @@ public class DialogueSeter
             {
                 if (dialogue[^1] == currentDialogueElement)
                 {
-                    if (_nextSimplePhrases.Count != 0)
+                    if (CheckListOfPhrases() == true)
                     {
                         Debbuger();
                         nextDialogueElement = _nextSimplePhrases[^1];
@@ -55,6 +58,7 @@ public class DialogueSeter
                     }
                     else
                     {
+                        Debug.Log("exit");
                         return null;
                     }
                 }
@@ -169,5 +173,21 @@ public class DialogueSeter
             }
         }
         Debug.Log("--------------");
+    }
+
+    private bool CheckListOfPhrases()
+    {
+        if (_nextSimplePhrases == null || _nextSimplePhrases.Count == 0)
+        {
+            return false;
+        }
+        foreach(DialogueBaseClass el in _nextSimplePhrases)
+        {
+            if(el != null)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

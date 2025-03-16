@@ -193,11 +193,20 @@ public class DialogueViewer : MonoBehaviour
         }
         else
         {
+
             if (_canResulting && _dialogueBunch.IsReputationable)
             {
                 CurrentDialogueElement = _dialogueSeter.SetNewDialogue();
-                _canResulting = false;
-                ViewDialogue(); 
+                if(CurrentDialogueElement != null)
+                {
+                    Debug.Log("from dialogue viewer");
+                    _canResulting = false;
+                    ViewDialogue();
+                }
+                else
+                {
+                    StartCoroutine(Ender());
+                }
             }
             else
             {

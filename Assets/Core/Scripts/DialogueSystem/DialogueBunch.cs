@@ -50,7 +50,7 @@ public class DialogueBunch : ScriptableObject
         get => _currentDialogue;
         set
         {
-            if (value == _goodResultDialogue || value == _badResultDialogue)
+            if (value == _goodResultDialogue || value == _badResultDialogue || value == _midResultDialogue)
             {
                 _currentDialogue = value;
             }
