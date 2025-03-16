@@ -548,11 +548,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135b41b9a2318e17189b3f84f96911dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultButtons:
+  Buttons:
   - {fileID: 1639544904}
   - {fileID: 1715426770}
   - {fileID: 718800272}
-  DefaultButtonsGroup: {fileID: 610281878}
   _selectedColorText: {r: 0, g: 0, b: 0, a: 1}
   _unselectedColorText: {r: 0.490566, g: 0.490566, b: 0.490566, a: 1}
 --- !u!114 &263443462
@@ -567,6 +566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a72872baaaceb2781bd7225021689d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _buttonContainer: {fileID: 263443461}
   _infoButton: {fileID: 1705377150}
 --- !u!1 &389205959
 GameObject:
@@ -2291,11 +2291,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1408609936 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9093208409158845505, guid: 29b3a60e22eae0b20adae470c74f745e, type: 3}
-  m_PrefabInstance: {fileID: 2059237828}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1418025481
 GameObject:
   m_ObjectHideFlags: 0
@@ -3374,9 +3369,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135b41b9a2318e17189b3f84f96911dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultButtons:
+  Buttons:
   - {fileID: 1342235347}
-  DefaultButtonsGroup: {fileID: 1408609936}
   _selectedColorText: {r: 1, g: 1, b: 1, a: 1}
   _unselectedColorText: {r: 0.490566, g: 0.490566, b: 0.490566, a: 1}
 --- !u!1001 &2059237828
@@ -3553,7 +3547,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2172708754466778256, guid: 29b3a60e22eae0b20adae470c74f745e, type: 3}
   m_PrefabInstance: {fileID: 2059237828}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1408609936}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b998c8e4f0769bde3acbe9478f6e1838, type: 3}

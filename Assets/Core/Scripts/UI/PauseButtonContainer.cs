@@ -5,14 +5,16 @@ using UnityEngine;
 
 public class PauseButtonContainer : ButtonContainer
 {
-    
+    [SerializeField] private List<TextMeshProUGUI> _defaultButtons;
+    [SerializeField] private GameObject _defaultButtonsGroup;
     [SerializeField] private List<TextMeshProUGUI> _hiddenButtons;
     [SerializeField] private GameObject _hiddenButtonsGroup;
 
-
+    
     private void Start()
     {
-        _hiddenButtonsGroup?.SetActive(false);
+        _defaultButtonsGroup.SetActive(true);
+        _hiddenButtonsGroup.SetActive(false);
         if (!_isSubscribed)
         {
             Subscribe();
@@ -67,6 +69,21 @@ public class PauseButtonContainer : ButtonContainer
         ResetActiveButtonsGroup();
     }
     
+    private void InitializeContainer()
+    {
+        Buttons = _defaultButtons;
+        SelectedButtonId = 0;
+        
+        for (int i = 0; i < Buttons.Count; i++)
+        {
+            DeselectButton(i);
+        }
+        if (Buttons.Count > 0)
+        {
+            SelectButton(SelectedButtonId);
+        }
+    }
+    
     private void ResetActiveButtonsGroup()
     {
         for (int i = 0; i < Buttons.Count; i++)
@@ -74,9 +91,9 @@ public class PauseButtonContainer : ButtonContainer
             DeselectButton(i);
         }
         
-        if (DefaultButtonsGroup.activeSelf)
+        if (_defaultButtonsGroup.activeSelf)
         {
-            DefaultButtonsGroup.SetActive(false);
+            _defaultButtonsGroup.SetActive(false);
             _hiddenButtonsGroup.SetActive(true);
             Buttons = _hiddenButtons;
             SelectedButtonId = 0;
@@ -84,9 +101,9 @@ public class PauseButtonContainer : ButtonContainer
         }
         else
         {
-            DefaultButtonsGroup.SetActive(true);
+            _defaultButtonsGroup.SetActive(true);
             _hiddenButtonsGroup.SetActive(false);
-            Buttons = DefaultButtons;
+            Buttons = _defaultButtons;
             SelectedButtonId = 0;
             SelectButton(SelectedButtonId);
         }

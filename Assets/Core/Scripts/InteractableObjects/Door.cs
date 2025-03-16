@@ -12,13 +12,13 @@ public class Door : InteractableObject
         public Vector2 DoorPosition;
     }
     
-    [SerializeField] private SceneAsset _sceneToLoad;
+    [SerializeField] private SceneNames _sceneToLoad;
     
     
     public override void Interact()
     {
         OnDoorOpen?.Invoke(this, new OnDoorOpenEventArgs {
-            SceneToLoadName = _sceneToLoad.name, DoorPosition = transform.position
+            SceneToLoadName = SceneInfo.SceneNamesMap[_sceneToLoad], DoorPosition = transform.position
         });
     }
 }
