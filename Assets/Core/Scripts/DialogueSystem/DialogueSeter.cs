@@ -1,16 +1,15 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
 public class DialogueSeter
 {
     private DialogueBunch _dialogueBunch;
-    private List<DialogueBaseClass> _previousAnswers;
     private List<DialogueBaseClass> _nextSimplePhrases;
 
     public DialogueSeter(DialogueBunch dialogueBunch)
     {
-        _previousAnswers = new List<DialogueBaseClass>();
         _nextSimplePhrases = new List<DialogueBaseClass>();
         _dialogueBunch = dialogueBunch;
     }
@@ -49,8 +48,8 @@ public class DialogueSeter
                 {
                     if (_nextSimplePhrases.Count != 0)
                     {
+                        Debbuger();
                         nextDialogueElement = _nextSimplePhrases[^1];
-                        _previousAnswers.RemoveAt(_previousAnswers.Count - 1);
                         _nextSimplePhrases.RemoveAt(_nextSimplePhrases.Count - 1);
                         return nextDialogueElement;
                     }
@@ -85,72 +84,90 @@ public class DialogueSeter
     {
         if (currentDialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
         {
-            _previousAnswers.Add(currentDialogueElement);
-            SetLastAnswerInList(_dialogueBunch.CurrentDialogue);
-            SetPreviousAnswersInList(_dialogueBunch.CurrentDialogue);
-
+            _nextSimplePhrases.Add(SetNextSimplePhrase(_dialogueBunch.CurrentDialogue, currentDialogueElement));
+            SetPreviousPhrases(_dialogueBunch.CurrentDialogue);
             _dialogueBunch.Reputation += addReputation;
             return nextDialogueElement;
         }
         return null;
     }
 
-    private void SetLastAnswerInList(List<DialogueBaseClass> dialogue)
+    private DialogueBaseClass SetNextSimplePhrase(List<DialogueBaseClass> dialogue, DialogueBaseClass currentAnswerElement)
     {
-        if (dialogue.Contains(_previousAnswers[^1]))
+        DialogueBaseClass nextDialogueElement = null;
+        if (dialogue.Contains(currentAnswerElement))
         {
-            if (dialogue.IndexOf(_previousAnswers[^1]) == dialogue.Count - 1)
+            if (dialogue.Count > dialogue.IndexOf(currentAnswerElement) + 1)
             {
-                _previousAnswers.RemoveAt(_previousAnswers.Count - 1);
-                return;
+                nextDialogueElement = dialogue[dialogue.IndexOf(currentAnswerElement) + 1];
+                return nextDialogueElement;
             }
-            _nextSimplePhrases.Add(dialogue[dialogue.IndexOf(_previousAnswers[^1]) + 1]);
+            else
+            {
+                return null;
+            }
         }
 
-        foreach (DialogueBaseClass el in dialogue)
+        for (int i = 0; i < dialogue.Count; i++)
         {
-            if (el.TypeOfDialogue == TypeOfDialogue.Answers)
+            if (dialogue[i].TypeOfDialogue == TypeOfDialogue.Answers)
             {
-                foreach (DialogueBaseClass.Answer answer in el.Answers)
+                foreach (DialogueBaseClass.Answer answer in dialogue[i].Answers)
                 {
-                    SetPreviousAnswersInList(answer.NextDialogueBaseClasses);
+                    nextDialogueElement = SetNextSimplePhrase(answer.NextDialogueBaseClasses, currentAnswerElement);
+                    if (nextDialogueElement != null)
+                    {
+                        return nextDialogueElement;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    private void SetPreviousPhrases(List<DialogueBaseClass> dialogue)
+    {
+        if (dialogue.Contains(_nextSimplePhrases[^1]))
+        {
+            for (int i = 0; i < _nextSimplePhrases.Count - 1; i++)
+            {
+                if (dialogue.Contains(_nextSimplePhrases[i]))
+                {
+                    _nextSimplePhrases.Remove(_nextSimplePhrases[i]);
+                }
+            }
+        }
+
+        for (int i = 0; i < dialogue.Count; i++)
+        {
+            if (dialogue[i].TypeOfDialogue == TypeOfDialogue.Answers)
+            {
+                foreach (DialogueBaseClass.Answer answer in dialogue[i].Answers)
+                {
+                    SetPreviousPhrases(answer.NextDialogueBaseClasses);
                 }
             }
         }
     }
 
-    private void SetPreviousAnswersInList(List<DialogueBaseClass> dialogue)
+    private void Debbuger()
     {
-        for (int i = 0; i < _previousAnswers.Count - 1; i++)
+        Debug.Log("!");
+        if(_nextSimplePhrases.Count <= 0 || _nextSimplePhrases == null)
         {
-            if (dialogue.Contains(_previousAnswers[i]) && dialogue.Contains(_previousAnswers[^1]))
+            Debug.Log("0");
+        }
+        else
+        {
+            for(int i = 0; i < _nextSimplePhrases.Count; i++)
             {
-                _previousAnswers.RemoveAt(i);
-                _nextSimplePhrases.RemoveAt(i);
-                return;
+                //if (_nextSimplePhrases[i] != null)
+                //    Debug.Log(_nextSimplePhrases[i].simplePhrase.InputText);
+                //else
+                //    Debug.Log("1");
+                Debug.Log(_nextSimplePhrases[i]);
             }
         }
-
-        foreach (DialogueBaseClass el in dialogue)
-        {
-            if (el.TypeOfDialogue == TypeOfDialogue.Answers)
-            {
-                foreach (DialogueBaseClass.Answer answer in el.Answers)
-                {
-                    SetPreviousAnswersInList(answer.NextDialogueBaseClasses);
-                }
-            }
-        }
-        return;
-    }
-
-    public void Debuger()
-    {
-        foreach(DialogueBaseClass el in _nextSimplePhrases)
-        {
-            Debug.Log(el.simplePhrase.InputText);
-            Debug.Log("1");
-        }
-        Debug.Log("------------------------------------------");
+        Debug.Log("--------------");
     }
 }
