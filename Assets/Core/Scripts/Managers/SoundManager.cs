@@ -43,6 +43,19 @@ public class SoundManager : MonoBehaviour
             PlaySound(_audioClipRefsSO.alarm, Vector2.zero);
         }
         DialogueViewer.onCreditBookAction += DialogueViewer_OnCreditBookAction;
+        DialogueSeter.onAnswerAction += DialogueSeter_onAnswerAction;
+    }
+
+    private void DialogueSeter_onAnswerAction(object sender, DialogueSeter.AnswerActionEventArgs e)
+    {
+        if (e.isReputationAdded)
+        {
+            PlaySound(_audioClipRefsSO.success, Vector2.zero);
+        }
+        else
+        {
+            PlaySound(_audioClipRefsSO.fail, Vector2.zero);
+        }
     }
 
     private void DialogueViewer_OnCreditBookAction(object sender, EventArgs e)
