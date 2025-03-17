@@ -653,6 +653,7 @@ GameObject:
   - component: {fileID: 1127429136}
   - component: {fileID: 1127429137}
   - component: {fileID: 1127429138}
+  - component: {fileID: 1127429139}
   m_Layer: 0
   m_Name: alarm_0
   m_TagString: Untagged
@@ -752,6 +753,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1127429139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127429135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb62f15c17a46f744a5d0412cb0a2c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wakeUpAnimationClip: {fileID: 7400000, guid: ade633e421b41647b85b1b39a4977484, type: 2}
 --- !u!1 &1241254459
 GameObject:
   m_ObjectHideFlags: 0
