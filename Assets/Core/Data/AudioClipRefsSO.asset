@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79d109ed0da8ecc6287e2bcc8c4e0d0a, type: 3}
   m_Name: AudioClipRefsSO
   m_EditorClassIdentifier: 
-  fail:
-  - {fileID: 8300000, guid: 834db8d5a5175b1cfbcd1801d4c9d33d, type: 3}
-  - {fileID: 8300000, guid: f9a2e91efd4f40bb38841abdfd5c15d4, type: 3}
+  fail: {fileID: 8300000, guid: f9a2e91efd4f40bb38841abdfd5c15d4, type: 3}
   ruladaFall: {fileID: 8300000, guid: 39789a1ad13a3ad669983b3791dd8ea5, type: 3}
   hardFail: {fileID: 8300000, guid: 9f30b1657788ab458a588a543a16a361, type: 3}
   success: {fileID: 8300000, guid: d9955ec52910d5ebfa9271ae1efded66, type: 3}
