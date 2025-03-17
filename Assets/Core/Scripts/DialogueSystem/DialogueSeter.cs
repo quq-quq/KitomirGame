@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -7,7 +8,11 @@ public class DialogueSeter
 {
     private DialogueBunch _dialogueBunch;
     private List<DialogueBaseClass> _nextSimplePhrases;
-
+    public static event EventHandler<AnswerActionEventArgs> onAnswerAction;
+    public class AnswerActionEventArgs : EventArgs
+    {
+        public bool isReputationAdded;
+    }
     public DialogueSeter(DialogueBunch dialogueBunch)
     {
         _nextSimplePhrases = new List<DialogueBaseClass>();
@@ -88,6 +93,14 @@ public class DialogueSeter
     {
         if (currentDialogueElement.TypeOfDialogue == TypeOfDialogue.Answers)
         {
+            if(addReputation > 0)
+            {
+                onAnswerAction?.Invoke(this, new AnswerActionEventArgs { isReputationAdded = true });
+            }
+            else
+            {
+                onAnswerAction?.Invoke(this, new AnswerActionEventArgs { isReputationAdded = false });
+            }
             _nextSimplePhrases.Add(SetNextSimplePhrase(_dialogueBunch.CurrentDialogue, currentDialogueElement));
             SetPreviousPhrases(_dialogueBunch.CurrentDialogue);
             _dialogueBunch.Reputation += addReputation;
