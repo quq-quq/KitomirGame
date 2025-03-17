@@ -1,14 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using TMPro;
-using UnityEngine;
 
 public class DialogueSetter
 {
     private DialogueBunch _dialogueBunch;
     private List<DialogueBaseClass> _nextSimplePhrases;
-    public static event EventHandler<AnswerActionEventArgs> onAnswerAction;
+    public static event EventHandler<AnswerActionEventArgs> OnAnswerAction;
+    public static event EventHandler OnGoodResultDialogue;
     public class AnswerActionEventArgs : EventArgs
     {
         public bool isReputationAdded;
@@ -29,17 +27,16 @@ public class DialogueSetter
         else if (_dialogueBunch.Reputation > _dialogueBunch.MaxReputation && _dialogueBunch.GoodResultDialogue.Count != 0)
         {
             _dialogueBunch.CurrentDialogue = _dialogueBunch.GoodResultDialogue;
+            OnGoodResultDialogue?.Invoke(this, EventArgs.Empty);
             return _dialogueBunch.CurrentDialogue[0];
         }
         else if (_dialogueBunch.Reputation <= _dialogueBunch.MaxReputation && _dialogueBunch.Reputation >= _dialogueBunch.MinReputation && _dialogueBunch.MidResultDialogue.Count != 0)
         {
-            Debug.Log("from setter mid");
             _dialogueBunch.CurrentDialogue = _dialogueBunch.MidResultDialogue;
             return _dialogueBunch.CurrentDialogue[0];
         }
         else
         {
-            Debug.Log("from setter else");
             _dialogueBunch.CurrentDialogue = null;
             return null;
         }
@@ -56,14 +53,12 @@ public class DialogueSetter
                 {
                     if (CheckListOfPhrases() == true)
                     {
-                        Debbuger();
                         nextDialogueElement = _nextSimplePhrases[^1];
                         _nextSimplePhrases.RemoveAt(_nextSimplePhrases.Count - 1);
                         return nextDialogueElement;
                     }
                     else
                     {
-                        Debug.Log("exit");
                         return null;
                     }
                 }
@@ -95,11 +90,11 @@ public class DialogueSetter
         {
             if(addReputation > 0)
             {
-                onAnswerAction?.Invoke(this, new AnswerActionEventArgs { isReputationAdded = true });
+                OnAnswerAction?.Invoke(this, new AnswerActionEventArgs { isReputationAdded = true });
             }
             else
             {
-                onAnswerAction?.Invoke(this, new AnswerActionEventArgs { isReputationAdded = false });
+                OnAnswerAction?.Invoke(this, new AnswerActionEventArgs { isReputationAdded = false });
             }
             _nextSimplePhrases.Add(SetNextSimplePhrase(_dialogueBunch.CurrentDialogue, currentDialogueElement));
             SetPreviousPhrases(_dialogueBunch.CurrentDialogue);
@@ -165,27 +160,6 @@ public class DialogueSetter
                 }
             }
         }
-    }
-
-    private void Debbuger()
-    {
-        Debug.Log("!");
-        if(_nextSimplePhrases.Count <= 0 || _nextSimplePhrases == null)
-        {
-            Debug.Log("0");
-        }
-        else
-        {
-            for(int i = 0; i < _nextSimplePhrases.Count; i++)
-            {
-                //if (_nextSimplePhrases[i] != null)
-                //    Debug.Log(_nextSimplePhrases[i].simplePhrase.InputText);
-                //else
-                //    Debug.Log("1");
-                Debug.Log(_nextSimplePhrases[i]);
-            }
-        }
-        Debug.Log("--------------");
     }
 
     private bool CheckListOfPhrases()

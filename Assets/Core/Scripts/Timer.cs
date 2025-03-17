@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Timer : MonoBehaviour
     
     [SerializeField] private TimerVisual _timerVisual;
     
-    private const float TIMER_MAX = 15f * 60; //15 minutes
+    private const float TIMER_MAX = 15f; //15 minutes
     private const float ALMOST_OUT_OF_TIME = 10f;
     
     private float _timer; 
@@ -27,6 +28,12 @@ public class Timer : MonoBehaviour
             Destroy(gameObject);
         }
         gameObject.SetActive(false);
+        
+        
+        if (SceneManager.GetActiveScene().name != SceneInfo.KITOMIR_HOME_SCENE)
+        {
+            StartTimer();
+        }
     }
     
     private void Update()

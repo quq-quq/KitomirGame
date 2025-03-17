@@ -28,7 +28,8 @@ public class MusicManager : MonoBehaviour
     {
         FadeScreen.OnFadingStarted += FadeScreen_OnFadingStarted;
         GameStateManager.OnStateChanged += GameStateManager_OnStateChanged;
-    
+        DialogueSetter.OnGoodResultDialogue += DialogueSetter_OnGoodResultDialogue;
+            
         if (GameStateManager.State == GameState.ExamsPassed 
             && SceneManager.GetActiveScene().name != SceneInfo.HAPPY_END_SCENE)
         {
@@ -36,6 +37,11 @@ public class MusicManager : MonoBehaviour
             _audioSource.Play();
         }
     }
+
+    private void DialogueSetter_OnGoodResultDialogue(object sender, EventArgs e)
+    {
+        StartCoroutine(Subside(1f));
+    }   
 
     private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
     {
@@ -83,16 +89,6 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    private IEnumerator HappyEndSoundTransition()
-    {
-        yield return StartCoroutine(Subside(3f));
-        _audioSource.volume = 1f;
-        _audioSource.resource = _audioClipRefsSO.BirdSinging;
-        _audioSource.Play();
-        yield return null;
-
-    }
-
     public void PauseSoundtrack()
     {
         _audioSource.Pause();
@@ -107,5 +103,7 @@ public class MusicManager : MonoBehaviour
     {
         FadeScreen.OnFadingStarted -= FadeScreen_OnFadingStarted;
         GameStateManager.OnStateChanged -= GameStateManager_OnStateChanged;
+        DialogueSetter.OnGoodResultDialogue -= DialogueSetter_OnGoodResultDialogue;
+
     }
 }

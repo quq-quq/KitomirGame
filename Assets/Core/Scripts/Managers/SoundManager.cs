@@ -42,8 +42,8 @@ public class SoundManager : MonoBehaviour
         {
             PlaySound(_audioClipRefsSO.Alarm, Vector2.zero);
         }
-        DialogueViewer.onCreditBookAction += DialogueViewer_OnCreditBookAction;
-        DialogueSetter.onAnswerAction += DialogueSetter_onAnswerAction;
+        DialogueViewer.OnCreditBookAction += DialogueViewer_OnCreditBookAction;
+        DialogueSetter.OnAnswerAction += DialogueSetter_OnAnswerAction;
         ButtonContainer.OnButtonPressed += ButtonContainer_OnButtonPressed;
         MenuButton.OnPlayButtonPressed += MenuButton_OnPlayButtonPressed;
     }
@@ -58,7 +58,7 @@ public class SoundManager : MonoBehaviour
         PlaySound(_audioClipRefsSO.ButtonSwitch, Vector2.zero);
     }
 
-    private void DialogueSetter_onAnswerAction(object sender, DialogueSetter.AnswerActionEventArgs e)
+    private void DialogueSetter_OnAnswerAction(object sender, DialogueSetter.AnswerActionEventArgs e)
     {
         if (SceneManager.GetActiveScene().name == SceneInfo.CORRIDOR_SCENE) return;
         if (e.isReputationAdded)
@@ -136,8 +136,8 @@ public class SoundManager : MonoBehaviour
         Door.OnDoorOpen -= Door_OnDoorOpen;
         FadeScreen.OnWaitAfterFadingStarted -= FadeScreen_OnWaitAfterFadingStarted;
         InputManager.Instance.OnSecretInputSolved -= InputManager_OnSecretInputSolved;
-        DialogueViewer.onCreditBookAction -= DialogueViewer_OnCreditBookAction;
-        DialogueSetter.onAnswerAction -= DialogueSetter_onAnswerAction;
+        DialogueViewer.OnCreditBookAction -= DialogueViewer_OnCreditBookAction;
+        DialogueSetter.OnAnswerAction -= DialogueSetter_OnAnswerAction;
         if (Timer.Instance != null)
         {
             Timer.Instance.OnAlmostOutOfTime -= Timer_OnAlmostOutOfTime;

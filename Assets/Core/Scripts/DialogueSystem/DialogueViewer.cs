@@ -32,13 +32,14 @@ public class DialogueViewer : MonoBehaviour
     [SerializeField, Tooltip("must contain MenuButton script")] private GameObject _answerButtonPrefab;
     private bool _isWriting = false;
     private bool _canResulting;
+    private bool _isTimerEnding = false;
     private Vector2 _endGradePos;
     private Transform _answersChamberTransform;
     private Coroutine _writingCoroutine;
     private DialogueSetter _dialogueSetter;
     private DialogueWriter _dialogueWriter;
 
-    public static event EventHandler onCreditBookAction;
+    public static event EventHandler OnCreditBookAction;
     public static bool IsGoing { get; private set; } = false;
     public DialogueBaseClass CurrentDialogueElement { get; private set; }
 
@@ -67,6 +68,12 @@ public class DialogueViewer : MonoBehaviour
 
     private void Update()
     {
+        if (!Timer.Instance.IsRunning && !_isTimerEnding)
+        {
+            StartCoroutine(Ender());
+            _isTimerEnding = true;
+        }
+        
         if (IsCurrentViewerActive() && CurrentDialogueElement != null)
         {
             if (CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && _simplePhraseChamber.text.Length > 1)
@@ -92,7 +99,7 @@ public class DialogueViewer : MonoBehaviour
         _dialogueBunch.ResetBunch();
         CurrentDialogueElement = _dialogueBunch.CurrentDialogue[0];
         _dialogueCanvas.gameObject.SetActive(true);
-        onCreditBookAction?.Invoke(this, EventArgs.Empty);
+        OnCreditBookAction?.Invoke(this, EventArgs.Empty);
         Reseter();
         if (!IsGoing)
         {
@@ -113,7 +120,7 @@ public class DialogueViewer : MonoBehaviour
 
         IsGoing = false;
         _dialogueAnimator.SetTrigger(_triggerForEndName);
-        onCreditBookAction?.Invoke(this, EventArgs.Empty);
+        OnCreditBookAction?.Invoke(this, EventArgs.Empty);
 
         if (_dialogueBunch.IsReputationable)
         {
@@ -193,13 +200,11 @@ public class DialogueViewer : MonoBehaviour
         }
         else
         {
-
             if (_canResulting && _dialogueBunch.IsReputationable)
             {
                 CurrentDialogueElement = _dialogueSetter.SetNewDialogue();
                 if(CurrentDialogueElement != null)
                 {
-                    Debug.Log("from dialogue viewer");
                     _canResulting = false;
                     ViewDialogue();
                 }

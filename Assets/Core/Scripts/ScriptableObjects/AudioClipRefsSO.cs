@@ -19,5 +19,4 @@ public class AudioClipRefsSO : ScriptableObject
     public AudioClip Paper;
     public AudioClip ButtonSwitch;
     public AudioClip StartGame;
-
 }

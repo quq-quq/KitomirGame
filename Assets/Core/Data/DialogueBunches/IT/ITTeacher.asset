@@ -1698,7 +1698,7 @@ MonoBehaviour:
                 \u0435\u0434\u0438\u043D\u0438\u0446\u0430 \u0447\u0438\u0441\u043B\u043E\u0432\u043E\u0439
                 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438?"
             _answers:
-            - _addReputation: 10
+            - _addReputation: 100
               inputText: "\u0411\u0438\u0442"
               nextDialogueBaseClasses:
               - _typeOfDialogue: 0
