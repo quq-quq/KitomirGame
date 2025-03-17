@@ -10,6 +10,11 @@ public static class GameStateManager
         get => _state;
         set
         {
+            if ((_state == GameState.ExamsFailed && value == GameState.ExamsPassed)
+                || (_state == GameState.ExamsPassed && value == GameState.ExamsFailed))
+            {
+                return;
+            }
             _state = value;
             Debug.Log(State);
             OnStateChanged?.Invoke(null, new OnStateChangedEventArgs { CurrentState = _state });
