@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
@@ -40,32 +40,45 @@ public class SoundManager : MonoBehaviour
 
         if (GameStateManager.State == GameState.AtHome)
         {
-            PlaySound(_audioClipRefsSO.alarm, Vector2.zero);
+            PlaySound(_audioClipRefsSO.Alarm, Vector2.zero);
         }
         DialogueViewer.onCreditBookAction += DialogueViewer_OnCreditBookAction;
-        DialogueSeter.onAnswerAction += DialogueSeter_onAnswerAction;
+        DialogueSetter.onAnswerAction += DialogueSetter_onAnswerAction;
+        ButtonContainer.OnButtonPressed += ButtonContainer_OnButtonPressed;
+        MenuButton.OnPlayButtonPressed += MenuButton_OnPlayButtonPressed;
     }
 
-    private void DialogueSeter_onAnswerAction(object sender, DialogueSeter.AnswerActionEventArgs e)
+    private void MenuButton_OnPlayButtonPressed(object sender, EventArgs e)
     {
+        PlaySound(_audioClipRefsSO.StartGame, Vector2.zero);
+    }
+
+    private void ButtonContainer_OnButtonPressed(object sender, EventArgs e)
+    {
+        PlaySound(_audioClipRefsSO.ButtonSwitch, Vector2.zero);
+    }
+
+    private void DialogueSetter_onAnswerAction(object sender, DialogueSetter.AnswerActionEventArgs e)
+    {
+        if (SceneManager.GetActiveScene().name == SceneInfo.CORRIDOR_SCENE) return;
         if (e.isReputationAdded)
         {
-            PlaySound(_audioClipRefsSO.success, Vector2.zero);
+            PlaySound(_audioClipRefsSO.Success, Vector2.zero);
         }
         else
         {
-            PlaySound(_audioClipRefsSO.fail, Vector2.zero);
+            PlaySound(_audioClipRefsSO.Fail, Vector2.zero);
         }
     }
 
     private void DialogueViewer_OnCreditBookAction(object sender, EventArgs e)
     {
-        PlaySound(_audioClipRefsSO.paper, Player.Instance.transform.position);
+        PlaySound(_audioClipRefsSO.Paper, Player.Instance.transform.position);
     }
 
     private void BottomLimit_OnItemDropped(object sender, EventArgs e)
     {
-        PlaySound(_audioClipRefsSO.ruladaFall, Vector3.zero);
+        PlaySound(_audioClipRefsSO.RuladaFall, Vector3.zero);
     }
 
     private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
@@ -73,28 +86,28 @@ public class SoundManager : MonoBehaviour
         // door sound and commissar appearance
         if (e.CurrentState == GameState.ExamsFailed && Timer.Instance.IsRunning)
         {
-            PlaySound(_audioClipRefsSO.commissarOpenDoor, Vector3.zero);
+            PlaySound(_audioClipRefsSO.CommissarOpenDoor, Vector3.zero);
         }   
     }
 
     private void Timer_OnAlmostOutOfTime(object sender, EventArgs e)
     {
-        PlaySound(_audioClipRefsSO.almostOutOfTimeTic, Vector3.zero);
+        PlaySound(_audioClipRefsSO.AlmostOutOfTimeTic, Vector3.zero);
     }
 
     private void InputManager_OnSecretInputSolved(object sender, EventArgs e)
     {
-        PlaySound(_audioClipRefsSO.hardSuccess, Vector3.zero);
+        PlaySound(_audioClipRefsSO.HardSuccess, Vector3.zero);
     }
 
     private void FadeScreen_OnWaitAfterFadingStarted(object sender, EventArgs e)
     {
-        PlaySound(_audioClipRefsSO.vehicleNoise, Player.Instance.transform.position);
+        PlaySound(_audioClipRefsSO.VehicleNoise, Player.Instance.transform.position);
     }
 
     private void Door_OnDoorOpen(object sender, Door.OnDoorOpenEventArgs e)
     {
-        PlaySound(_audioClipRefsSO.openDoor, e.DoorPosition);
+        PlaySound(_audioClipRefsSO.OpenDoor, e.DoorPosition);
     }
 
     private void PlaySound(AudioClip audioClip, Vector2 position, float volume = .4f)
@@ -109,7 +122,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayFootstepsSound()
     {
-        PlaySound(_audioClipRefsSO.footsteps, Player.Instance.transform.position);
+        PlaySound(_audioClipRefsSO.Footsteps, Player.Instance.transform.position);
     }
 
     private IEnumerator DestroySoundSource(AudioSource soundSource, float delay)
@@ -124,7 +137,7 @@ public class SoundManager : MonoBehaviour
         FadeScreen.OnWaitAfterFadingStarted -= FadeScreen_OnWaitAfterFadingStarted;
         InputManager.Instance.OnSecretInputSolved -= InputManager_OnSecretInputSolved;
         DialogueViewer.onCreditBookAction -= DialogueViewer_OnCreditBookAction;
-        DialogueSeter.onAnswerAction -= DialogueSeter_onAnswerAction;
+        DialogueSetter.onAnswerAction -= DialogueSetter_onAnswerAction;
         if (Timer.Instance != null)
         {
             Timer.Instance.OnAlmostOutOfTime -= Timer_OnAlmostOutOfTime;
@@ -134,5 +147,7 @@ public class SoundManager : MonoBehaviour
             BottomLimit.Instance.OnItemDropped -= BottomLimit_OnItemDropped;
         }
         GameStateManager.OnStateChanged -= GameStateManager_OnStateChanged;
+        ButtonContainer.OnButtonPressed -= ButtonContainer_OnButtonPressed;
+        MenuButton.OnPlayButtonPressed -= MenuButton_OnPlayButtonPressed;
     }
 }

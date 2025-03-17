@@ -7,17 +7,16 @@
     <list default="true" id="5996c718-9b42-4e37-9821-ae2a4d845c13" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Data/AudioClipRefsSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Data/AudioClipRefsSO.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/CorridorScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/CorridorScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/ITAuditoriumScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/ITAuditoriumScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/KitomirHomeScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/KitomirHomeScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/MathsAuditoriumScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/MathsAuditoriumScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/PhysicsAuditoriumScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/PhysicsAuditoriumScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/InteractableObjects/Door.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/InteractableObjects/Door.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/DialogueSystem/DialogueSeter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/DialogueSystem/DialogueSetter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/DialogueSystem/DialogueSeter.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/DialogueSystem/DialogueSetter.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/DialogueSystem/DialogueViewer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/DialogueSystem/DialogueViewer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/MusicManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/MusicManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/SoundManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/ScriptableObjects/AudioClipRefsSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/ScriptableObjects/AudioClipRefsSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Spawner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/UI/ButtonContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/UI/ButtonContainer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/UI/FinalPauseVisual.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/UI/FinalPauseVisual.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Sounds/Music/birds.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Sounds/Music/birds.mp3.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +55,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Core/Scripts/UI/MainMenuButtonContainer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Core/Scripts/UI/MenuButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@3c4a97c3950f/InputSystem/InputSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1b53f46e931b/Runtime/VisualScripting.Flow/Framework/Events/GUI/OnButtonClick.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -186,7 +186,7 @@
       <workItem from="1742043284617" duration="933000" />
       <workItem from="1742033712940" duration="5886000" />
       <workItem from="1742219105262" duration="3328000" />
-      <workItem from="1742224493386" duration="1935000" />
+      <workItem from="1742224493386" duration="4316000" />
     </task>
     <servers />
   </component>

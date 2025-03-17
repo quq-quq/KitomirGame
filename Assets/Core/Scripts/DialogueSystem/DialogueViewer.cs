@@ -35,7 +35,7 @@ public class DialogueViewer : MonoBehaviour
     private Vector2 _endGradePos;
     private Transform _answersChamberTransform;
     private Coroutine _writingCoroutine;
-    private DialogueSeter _dialogueSeter;
+    private DialogueSetter _dialogueSetter;
     private DialogueWriter _dialogueWriter;
 
     public static event EventHandler onCreditBookAction;
@@ -52,7 +52,7 @@ public class DialogueViewer : MonoBehaviour
 
         _answersChamberTransform = _answersChamberLayoutGroup.gameObject.transform;
         _endGradePos = _endGradeTransform.position;
-        _dialogueSeter = new DialogueSeter(_dialogueBunch);
+        _dialogueSetter = new DialogueSetter(_dialogueBunch);
         _dialogueWriter = new DialogueWriter();
 
         if (_isActiveOnStart)
@@ -79,7 +79,7 @@ public class DialogueViewer : MonoBehaviour
                 }
                 else
                 {
-                    CurrentDialogueElement = _dialogueSeter.SetNewElementAtSimplePhrase(_dialogueBunch.CurrentDialogue, CurrentDialogueElement);
+                    CurrentDialogueElement = _dialogueSetter.SetNewElementAtSimplePhrase(_dialogueBunch.CurrentDialogue, CurrentDialogueElement);
                     ViewDialogue();
                 }
 
@@ -196,7 +196,7 @@ public class DialogueViewer : MonoBehaviour
 
             if (_canResulting && _dialogueBunch.IsReputationable)
             {
-                CurrentDialogueElement = _dialogueSeter.SetNewDialogue();
+                CurrentDialogueElement = _dialogueSetter.SetNewDialogue();
                 if(CurrentDialogueElement != null)
                 {
                     Debug.Log("from dialogue viewer");
@@ -243,7 +243,7 @@ public class DialogueViewer : MonoBehaviour
 
     private void SetNewElementAtAnswerBufer(DialogueBaseClass nextDialogueElement, float addReputation)
     {
-        CurrentDialogueElement = _dialogueSeter.SetNewElementAtAnswer(nextDialogueElement, addReputation, CurrentDialogueElement);
+        CurrentDialogueElement = _dialogueSetter.SetNewElementAtAnswer(nextDialogueElement, addReputation, CurrentDialogueElement);
     }
 
     private void WritingTextCompletion()

@@ -4,7 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-public class DialogueSeter
+public class DialogueSetter
 {
     private DialogueBunch _dialogueBunch;
     private List<DialogueBaseClass> _nextSimplePhrases;
@@ -13,7 +13,7 @@ public class DialogueSeter
     {
         public bool isReputationAdded;
     }
-    public DialogueSeter(DialogueBunch dialogueBunch)
+    public DialogueSetter(DialogueBunch dialogueBunch)
     {
         _nextSimplePhrases = new List<DialogueBaseClass>();
         _dialogueBunch = dialogueBunch;

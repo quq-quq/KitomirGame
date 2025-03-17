@@ -32,7 +32,7 @@ public class MusicManager : MonoBehaviour
         if (GameStateManager.State == GameState.ExamsPassed 
             && SceneManager.GetActiveScene().name != SceneInfo.HAPPY_END_SCENE)
         {
-            _audioSource.resource = _audioClipRefsSO.birdSinging;
+            _audioSource.resource = _audioClipRefsSO.BirdSinging;
             _audioSource.Play();
         }
     }
@@ -46,7 +46,7 @@ public class MusicManager : MonoBehaviour
 
         if (e.CurrentState == GameState.ExamsPassed)
         {
-            StartCoroutine(HappyEndSoundTransition());
+            StartCoroutine(Subside(3f));
         }
 }
 
@@ -87,7 +87,7 @@ public class MusicManager : MonoBehaviour
     {
         yield return StartCoroutine(Subside(3f));
         _audioSource.volume = 1f;
-        _audioSource.resource = _audioClipRefsSO.birdSinging;
+        _audioSource.resource = _audioClipRefsSO.BirdSinging;
         _audioSource.Play();
         yield return null;
 

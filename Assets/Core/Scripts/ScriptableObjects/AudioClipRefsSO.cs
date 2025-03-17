@@ -1,20 +1,23 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu()]
 public class AudioClipRefsSO : ScriptableObject
 {
     
-    public AudioClip fail;
-    public AudioClip ruladaFall;
-    public AudioClip success;
-    public AudioClip hardSuccess;
-    public AudioClip footsteps;
-    public AudioClip alarm;
-    public AudioClip openDoor;
-    public AudioClip commissarOpenDoor;
-    public AudioClip vehicleNoise;
-    public AudioClip almostOutOfTimeTic;
-    public AudioClip birdSinging;
-    public AudioClip paper;
+    public AudioClip Fail;
+    public AudioClip RuladaFall;
+    public AudioClip Success;
+    public AudioClip HardSuccess;
+    public AudioClip Footsteps;
+    public AudioClip Alarm;
+    public AudioClip OpenDoor;
+    public AudioClip CommissarOpenDoor;
+    public AudioClip VehicleNoise;
+    public AudioClip AlmostOutOfTimeTic;
+    public AudioClip BirdSinging;
+    public AudioClip Paper;
+    public AudioClip ButtonSwitch;
+    public AudioClip StartGame;
 
 }

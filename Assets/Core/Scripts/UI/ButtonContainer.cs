@@ -9,9 +9,9 @@ using UnityEngine.UIElements;
 public class ButtonContainer : MonoBehaviour
 {
     [SerializeField] public List<TextMeshProUGUI> Buttons;
-    
     [SerializeField] private Color _selectedColorText = Color.black;
     [SerializeField] private Color _unselectedColorText = new (0.490566f, 0.490566f, 0.490566f, 1f);
+    public static event EventHandler OnButtonPressed;
     protected bool _isSubscribed;
     protected bool _wasSubscribedInStart;
     
@@ -113,6 +113,7 @@ public class ButtonContainer : MonoBehaviour
 
     protected void SwitchButtonUp()
     {
+        if (Buttons.Count == 0) return;
         if (SelectedButtonId-1 > Buttons.Count)
         {
             return;
@@ -122,22 +123,24 @@ public class ButtonContainer : MonoBehaviour
             DeselectButton(SelectedButtonId);
             SelectedButtonId--;
             SelectButton(SelectedButtonId);
+            OnButtonPressed?.Invoke(this, EventArgs.Empty);
         }
     }
 
     protected void SwitchButtonDown()
     {
+        if (Buttons.Count == 0) return;
         if (SelectedButtonId < Buttons.Count - 1)
         {
             DeselectButton(SelectedButtonId);
             SelectedButtonId++;
             SelectButton(SelectedButtonId);
+            OnButtonPressed?.Invoke(this, EventArgs.Empty);
         }
     }
 
     protected void SelectButton(int buttonId)
     {
-        if (Buttons.Count == 0) return;
         Buttons[buttonId].color = _selectedColorText;
         if (Buttons[buttonId].text.StartsWith(">"))
         {
@@ -148,7 +151,6 @@ public class ButtonContainer : MonoBehaviour
 
     protected void DeselectButton(int buttonId)
     {
-        if (Buttons.Count == 0) return;
         Buttons[buttonId].color = _unselectedColorText;
         if (Buttons[buttonId].text.StartsWith(">"))
         {

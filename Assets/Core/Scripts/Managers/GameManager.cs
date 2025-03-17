@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
 
     private void MenuButton_OnPlayButtonPressed(object sender, EventArgs e)
     {
-        StartCoroutine(LoadScene(SceneInfo.KITOMIR_HOME_SCENE));
+        StartCoroutine(LoadScene(SceneInfo.KITOMIR_HOME_SCENE, 2.2f));
     }
 
     private void Door_OnDoorOpen(object sender, Door.OnDoorOpenEventArgs e)
@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(LoadScene(e.SceneToLoadName));
     }
 
-    private IEnumerator LoadScene(string sceneName)
+    private IEnumerator LoadScene(string sceneName, float duration = 1.5f)
     {
         if (_isSceneLoading)
         {
@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
         GameStateManager.PreviousSceneName = SceneManager.GetActiveScene().name;
 
         StopCoroutine(_fadeScreenCoroutine);
-        yield return StartCoroutine(_fadeScreen.Fade(1.5f, waitAfterFadingDuration));
+        yield return StartCoroutine(_fadeScreen.Fade(duration, waitAfterFadingDuration));
 
         SceneManager.LoadScene(sceneName);
     }
