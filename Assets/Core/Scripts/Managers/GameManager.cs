@@ -42,6 +42,11 @@ public class GameManager : MonoBehaviour
         {
             StartForMenu.OnMenuButtonContainerAppear += StartForMenu_OnMenuButtonContainerAppear;
         }
+
+        if (SceneManager.GetActiveScene().name == SceneInfo.SECRET_GAME_MODE_SCENE)
+        {
+            RestartPanel.OnRestartPanelOpened += RestartPanel_OnRestartPanelOpened;
+        }
         
         // change state depending on current scene to easier test inside editor
         // for example when starting not from main menu scene
@@ -69,6 +74,11 @@ public class GameManager : MonoBehaviour
 
         _pauseMenu.SetActive(false);
         _fadeScreenCoroutine = StartCoroutine(_fadeScreen.Appear(1.5f));
+    }
+
+    private void RestartPanel_OnRestartPanelOpened(object sender, EventArgs e)
+    {
+        _canBePaused = false;
     }
 
     private void StartForMenu_OnMenuButtonContainerAppear(object sender, EventArgs e)
@@ -190,6 +200,10 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == SceneInfo.MAIN_MENU_SCENE)
         {
             StartForMenu.OnMenuButtonContainerAppear -= StartForMenu_OnMenuButtonContainerAppear;
+        }
+        if (SceneManager.GetActiveScene().name == SceneInfo.SECRET_GAME_MODE_SCENE)
+        {
+            RestartPanel.OnRestartPanelOpened -= RestartPanel_OnRestartPanelOpened;
         }
     }
 

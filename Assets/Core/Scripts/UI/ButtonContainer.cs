@@ -26,6 +26,14 @@ public class ButtonContainer : MonoBehaviour
         }
     }
 
+    private void MenuButton_OnPlayButtonPressed(object sender, EventArgs e)
+    {
+        if (_isSubscribed)
+        {
+            Unsubscribe();
+        }
+    }
+
     private void OnEnable()
     {
         if (_wasSubscribedInStart)
@@ -49,6 +57,7 @@ public class ButtonContainer : MonoBehaviour
         InputManager.Instance.OnMenuSwitchUp += InputManager_OnMenuSwitchUp;
         InputManager.Instance.OnMenuSwitchDown += InputManager_OnMenuSwitchDown;
         InputManager.Instance.OnMenuButtonPressed += InputManager_OnMenuButtonPressed;
+        MenuButton.OnPlayButtonPressed += MenuButton_OnPlayButtonPressed;
     }
     
     protected virtual void Unsubscribe()
@@ -58,6 +67,8 @@ public class ButtonContainer : MonoBehaviour
         InputManager.Instance.OnMenuSwitchUp -= InputManager_OnMenuSwitchUp;
         InputManager.Instance.OnMenuSwitchDown -= InputManager_OnMenuSwitchDown;
         InputManager.Instance.OnMenuButtonPressed -= InputManager_OnMenuButtonPressed;
+        MenuButton.OnPlayButtonPressed -= MenuButton_OnPlayButtonPressed;
+
     }
 
 
