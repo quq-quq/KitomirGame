@@ -106,11 +106,6 @@ public class SoundManager : MonoBehaviour
         audioSource.Play();
         StartCoroutine(DestroySoundSource(audioSource, audioClip.length));
     }
-    
-    private void PlaySound(AudioClip[] audioClips, Vector2 position, float volume = 1f)
-    {
-        PlaySound(audioClips[Random.Range(0, audioClips.Length)], position, volume);
-    }
 
     public void PlayFootstepsSound()
     {
@@ -122,13 +117,14 @@ public class SoundManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         Destroy(soundSource.gameObject);
     }
-
+    
     private void OnDisable()
     {   
         Door.OnDoorOpen -= Door_OnDoorOpen;
         FadeScreen.OnWaitAfterFadingStarted -= FadeScreen_OnWaitAfterFadingStarted;
         InputManager.Instance.OnSecretInputSolved -= InputManager_OnSecretInputSolved;
         DialogueViewer.onCreditBookAction -= DialogueViewer_OnCreditBookAction;
+        DialogueSeter.onAnswerAction -= DialogueSeter_onAnswerAction;
         if (Timer.Instance != null)
         {
             Timer.Instance.OnAlmostOutOfTime -= Timer_OnAlmostOutOfTime;

@@ -328,7 +328,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 309267171}
-  - component: {fileID: 309267172}
   m_Layer: 0
   m_Name: DoorManager
   m_TagString: Untagged
@@ -355,22 +354,6 @@ Transform:
   - {fileID: 1292448100}
   m_Father: {fileID: 996228269}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &309267172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 309267170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78176c3e00f4f1bb19aed09a8cdf4bce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _physicsDoor: {fileID: 1138927437}
-  _mathsDoor: {fileID: 561793838}
-  _iTDoor: {fileID: 1885696689}
-  _happyEndDoor: {fileID: 1292448101}
 --- !u!1 &388065721
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,7 +447,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &425839081
 Transform:
   m_ObjectHideFlags: 0
@@ -736,6 +719,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1235237905184601102, guid: ae88dc4390d9414ed891f156b7e8c788, type: 3}
+      propertyPath: _stateToOpen
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235237905184601102, guid: ae88dc4390d9414ed891f156b7e8c788, type: 3}
       propertyPath: _isInteractable
       value: 0
       objectReference: {fileID: 0}
@@ -794,17 +781,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7582172296902018744, guid: ae88dc4390d9414ed891f156b7e8c788, type: 3}
   m_PrefabInstance: {fileID: 561793836}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &561793838 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1235237905184601102, guid: ae88dc4390d9414ed891f156b7e8c788, type: 3}
-  m_PrefabInstance: {fileID: 561793836}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07a5f8d5c5011c3e2b8fb86cb7959bf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &567482064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1262,6 +1238,10 @@ PrefabInstance:
       propertyPath: _sceneToLoad
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1235237905184601102, guid: ae88dc4390d9414ed891f156b7e8c788, type: 3}
+      propertyPath: _stateToOpen
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6200197853658431787, guid: ae88dc4390d9414ed891f156b7e8c788, type: 3}
       propertyPath: m_Name
       value: PhysicsDoor
@@ -1317,17 +1297,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7582172296902018744, guid: ae88dc4390d9414ed891f156b7e8c788, type: 3}
   m_PrefabInstance: {fileID: 1138927435}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1138927437 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1235237905184601102, guid: ae88dc4390d9414ed891f156b7e8c788, type: 3}
-  m_PrefabInstance: {fileID: 1138927435}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07a5f8d5c5011c3e2b8fb86cb7959bf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1151511881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1557,6 +1526,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1235237905184601102, guid: ae88dc4390d9414ed891f156b7e8c788, type: 3}
+      propertyPath: _stateToOpen
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235237905184601102, guid: ae88dc4390d9414ed891f156b7e8c788, type: 3}
       propertyPath: _isInteractable
       value: 0
       objectReference: {fileID: 0}
@@ -1615,17 +1588,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7582172296902018744, guid: ae88dc4390d9414ed891f156b7e8c788, type: 3}
   m_PrefabInstance: {fileID: 1292448099}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1292448101 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1235237905184601102, guid: ae88dc4390d9414ed891f156b7e8c788, type: 3}
-  m_PrefabInstance: {fileID: 1292448099}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07a5f8d5c5011c3e2b8fb86cb7959bf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1471385472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1961,7 +1923,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1872044830
 Transform:
   m_ObjectHideFlags: 0
@@ -2158,10 +2120,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 316883477232425495, guid: ae88dc4390d9414ed891f156b7e8c788, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1235237905184601102, guid: ae88dc4390d9414ed891f156b7e8c788, type: 3}
       propertyPath: _sceneToLoad
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235237905184601102, guid: ae88dc4390d9414ed891f156b7e8c788, type: 3}
+      propertyPath: _stateToOpen
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1235237905184601102, guid: ae88dc4390d9414ed891f156b7e8c788, type: 3}
@@ -2227,17 +2193,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7582172296902018744, guid: ae88dc4390d9414ed891f156b7e8c788, type: 3}
   m_PrefabInstance: {fileID: 1885696687}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1885696689 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1235237905184601102, guid: ae88dc4390d9414ed891f156b7e8c788, type: 3}
-  m_PrefabInstance: {fileID: 1885696687}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07a5f8d5c5011c3e2b8fb86cb7959bf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1889281803
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,7 +15,6 @@ public class FinalPauseVisual : MonoBehaviour
 
     private void MusicManager_OnHappySoundtrackFinished(object sender, EventArgs e)
     {
-        Debug.Log("ya ebu");
         _afterFinalSoundtrackText.SetActive(true);
         _warningText.SetActive(false);
     }

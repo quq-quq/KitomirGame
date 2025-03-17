@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 
 public class ButtonContainer : MonoBehaviour
@@ -136,6 +137,7 @@ public class ButtonContainer : MonoBehaviour
 
     protected void SelectButton(int buttonId)
     {
+        if (Buttons.Count == 0) return;
         Buttons[buttonId].color = _selectedColorText;
         if (Buttons[buttonId].text.StartsWith(">"))
         {
@@ -146,6 +148,7 @@ public class ButtonContainer : MonoBehaviour
 
     protected void DeselectButton(int buttonId)
     {
+        if (Buttons.Count == 0) return;
         Buttons[buttonId].color = _unselectedColorText;
         if (Buttons[buttonId].text.StartsWith(">"))
         {
