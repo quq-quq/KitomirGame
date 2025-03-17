@@ -6,11 +6,11 @@ public class Timer : MonoBehaviour
 {
     public static Timer Instance { get; private set; }
     public event EventHandler OnAlmostOutOfTime;
-    public bool IsRunning { get; private set; }
+    public bool IsRunning { get; private set; } = true;
     
     [SerializeField] private TimerVisual _timerVisual;
     
-    private const float TIMER_MAX = 15f; //15 minutes
+    private const float TIMER_MAX = 15f * 60; //15 minutes
     private const float ALMOST_OUT_OF_TIME = 10f;
     
     private float _timer; 

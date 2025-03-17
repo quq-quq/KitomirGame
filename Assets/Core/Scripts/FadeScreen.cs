@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class FadeScreen : MonoBehaviour
 {
+    [SerializeField] private Image _fadeImage;
+    [SerializeField] private Animator _drivingTextAnimator;
     public static event EventHandler<OnFadingStartedEventArgs> OnFadingStarted;
     public static event EventHandler OnWaitAfterFadingStarted;
 
@@ -13,7 +15,6 @@ public class FadeScreen : MonoBehaviour
         public float FadingDuration;
     }
     
-    [SerializeField] private Image _fadeImage;
     
     private Color _color;
 
@@ -41,6 +42,7 @@ public class FadeScreen : MonoBehaviour
 
         if (waitAfterFadingDuration > 0f)
         {
+            _drivingTextAnimator.SetBool("IsDriving", true);
             OnWaitAfterFadingStarted?.Invoke(this, EventArgs.Empty);
             yield return new WaitForSeconds(waitAfterFadingDuration);
         }

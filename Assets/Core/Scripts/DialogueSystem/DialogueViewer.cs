@@ -68,7 +68,7 @@ public class DialogueViewer : MonoBehaviour
 
     private void Update()
     {
-        if (!Timer.Instance.IsRunning && !_isTimerEnding)
+        if (Timer.Instance != null && !Timer.Instance.IsRunning && !_isTimerEnding)
         {
             StartCoroutine(Ender());
             _isTimerEnding = true;
