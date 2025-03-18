@@ -76,7 +76,7 @@ public class DialogueViewer : MonoBehaviour
         
         if (IsCurrentViewerActive() && CurrentDialogueElement != null)
         {
-            if (CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && _simplePhraseChamber.text.Length > 1)
+            if (CurrentDialogueElement.TypeOfDialogue == TypeOfDialogue.SimplePhrases && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.E)) && _simplePhraseChamber.text.Length > 1)
             {
                 if (_isWriting)
                 {
