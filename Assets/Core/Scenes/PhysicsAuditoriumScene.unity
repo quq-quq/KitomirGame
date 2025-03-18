@@ -2468,6 +2468,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 640072790505004567, guid: 217e54c7831239446af2f09893beda42, type: 3}
+      propertyPath: Damping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 640072790505004567, guid: 217e54c7831239446af2f09893beda42, type: 3}
+      propertyPath: SlowingDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619417017577068721, guid: 217e54c7831239446af2f09893beda42, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 103.64
+      objectReference: {fileID: 0}
     - target: {fileID: 2357228053891553261, guid: 217e54c7831239446af2f09893beda42, type: 3}
       propertyPath: m_Name
       value: Cinemachine
@@ -2515,6 +2527,10 @@ PrefabInstance:
     - target: {fileID: 6183849630035106451, guid: 217e54c7831239446af2f09893beda42, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314859165876250486, guid: 217e54c7831239446af2f09893beda42, type: 3}
+      propertyPath: FollowOffset.x
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

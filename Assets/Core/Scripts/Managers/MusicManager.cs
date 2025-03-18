@@ -40,7 +40,7 @@ public class MusicManager : MonoBehaviour
 
     private void DialogueSetter_OnGoodResultDialogue(object sender, EventArgs e)
     {
-        StartCoroutine(Subside(1f));
+        StartCoroutine(ExamPassedTransition(2f));
     }   
 
     private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
@@ -87,6 +87,16 @@ public class MusicManager : MonoBehaviour
         {
             _audioSource.volume = 0f;
         }
+    }
+
+    private IEnumerator ExamPassedTransition(float subsideDuration)
+    {
+        float defaultVolume = _audioSource.volume;
+        yield return StartCoroutine(Subside(subsideDuration));
+        _audioSource.clip = _audioClipRefsSO.GoodExamResult;
+        _audioSource.volume = defaultVolume;
+        _audioSource.Play();
+        _audioSource.loop = false;
     }
 
     public void PauseSoundtrack()

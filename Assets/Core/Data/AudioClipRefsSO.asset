@@ -26,4 +26,4 @@ MonoBehaviour:
   Paper: {fileID: 8300000, guid: c2762c61290ef5afc810a870c6921c61, type: 3}
   ButtonSwitch: {fileID: 8300000, guid: e87151a1719d101cfac4c93466363194, type: 3}
   StartGame: {fileID: 8300000, guid: f30a5533e59eeba4db72f72d6dc3ab0b, type: 3}
-  Ambient: {fileID: 8300000, guid: 8415d7a8397ec555d8a91801049e07fa, type: 3}
+  GoodExamResult: {fileID: 8300000, guid: 4c89c696fa301fcdfaaaa1e5f4dd430d, type: 3}

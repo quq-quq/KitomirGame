@@ -440,7 +440,7 @@ MonoBehaviour:
         _simplePhrase:
           _inputName: 
           inputText: "\u041A\u0438\u0442\u043E\u043C\u0438\u0440 \u0432\u044B\u0441\u043E\u0432\u044B\u0432\u0430\u0435\u0442
-            \u044F\u0437\u044B\u043A"
+            \u044F\u0437\u044B\u043A."
         _answers: []
       - _typeOfDialogue: 0
         _symbolTime: 0.05
@@ -658,7 +658,7 @@ MonoBehaviour:
     _symbolTime: 0.2
     _simplePhrase:
       _inputName: "\u0424\u0438\u0437\u0438\u043A"
-      inputText: "\u043F\u0440\u0438 \u0432\u0441\u0451\u043C \u043C\u043E\u0451\u043C
+      inputText: "\u041F\u0440\u0438 \u0432\u0441\u0451\u043C \u043C\u043E\u0451\u043C
         \u0436\u0435\u043B\u0430\u043D\u0438\u0438, \u044F \u043D\u0435 \u043C\u043E\u0433\u0443
         \u043F\u043E\u0441\u0442\u0430\u0432\u0438\u0442\u044C \u0432\u0430\u043C
         \u0437\u0430\u0447\u0451\u0442."

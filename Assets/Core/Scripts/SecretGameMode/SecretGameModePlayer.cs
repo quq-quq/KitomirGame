@@ -59,7 +59,6 @@ private void Awake()
     private void FixedUpdate()
     {
         float x = InputManager.Instance.GetMovementVector().x;
-        x = (x > 0f) ? 1f : (x < 0f) ? -1f : 0f;
         _movementVector = new Vector2(x, 0f);
         IsWalking = _movementVector != Vector2.zero;
         _rigidbody2D.linearVelocity = _movementVector * _moveSpeed;

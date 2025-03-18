@@ -98,19 +98,6 @@ public class InputManager : MonoBehaviour
         {
             OnMenuSwitchDown?.Invoke(this, EventArgs.Empty);
         }
-
-        // if (OnMenuSwitchDown != null)
-        // {
-        //     Debug.Log("subscribers:");
-        //     foreach (Delegate subscriber in OnMenuSwitchDown.GetInvocationList())
-        //     {
-        //         Debug.Log(subscriber.Method.Name);
-        //     }
-        // }
-        // else
-        // {
-        //     Debug.Log("null fuck ya");
-        // }
     }
 
     private void UpSwitch_performed(InputAction.CallbackContext obj)
@@ -128,13 +115,9 @@ public class InputManager : MonoBehaviour
     public Vector2 GetMovementVector()
     {
         Vector2 movementVector = _playerInputActions.Player.Move.ReadValue<Vector2>();
-        return movementVector;
-    }
-    
-    public Vector2 GetMovementVectorNormalised()
-    {
-        Vector2 movementVector = _playerInputActions.Player.Move.ReadValue<Vector2>();
-        return movementVector.normalized;
+        float x = movementVector.x > 0 ? 1 : movementVector.x < 0 ? -1 : 0;
+        float y = movementVector.y > 0 ? 1 : movementVector.y < 0 ? -1 : 0;
+        return new Vector2(x, y);
     }
     
     private void Interact_performed(InputAction.CallbackContext obj)
