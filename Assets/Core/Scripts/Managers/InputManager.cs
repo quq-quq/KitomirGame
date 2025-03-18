@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -15,8 +16,8 @@ public class InputManager : MonoBehaviour
     public event EventHandler OnSecretInputSolved;
 
 
-    private const string MAIN_MENU_SECRET_INPUT = "rulada";
-    
+    private static readonly string[] _mainMenuSecretInput = { "rulada",  "рулада", "hekflf", "кгдфвф" };
+
     private PlayerInputActions _playerInputActions;
     private MenuInputActions _menuInputActions;
     private string _mainMenuPlayerSecretInput;
@@ -47,7 +48,7 @@ public class InputManager : MonoBehaviour
     private void Update()
     {
         if (SceneManager.GetActiveScene().name == SceneInfo.MAIN_MENU_SCENE 
-            && _mainMenuPlayerSecretInput != MAIN_MENU_SECRET_INPUT
+            && !_mainMenuSecretInput.Contains(_mainMenuPlayerSecretInput)
             && GameStateManager.State != GameState.FirstEntry)
         {
             if (Input.anyKeyDown)
@@ -64,7 +65,7 @@ public class InputManager : MonoBehaviour
                 }
             }
             
-            if (_mainMenuPlayerSecretInput == MAIN_MENU_SECRET_INPUT)
+            if (_mainMenuSecretInput.Contains(_mainMenuPlayerSecretInput))
             {
                 OnSecretInputSolved?.Invoke(this, EventArgs.Empty);
             }
