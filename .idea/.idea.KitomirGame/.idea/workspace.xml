@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5996c718-9b42-4e37-9821-ae2a4d845c13" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Data/AudioClipRefsSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Data/AudioClipRefsSO.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Data/DialogueBunches/HomeEpisode/WakeUp.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Data/DialogueBunches/HomeEpisode/WakeUp.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Data/DialogueBunches/IT/ITTeacher.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Data/DialogueBunches/IT/ITTeacher.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Data/DialogueBunches/MathEpisode/MathExam.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Data/DialogueBunches/MathEpisode/MathExam.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Data/DialogueBunches/PhysEpisode/Physician.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Data/DialogueBunches/PhysEpisode/Physician.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Data/DialogueBunches/Tutorial/ReputationAndAnswers.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Data/DialogueBunches/Tutorial/ReputationAndAnswers.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/CorridorScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/CorridorScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/ITAuditoriumScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/ITAuditoriumScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/MathsAuditoriumScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/MathsAuditoriumScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/PhysicsAuditoriumScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/PhysicsAuditoriumScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/InputManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/MusicManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/MusicManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/ScriptableObjects/AudioClipRefsSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/ScriptableObjects/AudioClipRefsSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/SecretGameMode/SecretGameModePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/SecretGameMode/SecretGameModePlayer.cs" afterDir="false" />
-    </list>
+    <list default="true" id="5996c718-9b42-4e37-9821-ae2a4d845c13" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -191,7 +175,7 @@
       <workItem from="1742219105262" duration="3328000" />
       <workItem from="1742224493386" duration="6593000" />
       <workItem from="1742238493045" duration="1738000" />
-      <workItem from="1742306713938" duration="2195000" />
+      <workItem from="1742306713938" duration="2946000" />
     </task>
     <servers />
   </component>
