@@ -96,13 +96,13 @@ public class DialogueViewer : MonoBehaviour
 
     public IEnumerator Starter()
     {
-        _dialogueBunch.ResetBunch();
-        CurrentDialogueElement = _dialogueBunch.CurrentDialogue[0];
-        _dialogueCanvas.gameObject.SetActive(true);
-        OnCreditBookAction?.Invoke(this, EventArgs.Empty);
-        Reseter();
         if (!IsGoing)
         {
+            _dialogueBunch.ResetBunch();
+            CurrentDialogueElement = _dialogueBunch.CurrentDialogue[0];
+            OnCreditBookAction?.Invoke(this, EventArgs.Empty);
+            Reseter();
+            _dialogueCanvas.gameObject.SetActive(true);
             IsGoing = true;
             yield return new WaitForSeconds(_dialogueAnimator.GetCurrentAnimatorStateInfo(0).length);
             ViewDialogue();
