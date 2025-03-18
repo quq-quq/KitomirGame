@@ -54,7 +54,7 @@ public class MusicManager : MonoBehaviour
         {
             StartCoroutine(Subside(3f));
         }
-}
+    }
 
     private void Update()
     {

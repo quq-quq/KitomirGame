@@ -149,6 +149,11 @@ public class GameManager : MonoBehaviour
 
     private void Pause()
     {
+        if (Player.Instance != null)
+        {
+            Animator playerAnimator = Player.Instance.GetComponentInChildren<Animator>();
+            if (playerAnimator.GetBool("IsSleeping")) return;
+        }
         if (_canBePaused && !DialogueViewer.IsGoing)
         {
             if (!IsGamePaused)
@@ -163,6 +168,7 @@ public class GameManager : MonoBehaviour
 
                 if (Player.Instance != null)
                 {
+                    
                     Player.Instance.CanAct = false;
                 }
             }
