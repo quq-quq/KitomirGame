@@ -40,10 +40,14 @@ public class Teacher : InteractableObject
 
     public override void Interact()
     {
-        if (!DialogueViewer.IsGoing)
+        if (!DialogueViewer.IsGoing && _isInteractable)
         {
             if (_dialogueViewer != null)
+            {
                 StartCoroutine(_dialogueViewer.Starter());
+                _isInteractable = false;
+            }
+                
         }
     }
 
