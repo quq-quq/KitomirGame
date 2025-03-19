@@ -4,6 +4,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using Scene = UnityEditor.SearchService.Scene;
 
 
 public class GameManager : MonoBehaviour
@@ -141,7 +142,10 @@ public class GameManager : MonoBehaviour
 
         GameStateManager.PreviousSceneName = SceneManager.GetActiveScene().name;
 
-        StopCoroutine(_fadeScreenCoroutine);
+        if (_fadeScreenCoroutine != null)
+        {
+            StopCoroutine(_fadeScreenCoroutine);
+        }
         yield return StartCoroutine(_fadeScreen.Fade(duration, waitAfterFadingDuration));
 
         SceneManager.LoadScene(sceneName);
@@ -161,7 +165,7 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 0f;
                 _pauseMenu.SetActive(true);
                 IsGamePaused = true;
-                if (SceneManager.GetActiveScene().name == SceneInfo.HAPPY_END_SCENE)
+                if (SceneManager.GetActiveScene().name is SceneInfo.HAPPY_END_SCENE or SceneInfo.SAD_END_SCENE)
                 {
                     MusicManager.Instance.PauseSoundtrack();
                 }
@@ -219,16 +223,13 @@ public class GameManager : MonoBehaviour
         {
             case GameState.ExamsFailed:
             {
-                if (Timer.Instance.IsRunning)
+                if (SceneManager.GetActiveScene().name == SceneInfo.SAD_END_SCENE) return;
+                if (Timer.Instance != null && Timer.Instance.IsRunning)
                 {
                     StartCoroutine(SadSceneTransition());
                 }
                 else
                 {
-                    if (DialogueViewer.IsGoing)
-                    {
-                        //todo finish dialogue
-                    }
                     StartCoroutine(LoadScene(SceneInfo.SAD_END_SCENE));
                 }
 

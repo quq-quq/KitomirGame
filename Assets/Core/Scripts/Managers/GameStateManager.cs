@@ -10,6 +10,7 @@ public static class GameStateManager
         get => _state;
         set
         {
+            if (_state == value) return;
             if ((_state == GameState.ExamsFailed && value == GameState.ExamsPassed)
                 || (_state == GameState.ExamsPassed && value == GameState.ExamsFailed))
             {
