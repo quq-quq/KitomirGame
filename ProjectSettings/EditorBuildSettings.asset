@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Core/Scenes/NotToUseInGame/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
+    path: Assets/Core/Scenes/MainMenuScene.unity
+    guid: 9e604680d3f7fea0aa278b3d2f6ad961
+  - enabled: 1
     path: Assets/Core/Scenes/KitomirHomeScene.unity
     guid: 14e0c7d05eabc1a21ae6b17860e2e56d
   - enabled: 1
@@ -26,9 +29,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Core/Scenes/HappyEndScene.unity
     guid: ff95282e1bd6805dfbac2207a1bc3a4d
-  - enabled: 1
-    path: Assets/Core/Scenes/MainMenuScene.unity
-    guid: 9e604680d3f7fea0aa278b3d2f6ad961
   - enabled: 1
     path: Assets/Core/Scenes/SecretGameModeScene.unity
     guid: abf923309e49455d3995eaed7531fad7
