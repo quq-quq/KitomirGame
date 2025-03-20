@@ -49,11 +49,6 @@ public class MusicManager : MonoBehaviour
         {
             _audioSource.Stop();
         }
-
-        if (e.CurrentState == GameState.ExamsPassed)
-        {
-            StartCoroutine(Subside(3f));
-        }
     }
 
     private void Update()

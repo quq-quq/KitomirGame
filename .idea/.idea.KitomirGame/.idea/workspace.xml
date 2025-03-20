@@ -6,14 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="5996c718-9b42-4e37-9821-ae2a4d845c13" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Animations/UI/KitomirSadEnding.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Animations/UI/KitomirSadEnding.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Animations/UI/KitomirSadEndingAppearance.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Animations/UI/KitomirSadEndingAppearance.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Animations/UI/KitomirSadEndingFlasing.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Animations/UI/KitomirSadEndingFlasing.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/HappyEndScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/HappyEndScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/MainMenuScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/MainMenuScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/SadEndScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/SadEndScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameStateManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Data/DialogueBunches/MathEpisode/MathExam.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Data/DialogueBunches/MathEpisode/MathExam.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Data/DialogueBunches/PhysEpisode/Physician.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Data/DialogueBunches/PhysEpisode/Physician.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/CorridorScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/CorridorScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/KitomirHomeScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/KitomirHomeScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scenes/PhysicsAuditoriumScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scenes/PhysicsAuditoriumScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/MusicManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/MusicManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -188,6 +186,7 @@
       <workItem from="1742238493045" duration="1738000" />
       <workItem from="1742306713938" duration="5473000" />
       <workItem from="1742371617925" duration="1182000" />
+      <workItem from="1742430802573" duration="626000" />
     </task>
     <servers />
   </component>
