@@ -54,9 +54,9 @@ public class InputManager : MonoBehaviour
             if (Input.anyKeyDown)
             {
                 _mainMenuPlayerSecretInput += Input.inputString.ToLower();
-                if (Input.inputString.ToLower() == "r")
+                if (Input.inputString.ToLower() is "r" or "р" or "h" or "к")
                 {
-                    _mainMenuPlayerSecretInput = "r";
+                    _mainMenuPlayerSecretInput = Input.inputString.ToLower();
                 }
 
                 if (_mainMenuPlayerSecretInput.Length > 7)

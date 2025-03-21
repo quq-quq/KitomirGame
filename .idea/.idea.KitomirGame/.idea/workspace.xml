@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5996c718-9b42-4e37-9821-ae2a4d845c13" name="Changes" comment="" />
+    <list default="true" id="5996c718-9b42-4e37-9821-ae2a4d845c13" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/InputManager.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -178,6 +181,7 @@
       <workItem from="1742306713938" duration="5473000" />
       <workItem from="1742371617925" duration="1182000" />
       <workItem from="1742430802573" duration="839000" />
+      <workItem from="1742562019533" duration="49000" />
     </task>
     <servers />
   </component>
