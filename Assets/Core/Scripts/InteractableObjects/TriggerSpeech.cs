@@ -20,19 +20,19 @@ public class TriggerSpeech : InteractableObject
     {
         if (_isInteractable && GameStateManager.State == _nessecaryState)
         {
-            Interact();
+            if (!_isSpeechEnabled)
+            {
+                StartCoroutine(_dialogueViewer.Starter());
+                _isSpeechEnabled = true;
+            }
         }
         return _isInteractable;
     }
 
     public override void Interact()
     {
-        if( !_isSpeechEnabled)
-        {
-            StartCoroutine(_dialogueViewer.Starter());
-            _isSpeechEnabled = true;
-        }
 
+        return;
     }
 
     public override void Deselect()
