@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5996c718-9b42-4e37-9821-ae2a4d845c13" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KitomirGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/DialogueSystem/DialogueBaseClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/DialogueSystem/DialogueBaseClass.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/CorridorDoorManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/CorridorDoorManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/GameStateManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Scripts/Managers/SoundManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,6 +182,7 @@
       <workItem from="1742371617925" duration="1182000" />
       <workItem from="1742430802573" duration="839000" />
       <workItem from="1742562019533" duration="369000" />
+      <workItem from="1742586797310" duration="221000" />
     </task>
     <servers />
   </component>
