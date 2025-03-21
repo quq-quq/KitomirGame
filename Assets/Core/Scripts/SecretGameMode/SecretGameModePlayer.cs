@@ -82,10 +82,4 @@ private void Awake()
             OnGameOver?.Invoke(this, EventArgs.Empty);
         }
     }
-
-    private void Restart()
-    {
-        Health = 0;
-        Score = 0;
-    }
 }

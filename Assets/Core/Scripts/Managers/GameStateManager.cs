@@ -17,7 +17,7 @@ public static class GameStateManager
                 return;
             }
             _state = value;
-            Debug.Log(State);
+            //Debug.Log(State);
             OnStateChanged?.Invoke(null, new OnStateChangedEventArgs { CurrentState = _state });
         }
     }

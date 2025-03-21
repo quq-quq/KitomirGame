@@ -36,7 +36,6 @@ public class PlayerVisual : MonoBehaviour
         Player.Instance.CanAct = false;
         yield return new WaitForSeconds(_animation.length);
         _animator.SetBool("IsSleeping", false);
-        //Player.Instance.CanAct = true;
         yield return new WaitForSeconds(_offsetDuration);
         if (!DialogueViewer.IsGoing)
         {

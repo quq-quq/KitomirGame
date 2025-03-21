@@ -2,13 +2,11 @@ using System;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class StartForMenu : MonoBehaviour
 {
-    [System.Serializable]
+    [Serializable]
     private struct Frame
     {
         [SerializeField] public CanvasGroup canvasGroup;

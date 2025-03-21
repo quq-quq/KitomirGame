@@ -1,3 +1,5 @@
+//class is no more using in game
+
 using UnityEngine;
 
 public class CorridorDoorManager : MonoBehaviour
