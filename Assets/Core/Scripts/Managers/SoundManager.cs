@@ -31,21 +31,30 @@ public class SoundManager : MonoBehaviour
         {
             Timer.Instance.OnAlmostOutOfTime += Timer_OnAlmostOutOfTime;
         }
-
-        if (BottomLimit.Instance != null)
+        if (SceneManager.GetActiveScene().name == SceneInfo.SECRET_GAME_MODE_SCENE) 
         {
             BottomLimit.Instance.OnItemDropped += BottomLimit_OnItemDropped;
+            SecretGameModePlayer.Instance.OnScoreChanged += SecretGameModePlayer_OnScoreChanged;
         }
         GameStateManager.OnStateChanged += GameStateManager_OnStateChanged;
-
-        if (GameStateManager.State == GameState.AtHome)
-        {
-            PlaySound(_audioClipRefsSO.Alarm, Vector2.zero);
-        }
         DialogueViewer.OnCreditBookAction += DialogueViewer_OnCreditBookAction;
         DialogueSetter.OnAnswerAction += DialogueSetter_OnAnswerAction;
         ButtonContainer.OnButtonPressed += ButtonContainer_OnButtonPressed;
         MenuButton.OnPlayButtonPressed += MenuButton_OnPlayButtonPressed;
+        
+        if (GameStateManager.State == GameState.AtHome)
+        {
+            PlaySound(_audioClipRefsSO.Alarm, Vector2.zero);
+        }
+        
+    }
+
+    private void SecretGameModePlayer_OnScoreChanged(object sender, EventArgs e)
+    {
+        if (SecretGameModePlayer.Instance.Score > 0)
+        {
+            PlaySound(_audioClipRefsSO.Success, SecretGameModePlayer.Instance.transform.position);
+        }
     }
 
     private void MenuButton_OnPlayButtonPressed(object sender, EventArgs e)
@@ -142,9 +151,10 @@ public class SoundManager : MonoBehaviour
         {
             Timer.Instance.OnAlmostOutOfTime -= Timer_OnAlmostOutOfTime;
         }
-        if (BottomLimit.Instance != null)
+        if (SceneManager.GetActiveScene().name == SceneInfo.SECRET_GAME_MODE_SCENE) 
         {
             BottomLimit.Instance.OnItemDropped -= BottomLimit_OnItemDropped;
+            SecretGameModePlayer.Instance.OnScoreChanged -= SecretGameModePlayer_OnScoreChanged;
         }
         GameStateManager.OnStateChanged -= GameStateManager_OnStateChanged;
         ButtonContainer.OnButtonPressed -= ButtonContainer_OnButtonPressed;
