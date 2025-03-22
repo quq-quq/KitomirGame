@@ -192,7 +192,7 @@ public class GameManager : MonoBehaviour
         }
 
         IsGamePaused = false;
-        if (SceneManager.GetActiveScene().name == SceneInfo.HAPPY_END_SCENE)
+        if (SceneManager.GetActiveScene().name is SceneInfo.HAPPY_END_SCENE or SceneInfo.SAD_END_SCENE)
         {
             MusicManager.Instance.ResumeSoundtrack();
         }
