@@ -1725,7 +1725,7 @@ MonoBehaviour:
                 _symbolTime: 0.05
                 _simplePhrase:
                   _inputName: "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0442\u0438\u043A"
-                  inputText: "\u041D\u0415\u0412\u041E\u0417\u041E\u041C\u041E\u0416\u041D\u041E!"
+                  inputText: "\u041D\u0415\u0412\u041E\u0417\u041C\u041E\u0416\u041D\u041E!"
                 _answers: []
               - _typeOfDialogue: 0
                 _symbolTime: 0.05

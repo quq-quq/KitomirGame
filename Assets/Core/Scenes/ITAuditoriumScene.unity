@@ -1212,7 +1212,7 @@ MonoBehaviour:
   - boolParameterName: vAhue
     BoolParameterInput: 1
     typeOfDialogue: 0
-    inputText: . . .
+    inputText: "\u0423 \u0442\u0435\u0431\u044F \u0435\u0441\u0442\u044C \u043A\u043E\u0442.."
   - boolParameterName: vAhue
     BoolParameterInput: 1
     typeOfDialogue: 0
