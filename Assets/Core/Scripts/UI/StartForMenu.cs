@@ -28,8 +28,16 @@ public class StartForMenu : MonoBehaviour
         {
             StartCoroutine(StartDelay());
         }
+        else
+        {
+            foreach (var frame in _frames)
+            {
+                frame.canvasGroup.gameObject.SetActive(false);
+            }
+        }
         MenuButton.OnShowInfoPressed += MenuButton_OnShowInfoPressed;
         MenuButton.OnHideInfoPressed += MenuButton_OnHideInfoPressed;
+        
     }
 
     private void MenuButton_OnHideInfoPressed(object sender, EventArgs e)
