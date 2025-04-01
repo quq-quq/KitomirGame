@@ -5,7 +5,7 @@ using UnityEngine;
 public class Teacher : InteractableObject
 {
     [System.Serializable]
-    private struct SetAnimParameter
+    public struct SetAnimParameter
     {
         public string boolParameterName;
         public bool BoolParameterInput;

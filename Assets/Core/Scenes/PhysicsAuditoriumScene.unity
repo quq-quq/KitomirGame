@@ -1124,6 +1124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1189124953}
   - component: {fileID: 1189124952}
+  - component: {fileID: 1189124957}
   - component: {fileID: 1189124954}
   - component: {fileID: 1189124955}
   - component: {fileID: 1189124956}
@@ -1314,6 +1315,29 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99005556, y: 0.791167}
   m_EdgeRadius: 0
+--- !u!114 &1189124957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189124951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e20c73fac653c4e92a9ded3b56f10d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animParameterForCollider:
+    boolParameterName: isRunning
+    BoolParameterInput: 1
+    typeOfDialogue: 0
+    inputText: "\u042D\u0412\u0420\u0418\u041A\u0410!"
+  _colliders:
+  - {fileID: 1189124954}
+  - {fileID: 1189124955}
+  - {fileID: 1189124956}
+  _animator: {fileID: 2112019490}
+  _dialogueViewer: {fileID: 1763717832}
 --- !u!1 &1210650535
 GameObject:
   m_ObjectHideFlags: 0
